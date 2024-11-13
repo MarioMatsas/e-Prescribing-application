@@ -1,0 +1,22 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLActor</id><coordinates><x>10</x><y>10</y><w>100</w><h>110</h></coordinates><panel_attributes>:Φαρμακοποιός</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>50</x><y>90</y><w>30</w><h>620</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;600</additional_attributes></element><element><id>Text</id><coordinates><x>260</x><y>60</y><w>80</w><h>80</h></coordinates><panel_attributes>// Control Element
+	     Control
+customelement=
+// Control Symbol
+drawCircle(50, 50, 20)
+drawLine(44, 31, 54, 21)
+drawLine(44, 31, 54, 41)
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>140</x><y>10</y><w>120</w><h>80</h></coordinates><panel_attributes>// Boundary Element
+	  :PrescriptionExeUI
+customelement=
+// Boundary Symbol
+drawCircle(50, 50, 20)
+drawLine(20, 50, 30, 50)
+drawLine(20, 30, 20, 70)
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>290</x><y>0</y><w>80</w><h>80</h></coordinates><panel_attributes>// Entity Element
+	      Entity
+customelement=
+// Entity Symbol
+drawCircle(50, 50, 20)
+drawLine(30, 70, 70, 70)
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>60</y><w>90</w><h>110</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes><additional_attributes>20;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>70</y><w>30</w><h>630</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;610</additional_attributes></element></diagram>
