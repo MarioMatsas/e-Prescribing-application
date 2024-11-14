@@ -1,70 +1,87 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>180</x><y>350</y><w>100</w><h>90</h></coordinates><panel_attributes>Ασθενής
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>130</x><y>280</y><w>100</w><h>90</h></coordinates><panel_attributes>Ασθενής
 --
 AMKA
 Όνομα
-Επώνυμο</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>380</x><y>460</y><w>100</w><h>90</h></coordinates><panel_attributes>Γιατρός
+Επώνυμο</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>450</y><w>100</w><h>90</h></coordinates><panel_attributes>Ιατρός
 --
 Όνομα
 Επώνυμο
-Ειδικότητα</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>780</x><y>140</y><w>100</w><h>100</h></coordinates><panel_attributes>Υπάλληλος
+Ειδικότητα</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>760</x><y>120</y><w>140</w><h>100</h></coordinates><panel_attributes>Υπάλληλος
 ΕΟΠΥΥ
 --
 Όνομα
 Επώνυμο
-id
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>220</y><w>100</w><h>100</h></coordinates><panel_attributes>Φαρμακοποιός
+Αριθμός ταυτοποίησης
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>140</y><w>100</w><h>100</h></coordinates><panel_attributes>Φαρμακοποιός
 --
 Όνομα
 Επώνυμο
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>470</y><w>100</w><h>40</h></coordinates><panel_attributes>Ημερολόγιο
-Συστήματος</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>90</y><w>130</w><h>140</h></coordinates><panel_attributes>Φαρμακευτικά
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>410</y><w>100</w><h>70</h></coordinates><panel_attributes>Ημερολόγιο
+Συστήματος
+--
+Ημερομηνία</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>70</y><w>130</w><h>140</h></coordinates><panel_attributes>Φαρμακευτικά
 σκευάσματα
 --
 'Ονομα
-Κόστος
+Λιανική τιμή
 Ημ. Λήξης
 Μορφή
-γενόσημο : boolean
-/συμμετοχή ασθενή</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>460</y><w>100</w><h>30</h></coordinates><panel_attributes>Αναλώσιμο</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>380</x><y>300</y><w>100</w><h>90</h></coordinates><panel_attributes>Ιατρική συνταγή
+Γενόσημο : boolean
+/συμμετοχή ασθενή</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>320</x><y>280</y><w>140</w><h>90</h></coordinates><panel_attributes>Ιατρική συνταγή
 --
-Διάγνωση</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>340</y><w>130</w><h>60</h></coordinates><panel_attributes>lt=-
+Διάγνωση
+/Στοιχεία Ιατρού</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>300</y><w>120</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=1
-m2=*</panel_attributes><additional_attributes>10;40;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>380</y><w>40</w><h>100</h></coordinates><panel_attributes>lt=-
+m2=*</panel_attributes><additional_attributes>10;10;100;30</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>360</y><w>70</w><h>110</h></coordinates><panel_attributes>lt=-
 m1=1
-m2=*</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>300</y><w>130</w><h>90</h></coordinates><panel_attributes>Δραστική
+m2=*</panel_attributes><additional_attributes>10;90;50;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>280</y><w>130</w><h>90</h></coordinates><panel_attributes>Δραστική
 ουσία
 --
 Όνομα
-max_ποσότητα/μήνα</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>220</y><w>80</w><h>100</h></coordinates><panel_attributes>m1=*
-m2=1..*</panel_attributes><additional_attributes>10;10;50;80</additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>340</y><w>130</w><h>40</h></coordinates><panel_attributes>lt=-
+max_ποσότητα/μήνα</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>200</y><w>110</w><h>100</h></coordinates><panel_attributes>m1=*
+m2=1..*</panel_attributes><additional_attributes>10;10;80;80</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>310</y><w>130</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=*
-m2=1..*</panel_attributes><additional_attributes>10;10;110;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>230</x><y>150</y><w>120</w><h>80</h></coordinates><panel_attributes>Αγορά
+m2=1..*
+??</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>130</y><w>130</w><h>80</h></coordinates><panel_attributes>Αγορά
 --
-Ημερομηνία
-/Συνολικό Κόστος</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>220</y><w>90</w><h>150</h></coordinates><panel_attributes>lt=-
+Ημερομηνία Αγοράς
+/Συνολικό Κόστος</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>200</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=-
 m1=*
-m2=1</panel_attributes><additional_attributes>70;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>340</x><y>140</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=-
+m2=1</panel_attributes><additional_attributes>50;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>140</y><w>170</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=*
-m2=1..*</panel_attributes><additional_attributes>10;20;140;10</additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>220</y><w>120</w><h>60</h></coordinates><panel_attributes>lt=-
+m2=1..*</panel_attributes><additional_attributes>10;20;150;10</additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>170</y><w>100</w><h>40</h></coordinates><panel_attributes>lt=-
 m1=1
-m2=*</panel_attributes><additional_attributes>10;40;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>340</x><y>220</y><w>110</w><h>100</h></coordinates><panel_attributes>lt=-
+m2=*</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>200</y><w>90</w><h>100</h></coordinates><panel_attributes>lt=-
 m1=0..1
-m2=1..*</panel_attributes><additional_attributes>10;10;80;80</additional_attributes></element><element><id>UMLNote</id><coordinates><x>110</x><y>20</y><w>160</w><h>70</h></coordinates><panel_attributes>Παραδοχή:
+m2=1..*</panel_attributes><additional_attributes>10;10;60;80</additional_attributes></element><element><id>UMLNote</id><coordinates><x>180</x><y>20</y><w>160</w><h>70</h></coordinates><panel_attributes>Παραδοχή:
 Κάθε αγορά περιλαμβάνει
 μόνο φαρμακευτικά
-σκευάσματα</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>80</y><w>160</w><h>90</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>134;66;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>150</y><w>200</w><h>60</h></coordinates><panel_attributes>lt=-
+σκευάσματα.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>80</y><w>40</w><h>70</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>20;46;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>140</y><w>180</w><h>60</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-&lt; καταχωρεί</panel_attributes><additional_attributes>10;10;180;30</additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>230</y><w>100</w><h>90</h></coordinates><panel_attributes>lt=-
+&lt; καταχωρεί</panel_attributes><additional_attributes>10;30;160;20</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>210</y><w>140</w><h>120</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-&lt; καταχωρεί</panel_attributes><additional_attributes>10;70;80;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>410</y><w>100</w><h>30</h></coordinates><panel_attributes>Διάγνωση</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>800</x><y>340</y><w>100</w><h>40</h></coordinates><panel_attributes>Διοίκηση</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>850</x><y>230</y><w>70</w><h>130</h></coordinates><panel_attributes>lt=-
+&lt; καταχωρεί</panel_attributes><additional_attributes>10;100;80;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>800</x><y>290</y><w>100</w><h>60</h></coordinates><panel_attributes>Διοίκηση
+--
+Μέλη</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>830</x><y>210</y><w>80</w><h>100</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..*
+διοικεί</panel_attributes><additional_attributes>30;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>420</y><w>130</w><h>60</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*
-διοικεί</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>470</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=-
-m1=1
-m2=*
-στέλνει</panel_attributes><additional_attributes>10;20;140;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>800</x><y>470</y><w>100</w><h>40</h></coordinates><panel_attributes>Αναφορά</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>370</y><w>80</w><h>120</h></coordinates><panel_attributes>lt=-
+στέλνει</panel_attributes><additional_attributes>110;30;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>410</y><w>150</w><h>70</h></coordinates><panel_attributes>Αναφορά
+--
+Λίστα Γιατρών
+Πλήθος Συνταγών</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>340</y><w>160</w><h>90</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-λαμβάνει</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element></diagram>
+λαμβάνει</panel_attributes><additional_attributes>10;70;140;10</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>350</y><w>140</w><h>80</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=0..1</panel_attributes><additional_attributes>10;10;120;60</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>440</y><w>190</w><h>70</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=*</panel_attributes><additional_attributes>10;50;170;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>520</x><y>510</y><w>310</w><h>70</h></coordinates><panel_attributes>Το πλήθος συνταγών θα είναι ένα hash map,
+όπου ο ιατρός θα είναι το κλειδί και το πλήθος
+των συνταγών του, που ξεπερνούν το όριο ανα 
+μήνα, θα είναι η τιμή (key: Ιατρός, value: #συνταγές).</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>470</y><w>50</w><h>60</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>30;36;10;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>590</x><y>0</y><w>160</w><h>40</h></coordinates><panel_attributes>Μορφή: κρέμα, χάπι, κλπ.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>590</x><y>30</y><w>70</w><h>60</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>14;36;50;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>400</x><y>0</y><w>100</w><h>40</h></coordinates><panel_attributes>γενόσημο = 1
+πρωτότυπο = 0</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>430</x><y>30</y><w>80</w><h>60</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>54;36;10;10</additional_attributes></element></diagram>
