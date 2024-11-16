@@ -13,8 +13,8 @@ AMKA : int
 Συστήματος
 --
 Ημερομηνία : Date
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>441</x><y>152</y><w>144</w><h>135</h></coordinates><panel_attributes>Φαρμακευτικά
-σκευάσματα
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>441</x><y>152</y><w>144</w><h>135</h></coordinates><panel_attributes>Φαρμακευτικό
+σκεύασμα
 --
 'Ονομα: String
 Λιανική τιμή: int
