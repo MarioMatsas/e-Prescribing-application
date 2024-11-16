@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>130</x><y>300</y><w>100</w><h>50</h></coordinates><panel_attributes>Ασθενής
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>130</x><y>280</y><w>100</w><h>50</h></coordinates><panel_attributes>Ασθενής
 --
 AMKA : int
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>450</y><w>130</w><h>50</h></coordinates><panel_attributes>Ιατρός
@@ -9,10 +9,10 @@ AMKA : int
 Αριθμός ταυτοποίησης : int
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>140</y><w>100</w><h>50</h></coordinates><panel_attributes>Φαρμακοποιός
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>410</y><w>120</w><h>60</h></coordinates><panel_attributes>Ημερολόγιο
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>410</y><w>110</w><h>60</h></coordinates><panel_attributes>Ημερολόγιο
 Συστήματος
 --
-Ημερομηνία : Date
+Ημερομηνία: D
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>70</y><w>130</w><h>140</h></coordinates><panel_attributes>Φαρμακευτικά
 σκευάσματα
 --
@@ -25,9 +25,9 @@ AMKA : int
 --
 Διάγνωση
 Κατάσταση: Status
-/Στοιχεία Ιατρού</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>320</y><w>130</w><h>40</h></coordinates><panel_attributes>lt=-
+/Στοιχεία Ιατρού</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>300</y><w>130</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=1
-m2=*</panel_attributes><additional_attributes>10;10;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>360</y><w>40</w><h>110</h></coordinates><panel_attributes>lt=-
+m2=*</panel_attributes><additional_attributes>10;10;110;30</additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>360</y><w>40</w><h>110</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>280</y><w>160</w><h>70</h></coordinates><panel_attributes>Δραστική ουσία
 --
@@ -39,9 +39,9 @@ m2=1..*
 ??</panel_attributes><additional_attributes>10;20;100;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>130</y><w>130</w><h>80</h></coordinates><panel_attributes>Αγορά
 --
 Ημερομηνία Αγοράς : Date
-/Συνολικό Κόστος : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>200</y><w>70</w><h>120</h></coordinates><panel_attributes>lt=-
+/Συνολικό Κόστος : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>200</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=-
 m1=*
-m2=1</panel_attributes><additional_attributes>50;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>140</y><w>170</w><h>50</h></coordinates><panel_attributes>lt=-
+m2=1</panel_attributes><additional_attributes>50;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>140</y><w>170</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1..*</panel_attributes><additional_attributes>10;20;150;10</additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>170</y><w>100</w><h>40</h></coordinates><panel_attributes>lt=-
 m1=1
@@ -82,11 +82,11 @@ m2=*</panel_attributes><additional_attributes>10;50;140;10</additional_attribute
 --
 Όνομα : String
 Επώνυμο : String
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>490</y><w>230</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;40;210;40;210;10</additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>340</y><w>30</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>80</x><y>180</y><w>30</w><h>320</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;300;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>150</y><w>850</w><h>500</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;400;10;480;830;480;830;10;780;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>860</x><y>510</y><w>100</w><h>70</h></coordinates><panel_attributes>Date
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>490</y><w>230</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;40;210;40;210;10</additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>320</y><w>30</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;160;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>80</x><y>180</y><w>30</w><h>320</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;300;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>150</y><w>850</w><h>500</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;400;10;480;830;480;830;10;780;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>860</x><y>510</y><w>100</w><h>70</h></coordinates><panel_attributes>Date
 --
 Έτος : int 
 Μήνας : int
-Ημέρα : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>10</y><w>130</w><h>80</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt; 
+Ημέρα : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>460</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>10</y><w>130</w><h>80</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt; 
 Status
 --
 Εκκρεμεί
