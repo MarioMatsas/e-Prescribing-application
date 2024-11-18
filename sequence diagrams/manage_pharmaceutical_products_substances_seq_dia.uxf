@@ -1,0 +1,41 @@
+<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLActor</id><coordinates><x>121</x><y>0</y><w>88</w><h>132</h></coordinates><panel_attributes>Υπάλληλος
+ΕΟΠΥΥ</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>154</x><y>110</y><w>33</w><h>737</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;650</additional_attributes></element><element><id>Text</id><coordinates><x>517</x><y>44</y><w>264</w><h>88</h></coordinates><panel_attributes>// Control Element
+:ΔιαχείρησηΦαρμακευτικούΣκευάσματοςController
+customelement=
+// Control Symbol
+drawCircle(120, 50, 20)
+drawLine(114, 31, 124, 21)
+drawLine(114, 31, 124, 41)
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>242</x><y>44</y><w>209</w><h>88</h></coordinates><panel_attributes>// Boundary Element
+:ΔιαχείρησηΦαρμακευτικούΣκευάσματοςUI
+customelement=
+// Boundary Symbol
+drawCircle(90, 50, 20)
+drawLine(60, 50, 70, 50)
+drawLine(60, 30, 60, 70)
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>891</x><y>44</y><w>121</w><h>88</h></coordinates><panel_attributes>// Entity Element
+Δραστική Ουσία
+customelement=
+// Entity Symbol
+drawCircle(50, 50, 20)
+drawLine(30, 70, 70, 70)
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>110</y><w>33</w><h>737</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;650</additional_attributes></element><element><id>Relation</id><coordinates><x>143</x><y>143</y><w>220</w><h>88</h></coordinates><panel_attributes>lt=&lt;-
+Επεξεργασία
+Φαρμακευτικού Σκευάσματος --
+Αναζήτηση
+Φαρμακευτικού Σκευάσματος</panel_attributes><additional_attributes>170;20;20;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>330</x><y>165</y><w>22</w><h>616</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>638</x><y>110</y><w>33</w><h>726</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;640</additional_attributes></element><element><id>Relation</id><coordinates><x>341</x><y>176</y><w>319</w><h>44</h></coordinates><panel_attributes>lt=&lt;-
+αναζήτησεΦαρμακευτικόΣκεύασμα(όνομα)</panel_attributes><additional_attributes>270;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>638</x><y>187</y><w>22</w><h>132</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>649</x><y>198</y><w>308</w><h>44</h></coordinates><panel_attributes>lt=&lt;-
+βρεςΦαρμακευτικόΣκεύασμα(όνομα)</panel_attributes><additional_attributes>260;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>935</x><y>110</y><w>33</w><h>726</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;640</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>935</x><y>209</y><w>22</w><h>77</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>649</x><y>242</y><w>308</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+φαρμακευτικό_σκεύασμα</panel_attributes><additional_attributes>10;20;260;20</additional_attributes></element><element><id>Relation</id><coordinates><x>341</x><y>264</y><w>319</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+φαρμακευτικό_σκεύασμα</panel_attributes><additional_attributes>10;20;270;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>341</x><y>363</y><w>22</w><h>55</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>363</y><w>297</w><h>66</h></coordinates><panel_attributes>lt=&lt;-
+εμφάνισηΣτοχείωνΦαρμακευτικού
+Σκευάσματος(φαρμακευτικό_σκεύασμα)</panel_attributes><additional_attributes>10;40;30;40;30;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>154</x><y>462</y><w>198</w><h>44</h></coordinates><panel_attributes>lt=&lt;-
+Ενημέρωση Στοιχείων</panel_attributes><additional_attributes>160;17;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>341</x><y>506</y><w>319</w><h>55</h></coordinates><panel_attributes>lt=&lt;-
+επεξεργασίαΦαρμακευτικού
+Σκευάσματος(όνομα,νέα_στοιχεία)</panel_attributes><additional_attributes>270;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>638</x><y>517</y><w>22</w><h>132</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>649</x><y>539</y><w>308</w><h>55</h></coordinates><panel_attributes>lt=&lt;-
+τροποποίησηΦαρμακευτικού
+Σκευάσματος(όνομα,νέα_στοιχεία)</panel_attributes><additional_attributes>260;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>935</x><y>550</y><w>22</w><h>77</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>649</x><y>583</y><w>308</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+φαρμακευτικό_σκεύασμα</panel_attributes><additional_attributes>10;20;260;20</additional_attributes></element><element><id>Relation</id><coordinates><x>341</x><y>616</y><w>319</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
+φαρμακευτικό_σκεύασμα</panel_attributes><additional_attributes>10;20;270;20</additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>704</y><w>297</w><h>66</h></coordinates><panel_attributes>lt=&lt;-
+εμφάνισηΣτοχείωνΦαρμακευτικού
+Σκευάσματος(φαρμακευτικό_σκεύασμα)</panel_attributes><additional_attributes>10;40;30;40;30;10;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>341</x><y>704</y><w>22</w><h>55</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element></diagram>

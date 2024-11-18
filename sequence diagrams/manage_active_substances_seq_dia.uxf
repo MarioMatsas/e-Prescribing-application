@@ -1,0 +1,39 @@
+<diagram program="umletino" version="15.1"><zoom_level>15</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLActor</id><coordinates><x>0</x><y>0</y><w>120</w><h>180</h></coordinates><panel_attributes>Υπάλληλος
+ΕΟΠΥΥ</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>45</x><y>150</y><w>45</w><h>1005</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;650</additional_attributes></element><element><id>Text</id><coordinates><x>540</x><y>60</y><w>360</w><h>120</h></coordinates><panel_attributes>// Control Element
+:ΔιαχείρησηΔραστικήςΟυσίαςController
+customelement=
+// Control Symbol
+drawCircle(120, 50, 20)
+drawLine(114, 31, 124, 21)
+drawLine(114, 31, 124, 41)
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>165</x><y>60</y><w>285</w><h>120</h></coordinates><panel_attributes>// Boundary Element
+:ΔιαχείρησηΔραστικήςΟυσίαςUI
+customelement=
+// Boundary Symbol
+drawCircle(90, 50, 20)
+drawLine(60, 50, 70, 50)
+drawLine(60, 30, 60, 70)
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1050</x><y>60</y><w>165</w><h>120</h></coordinates><panel_attributes>// Entity Element
+Δραστική Ουσία
+customelement=
+// Entity Symbol
+drawCircle(50, 50, 20)
+drawLine(30, 70, 70, 70)
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>285</x><y>150</y><w>45</w><h>1005</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;650</additional_attributes></element><element><id>Relation</id><coordinates><x>45</x><y>195</y><w>270</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+Επεξεργασία
+Δραστικής Ουσίας --
+Αναζήτηση
+Δραστικής Ουσίας</panel_attributes><additional_attributes>160;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>285</x><y>225</y><w>30</w><h>840</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>705</x><y>150</y><w>45</w><h>990</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;640</additional_attributes></element><element><id>Relation</id><coordinates><x>300</x><y>240</y><w>435</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+αναζήτησεΔραστικήΟυσία(όνομα)</panel_attributes><additional_attributes>270;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>705</x><y>255</y><w>30</w><h>180</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>270</y><w>420</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+βρεςΔραστικήΟυσία(όνομα)</panel_attributes><additional_attributes>260;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1110</x><y>150</y><w>45</w><h>990</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;640</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1110</x><y>285</y><w>30</w><h>105</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>330</y><w>420</w><h>60</h></coordinates><panel_attributes>lt=&lt;.
+δραστική_ουσία</panel_attributes><additional_attributes>10;20;260;20</additional_attributes></element><element><id>Relation</id><coordinates><x>300</x><y>360</y><w>435</w><h>60</h></coordinates><panel_attributes>lt=&lt;.
+δραστική_ουσία</panel_attributes><additional_attributes>10;20;270;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>300</x><y>495</y><w>30</w><h>75</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>495</y><w>540</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+εμφάνισηΣτοχείωνΔραστικήςΟυσίας(δραστική_ουσία)</panel_attributes><additional_attributes>10;40;30;40;30;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>45</x><y>630</y><w>270</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+Ενημέρωση Στοιχείων</panel_attributes><additional_attributes>160;17;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>300</x><y>690</y><w>435</w><h>75</h></coordinates><panel_attributes>lt=&lt;-
+επεξεργασίαΔραστικήςΟυσίας(όνομα,
+νέα_στοιχεία)</panel_attributes><additional_attributes>270;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>705</x><y>705</y><w>30</w><h>180</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>735</y><w>420</w><h>75</h></coordinates><panel_attributes>lt=&lt;-
+τροποποίησηΔραστικήςΟυσίας(όνομα,
+νέα_στοιχεία)</panel_attributes><additional_attributes>260;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>1110</x><y>750</y><w>30</w><h>105</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>795</y><w>420</w><h>60</h></coordinates><panel_attributes>lt=&lt;.
+δραστική_ουσία</panel_attributes><additional_attributes>10;20;260;20</additional_attributes></element><element><id>Relation</id><coordinates><x>300</x><y>840</y><w>435</w><h>60</h></coordinates><panel_attributes>lt=&lt;.
+δραστική_ουσία</panel_attributes><additional_attributes>10;20;270;20</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>960</y><w>540</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+εμφάνισηΣτοχείωνΔραστικήςΟυσίας(δραστική_ουσία)</panel_attributes><additional_attributes>10;40;30;40;30;10;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>300</x><y>960</y><w>30</w><h>75</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element></diagram>
