@@ -5,39 +5,39 @@ customelement=
 drawCircle(50, 50, 20)
 drawLine(30, 70, 70, 70)
 	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>242</x><y>22</y><w>165</w><h>88</h></coordinates><panel_attributes>// Boundary Element
-	  :ΣύστημαUI
+	  :ΣύστημαAPI
 customelement=
 // Boundary Symbol
 drawCircle(50, 50, 20)
 drawLine(20, 50, 30, 50)
 drawLine(20, 30, 20, 70)
-	</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>0</x><y>0</y><w>110</w><h>121</h></coordinates><panel_attributes>:Ημερολόγιο</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>495</x><y>22</y><w>198</w><h>88</h></coordinates><panel_attributes>// Control Element
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>0</x><y>0</y><w>110</w><h>121</h></coordinates><panel_attributes>:Ημερολόγιο</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>495</x><y>33</y><w>198</w><h>88</h></coordinates><panel_attributes>// Control Element
 :ΣύστημαController
 customelement=
 // Control Symbol
 drawCircle(50, 50, 20)
 drawLine(44, 31, 54, 21)
 drawLine(44, 31, 54, 41)
-	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>539</x><y>88</y><w>33</w><h>539</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;470;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>286</x><y>88</y><w>33</w><h>561</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;490;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>814</x><y>121</y><w>33</w><h>484</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;420;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>44</x><y>88</y><w>33</w><h>539</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;470;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>539</x><y>143</y><w>22</w><h>66</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>44</x><y>110</y><w>264</w><h>55</h></coordinates><panel_attributes>lt=&lt;-
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>539</x><y>110</y><w>33</w><h>517</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;450;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>286</x><y>88</y><w>33</w><h>561</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;490;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>814</x><y>121</y><w>33</w><h>484</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;420;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>44</x><y>88</y><w>33</w><h>539</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;470;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>539</x><y>143</y><w>22</w><h>66</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>44</x><y>110</y><w>264</w><h>55</h></coordinates><panel_attributes>lt=&lt;-
 Δημιουργία
 Αναφοράς</panel_attributes><additional_attributes>220;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>286</x><y>264</y><w>22</w><h>132</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>253</y><w>264</w><h>44</h></coordinates><panel_attributes>lt=&lt;-
 generateReport(αναφορά)</panel_attributes><additional_attributes>220;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>539</x><y>275</y><w>22</w><h>99</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>352</y><w>264</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
 αναφορά</panel_attributes><additional_attributes>10;20;220;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>286</x><y>121</y><w>22</w><h>99</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>187</y><w>264</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
 αναφορά</panel_attributes><additional_attributes>10;20;220;20</additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>121</y><w>264</w><h>44</h></coordinates><panel_attributes>lt=&lt;-
-createReport()</panel_attributes><additional_attributes>220;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>671</x><y>88</y><w>33</w><h>539</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;470</additional_attributes></element><element><id>Text</id><coordinates><x>627</x><y>22</y><w>143</w><h>88</h></coordinates><panel_attributes>// Entity Element
-	      :Υπάλληλος ΕΟΠΥΥ
-
-customelement=
-// Entity Symbol
-drawCircle(50, 50, 20)
-drawLine(30, 70, 70, 70)
-	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>275</y><w>286</w><h>55</h></coordinates><panel_attributes>lt=&lt;-
+createReport()</panel_attributes><additional_attributes>220;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>671</x><y>110</y><w>33</w><h>517</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;450</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>275</y><w>286</w><h>55</h></coordinates><panel_attributes>lt=&lt;-
 makeReport(αναφορά)
 </panel_attributes><additional_attributes>240;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>814</x><y>297</y><w>22</w><h>44</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>319</y><w>286</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
 αναφορά</panel_attributes><additional_attributes>10;20;240;20</additional_attributes></element><element><id>Relation</id><coordinates><x>44</x><y>396</y><w>264</w><h>55</h></coordinates><panel_attributes>lt=&lt;-
 Αποστολή αναφοράς στην
 διοίκηση του ΕΟΠΥΥ</panel_attributes><additional_attributes>220;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>286</x><y>418</y><w>22</w><h>132</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>418</y><w>264</w><h>44</h></coordinates><panel_attributes>lt=&lt;-
-sendReport(αναφορά)</panel_attributes><additional_attributes>220;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>539</x><y>440</y><w>22</w><h>88</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>440</y><w>143</w><h>44</h></coordinates><panel_attributes>lt=&lt;-
-getReport(αναφορά)</panel_attributes><additional_attributes>110;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>671</x><y>462</y><w>22</w><h>55</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>132</y><w>286</w><h>44</h></coordinates><panel_attributes>lt=.&gt;
+sendReport(αναφορά)</panel_attributes><additional_attributes>220;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>539</x><y>440</y><w>22</w><h>88</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>539</x><y>440</y><w>165</w><h>44</h></coordinates><panel_attributes>lt=&lt;-
+sendReport(αναφορά)</panel_attributes><additional_attributes>120;20;20;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>671</x><y>462</y><w>22</w><h>55</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>132</y><w>286</w><h>44</h></coordinates><panel_attributes>lt=.&gt;
 new Αναφορά()</panel_attributes><additional_attributes>10;20;240;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>814</x><y>154</y><w>22</w><h>44</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>176</y><w>286</w><h>44</h></coordinates><panel_attributes>lt=&lt;.
-αναφορά</panel_attributes><additional_attributes>10;20;240;20</additional_attributes></element></diagram>
+αναφορά</panel_attributes><additional_attributes>10;20;240;20</additional_attributes></element><element><id>Text</id><coordinates><x>627</x><y>33</y><w>165</w><h>88</h></coordinates><panel_attributes>// Boundary Element
+	  :ΔιοίκησηΕΟΠΥΥUI
+customelement=
+// Boundary Symbol
+drawCircle(50, 50, 20)
+drawLine(20, 50, 30, 50)
+drawLine(20, 30, 20, 70)
+	</panel_attributes><additional_attributes></additional_attributes></element></diagram>
