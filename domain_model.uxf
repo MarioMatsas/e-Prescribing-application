@@ -22,7 +22,13 @@ AMKA : int
 --
 Διάγνωση : String
 Κατάσταση : Status
+<<<<<<< HEAD
 /Στοιχεία Ιατρού : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>162</x><y>396</y><w>90</w><h>36</h></coordinates><panel_attributes>lt=-
+=======
+Ημερομηνία: Date
+/Στοιχεία Ιατρού : String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>162</x><y>406</y><w>90</w><h>36</h></coordinates><panel_attributes>lt=-
+>>>>>>> 69d646cc3620ac2c342825a84ee3a20a4a20075b
 m1=1
 m2=*</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>459</y><w>36</w><h>90</h></coordinates><panel_attributes>lt=-
 m1=1
@@ -35,7 +41,11 @@ m1=*
 m2=1..*</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>153</x><y>216</y><w>153</w><h>72</h></coordinates><panel_attributes>Αγορά
 --
 Ημερομηνία Αγοράς : Date
+<<<<<<< HEAD
 /Συνολικό Κόστος : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>135</x><y>279</y><w>99</w><h>108</h></coordinates><panel_attributes>lt=-
+=======
+/Συνολικό Κόστος : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>135</x><y>289</y><w>90</w><h>108</h></coordinates><panel_attributes>lt=-
+>>>>>>> 69d646cc3620ac2c342825a84ee3a20a4a20075b
 m1=*
 m2=1</panel_attributes><additional_attributes>80;10;80;60;10;60;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>234</y><w>126</w><h>36</h></coordinates><panel_attributes>lt=-
 m1=*
@@ -64,7 +74,11 @@ m1=*
 m2=1
 &lt; λαμβάνει</panel_attributes><additional_attributes>10;60;50;60;50;30;160;30;160;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>432</y><w>99</w><h>54</h></coordinates><panel_attributes>lt=-
 m1=*
+<<<<<<< HEAD
 m2=0..1</panel_attributes><additional_attributes>10;10;70;10;70;40</additional_attributes></element><element><id>Relation</id><coordinates><x>351</x><y>513</y><w>90</w><h>81</h></coordinates><panel_attributes>lt=-
+=======
+m2=0..1</panel_attributes><additional_attributes>10;10;70;10;70;40</additional_attributes></element><element><id>Relation</id><coordinates><x>351</x><y>523</y><w>81</w><h>81</h></coordinates><panel_attributes>lt=-
+>>>>>>> 69d646cc3620ac2c342825a84ee3a20a4a20075b
 m1=*
 m2=*</panel_attributes><additional_attributes>10;60;70;60;70;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>432</x><y>558</y><w>279</w><h>63</h></coordinates><panel_attributes>Το "Γιατροί και Συνταγές" θα είναι ένα hash map,
 όπου ο ιατρός θα είναι το κλειδί και το πλήθος
