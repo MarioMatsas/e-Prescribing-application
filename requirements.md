@@ -50,7 +50,7 @@
 # Υποστηρικτικό υλικό
 
 ## Μοντέλο πεδίου
-<img src="./domainModel.png" width="1000">
+<img src="./PNGs/domainModel.png" width="1000">
 
 ## Ανάλυση περιπτώσεων χρήσης
 --------------------------
@@ -67,24 +67,24 @@
 
 #### Ηλεκτρονική Συνταγογράφηση
 
-![Διάγραμμα ακολουθίας - Ηλεκτρονική Συνταγογράφηση](./activity%20diagrams/uc1_complete_pr_act_diagram.uxf)
+![Διάγραμμα ακολουθίας - Ηλεκτρονική Συνταγογράφηση](./PNGs/complete_prescr_seq_diag.png)
 
 #### Εκτέλεση Συνταγής
 
-![Διάγραμμα ακολουθίας - Εκτέλεση Συνταγής](./activity%20diagrams/uc2_execute_pr_diagram.uxf)
+![Διάγραμμα ακολουθίας - Εκτέλεση Συνταγής](./PNGs/execute_prescr_seq_diag.png)
 
 #### Ταυτοποίηση Χρήστη
 
-![Διάγραμμα ακολουθίας - Ταυτοποίηση Χρήστη](./activity%20diagrams/uc3_identify_user_act_diagram.uxf)
+![Διάγραμμα ακολουθίας - Ταυτοποίηση Χρήστη](./PNGs/identify_user_seq_diag.png)
 
 #### Δημιουργία Αναφοράς
 
-![Διάγραμμα ακολουθίας - Δημιουργία Αναφοράς](./activity%20diagrams/uc4_generate_report_act_diagram.uxf)
+![Διάγραμμα ακολουθίας - Δημιουργία Αναφοράς](./PNGs/gen_rep_seq_diag.png)
 
 #### Διαχείρηση Δραστικών Ουσιών
 
-![Διάγραμμα ακολουθίας - Διαχείρηση Δραστικών Ουσιών](./activity%20diagrams/uc5_manage_active_substances_act_dia.uxf)
+![Διάγραμμα ακολουθίας - Διαχείρηση Δραστικών Ουσιών](./PNGs/manage_active_subs_seq_diag.png)
 
 #### Διαχείρηση Φαρμκευτικών Σκευασμάτων
 
-![Διάγραμμα ακολουθίας - Διαχείρηση Φαρμκευτικών Σκευασμάτων](./activity%20diagrams/uc6_manage_pharmaceutical_products_act_dia.uxf)
+![Διάγραμμα ακολουθίας - Διαχείρηση Φαρμκευτικών Σκευασμάτων](./PNGs/manage_pharm_prod_subs_seq_diag.png)
