@@ -88,7 +88,7 @@ ORIGINAL</panel_attributes><additional_attributes></additional_attributes></elem
 Unit
 --
 mg/ml
-mg/δισκίο
+mg/dislk
 ...</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>480</y><w>130</w><h>80</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt; 
 Status
 --
