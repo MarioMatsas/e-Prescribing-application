@@ -24,12 +24,12 @@
 
 ### Περιπτώσεις Χρήσης
 
-#### ΠΧ1. [Ηλεκτρονική συνταγογράφηση](./use%20case%20descreptions/complete_prescription.md)
-#### ΠΧ2. [Εκτέλεση Συνταγής](./use%20case%20descreptions/execute_prescription.md)
-#### ΠΧ3. [Ταυτοποίηση Χρήστη](./use%20case%20descreptions/identify_user.md)
-#### ΠΧ4. [Αναφορά κατευθυνόμενης συντaγογράφησης](./use%20case%20descreptions/generate_report.md)
-#### ΠΧ5. [Διαχείρηση Δραστικών Ουσιών](./use%20case%20descreptions/manage_active_substances.md)
-#### ΠΧ6. [Διαχείρηση Φαρμακευτικών Σκευασμάτων](./use%20case%20descreptions/manage_pharmaceutical_products.md)
+#### ΠΧ1. [Ηλεκτρονική συνταγογράφηση](./use%20case%20descreptions/uc1_complete_prescription.md)
+#### ΠΧ2. [Εκτέλεση Συνταγής](./use%20case%20descreptions/uc2_execute_prescription.md)
+#### ΠΧ3. [Ταυτοποίηση Χρήστη](./use%20case%20descreptions/uc3_identify_user.md)
+#### ΠΧ4. [Αναφορά κατευθυνόμενης συντaγογράφησης](./use%20case%20descreptions/uc4_generate_report.md)
+#### ΠΧ5. [Διαχείρηση Δραστικών Ουσιών](./use%20case%20descreptions/uc5_manage_active_substances.md)
+#### ΠΧ6. [Διαχείρηση Φαρμακευτικών Σκευασμάτων](./use%20case%20descreptions/uc6_manage_pharmaceutical_products.md)
 
 
 ## Συμπληρωματικές προδιαγραφές
@@ -59,7 +59,7 @@
 
 \[*Προσθέτουμε κάτι εδώ, TODO*\]
 
-![Κλάσεις Ανάλυσης]()
+<!-- ![Κλάσεις Ανάλυσης]() -->
 
 Κλάσεις ανάλυσης που έχουν προκύψει από την ανάλυση των περιπτώσεων χρήσης ... .
 
