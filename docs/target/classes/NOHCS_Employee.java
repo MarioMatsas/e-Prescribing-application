@@ -1,17 +1,18 @@
 public class NOHCS_Employee extends Person{
     
-    private int LastEmpId;
+    private static int LastEmpId;
     protected int empId;
 
-    public NOHCS_Employee(String fn, String ln, int lEmpId, int emId){
+    public NOHCS_Employee(String fn, String ln){
         super(fn, ln);
-        LastEmpId = lEmpId;
-        empId = emId;
+        this.empId = LastEmpId + 1;
+        LastEmpId = empId;
     }
 
-    protected calculateSalary(Month month){}
+    //protected calculateSalary(Month month){}
 
     public void managePharmaceuticalProduct(PharmaceuticalProduct product){}
     
     public void manageActiveSubstance(Substance substance){}
 }
+

@@ -1,22 +1,28 @@
+import java.util.List;
+
 public class Doctor extends Person{
     
     private String profession;
 
-    public Doctor(){}
-
-    public Doctor(String pr){
-        profession = pr;
+    public Doctor(String fn, String ln, String pr){
+        super(ln, pr);
+        this.profession = pr;
     }
 
     public String getProfession(){
-        return profession;
+        return this.profession;
     }
 
-    public String setProfession(String str){
-        profession= str;
+    public void setProfession(String str){
+        this.profession = str;
     }
 
     public void createPrescription(int SSN){}
 
-    public Patient findPatient(int SSN){}
+    public Patient findPatient(int SSN, List<Patient> patients){
+        for (Patient p:patients){
+            if (p.getSSN() == SSN) return p;
+        }
+        return null; // Patient not found
+    }
 }

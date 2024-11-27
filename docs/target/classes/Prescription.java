@@ -3,14 +3,18 @@ import java.util.List;
 
 public class Prescription {
     private List<PrescriptionLine> prescriptionLines;
+    private Doctor doctor;
+    private Patient patient;
     public final String diagnosis; // TODO change visability in diagram
     private Status status;
     public final Date date;
 
-    public Prescription(String diagnosis, Status status, Date date) {
+    public Prescription(String diagnosis, Status status, Date date, Doctor doctor, Patient patient) {
         this.diagnosis = diagnosis;
         this.status = status;
         this.date = date;
+        this.doctor = doctor;
+        this.patient = patient;
         this.prescriptionLines = new ArrayList<>();
     }
 
@@ -35,5 +39,8 @@ public class Prescription {
         this.prescriptionLines.add(line);
     }
 
-    /*Get doctor info */
+    public String getDoctorInfo(){
+        String info = "Doctor Info: Name: "+this.doctor.getFirstName()+" | Surname: "+this.doctor.getLastName()+" | Profession: "+this.doctor.getProfession();
+        return info;
+    }
 }
