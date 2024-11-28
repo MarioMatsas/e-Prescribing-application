@@ -1,7 +1,7 @@
 /* DONE */
 public class Patient extends Person{
     
-    public final int SSN;
+    private final int SSN;
 
     public Patient(String fn, String ln, int SSN) {
         super(fn, ln);

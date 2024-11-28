@@ -13,16 +13,17 @@ public class Doctor extends Person{
         return this.profession;
     }
 
-    public void setProfession(String str){
-        this.profession = str;
+    public void setProfession(String profession){
+        this.profession = profession;
     }
 
-    public void createPrescription(int SSN){}
-
+    // public void createPrescription(int SSN){}
+    /* 
     public Patient findPatient(int SSN, List<Patient> patients){
         for (Patient p:patients){
             if (p.getSSN() == SSN) return p;
         }
         return null; // Patient not found
     }
+    */
 }

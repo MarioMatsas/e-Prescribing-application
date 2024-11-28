@@ -9,19 +9,18 @@ public class Prescription {
     private Status status;
     public final Date date;
 
-    public Prescription(String diagnosis, Status status, Date date, Doctor doctor, Patient patient) {
+    public Prescription(String diagnosis, Status status, Date date, Doctor doctor, Patient patient, PrescriptionLine prescriptionLine) {
         this.diagnosis = diagnosis;
         this.status = status;
         this.date = date;
         this.doctor = doctor;
         this.patient = patient;
-        this.prescriptionLines = new ArrayList<>();
+        this.prescriptionLines = new ArrayList<>(prescriptionLine); // needs to have atleast 1 prescription line
     }
-
-    public String getDiagnosis() {
-        return this.diagnosis;
-    }
-
+    // TODO
+    //public String getDiagnosis() {
+    //    return this.diagnosis;
+    //}
 
     public Status getStatus() {
         return this.status;
@@ -31,9 +30,9 @@ public class Prescription {
         this.status = status;
     }
 
-    public Date getDate() {
-        return this.date;
-    }
+    //public Date getDate() {
+    //    return this.date;
+    //}
 
     public void addLine(PrescriptionLine line) {
         this.prescriptionLines.add(line);

@@ -9,11 +9,11 @@ public class ProductQuantity {
         this.quantity = quantity;
     }
 
-    public PharmacudicalProduct getProduct() {
-        return this.product;
-    }
+    //public PharmacudicalProduct getProduct() {
+    //    return this.product;
+    //}
 
-    public void setProduct(PharmacudicalProduct product) {
-        this.product = product;
-    }
+    //public void setProduct(PharmacudicalProduct product) {
+    //    this.product = product;
+    //}
 }

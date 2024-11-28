@@ -1,24 +1,25 @@
 /* DONE */
 
 public class PrescriptionLine {
-    private ActiveSubsance activeSubstance; 
+    private ActiveSubstance activeSubstance; 
     public final Form form;
     public final Concentration concentration;
     public final String instructions;
 
 
-    public PrescriptionLine(Form form, Concentration concentration, String instructions) {
+    public PrescriptionLine(Form form, Concentration concentration, String instructions, ActiveSubstance activeSubstance) {
         this.form = form;
         this.concentration = concentration;
         this.instructions = instructions;
+        this.activeSubstance = activeSubstance;
     }
 
     // TODO change the diagram to reflect these
-    public ActiveSubsance getActiveSubstance() {
+    public ActiveSubstance getActiveSubstance() {
         return this.activeSubstance;
     }
 
-    public void setActiveSubstance(ActiveSubsance activeSubstance) {
+    public void setActiveSubstance(ActiveSubstance activeSubstance) {
         this.activeSubstance = activeSubstance;
     }
 

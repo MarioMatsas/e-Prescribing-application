@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>63</x><y>459</y><w>189</w><h>117</h></coordinates><panel_attributes>Person
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>63</x><y>495</y><w>189</w><h>117</h></coordinates><panel_attributes>Person
 --
 - firstName : String
 - lastname : String
@@ -6,49 +6,51 @@
 + getFirstName() : String {query}
 + getLastName() : String {query}
 + setFirstName( firstName : String ) 
-+ setLastName( lastname : String ) </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>288</x><y>387</y><w>162</w><h>54</h></coordinates><panel_attributes>Pharmacist
++ setLastName( lastname : String ) </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>288</x><y>423</y><w>162</w><h>45</h></coordinates><panel_attributes>Pharmacist
 --
 --
 //+ getPrescription( id : Integer) : Prescription
-+ executePrescription()
-//+ findProductsBySubstance( substance: ActiveSubstance) : Array&lt;PharmacudicalProduct&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>423</x><y>612</y><w>144</w><h>54</h></coordinates><panel_attributes>Patient
+//+ executePrescription()
+//+ findProductsBySubstance( substance: ActiveSubstance) : Array&lt;PharmacudicalProduct&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>423</x><y>648</y><w>144</w><h>54</h></coordinates><panel_attributes>Patient
 --
-+ SSN : Integer {readOnly}
+- SSN : Integer {readOnly}
 --
++ getSSN() : Integer {query}
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>315</x><y>468</y><w>207</w><h>90</h></coordinates><panel_attributes>Doctor
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>315</x><y>504</y><w>207</w><h>81</h></coordinates><panel_attributes>Doctor
 --
 - profession : String
 --
 + getProfession() : String {query}
 + setProfession( profession : String )
 //+ findPatient( SSN : Integer) : Patient
-+ createPrescription( SSN : Integer )</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>648</y><w>360</w><h>108</h></coordinates><panel_attributes>NOHCS Employee
+//+ createPrescription( SSN : Integer )</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>684</y><w>360</w><h>72</h></coordinates><panel_attributes>NOHCS Employee
 --
 _- LastEmpId : Integer_
 # empId : Integer
 --
-# calculateSalary( month : Month )
-+ managePharmaceuticalProduct( product : PharmaceuticalProduct)
-+ manageActiveSubstance( substance : Substance )</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>144</x><y>567</y><w>27</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>243</x><y>504</y><w>90</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>189</x><y>567</y><w>252</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60;260;60</additional_attributes></element><element><id>Relation</id><coordinates><x>153</x><y>405</y><w>153</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;60;10;10;150;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>549</x><y>144</y><w>207</w><h>162</h></coordinates><panel_attributes>Prescription
+//# calculateSalary( month : Month )
+//+ managePharmaceuticalProduct( product : PharmaceuticalProduct)
+//+ manageActiveSubstance( substance : Substance )</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>144</x><y>603</y><w>27</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>243</x><y>540</y><w>90</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>189</x><y>603</y><w>252</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60;260;60</additional_attributes></element><element><id>Relation</id><coordinates><x>153</x><y>441</y><w>153</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;60;10;10;150;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>549</x><y>180</y><w>207</w><h>135</h></coordinates><panel_attributes>Prescription
 --
-- diagnosis : String {readOnly}
++ diagnosis : String {readOnly}
 - status : Status
 + date : Date {readOnly} // makes sense to be done auto
 --
 + getStatus(): Status {query}
 + setStatus( status : Status )
 + getDoctorInfo(): String {query}
-+ getDiagnosis(): String {query}
-+ setDiagnosis( status : String )</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>837</x><y>387</y><w>261</w><h>126</h></coordinates><panel_attributes>ActiveSubstance
+//+ getDiagnosis(): String {query}
+//+ setDiagnosis( status : String )
++ addLine( line : PrescriptionLine )</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>837</x><y>423</y><w>279</w><h>126</h></coordinates><panel_attributes>ActiveSubstance
 --
 - name : String
 - expectedQuantityPerMonth : Double
 --
-+ getName() : String
-+ getExpectedQuantityPerMonth() : Double
++ getName() : String {query}
++ getExpectedQuantityPerMonth() : Double {query}
 + setName( name : String )
-+ setExpectedQuantityPerMonth( quanitity : Double )</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>9</x><y>144</y><w>234</w><h>225</h></coordinates><panel_attributes>PharmacudicalProduct
++ setExpectedQuantityPerMonth( quanitity : Double )</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>9</x><y>180</y><w>234</w><h>225</h></coordinates><panel_attributes>PharmacudicalProduct
 --
 - name : String
 - retailPrice : Integer
@@ -65,16 +67,18 @@ _- LastEmpId : Integer_
 + setMedicineType( type : MedicineType )
 + getCustomerParticiption() : Integer {query}
 + getFinalPrice() : Integer {query}
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>828</x><y>216</y><w>225</w><h>90</h></coordinates><panel_attributes>PrescriptionLine
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>828</x><y>252</y><w>297</w><h>108</h></coordinates><panel_attributes>PrescriptionLine
 --
 + form: Form {readOnly}
 + concentration : Concentration {readOnly}
 + instructions : String {readOnly}
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>279</x><y>171</y><w>189</w><h>99</h></coordinates><panel_attributes>PrescriptionExecution
+--
++ getActiveSubstance() : ActiveSubstance {query}
++ setActiveSubstance( ActiveSubstance : activeSubstance)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>279</x><y>207</y><w>189</w><h>99</h></coordinates><panel_attributes>PrescriptionExecution
 --
 + completionDate : Date {readOnly}
 --
-+ calculateTotalCost() : Integer</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1098</x><y>216</y><w>180</w><h>117</h></coordinates><panel_attributes>Concentration
++ calculateTotalCost() : Integer</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>999</x><y>99</y><w>180</w><h>117</h></coordinates><panel_attributes>Concentration
 --
 - quantity : Integer
 - unit : Unit
@@ -82,46 +86,54 @@ _- LastEmpId : Integer_
 + getQuantity() : Integer {query}
 + getUnit() : Unit {query}
 + setQuanity( quanity : Integer ) 
-+ setUnit( unit : Integer ) </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>333</x><y>9</y><w>198</w><h>72</h></coordinates><panel_attributes>ProductQuantity
++ setUnit( unit : Unit ) </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>333</x><y>45</y><w>198</w><h>72</h></coordinates><panel_attributes>ProductQuantity
 --
-+ quantity : Integer {readOnly}</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>603</x><y>441</y><w>117</w><h>63</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt; 
++ quantity : Integer {readOnly}</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>603</x><y>477</y><w>117</w><h>63</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt; 
 MedicineType
 --
 GENERIC
-ORIGINAL</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>603</x><y>522</y><w>117</w><h>81</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt; 
+ORIGINAL</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>603</x><y>558</y><w>117</w><h>81</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt; 
 Unit
 --
-mg/ml
-mg/dislk
-...</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>603</x><y>351</y><w>117</w><h>72</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt; 
+mg_per_ml
+mg_per_disk
+mg_per_dose
+mg_per_g</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>603</x><y>387</y><w>117</w><h>72</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt; 
 Status
 --
 PENDING
-COMPLETED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>702</x><y>18</y><w>117</w><h>108</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt; 
+COMPLETED</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>855</x><y>36</y><w>117</w><h>99</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt; 
 Form
 --
 PILL
 CREAM
 DISK
 SYRUP
-...</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>576</x><y>0</y><w>90</w><h>81</h></coordinates><panel_attributes>Date
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>576</x><y>0</y><w>207</w><h>153</h></coordinates><panel_attributes>Date
 --
-Έτος : Integer
-Μήνας : Integer
-Ημέρα : Integer</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>927</x><y>297</y><w>36</w><h>108</h></coordinates><panel_attributes>lt=-&gt;
+- year : Integer
+- month : Integer
+- day : Integer
+--
++ getYear() : Integer {query}
++ getMonth() : Integer {query}
++ getDay() : Integer {query}
++ setYear( year : Integer)
++ setMonth( month : Integer)
++ setDay( day : Integer)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>927</x><y>351</y><w>36</w><h>90</h></coordinates><panel_attributes>lt=-&gt;
 m1=1
-m2=1</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>747</x><y>153</y><w>198</w><h>81</h></coordinates><panel_attributes>lt=&lt;-
+m2=1</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>747</x><y>189</y><w>198</w><h>81</h></coordinates><panel_attributes>lt=&lt;-
 m1=1..*
-m2=1</panel_attributes><additional_attributes>180;70;180;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>459</x><y>180</y><w>108</w><h>36</h></coordinates><panel_attributes>lt=-&gt;
+m2=1</panel_attributes><additional_attributes>180;70;180;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>459</x><y>216</y><w>108</w><h>36</h></coordinates><panel_attributes>lt=-&gt;
 m1=0..1
-m2=1</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>405</x><y>72</y><w>36</w><h>117</h></coordinates><panel_attributes>lt=-&gt;
+m2=1</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>405</x><y>108</y><w>36</w><h>117</h></coordinates><panel_attributes>lt=-&gt;
 m1=1
-m2=*</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>189</x><y>36</y><w>162</w><h>126</h></coordinates><panel_attributes>lt=-&gt;
+m2=*</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>189</x><y>72</y><w>162</w><h>126</h></coordinates><panel_attributes>lt=-&gt;
 m1=1..*
-m2=1</panel_attributes><additional_attributes>160;10;10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>513</x><y>297</y><w>72</w><h>225</h></coordinates><panel_attributes>lt=-&gt;
+m2=1</panel_attributes><additional_attributes>160;10;10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>513</x><y>306</y><w>81</w><h>252</h></coordinates><panel_attributes>lt=-&gt;
 m1=*
-m2=1</panel_attributes><additional_attributes>60;10;60;220;10;220</additional_attributes></element><element><id>Relation</id><coordinates><x>558</x><y>252</y><w>261</w><h>414</h></coordinates><panel_attributes>lt=-&gt;
+m2=1</panel_attributes><additional_attributes>60;10;60;250;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>558</x><y>288</y><w>261</w><h>414</h></coordinates><panel_attributes>lt=-&gt;
 m1=*
-m2=1</panel_attributes><additional_attributes>220;10;270;10;270;430;10;430</additional_attributes></element><element><id>Relation</id><coordinates><x>414</x><y>261</y><w>36</w><h>144</h></coordinates><panel_attributes>lt=-&gt;
+m2=1</panel_attributes><additional_attributes>220;10;270;10;270;430;10;430</additional_attributes></element><element><id>Relation</id><coordinates><x>414</x><y>297</y><w>36</w><h>144</h></coordinates><panel_attributes>lt=-&gt;
 m1=*
 m2=1</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element></diagram>
