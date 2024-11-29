@@ -39,7 +39,7 @@ public class Prescription {
     }
 
     public String getDoctorInfo(){
-        String info = "Doctor Info: Name: "+this.doctor.getFirstName()+" | Surname: "+this.doctor.getLastName()+" | Profession: "+this.doctor.getProfession();
+        String info = "Doctor Info: Name: "+this.doctor.getFirstName()+" | Surname: "+this.doctor.getLastName()+" | Specialty: "+this.doctor.getSpecialty();
         return info;
     }
 }

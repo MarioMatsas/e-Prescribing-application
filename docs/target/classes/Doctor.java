@@ -2,19 +2,19 @@ import java.util.List;
 
 public class Doctor extends Person{
     
-    private String profession;
+    private String specialty;
 
     public Doctor(String fn, String ln, String pr){
         super(ln, pr);
-        this.profession = pr;
+        this.specialty = pr;
     }
 
-    public String getProfession(){
-        return this.profession;
+    public String getSpecialty(){
+        return this.specialty;
     }
 
-    public void setProfession(String profession){
-        this.profession = profession;
+    public void setSpecialty(String specialty){
+        this.specialty = specialty;
     }
 
     // public void createPrescription(int SSN){}
