@@ -11,8 +11,8 @@ public class NOHCS_Employee extends Person{
 
     //protected calculateSalary(Month month){}
 
-    public void managePharmaceuticalProduct(PharmaceuticalProduct product){}
+    //public void managePharmaceuticalProduct(PharmaceuticalProduct product){}
     
-    public void manageActiveSubstance(Substance substance){}
+    //public void manageActiveSubstance(Substance substance){}
 }
 

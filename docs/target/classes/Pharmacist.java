@@ -4,5 +4,5 @@ public class Pharmacist extends Person{
         super(fn, ln);
     }
     
-    public void executePrescription(){}
+    //public void executePrescription(){}
 }
