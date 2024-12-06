@@ -1,14 +1,14 @@
 package com.example.software_eng_asoee_2024;/* DONE  *//* DONE */
 public class Patient extends Person{
     
-    private final int SSN;
+    private final Integer SSN;
 
-    public Patient(String fn, String ln, int SSN) {
+    public Patient(String fn, String ln, Integer SSN) {
         super(fn, ln);
         this.SSN = SSN;
     }
 
-    public int getSSN() {
+    public Integer getSSN() {
         return this.SSN;
     }
 

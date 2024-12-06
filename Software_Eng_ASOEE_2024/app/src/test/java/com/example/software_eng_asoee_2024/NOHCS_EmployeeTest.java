@@ -5,9 +5,14 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 // TODO maybe needs getters to be added to check constructor
 public class NOHCS_EmployeeTest {
-    /*@Test
+    @Test
     public void testId(){
-        Integer lastId = NOHCS_Employee.
-        NOHCS_Employee emp = new NOHCS_Employee("fn", "ln");
-    }*/
+        assertEquals((Integer)0, NOHCS_Employee.getLastEmpid());
+        NOHCS_Employee emp_jordan = new NOHCS_Employee("Michael", "Jordan");
+        assertEquals((Integer)1, emp_jordan.getEmpid());
+        assertEquals((Integer)1, NOHCS_Employee.getLastEmpid());
+        NOHCS_Employee emp_lebron = new NOHCS_Employee("LeBron", "James");
+        assertEquals((Integer)2, emp_lebron.getEmpid());
+        assertEquals((Integer)2, NOHCS_Employee.getLastEmpid());
+    }
 }

@@ -2,12 +2,16 @@ package com.example.software_eng_asoee_2024;/* DONE  *//* DONE */
 
 public class PrescriptionLine {
     private ActiveSubstance activeSubstance; 
-    public final Form form;
-    public final Concentration concentration;
-    public final String instructions;
+    private final Form form;
+    private final Concentration concentration;
+    private final String instructions;
 
 
     public PrescriptionLine(Form form, Concentration concentration, String instructions, ActiveSubstance activeSubstance) {
+        if (activeSubstance == null) {
+            throw new IllegalArgumentException("ActiveSubstance null error");
+        }
+
         this.form = form;
         this.concentration = concentration;
         this.instructions = instructions;
@@ -21,6 +25,16 @@ public class PrescriptionLine {
 
     public void setActiveSubstance(ActiveSubstance activeSubstance) {
         this.activeSubstance = activeSubstance;
+    }
+    public Form getForm(){
+        return this.form;
+    }
+
+    public Concentration getConcentration(){
+        return this.concentration;
+    }
+    public String getInstructions(){
+        return this.instructions;
     }
 
 }

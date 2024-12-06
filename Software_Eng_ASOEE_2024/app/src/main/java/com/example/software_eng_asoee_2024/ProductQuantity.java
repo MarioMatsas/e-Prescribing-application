@@ -5,8 +5,15 @@ public class ProductQuantity {
     public final Integer quantity;
 
     public ProductQuantity(PharmacudicalProduct product, Integer quantity) {
+        if (product == null) {
+            throw new IllegalArgumentException("PharmacudicalProduct null error");
+        }
         this.product = product;
         this.quantity = quantity;
+    }
+
+    public Integer getProductQuantity() {
+        return this.quantity;
     }
 
     //public PharmacudicalProduct getProduct() {
