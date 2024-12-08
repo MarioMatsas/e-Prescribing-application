@@ -63,6 +63,6 @@ public class PharmacudicalProduct {
 
     public Integer getFinalPrice(){
         // TODO might need to change this because of truncation errors, not sure...
-        return getRetailPrice() * (getCustomerParticipation()/100);
+        return (getRetailPrice() * getCustomerParticipation()) / 100;
     }
 }
