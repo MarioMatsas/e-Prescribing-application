@@ -1,4 +1,7 @@
 /* DONE */
+
+import java.time.LocalDate;
+
 public class Date {
     private Integer year;
     private Integer month;
@@ -6,6 +9,10 @@ public class Date {
 
 
     public Date() {
+        LocalDate now = new LocalDate.now();
+        this.year = now.getYear();
+        this.month = now.getMonthValue();
+        this.day = now.getDayOfMonth();
     }
 
     public Date(Integer year, Integer month, Integer day) {

@@ -2,25 +2,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Prescription {
-    private List<PrescriptionLine> prescriptionLines;
+    private List<PrescriptionLine> prescriptionLines = new ArrayList<PrescriptionLine>();
     private Doctor doctor;
     private Patient patient;
-    public final String diagnosis; // TODO change visability in diagram
+    public final String diagnosis;
     private Status status;
     public final Date date;
 
-    public Prescription(String diagnosis, Status status, Date date, Doctor doctor, Patient patient, PrescriptionLine prescriptionLine) {
+    public Prescription(String diagnosis, Status status, Doctor doctor, Patient patient) {
         this.diagnosis = diagnosis;
         this.status = status;
-        this.date = date;
+        this.date = new Date();
         this.doctor = doctor;
         this.patient = patient;
-        this.prescriptionLines = new ArrayList<>(prescriptionLine); // needs to have atleast 1 prescription line
     }
-    // TODO
-    //public String getDiagnosis() {
-    //    return this.diagnosis;
-    //}
 
     public Status getStatus() {
         return this.status;
@@ -30,9 +25,9 @@ public class Prescription {
         this.status = status;
     }
 
-    //public Date getDate() {
-    //    return this.date;
-    //}
+    public Date getDate() {
+        return this.date;
+    }
 
     public void addLine(PrescriptionLine line) {
         this.prescriptionLines.add(line);
