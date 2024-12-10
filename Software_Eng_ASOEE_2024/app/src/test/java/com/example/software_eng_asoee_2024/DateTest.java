@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.Before;
 
 public class DateTest {
-    public Date date; // static
+    static public Date date;
 
     @Before
     public void init() {

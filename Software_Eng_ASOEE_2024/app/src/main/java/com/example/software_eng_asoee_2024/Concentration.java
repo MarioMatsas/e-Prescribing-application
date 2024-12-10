@@ -1,4 +1,4 @@
-package com.example.software_eng_asoee_2024;/* DONE  */
+package com.example.software_eng_asoee_2024;
 
 public class Concentration {
     private Integer quantity;
