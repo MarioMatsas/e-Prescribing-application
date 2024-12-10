@@ -87,12 +87,12 @@ _+ getLastEmpid(): Integer {query}_
 + addProductQuantity( qnt : ProductQuantity)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1300</x><y>122</y><w>220</w><h>143</h></coordinates><panel_attributes>Concentration
 --
 - quantity : Integer
-- measurement : Measurement
+- unit : Unit
 --
 + getQuantity() : Integer {query}
-+ getMeasurement() : Measurement {query}
++ getUnit() : Unit {query}
 + setQuanity( quanity : Integer ) 
-+ setMeasurement( measurement : Measurement ) </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>486</x><y>56</y><w>242</w><h>88</h></coordinates><panel_attributes>ProductQuantity
++ setUnit( unit : Unit ) </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>486</x><y>56</y><w>242</w><h>88</h></coordinates><panel_attributes>ProductQuantity
 --
 - quantity : Integer {readOnly}
 --
@@ -101,7 +101,7 @@ MedicineType
 --
 GENERIC
 ORIGINAL</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>816</x><y>683</y><w>143</w><h>99</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt; 
-Measurement
+Unit
 --
 mg_per_ml
 mg_per_disk
