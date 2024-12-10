@@ -14,7 +14,11 @@ public class Date {
         if (month == 2) {
             return isLeapYear(year) ? 29 : 28;
         }
-        return (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) ? 31 : 30;
+        return month % 2 == 1 ? 31 : 30;
+    }
+
+    private static boolean isInvalidDay(int year, int month, int day) {
+        return day < 1 || day > getDaysInMonth(year, month);
     }
 
     public Date() {
@@ -27,7 +31,7 @@ public class Date {
     public Date(Integer year, Integer month, Integer day) {
         if (month > 12 || month < 1)
             throw new IllegalArgumentException("Month has to be 1-12");
-        if (day > getDaysInMonth(year, month) || day < 1)
+        if (isInvalidDay(year, month, day))
             throw new IllegalArgumentException("Day has to be valid within the month");
         this.year = year;
         this.month = month;
@@ -39,11 +43,11 @@ public class Date {
     }
 
     public void setYear(Integer year) {
-        this.year = year;
         // Revalidate the day in case the year affects leap year calculations
-        if (this.day > getDaysInMonth(this.year, this.month)) {
+        if (isInvalidDay(year, this.month, this.day)) {
             throw new IllegalArgumentException("Day has to be valid within the month for the given year.");
         }
+        this.year = year;
     }
 
     public Integer getMonth() {
@@ -54,11 +58,11 @@ public class Date {
         if (month < 1 || month > 12) {
             throw new IllegalArgumentException("Month has to be 1-12");
         }
-        this.month = month;
-        // Revalidate the day in case the month affects the maximum day
-        if (this.day > getDaysInMonth(this.year, this.month)) {
+        // Revalidate the day in case the year affects leap year calculations
+        if (isInvalidDay(this.year, month, this.day)) {
             throw new IllegalArgumentException("Day has to be valid within the new month for the given year.");
         }
+        this.month = month;
     }
 
     public Integer getDay() {
@@ -66,7 +70,8 @@ public class Date {
     }
 
     public void setDay(Integer day) {
-        if (day < 1 || day > getDaysInMonth(this.year, this.month)) {
+        // Revalidate the day in case the year affects leap year calculations
+        if (isInvalidDay(this.year, this.month, day)) {
             throw new IllegalArgumentException("Day has to be valid within the month for the given year.");
         }
         this.day = day;

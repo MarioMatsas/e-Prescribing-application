@@ -40,11 +40,11 @@ public class PharmacudicalProductTest {
     public void testCustomerParticipation(){
         PharmacudicalProduct php1 =
                 new PharmacudicalProduct("testName1", 500, PILL, MedicineType.GENERIC);
-        Assert.assertEquals((Integer)2, php1.getCustomerParticipation());
+        Assert.assertEquals(0.02, php1.getCustomerParticipation(), 0.0);
 
         PharmacudicalProduct php2 =
                 new PharmacudicalProduct("testName2", 500, PILL, MedicineType.ORIGINAL);
-        Assert.assertEquals((Integer)10, php2.getCustomerParticipation());
+        Assert.assertEquals(0.1, php2.getCustomerParticipation(), 0.0);
     }
 
     @Test

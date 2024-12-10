@@ -21,6 +21,13 @@ public class PrescriptionLineTest {
     }
 
     @Test
+    public void testConstruct() {
+        Assert.assertThrows(IllegalArgumentException.class, () -> {
+            line = new PrescriptionLine(Form.CREAM, new Concentration(10, Unit.mg_per_g), "For 10 days", null);
+        });
+    }
+
+    @Test
     public void testSet() {
         line.setActiveSubstance(new ActiveSubstance("Ibuprofen", 5d));
         Assert.assertEquals(line.getActiveSubstance().getName(), "Ibuprofen");

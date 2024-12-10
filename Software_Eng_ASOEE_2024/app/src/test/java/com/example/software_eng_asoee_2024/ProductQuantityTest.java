@@ -9,7 +9,7 @@ public class ProductQuantityTest {
 
     @Before
     public void init() {
-        qnt = new ProductQuantity(new PharmacudicalProduct("name", 10, Form.PILL, MedicineType.GENERIC), 10);
+        qnt = new ProductQuantity(new PharmacudicalProduct("name", 900, Form.PILL, MedicineType.GENERIC), 10);
     }
 
     @Test
@@ -17,12 +17,13 @@ public class ProductQuantityTest {
         Assert.assertThrows(IllegalArgumentException.class, () -> {
             this.qnt = new ProductQuantity(null, 10);
         });
+        Assert.assertEquals("name", qnt.getProduct().getName());
+        Assert.assertEquals((Integer)10, qnt.getProductQuantity());
     }
 
     @Test
-    public void test() {
-        Assert.assertEquals("name", qnt.getProduct().getName());
-        Assert.assertEquals((Integer)10, qnt.getProductQuantity());
+    public void testPrice() {
+        Assert.assertEquals((int) 180, qnt.getProductQuantity() * qnt.getProduct().getFinalPrice());
     }
 
 }

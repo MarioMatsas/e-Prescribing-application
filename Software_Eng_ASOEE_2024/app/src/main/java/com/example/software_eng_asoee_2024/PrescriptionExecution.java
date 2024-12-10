@@ -5,12 +5,13 @@ import java.util.List;
 
 public class PrescriptionExecution {
     private final Pharmacist pharmacist;
-
     private final Prescription prescription;
     private List<ProductQuantity> productQuantities;
     public final Date completionDate;
 
     public PrescriptionExecution(Pharmacist pharmacist, Prescription prescription) {
+        if (pharmacist == null) throw new IllegalArgumentException("Pharmacist null error");
+        if (prescription == null) throw new IllegalArgumentException("Prescription null error");
         this.completionDate = new Date();
         this.pharmacist = pharmacist;
         this.prescription = prescription;
@@ -18,9 +19,7 @@ public class PrescriptionExecution {
     }
 
     public PrescriptionExecution(Pharmacist pharmacist, Prescription prescription, ArrayList<ProductQuantity> list) {
-        this.completionDate = new Date();
-        this.pharmacist = pharmacist;
-        this.prescription = prescription;
+        this(pharmacist, prescription);
         productQuantities = list;
     }
 
@@ -42,6 +41,10 @@ public class PrescriptionExecution {
 
     public Pharmacist getPharmacist() {
         return pharmacist;
+    }
+
+    public List<ProductQuantity> getProductQuantities() {
+        return productQuantities;
     }
 
 }
