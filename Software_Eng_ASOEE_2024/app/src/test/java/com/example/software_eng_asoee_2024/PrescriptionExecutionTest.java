@@ -55,7 +55,7 @@ public class PrescriptionExecutionTest {
         prescExc.addProductQuantity(qntt);
         Assert.assertEquals(prescExc.getProductQuantities().size(), 1);
         Assert.assertEquals(prescExc.getProductQuantities().get(0), qntt);
-        Assert.assertEquals((int) prescExc.calculateTotalCost(), qntt.getProductQuantity() * qntt.getProduct().getFinalPrice());
+        Assert.assertEquals((int) prescExc.calculateTotalCost(), qntt.getProductQuantity() * qntt.getProduct().getFinalPrice()); // maybe 1000
 
         prescExc = new PrescriptionExecution(pharm, presc, qntts);
         Assert.assertEquals(prescExc.getProductQuantities().size(), 1);
