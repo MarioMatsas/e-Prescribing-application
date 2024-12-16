@@ -24,7 +24,19 @@ public class PrescriptionExecution {
     }
 
     public void addProductQuantity(ProductQuantity productQuantity) {
-        this.productQuantities.add(productQuantity);
+        if(productQuantities.contains(productQuantity)){
+            return;//checking if the object is already in productQuantities
+        }
+        List<PrescriptionLine> prescrLines = prescription.getPrescriptionLines();
+        boolean found = false;
+        for (PrescriptionLine prline : prescrLines){
+            if(productQuantity.getProduct().getActiveSubstances().contains(prline.getActiveSubstance())){
+                found = true; // checking if there is at least one substance in prescrLines that is contained in productQuantity.product
+                break;
+            }
+        }
+        if(found)
+            this.productQuantities.add(productQuantity);
     }
 
     public Integer calculateTotalCost() {

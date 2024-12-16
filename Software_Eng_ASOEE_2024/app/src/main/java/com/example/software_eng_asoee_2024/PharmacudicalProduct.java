@@ -5,6 +5,7 @@ public class PharmacudicalProduct {
     private Integer retailPrice; // in cents
     private Form form;
     private MedicineType type;
+    private List<ActiveSubstance> activeSubstances;
 
     public PharmacudicalProduct() {
     }
@@ -61,5 +62,9 @@ public class PharmacudicalProduct {
 
     public Integer getFinalPrice() {
         return (int) Math.round((getRetailPrice() * getCustomerParticipation()));
+    }
+
+    public List<ActiveSubstance> getActiveSubstances(){
+        return activeSubstances;
     }
 }

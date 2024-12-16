@@ -68,6 +68,7 @@ _+ getLastEmpid(): Integer {query}_
 + setMedicineType( type : MedicineType )
 + getCustomerParticiption() : Double {query}
 + getFinalPrice() : Integer {query}
++ getActiveSubstances() : List&lt;ActiveSubstance&gt; {query}
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>873</x><y>279</y><w>297</w><h>144</h></coordinates><panel_attributes>PrescriptionLine
 --
 - form: Form {readOnly}
