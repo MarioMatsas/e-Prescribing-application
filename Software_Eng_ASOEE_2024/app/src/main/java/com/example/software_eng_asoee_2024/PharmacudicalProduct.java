@@ -1,6 +1,7 @@
 package com.example.software_eng_asoee_2024;/* DONE  */
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PharmacudicalProduct {
     private String name;
@@ -12,7 +13,7 @@ public class PharmacudicalProduct {
     public PharmacudicalProduct() {
     }
 
-    public PharmacudicalProduct(String name, Integer retailPrice, Form form, MedicineType type, ArrayList activeSubs) {
+    public PharmacudicalProduct(String name, Integer retailPrice, Form form, MedicineType type, ArrayList<ActiveSubstance> activeSubs) {
         this.name = name;
         this.retailPrice = retailPrice;
         this.form = form;

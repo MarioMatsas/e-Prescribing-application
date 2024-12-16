@@ -4,12 +4,16 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
 
+import java.util.ArrayList;
+
 public class ProductQuantityTest {
     private static ProductQuantity qnt;
 
     @Before
     public void init() {
-        qnt = new ProductQuantity(new PharmacudicalProduct("name", 900, Form.PILL, MedicineType.GENERIC), 10);
+        ArrayList<ActiveSubstance> activeSubs = new ArrayList<ActiveSubstance>();
+        activeSubs.add(new ActiveSubstance("Paracetamol", 10d));
+        qnt = new ProductQuantity(new PharmacudicalProduct("name", 900, Form.PILL, MedicineType.GENERIC, activeSubs), 10);
     }
 
     @Test
