@@ -1,5 +1,7 @@
 package com.example.software_eng_asoee_2024;/* DONE  */
 
+import java.util.ArrayList;
+
 public class PharmacudicalProduct {
     private String name;
     private Integer retailPrice; // in cents
@@ -10,11 +12,12 @@ public class PharmacudicalProduct {
     public PharmacudicalProduct() {
     }
 
-    public PharmacudicalProduct(String name, Integer retailPrice, Form form, MedicineType type) {
+    public PharmacudicalProduct(String name, Integer retailPrice, Form form, MedicineType type, ArrayList activeSubs) {
         this.name = name;
         this.retailPrice = retailPrice;
         this.form = form;
         this.type = type;
+        this.activeSubstances = activeSubs;
     }
 
     public String getName() {
