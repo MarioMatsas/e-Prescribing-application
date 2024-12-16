@@ -20,7 +20,10 @@ public class PrescriptionExecution {
 
     public PrescriptionExecution(Pharmacist pharmacist, Prescription prescription, ArrayList<ProductQuantity> list) {
         this(pharmacist, prescription);
-        productQuantities = list;
+        if (list == null) throw new IllegalArgumentException("Product quantity list null error");
+        for(ProductQuantity pq : list) {
+            this.addProductQuantity(pq);
+        }
     }
 
     public void addProductQuantity(ProductQuantity productQuantity) {

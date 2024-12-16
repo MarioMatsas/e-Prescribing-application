@@ -1,5 +1,7 @@
 package com.example.software_eng_asoee_2024;/* DONE  */
 
+import java.util.Objects;
+
 public class ActiveSubstance {
     private String name;
     private Double expectedQuantityPerMonth;
@@ -27,5 +29,10 @@ public class ActiveSubstance {
     public void setExpectedQuantityPerMonth(Double expectedQuantityPerMonth) {
         this.expectedQuantityPerMonth = expectedQuantityPerMonth;
     }
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof ActiveSubstance)) return false;
+        return Objects.equals(((ActiveSubstance) obj).getName(), this.getName());
+    }
 }
