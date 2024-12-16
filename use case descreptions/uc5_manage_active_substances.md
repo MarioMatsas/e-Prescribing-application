@@ -37,4 +37,9 @@
 3. Η δραστική ουσια διαγράφεται απο το σύστημα.
 4. Το σύστημα εμφανίζει μήνυμα επιτυχίας μαζί με τα στοιχεία της δραστικής ουσίας που διαγράφηκε.
 
-<img src="../PNGs/manage_active_subs_seq_diag.png" width="1000">
+
+## Sequence Diagram
+<img src="../PNGs/uc5_sqDg.png" width="1000">
+
+## Activity Diagram
+<img src="../PNGs/uc5_acDg.png" width="1000">

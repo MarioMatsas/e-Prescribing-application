@@ -39,4 +39,8 @@
 3. Το φαρμακευτικό σκεύασμα διαγράφεται απο το σύστημα.
 4. Το σύστημα εμφανίζει μήνυμα επιτυχίας μαζί με τα στοιχεία του φαρμακευτικού σκευάσματος που διαγράφηκε.
 
-<img src="../PNGs/manage_pharm_prod_subs_seq_diag.png" width="1000">
+## Sequence Diagram
+<img src="../PNGs/uc6_sqDg.png" width="1000">
+
+## Activity Diagram
+<img src="../PNGs/uc6_acDg.png" width="1000">

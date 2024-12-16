@@ -21,4 +21,8 @@ A) Αποστολή αναφοράς
     1. Το σύστημα δεν θα τον ξαναβάλει στην λίστα.
     2. 2. Η ΠΧ επιστρέφει στην Βασική Ροή Α.
 
-<img src="../PNGs/gen_rep_seq_diag.png" width="1000">
+## Sequence Diagram
+<img src="../PNGs/uc4_sqDg.png" width="1000">
+
+## Activity Diagram
+<img src="../PNGs/uc4_acDg.png" width="1000">

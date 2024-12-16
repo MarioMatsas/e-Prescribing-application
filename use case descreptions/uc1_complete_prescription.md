@@ -26,4 +26,9 @@ A) Δημιουργία συνταγης
    1. εκτυπώνεται πως δεν τον εντοπίζει.
    2. Η περίπτωση χρήσης τερματίζει.
 
-<img src="../PNGs/complete_prescr_seq_diag.png" width="1000">
+
+## Sequence Diagram
+<img src="../PNGs/uc1_sqDg.png" width="1000">
+
+## Activity Diagram
+<img src="../PNGs/uc1_acDg.png" width="1000">

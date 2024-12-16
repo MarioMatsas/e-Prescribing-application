@@ -24,4 +24,9 @@
 *3β. Η συνταγή υπάρχει, αλλά έχει ήδη ολοκληρωθεί.*
   1. Η περίπτωση χρήσης τερματίζει
 
-<img src="../PNGs/execute_prescr_seq_diag.png" width="1000">
+
+## Sequence Diagram
+<img src="../PNGs/uc2_sqDg.png" width="1000">
+
+## Activity Diagram
+<img src="../PNGs/uc2_acDg.png" width="1000">

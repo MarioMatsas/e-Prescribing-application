@@ -15,4 +15,9 @@
    1. Ο χρήστης δημιουργεί νέο λογαριασμό
    2. Ο χρήστης επαναλαμβάνει το βήμα 1 της βασικής ροής
 
-<img src="../PNGs/identify_user_seq_diag.png" width="700">
+
+## Sequence Diagram
+<img src="../PNGs/uc3_sqDg.png" width="1000">
+
+## Activity Diagram
+<img src="../PNGs/uc3_acDg.png" width="1000">
