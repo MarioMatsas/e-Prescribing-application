@@ -27,18 +27,4 @@ public class ActiveSubstanceTest {
         act_sub2.setExpectedQuantityPerMonth(25.5);
         Assert.assertEquals((Double)25.5, act_sub2.getExpectedQuantityPerMonth());
     }
-
-    @Test
-    public void testEquals() {
-        ActiveSubstance act_sub1 = new ActiveSubstance();
-        act_sub1.setName("testName1");
-        ActiveSubstance act_sub2 = new ActiveSubstance("Jason", 25.2);
-        act_sub2.setName("testName2");
-        Assert.assertNotEquals(act_sub1, act_sub2);
-        act_sub2.setName("testName1");
-        Assert.assertEquals(act_sub1, act_sub2);
-        Assert.assertNotEquals(act_sub1, "Test");
-
-    }
-
 }

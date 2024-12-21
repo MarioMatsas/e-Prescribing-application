@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.79" />
 
     <EditText
-        android:id="@+id/editTextText5"
+        android:id="@+id/username_login"
         android:layout_width="260dp"
         android:layout_height="45dp"
         android:layout_marginTop="124dp"
@@ -32,7 +32,7 @@
         android:ems="10"
         android:inputType="text"
         android:hint="Username"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText"
+        app:layout_constraintBottom_toTopOf="@+id/passsword_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.846" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/sign_up"
         android:layout_width="225dp"
         android:layout_height="45dp"
         android:background="@drawable/login_button_colour"
@@ -56,17 +56,17 @@
         app:layout_constraintVertical_bias="0.232" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/create_acc_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create an account"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_button" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/passsword_login"
         android:layout_width="260dp"
         android:layout_height="45dp"
         android:background="@drawable/login_outline_colour"
@@ -81,7 +81,7 @@
         app:layout_constraintVertical_bias="0.858" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/eopyy_image_login"
         android:layout_width="182dp"
         android:layout_height="159dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -3,20 +3,11 @@ package com.example.software_eng_asoee_2024;
 import static com.example.software_eng_asoee_2024.Form.PILL;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 public class PharmacudicalProductTest {
-    static ArrayList<ActiveSubstance> activeSubs;
-    @Before
-    public void init() {
-        activeSubs = new ArrayList<ActiveSubstance>();
-        activeSubs.add(new ActiveSubstance("Paracetamol", 10d));
-    }
-
     @Test
     public void testName(){
         PharmacudicalProduct php = new PharmacudicalProduct();
@@ -48,30 +39,22 @@ public class PharmacudicalProductTest {
     @Test
     public void testCustomerParticipation(){
         PharmacudicalProduct php1 =
-                new PharmacudicalProduct("testName1", 500, PILL, MedicineType.GENERIC, activeSubs);
+                new PharmacudicalProduct("testName1", 500, PILL, MedicineType.GENERIC);
         Assert.assertEquals(0.02, php1.getCustomerParticipation(), 0.0);
 
         PharmacudicalProduct php2 =
-                new PharmacudicalProduct("testName2", 500, PILL, MedicineType.ORIGINAL, activeSubs);
+                new PharmacudicalProduct("testName2", 500, PILL, MedicineType.ORIGINAL);
         Assert.assertEquals(0.1, php2.getCustomerParticipation(), 0.0);
     }
 
     @Test
     public void testFinalPrice(){
         PharmacudicalProduct php1 =
-                new PharmacudicalProduct("testName1", 4285, PILL, MedicineType.ORIGINAL, activeSubs);
+                new PharmacudicalProduct("testName1", 4285, PILL, MedicineType.ORIGINAL);
         Assert.assertEquals((Integer) 429, php1.getFinalPrice());
 
         PharmacudicalProduct php2 =
-                new PharmacudicalProduct("testName2", 746, PILL, MedicineType.GENERIC, activeSubs);
+                new PharmacudicalProduct("testName2", 746, PILL, MedicineType.GENERIC);
         Assert.assertEquals((Integer) 15, php2.getFinalPrice());
     }
-
-    @Test
-    public void testGetter() {
-        PharmacudicalProduct php1 = new PharmacudicalProduct("testName1", 500, PILL, MedicineType.GENERIC, activeSubs);
-        Assert.assertEquals(php1.getActiveSubstances(), activeSubs);
-        Assert.assertTrue(php1.getActiveSubstances().containsAll(activeSubs));
-    }
-
 }
