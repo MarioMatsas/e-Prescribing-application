@@ -1,4 +1,4 @@
-package com.example.software_eng_asoee_2024;
+package com.example.software_eng_asoee_2024.domain;
 
 import java.util.ArrayList;
 import java.util.List;

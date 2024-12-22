@@ -1,7 +1,7 @@
 package com.example.software_eng_asoee_2024.dao;
 
 import java.util.List;
-import com.example.software_eng_asoee_2024.Doctor;
+import com.example.software_eng_asoee_2024.domain.Doctor;
 
 public interface DoctorDAO{
     void delete(Doctor entity);

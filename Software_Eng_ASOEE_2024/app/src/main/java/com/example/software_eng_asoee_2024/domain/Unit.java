@@ -1,4 +1,4 @@
-package com.example.software_eng_asoee_2024;/* DONE  *//* DONE */
+package com.example.software_eng_asoee_2024.domain;/* DONE  *//* DONE */
 public enum Unit {
     mg_per_ml, // SYRUP
     mg_per_disk, // DISKS

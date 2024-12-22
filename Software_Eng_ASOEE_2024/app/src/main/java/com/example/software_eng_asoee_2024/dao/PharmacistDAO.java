@@ -1,6 +1,6 @@
 package com.example.software_eng_asoee_2024.dao;
 
-import com.example.software_eng_asoee_2024.Pharmacist;
+import com.example.software_eng_asoee_2024.domain.Pharmacist;
 
 import java.util.List;
 

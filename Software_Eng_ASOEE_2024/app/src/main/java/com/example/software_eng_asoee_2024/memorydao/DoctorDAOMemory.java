@@ -1,6 +1,6 @@
 package com.example.software_eng_asoee_2024.memorydao;
 
-import com.example.software_eng_asoee_2024.Doctor;
+import com.example.software_eng_asoee_2024.domain.Doctor;
 import com.example.software_eng_asoee_2024.dao.DoctorDAO;
 
 import java.util.ArrayList;

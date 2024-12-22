@@ -1,4 +1,4 @@
-package com.example.software_eng_asoee_2024;/* DONE  *//* DONE */
+package com.example.software_eng_asoee_2024.domain;/* DONE  *//* DONE */
 
 public class ProductQuantity {
     private final PharmacudicalProduct product;

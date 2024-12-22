@@ -2,12 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sign_up_activity_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_page_background_colour">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/create_account_sign_up"
         android:layout_width="180dp"
         android:layout_height="51dp"
         android:gravity="center"
@@ -18,47 +19,49 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintVertical_bias="0.407" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/username_sign_up"
         android:layout_width="260dp"
         android:layout_height="45dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/login_outline_colour"
         android:hint="Username"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/create_account_sign_up" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/password_su"
         android:layout_width="260dp"
         android:layout_height="45dp"
-        android:inputType="text"
+        android:layout_marginTop="12dp"
         android:background="@drawable/login_outline_colour"
         android:hint="Password"
-        app:layout_constraintStart_toStartOf="parent"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2"
-        android:layout_marginTop="25dp" />
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_sign_up" />
 
     <EditText
-        android:id="@+id/editTextText4"
+        android:id="@+id/repeat_password_su"
         android:layout_width="260dp"
         android:layout_height="45dp"
-        android:inputType="text"
+        android:layout_marginTop="12dp"
         android:background="@drawable/login_outline_colour"
         android:hint="Repeat Password"
-        app:layout_constraintStart_toStartOf="parent"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText3"
-        android:layout_marginTop="25dp" />
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_su" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/sign_up_buttton_2"
         android:layout_width="225dp"
         android:layout_height="45dp"
         android:layout_marginTop="32dp"
@@ -69,8 +72,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/repeat_password_su"
+        app:layout_constraintVertical_bias="0.637" />
 
     <ImageView
         android:id="@+id/eopyy_image_login"
@@ -83,4 +86,40 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.153"
         app:srcCompat="@drawable/eopyy_logo_1" />
+
+    <TextView
+        android:id="@+id/error_message_su"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repeat_password_su"
+        app:layout_constraintVertical_bias="0.497" />
+
+    <Spinner
+        android:id="@+id/role_selection"
+        android:layout_width="227dp"
+        android:layout_height="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.83" />
+
+    <EditText
+        android:id="@+id/speciality"
+        android:layout_width="260dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/login_outline_colour"
+        android:inputType="text"
+        android:hint="Speciality (* for doctor)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repeat_password_su" />
 </androidx.constraintlayout.widget.ConstraintLayout>
