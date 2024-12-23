@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.software_eng_asoee_2024.R;
+import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionActivity;
+import com.example.software_eng_asoee_2024.views.SignUp.SignUpActivity;
 
 public class MainActivity extends AppCompatActivity implements LoginView{
     private LoginViewModel viewModel;
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements LoginView{
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.selection_prescription), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements LoginView{
         LoginPresenter presenter = viewModel.getPresenter();
         presenter.setView(this);
 
-        loginButton = findViewById(R.id.login_button);
+        loginButton = findViewById(R.id.move_to_execution);
         signupButton = findViewById(R.id.sign_up);
         username = findViewById(R.id.username_login);
         password = findViewById(R.id.passsword_login);
@@ -49,16 +51,14 @@ public class MainActivity extends AppCompatActivity implements LoginView{
         errorMessage = findViewById(R.id.error_text);
         logo = findViewById(R.id.eopyy_image_login);
 
-        loginButton.setOnClickListener(v -> {
-            viewModel.getPresenter().login(username.getText().toString(), password.getText().toString());
-        });
+        loginButton.setOnClickListener(v -> login());
 
         signupButton.setOnClickListener(v -> navigateToSignUpScreen());
     }
 
     @Override
-    public void showError(String message) {
-        errorMessage.setText(message);
+    public void login() {
+        viewModel.getPresenter().login(username.getText().toString(), password.getText().toString());
     }
 
     @Override
@@ -70,14 +70,18 @@ public class MainActivity extends AppCompatActivity implements LoginView{
 
     @Override
     public void navigateToPharmacistScreen() {
-        /*Intent intent = new Intent(this, PharmacistActivity.class);
+        Intent intent = new Intent(this, PrescriptionSelectionActivity.class);
         startActivity(intent);
-        finish();*/
     }
 
     @Override
     public void navigateToSignUpScreen() {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void showError(String message) {
+        errorMessage.setText(message);
     }
 }

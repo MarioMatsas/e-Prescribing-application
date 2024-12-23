@@ -40,6 +40,12 @@ public class SignUpPresenter {
                 return;
             }
             doctorDAO.save(new Doctor(username, password, speciality));
+            // Check to make sure that it works
+            for (Doctor doc : doctorDAO.findAll()){
+                System.out.println(doc.getFirstName());
+                System.out.println(doc.getLastName());
+                System.out.println(doc.getSpecialty());
+            }
         }
         else{
             pharmacistDAO.save(new Pharmacist(username, password));

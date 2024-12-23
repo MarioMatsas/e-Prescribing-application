@@ -5,7 +5,8 @@
     android:id="@+id/sign_up_activity_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_page_background_colour">
+    android:background="@drawable/login_page_background_colour"
+    tools:context=".views.SignUp.SignUpActivity">
 
     <TextView
         android:id="@+id/create_account_sign_up"
@@ -88,7 +89,7 @@
         app:srcCompat="@drawable/eopyy_logo_1" />
 
     <TextView
-        android:id="@+id/error_message_su"
+        android:id="@+id/error_message_us"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""

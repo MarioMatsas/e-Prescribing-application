@@ -1,6 +1,5 @@
 package com.example.software_eng_asoee_2024.views.SignUp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,8 +16,6 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
-import com.example.software_eng_asoee_2024.views.Login.LoginPresenter;
-import com.example.software_eng_asoee_2024.views.Login.LoginViewModel;
 
 
 public class SignUpActivity extends AppCompatActivity implements SignUpView {
@@ -54,7 +51,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         repeatPassword = findViewById(R.id.repeat_password_su);
         speciality = findViewById(R.id.speciality);
         createAccount = findViewById(R.id.create_account_sign_up);
-        errorMessage = findViewById(R.id.error_message_su);
+        errorMessage = findViewById(R.id.error_message_us);
         logo = findViewById(R.id.eopyy_image_login);
         /*
         *  Set up the spinner
@@ -64,10 +61,14 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         role.setAdapter(adapter);
 
-        signupButton.setOnClickListener(v -> {
-            viewModel.getPresenter().signUp(username.getText().toString(), password.getText().toString(),
-                    repeatPassword.getText().toString(),speciality.getText().toString() ,role.getSelectedItem().toString());
-        });
+        signupButton.setOnClickListener(v -> signUp());
+    }
+
+    @Override
+    public void signUp() {
+        viewModel.getPresenter().signUp(username.getText().toString(), password.getText().toString(),
+                repeatPassword.getText().toString(),speciality.getText().toString() ,role.getSelectedItem().toString());
+        finish();
     }
 
     @Override
