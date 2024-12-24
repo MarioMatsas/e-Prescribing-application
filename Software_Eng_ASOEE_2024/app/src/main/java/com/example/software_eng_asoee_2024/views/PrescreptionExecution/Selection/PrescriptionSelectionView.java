@@ -8,5 +8,6 @@ public interface PrescriptionSelectionView {
     void navigateToExecution();
     void showPatientPrescriptions(PrescriptionSelectionPresenter presenter);
     void updatePrescriptionSpinner(List<Prescription> prescriptions);
+    void clearPrescriptionSpinner();
     void showError(String message);
 }

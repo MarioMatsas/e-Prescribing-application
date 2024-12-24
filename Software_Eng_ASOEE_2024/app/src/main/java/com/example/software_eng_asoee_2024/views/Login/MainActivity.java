@@ -57,6 +57,18 @@ public class MainActivity extends AppCompatActivity implements LoginView{
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Reset username and password fields
+        username.setText("");
+        password.setText("");
+
+        // Reset error message
+        errorMessage.setText(""); // Hides the error message
+    }
+
+    @Override
     public void login() {
         viewModel.getPresenter().login(username.getText().toString(), password.getText().toString());
     }

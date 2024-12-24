@@ -4,6 +4,7 @@ import android.util.Log;
 
 import androidx.lifecycle.ViewModel;
 
+import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
 
 public class PrescriptionSelectionViewModel extends ViewModel{
@@ -12,6 +13,7 @@ public class PrescriptionSelectionViewModel extends ViewModel{
     public PrescriptionSelectionViewModel() {
         presenter = new PrescriptionSelectionPresenter();
         presenter.setPrescriptionDAO(new PrescriptionDAOMemory());
+        presenter.setPatientDAO(new PatientDAOMemory());
     }
 
     public PrescriptionSelectionPresenter getPresenter() {

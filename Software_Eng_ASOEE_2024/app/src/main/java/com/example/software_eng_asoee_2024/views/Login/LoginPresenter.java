@@ -35,6 +35,9 @@ public class LoginPresenter {
             return;
         }
         // Search through the pharmacist accounts
+        for (Pharmacist ph1: pharmacistDAO.findAll()){
+            System.out.println(ph1.getFirstName() + " " + ph1.getLastName());
+        }
         Pharmacist ph = pharmacistDAO.find(username, password);
         if (ph != null) {
             view.navigateToPharmacistScreen();

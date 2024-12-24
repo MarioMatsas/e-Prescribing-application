@@ -24,6 +24,9 @@
         <activity
             android:name=".views.SignUp.SignUpActivity"
             android:exported="true" />
+        <activity
+            android:name=".views.PrescreptionExecution.Selection.PrescriptionSelectionActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

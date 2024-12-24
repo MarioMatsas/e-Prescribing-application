@@ -56,4 +56,12 @@ public class Prescription {
     public List<PrescriptionLine> getPrescriptionLines() {
         return prescriptionLines;
     }
+
+    public String toString() {
+        String activeSubstances = "";
+        for (PrescriptionLine line : prescriptionLines){
+            activeSubstances += line.getActiveSubstance().getName() +" | ";
+        }
+        return activeSubstances;
+    }
 }

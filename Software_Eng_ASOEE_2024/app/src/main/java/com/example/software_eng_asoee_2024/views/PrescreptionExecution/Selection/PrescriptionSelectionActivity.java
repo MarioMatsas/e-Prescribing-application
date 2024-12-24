@@ -54,6 +54,7 @@ public class PrescriptionSelectionActivity extends AppCompatActivity implements 
         selectPrescription = findViewById(R.id.select_prescription_txt);
         errorMessage = findViewById(R.id.error_massage_presc_sel);
         logo = findViewById(R.id.eopyy_image_login);
+        prescription = findViewById(R.id.select_prescription_spinner);
 
         showPrescriptionsButton.setOnClickListener(v -> showPatientPrescriptions(presenter));
 
@@ -73,25 +74,34 @@ public class PrescriptionSelectionActivity extends AppCompatActivity implements 
     }
     @Override
     public void showPatientPrescriptions(PrescriptionSelectionPresenter presenter){
-        int ssn = Integer.parseInt(SSN.getText().toString());
-        presenter.showPatientPrescriptions(ssn);
+        if (SSN.getText().toString().isEmpty()) {  // Check if the SSN field is empty
+            showError("SSN cannot be empty.");
+            clearPrescriptionSpinner();
+            return;
+        }
+        try {
+            int ssn = Integer.parseInt(SSN.getText().toString());  // Try to parse the SSN
+            presenter.showPatientPrescriptions(ssn);  // Proceed with showing prescriptions
+        } catch (NumberFormatException e) {
+            showError("Invalid SSN format.");
+            clearPrescriptionSpinner();
+        }
     }
 
     @Override
     public void updatePrescriptionSpinner(List<Prescription> prescriptions) {
-        /*if (prescriptions.isEmpty()) {
-            showError("No prescriptions found for this patient.");
-            currentPrescriptions.clear();
-            prescription.setAdapter(null);
-            return;
-        }*/
-
         //currentPrescriptions = prescriptions;
         ArrayAdapter<Prescription> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, prescriptions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         prescription.setAdapter(adapter);
 
         //errorMessage.setText(""); // Clear previous errors
+    }
+
+    @Override
+    public void clearPrescriptionSpinner() {
+        // Clear the spinner when there's no valid patient
+        prescription.setAdapter(null);
     }
 
     @Override
