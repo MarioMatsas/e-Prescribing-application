@@ -10,15 +10,21 @@ public class PharmacudicalProduct {
     private MedicineType type;
     private List<ActiveSubstance> activeSubstances;
 
+    private String infortmation;
+
     public PharmacudicalProduct() {
     }
 
-    public PharmacudicalProduct(String name, Integer retailPrice, Form form, MedicineType type, ArrayList<ActiveSubstance> activeSubs) {
+    public PharmacudicalProduct(String name, Integer retailPrice, Form form, MedicineType type, ArrayList<ActiveSubstance> activeSubs, String info) {
         this.name = name;
         this.retailPrice = retailPrice;
         this.form = form;
         this.type = type;
         this.activeSubstances = activeSubs;
+        this.infortmation = info;
+    }
+    public String getInformation() {
+        return this.infortmation;
     }
 
     public String getName() {

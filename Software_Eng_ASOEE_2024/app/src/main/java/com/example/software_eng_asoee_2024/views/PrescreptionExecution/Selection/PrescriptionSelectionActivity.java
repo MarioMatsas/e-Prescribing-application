@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
 import com.example.software_eng_asoee_2024.domain.Prescription;
+import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Execution.PrescriptionExecutionActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,15 +63,15 @@ public class PrescriptionSelectionActivity extends AppCompatActivity implements 
     }
     @Override
     public void navigateToExecution(){
-        /*if (!currentPrescriptions.isEmpty()) {
-                Prescription selectedPrescription = (Prescription) prescription.getSelectedItem();
-                Intent intent = new Intent(this, PrescriptionExecutionActivity.class);
-                intent.putExtra(this, selectedPrescription);
-                startActivity(intent);
-            }
-            else {
-                showError("No prescriptions found for this patient.");
-            }*/
+        if (prescription.getSelectedItem() != null) {
+        Prescription selectedPrescription = (Prescription) prescription.getSelectedItem();
+        Intent intent = new Intent(this, PrescriptionExecutionActivity.class);
+        intent.putExtra("selectedPrescription", selectedPrescription); // Pass the chosen prescription to the execution
+        startActivity(intent);
+        }
+        else {
+            showError("No prescription selected.");
+        }
     }
     @Override
     public void showPatientPrescriptions(PrescriptionSelectionPresenter presenter){

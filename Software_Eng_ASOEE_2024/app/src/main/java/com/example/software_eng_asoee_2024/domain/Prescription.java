@@ -1,9 +1,10 @@
 package com.example.software_eng_asoee_2024.domain;/* DONE  */
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Prescription {
+public class Prescription implements Serializable {
     private List<PrescriptionLine> prescriptionLines;
     private final Doctor doctor;
     private final Patient patient;
