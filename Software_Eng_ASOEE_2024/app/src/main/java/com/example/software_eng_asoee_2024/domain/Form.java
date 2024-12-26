@@ -1,5 +1,8 @@
 package com.example.software_eng_asoee_2024.domain;/* DONE  *//* DONE */
-public enum Form {
+
+import java.io.Serializable;
+
+public enum Form implements Serializable {
     PILL,
     CREAM,
     DISK,

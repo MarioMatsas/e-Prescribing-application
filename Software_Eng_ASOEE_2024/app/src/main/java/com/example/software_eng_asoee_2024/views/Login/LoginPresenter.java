@@ -40,7 +40,7 @@ public class LoginPresenter {
         }
         Pharmacist ph = pharmacistDAO.find(username, password);
         if (ph != null) {
-            view.navigateToPharmacistScreen();
+            view.navigateToPharmacistScreen(ph);
             return;
         }
         view.showError("User not found.");

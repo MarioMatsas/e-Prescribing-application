@@ -9,6 +9,7 @@ import java.util.List;
 public class PharmacistDAOMemory implements PharmacistDAO {
     static ArrayList<Pharmacist> entities = new ArrayList<Pharmacist>();
 
+
     public void delete(Pharmacist entity) {
         entities.remove(entity);
     }

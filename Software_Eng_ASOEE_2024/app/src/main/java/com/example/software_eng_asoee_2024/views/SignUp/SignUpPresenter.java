@@ -26,18 +26,18 @@ public class SignUpPresenter {
         this.pharmacistDAO = pharmacistDAO;
     }
 
-    public void signUp(String username, String password, String repeatPassword, String speciality, String user){
+    public boolean signUp(String username, String password, String repeatPassword, String speciality, String user){
         // Password miss match check
         if (!(password.equals(repeatPassword))) {
             view.showError("Passwords don't match, try again.");
-            return;
+            return false;
         }
 
         if (user.equals("Doctor")){
             // Lack of speciality check
             if (speciality.isEmpty()){
                 view.showError("You need to enter your speciality.");
-                return;
+                return false;
             }
             doctorDAO.save(new Doctor(username, password, speciality));
             // Check to make sure that it works
@@ -46,9 +46,11 @@ public class SignUpPresenter {
                 System.out.println(doc.getLastName());
                 System.out.println(doc.getSpecialty());
             }
+            return true;
         }
         else{
             pharmacistDAO.save(new Pharmacist(username, password));
+            return true;
         }
     }
 }

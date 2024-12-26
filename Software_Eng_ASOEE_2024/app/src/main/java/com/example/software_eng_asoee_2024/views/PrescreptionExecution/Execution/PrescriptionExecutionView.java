@@ -12,6 +12,7 @@ public interface PrescriptionExecutionView {
     void updateProductSpinner(List<PharmacudicalProduct> products);
     void nextLine(Prescription prescription, int index);
     void finishExecution(Prescription prescription);
+    boolean addProduct(Prescription prescription, int index, boolean finalLine);
     void clearProductSpinner();
     void showError(String message);
 }

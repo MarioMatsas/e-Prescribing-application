@@ -1,6 +1,8 @@
 package com.example.software_eng_asoee_2024.domain;/* DONE  */
 
-public class PrescriptionLine {
+import java.io.Serializable;
+
+public class PrescriptionLine implements Serializable {
     private ActiveSubstance activeSubstance;
     private final Form form;
     private final Concentration concentration;

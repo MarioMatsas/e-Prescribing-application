@@ -1,8 +1,11 @@
 package com.example.software_eng_asoee_2024.domain;
 
-public class Doctor extends Person {
+import java.io.Serializable;
+
+public class Doctor extends Person implements Serializable {
 
     private String specialty;
+    public Doctor(){}
 
     public Doctor(String fn, String ln, String pr) {
         super(fn, ln);

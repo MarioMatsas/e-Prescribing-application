@@ -1,6 +1,8 @@
 package com.example.software_eng_asoee_2024.domain;/* DONE  */
 
-public class Concentration {
+import java.io.Serializable;
+
+public class Concentration implements Serializable {
     private Integer quantity;
     private Unit unit;
 

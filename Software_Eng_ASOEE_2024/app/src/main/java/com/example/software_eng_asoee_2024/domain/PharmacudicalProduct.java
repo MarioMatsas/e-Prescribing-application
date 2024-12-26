@@ -77,4 +77,8 @@ public class PharmacudicalProduct {
     public List<ActiveSubstance> getActiveSubstances(){
         return activeSubstances;
     }
+
+    public String toString(){
+        return name + " " + getFinalPrice()/100.0 + " " + infortmation;
+    }
 }

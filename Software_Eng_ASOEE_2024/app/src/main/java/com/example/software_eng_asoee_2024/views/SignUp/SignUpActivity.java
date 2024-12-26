@@ -66,9 +66,9 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     @Override
     public void signUp() {
-        viewModel.getPresenter().signUp(username.getText().toString(), password.getText().toString(),
+        boolean res = viewModel.getPresenter().signUp(username.getText().toString(), password.getText().toString(),
                 repeatPassword.getText().toString(),speciality.getText().toString() ,role.getSelectedItem().toString());
-        finish();
+        if (res) finish();
     }
 
     @Override

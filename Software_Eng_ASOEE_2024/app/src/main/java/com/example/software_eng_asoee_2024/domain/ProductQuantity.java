@@ -19,4 +19,8 @@ public class ProductQuantity {
     public PharmacudicalProduct getProduct() {
         return this.product;
     }
+
+    public String toString(){
+        return product + " " + quantity;
+    }
 }

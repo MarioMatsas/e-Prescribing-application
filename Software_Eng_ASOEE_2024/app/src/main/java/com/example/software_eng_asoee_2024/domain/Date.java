@@ -1,7 +1,8 @@
 package com.example.software_eng_asoee_2024.domain;/* DONE  *//* DONE */
 // import java.time.LocalDate; TODO we can use this but we need different jdk version ( >= 26, curr is 24 )
+import java.io.Serializable;
 import java.util.Calendar;
-public class Date {
+public class Date implements Serializable {
     private Integer year;
     private Integer month;
     private Integer day;

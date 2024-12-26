@@ -27,6 +27,9 @@
         <activity
             android:name=".views.PrescreptionExecution.Selection.PrescriptionSelectionActivity"
             android:exported="true" />
+        <activity
+            android:name=".views.PrescreptionExecution.Execution.PrescriptionExecutionActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
+import com.example.software_eng_asoee_2024.domain.Pharmacist;
 import com.example.software_eng_asoee_2024.domain.PharmacudicalProduct;
 import com.example.software_eng_asoee_2024.domain.Prescription;
 import com.example.software_eng_asoee_2024.domain.PrescriptionLine;
@@ -51,16 +52,18 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
         PrescriptionExecutionPresenter presenter = viewModel.getPresenter();
         presenter.setView(this);
 
-        Intent intent = getIntent();
-        Prescription selectedPrescription = (Prescription) intent.getSerializableExtra("selectedPrescription");
-        updateDisplayInfo(selectedPrescription, 0);
-
         advanceExecutionButton = findViewById(R.id.advance_execution_button);
         quantity = findViewById(R.id.product_quantity);
         showPrescriptionLineInstructions = findViewById(R.id.execution_instructions);
         errorMessage = findViewById(R.id.error_text_exe);
         logo = findViewById(R.id.eopyy_image_login);
         productsSpinner = findViewById(R.id.product_spinner);
+
+        Intent intent = getIntent();
+        Prescription selectedPrescription = (Prescription) intent.getSerializableExtra("selectedPrescription");
+        Pharmacist pharmacist = (Pharmacist) getIntent().getSerializableExtra("pharmacist");
+        presenter.init(selectedPrescription, pharmacist);
+        updateDisplayInfo(selectedPrescription, 0);
     }
     @Override
     public void updateDisplayInfo(Prescription prescription, int currentIndex) {
@@ -83,13 +86,47 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
     }
     @Override
     public void nextLine(Prescription prescription, int index){
-        viewModel.getPresenter().addProductToBuy((PharmacudicalProduct) productsSpinner.getSelectedItem(), Integer.parseInt(quantity.getText().toString()));
-        updateDisplayInfo(prescription, index+1);
+        if (addProduct(prescription, index, false)) { // Add product and proceed only if successful
+            quantity.getText().clear();
+            productsSpinner.setAdapter(null);
+            errorMessage.setText("");
+            updateDisplayInfo(prescription, index+1); // Update the display for the next line
+        }
+    }
+    @Override
+    public boolean addProduct(Prescription prescription, int index, boolean finalLine){
+        if (productsSpinner.getSelectedItem() != null){
+            if (quantity.getText().toString().isEmpty()) {  // Check if the quantity field is empty
+                showError("Quantity cannot be empty.");
+                //clearProductSpinner();
+                return false;
+            }
+            try {
+                int qu = Integer.parseInt(quantity.getText().toString());  // Try to parse the quantity
+                viewModel.getPresenter().addProductToBuy((PharmacudicalProduct) productsSpinner.getSelectedItem(), qu);  // Proceed with showing the products
+                return true;
+
+            }
+            catch (NumberFormatException e) {
+                showError("Invalid quantity format.");
+                //clearProductSpinner();
+                return false;
+            }
+
+        }
+        else {
+            showError("No products.");
+            return false;
+        }
     }
 
     @Override
     public void finishExecution(Prescription prescription){
-        viewModel.getPresenter().finishExecution(prescription);
+        boolean finished = addProduct(prescription, 0, true);
+        if (finished) {
+            viewModel.getPresenter().finishExecution(prescription);
+            finish();
+        }
     }
 
     @Override

@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.software_eng_asoee_2024.R;
+import com.example.software_eng_asoee_2024.domain.Pharmacist;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionActivity;
 import com.example.software_eng_asoee_2024.views.SignUp.SignUpActivity;
 
@@ -81,8 +82,9 @@ public class MainActivity extends AppCompatActivity implements LoginView{
     }
 
     @Override
-    public void navigateToPharmacistScreen() {
+    public void navigateToPharmacistScreen(Pharmacist pharmacist) {
         Intent intent = new Intent(this, PrescriptionSelectionActivity.class);
+        intent.putExtra("pharmacist", pharmacist);
         startActivity(intent);
     }
 

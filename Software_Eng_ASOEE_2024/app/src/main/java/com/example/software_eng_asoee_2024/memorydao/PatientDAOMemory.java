@@ -8,6 +8,11 @@ import java.util.List;
 public class PatientDAOMemory {
     static ArrayList<Patient> entities = new ArrayList<Patient>();
 
+    public PatientDAOMemory(){
+        Patient p1 = new Patient("Tom", "Hobs", 123123123);
+        save(p1);
+    }
+
     public void delete(Patient entity) {
         entities.remove(entity);
     }

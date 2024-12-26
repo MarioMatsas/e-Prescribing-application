@@ -1,6 +1,8 @@
 package com.example.software_eng_asoee_2024.domain;/* DONE  */
 
-public class ActiveSubstance {
+import java.io.Serializable;
+
+public class ActiveSubstance implements Serializable {
     private String name;
     private Double expectedQuantityPerMonth;
 

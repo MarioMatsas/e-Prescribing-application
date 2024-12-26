@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
+import com.example.software_eng_asoee_2024.domain.Pharmacist;
 import com.example.software_eng_asoee_2024.domain.Prescription;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Execution.PrescriptionExecutionActivity;
 
@@ -32,6 +33,7 @@ public class PrescriptionSelectionActivity extends AppCompatActivity implements 
     private TextView errorMessage;
     private ImageView logo;
     private Spinner prescription;
+    private Pharmacist pharmacist;
     //private List<Prescription> currentPrescriptions = new ArrayList<>();
 
     @Override
@@ -60,14 +62,26 @@ public class PrescriptionSelectionActivity extends AppCompatActivity implements 
         showPrescriptionsButton.setOnClickListener(v -> showPatientPrescriptions(presenter));
 
         executePrescriptionButton.setOnClickListener(v -> navigateToExecution());
+
+        pharmacist = (Pharmacist) getIntent().getSerializableExtra("pharmacist");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SSN.getText().clear();
+        prescription.setAdapter(null); // Clear spinner
+        errorMessage.setText(""); // Clear error message
     }
     @Override
     public void navigateToExecution(){
         if (prescription.getSelectedItem() != null) {
-        Prescription selectedPrescription = (Prescription) prescription.getSelectedItem();
-        Intent intent = new Intent(this, PrescriptionExecutionActivity.class);
-        intent.putExtra("selectedPrescription", selectedPrescription); // Pass the chosen prescription to the execution
-        startActivity(intent);
+            // Add dao objects for testing TODO
+            Prescription selectedPrescription = (Prescription) prescription.getSelectedItem();
+            Intent intent = new Intent(this, PrescriptionExecutionActivity.class);
+            intent.putExtra("selectedPrescription", selectedPrescription); // Pass the chosen prescription to the execution
+            intent.putExtra("pharmacist", pharmacist);
+            startActivity(intent);
         }
         else {
             showError("No prescription selected.");
@@ -83,7 +97,8 @@ public class PrescriptionSelectionActivity extends AppCompatActivity implements 
         try {
             int ssn = Integer.parseInt(SSN.getText().toString());  // Try to parse the SSN
             presenter.showPatientPrescriptions(ssn);  // Proceed with showing prescriptions
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e) {
             showError("Invalid SSN format.");
             clearPrescriptionSpinner();
         }
