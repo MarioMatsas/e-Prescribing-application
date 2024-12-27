@@ -11,5 +11,5 @@ public interface PharmacudicalProductDAO {
 
     void save(PharmacudicalProduct entity);
 
-    List<PharmacudicalProduct> findPharmacudicalProductByName(String name);
+    PharmacudicalProduct find(String name);
 }

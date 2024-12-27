@@ -10,11 +10,6 @@ import java.util.List;
 public class ActiveSubstanceDAOMemory implements ActivaSubstanceDAO {
     static ArrayList<ActiveSubstance> entities = new ArrayList<ActiveSubstance>();
 
-    public ActiveSubstanceDAOMemory(){
-        save(new ActiveSubstance("Paracetamol", 20d));
-        save(new ActiveSubstance("Diddy Juice", 20d));
-    }
-
     public void delete(ActiveSubstance entity) {
         entities.remove(entity);
     }

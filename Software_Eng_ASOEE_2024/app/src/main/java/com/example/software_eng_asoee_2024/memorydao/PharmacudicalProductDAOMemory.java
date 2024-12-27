@@ -14,17 +14,6 @@ import java.util.List;
 public class PharmacudicalProductDAOMemory implements PharmacudicalProductDAO {
     static ArrayList<PharmacudicalProduct> entities = new ArrayList<PharmacudicalProduct>();
 
-    public PharmacudicalProductDAOMemory(){
-        ActiveSubstanceDAOMemory mem = new ActiveSubstanceDAOMemory();
-        ArrayList<ActiveSubstance> as = new ArrayList<ActiveSubstance>();
-        ArrayList<ActiveSubstance> as2 = new ArrayList<ActiveSubstance>();
-        as.add(mem.find("Paracetamol"));
-        as.add(mem.find("Diddy Juice"));
-        as2.add(mem.find("Diddy Juice"));
-        save(new PharmacudicalProduct("Product1", 600, Form.PILL, MedicineType.GENERIC, as, "8 pills in pack"));
-        save(new PharmacudicalProduct("Product2", 300, Form.PILL, MedicineType.GENERIC, as2, "4 pills in pack"));
-    }
-
     public void delete(PharmacudicalProduct entity) {
         entities.remove(entity);
     }
@@ -39,13 +28,12 @@ public class PharmacudicalProductDAOMemory implements PharmacudicalProductDAO {
         entities.add(entity);
     }
 
-    public List<PharmacudicalProduct> findPharmacudicalProductByName(String name){
-        ArrayList<PharmacudicalProduct> result = new ArrayList<PharmacudicalProduct>();
+    public PharmacudicalProduct find(String name){
         for (PharmacudicalProduct pr : entities){
             if (pr.getName().equals(name)){
-                result.add(pr);
+                return pr;
             }
         }
-        return result;
+        return null;
     }
 }
