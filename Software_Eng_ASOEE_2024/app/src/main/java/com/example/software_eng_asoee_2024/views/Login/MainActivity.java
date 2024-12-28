@@ -15,7 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.software_eng_asoee_2024.R;
+import com.example.software_eng_asoee_2024.dao.Initializer;
 import com.example.software_eng_asoee_2024.domain.Pharmacist;
+import com.example.software_eng_asoee_2024.memorydao.MemoryInitializer;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionActivity;
 import com.example.software_eng_asoee_2024.views.SignUp.SignUpActivity;
 
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements LoginView{
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Initializer initializer = new MemoryInitializer(); // Replace with your concrete Initializer
+        initializer.prepareData();
 
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         LoginPresenter presenter = viewModel.getPresenter();

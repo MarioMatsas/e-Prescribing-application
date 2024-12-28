@@ -43,18 +43,17 @@ public class PrescriptionExecutionPresenter {
         this.productDAO = productDAO;
     }
 
+    public Prescription getPrescription(int Id){
+        return prescriptionDAO.findPrescriptionById(Id);
+    }
+
     public void showPrescriptionLineProducts(PrescriptionLine line){
         // Find all the products that have the same active substance as the one in the line
         List<PharmacudicalProduct> productsToShow = new ArrayList<PharmacudicalProduct>();
         for (PharmacudicalProduct product: productDAO.findAll()){
             //product.getActiveSubstances().contains(line.getActiveSubstance())
-            if (product.getForm().equals(line.getForm())){
-                for (ActiveSubstance asss: product.getActiveSubstances()){
-                    if (asss.getName().equals(line.getActiveSubstance().getName())){
-                        productsToShow.add(product);
-                    }
-                }
-
+            if (product.getForm().equals(line.getForm()) && product.getActiveSubstances().contains(line.getActiveSubstance())) {
+                productsToShow.add(product);
             }
         }
         if (productsToShow.isEmpty()) {
@@ -66,17 +65,32 @@ public class PrescriptionExecutionPresenter {
 
     }
 
-    public void addProductToBuy(PharmacudicalProduct productFromSpinner, int valueFromTextView){
-        System.out.println("HELLO");
-        System.out.println("HELLO");
-        System.out.println(productFromSpinner);
-        System.out.println(valueFromTextView);
-        prescriptionExecution.addProductQuantity(new ProductQuantity(productFromSpinner, valueFromTextView));
-        for (ProductQuantity pq : prescriptionExecution.getProductQuantities()){
-            System.out.println(pq);
+    public boolean addProductToBuy(PharmacudicalProduct productFromSpinner, String valueFromTextView){
+        if (productFromSpinner != null){
+            if (valueFromTextView.isEmpty()) {  // Check if the quantity field is empty
+                view.showError("Quantity cannot be empty.");
+                //clearProductSpinner();
+                return false;
+            }
+            try {
+                int quantity = Integer.parseInt(valueFromTextView);  // Try to parse the quantity
+                prescriptionExecution.addProductQuantity(new ProductQuantity(productFromSpinner, quantity));
+                return true;
+
+            }
+            catch (NumberFormatException e) {
+                view.showError("Invalid quantity format.");
+                //clearProductSpinner();
+                return false;
+            }
+
         }
-        System.out.println("HELLO");
-        System.out.println("HELLO");
+        else {
+            view.showError("No products.");
+            return false;
+        }
+
+
     }
 
     public void finishExecution(Prescription prescription){

@@ -75,33 +75,18 @@ public class PrescriptionSelectionActivity extends AppCompatActivity implements 
     }
     @Override
     public void navigateToExecution(){
-        if (prescription.getSelectedItem() != null) {
-            // Add dao objects for testing TODO
+        boolean res = viewModel.getPresenter().navigateToExecution((Prescription)prescription.getSelectedItem());
+        if (res){
             Prescription selectedPrescription = (Prescription) prescription.getSelectedItem();
             Intent intent = new Intent(this, PrescriptionExecutionActivity.class);
-            intent.putExtra("selectedPrescription", selectedPrescription); // Pass the chosen prescription to the execution
+            intent.putExtra("selectedPrescriptionId", selectedPrescription.getId()); // Pass the chosen prescription to the execution
             intent.putExtra("pharmacist", pharmacist);
             startActivity(intent);
-        }
-        else {
-            showError("No prescription selected.");
         }
     }
     @Override
     public void showPatientPrescriptions(PrescriptionSelectionPresenter presenter){
-        if (SSN.getText().toString().isEmpty()) {  // Check if the SSN field is empty
-            showError("SSN cannot be empty.");
-            clearPrescriptionSpinner();
-            return;
-        }
-        try {
-            int ssn = Integer.parseInt(SSN.getText().toString());  // Try to parse the SSN
-            presenter.showPatientPrescriptions(ssn);  // Proceed with showing prescriptions
-        }
-        catch (NumberFormatException e) {
-            showError("Invalid SSN format.");
-            clearPrescriptionSpinner();
-        }
+        presenter.showPatientPrescriptions(SSN.getText().toString());
     }
 
     @Override

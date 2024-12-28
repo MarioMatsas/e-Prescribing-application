@@ -30,6 +30,15 @@ public class PrescriptionDAOMemory implements PrescriptionDAO {
         entities.add(entity);
     }
 
+    public Prescription findPrescriptionById(int Id){
+        for (Prescription prescr : entities){
+            if (prescr.getId()==Id){
+                return prescr;
+            }
+        }
+        return null;
+    }
+
     public List<Prescription> findPrescriptionByPatient(Patient patient){
         ArrayList<Prescription> result = new ArrayList<Prescription>();
         for (Prescription prescr : entities){

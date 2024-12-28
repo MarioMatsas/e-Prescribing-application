@@ -1,5 +1,7 @@
 package com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection;
 
+import android.content.Intent;
+
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Concentration;
 import com.example.software_eng_asoee_2024.domain.Doctor;
@@ -10,6 +12,7 @@ import com.example.software_eng_asoee_2024.domain.PrescriptionLine;
 import com.example.software_eng_asoee_2024.domain.Unit;
 import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
+import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Execution.PrescriptionExecutionActivity;
 
 import java.util.List;
 
@@ -32,39 +35,46 @@ public class PrescriptionSelectionPresenter {
         this.patientDAO = patientDAO;
     }
 
-    public void showPatientPrescriptions(int SSN){
-        Patient p1 = new Patient("Tom", "Hobs", 123123123);
-        for (Patient p2: patientDAO.findAll()){
-            System.out.println(p2.getSSN() +" "+p2.getFirstName());
-        }
-        patientDAO.save(p1);
-        // Check if there is a user with the given SSN
-        Patient patient = null;
-        List<Patient> patients = patientDAO.findAll();
-        for (Patient p : patients){
-            if (p.getSSN() == SSN){
-                patient = p;
-                break;
-            }
-        }
-        if (patient == null) {
-            view.showError("Patient not found.");
+    public void showPatientPrescriptions(String SSN){
+        if (SSN.isEmpty()) {  // Check if the SSN field is empty
+            view.showError("SSN cannot be empty.");
             view.clearPrescriptionSpinner();
             return;
         }
+        try {
+            int ssn = Integer.parseInt(SSN);  // Try to parse the SSN
+            // Check if there is a user with the given SSN
+            Patient patient = null;
+            List<Patient> patients = patientDAO.findAll();
+            for (Patient p : patients){
+                if (p.getSSN() == ssn){
+                    patient = p;
+                    break;
+                }
+            }
+            if (patient == null) {
+                view.showError("Patient not found.");
+                view.clearPrescriptionSpinner();
+                return;
+            }
 
-        // Display all of the patients prescriptions
-        Prescription presc = new Prescription("Wolff-Parkinson-White", new Doctor("John", "Doe", "Cardiology"), p1);
-        PrescriptionLine line = new PrescriptionLine(Form.CREAM, new Concentration(10, Unit.mg_per_g), "For 10 days", new ActiveSubstance("Paracetamol", 20d));
-        presc.addLine(line);
-        line = new PrescriptionLine(Form.CREAM, new Concentration(40, Unit.mg_per_g), "For 20 days", new ActiveSubstance("Diddy juice", 20d));
-        presc.addLine(line);
-        prescriptionDAO.save(presc);
-        presc = new Prescription("White", new Doctor("John", "Doe", "Cardiology"), p1);
-        line = new PrescriptionLine(Form.CREAM, new Concentration(10, Unit.mg_per_g), "For 10 days", new ActiveSubstance("Paracetamol", 20d));
-        presc.addLine(line);
-        prescriptionDAO.save(presc);
-        List<Prescription> prescriptions = prescriptionDAO.findPrescriptionByPatient(patient);
-        view.updatePrescriptionSpinner(prescriptions);
+            List<Prescription> prescriptions = prescriptionDAO.findPrescriptionByPatient(patient);
+            view.updatePrescriptionSpinner(prescriptions);
+
+        }
+        catch (NumberFormatException e) {
+            view.showError("Invalid SSN format.");
+            view.clearPrescriptionSpinner();
+        }
+    }
+
+    public boolean navigateToExecution(Prescription spinnerItem){
+        if (spinnerItem != null) {
+            return true;
+        }
+        else {
+            view.showError("No prescription selected.");
+            return false;
+        }
     }
 }

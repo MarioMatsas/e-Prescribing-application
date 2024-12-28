@@ -12,5 +12,7 @@ public interface PrescriptionDAO {
 
     void save(Prescription entity);
 
+    Prescription findPrescriptionById(int Id);
+
     List<Prescription> findPrescriptionByPatient(Patient patient);
 }

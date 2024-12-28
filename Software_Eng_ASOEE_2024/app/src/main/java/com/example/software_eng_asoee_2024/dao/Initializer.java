@@ -58,10 +58,19 @@ public abstract class Initializer {
         line = new PrescriptionLine(Form.PILL, new Concentration(40, Unit.mg_per_g), "For 20 days, 1 pill in the morning", activeSubstanceDAO.find("Ibuprofen"));
         presc.addLine(line);
         prescriptionDAO.save(presc);
+
     }
 
     public abstract DoctorDAO getDoctorDAO();
     public abstract PharmacistDAO getPharmacistDAO();
+    public abstract PatientDAO getPatientDAO();
+
+    public abstract ActivaSubstanceDAO getActiveSubstanceDAO();
+
+    public abstract PharmacudicalProductDAO getPharmacudicalProductDAO();
+
+    public abstract PrescriptionDAO getPrescriptionDAO();
+
 }
 
 

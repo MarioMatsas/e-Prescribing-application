@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Prescription implements Serializable {
+    private static Integer LastId = 0;
+    private final Integer Id;
     private List<PrescriptionLine> prescriptionLines;
     private final Doctor doctor;
     private final Patient patient;
@@ -24,8 +26,12 @@ public class Prescription implements Serializable {
         this.doctor = doctor;
         this.patient = patient;
         prescriptionLines = new ArrayList<PrescriptionLine>();
+        this.Id = LastId + 1;
+        LastId = Id;
     }
-
+    public int getId(){
+        return Id;
+    }
     public Status getStatus() {
         return this.status;
     }
@@ -58,11 +64,11 @@ public class Prescription implements Serializable {
         return prescriptionLines;
     }
 
-    public String toString() {
+    /*public String toString() {
         String activeSubstances = "";
         for (PrescriptionLine line : prescriptionLines){
             activeSubstances += line.getActiveSubstance().getName() +" | ";
         }
         return activeSubstances;
-    }
+    }*/
 }

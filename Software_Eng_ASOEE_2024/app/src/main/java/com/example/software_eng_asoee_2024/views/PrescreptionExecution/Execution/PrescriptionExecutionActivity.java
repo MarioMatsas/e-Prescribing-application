@@ -60,7 +60,7 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
         productsSpinner = findViewById(R.id.product_spinner);
 
         Intent intent = getIntent();
-        Prescription selectedPrescription = (Prescription) intent.getSerializableExtra("selectedPrescription");
+        Prescription selectedPrescription = viewModel.getPresenter().getPrescription(((Integer) intent.getSerializableExtra("selectedPrescriptionId")));
         Pharmacist pharmacist = (Pharmacist) getIntent().getSerializableExtra("pharmacist");
         presenter.init(selectedPrescription, pharmacist);
         updateDisplayInfo(selectedPrescription, 0);
@@ -95,29 +95,7 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
     }
     @Override
     public boolean addProduct(Prescription prescription, int index, boolean finalLine){
-        if (productsSpinner.getSelectedItem() != null){
-            if (quantity.getText().toString().isEmpty()) {  // Check if the quantity field is empty
-                showError("Quantity cannot be empty.");
-                //clearProductSpinner();
-                return false;
-            }
-            try {
-                int qu = Integer.parseInt(quantity.getText().toString());  // Try to parse the quantity
-                viewModel.getPresenter().addProductToBuy((PharmacudicalProduct) productsSpinner.getSelectedItem(), qu);  // Proceed with showing the products
-                return true;
-
-            }
-            catch (NumberFormatException e) {
-                showError("Invalid quantity format.");
-                //clearProductSpinner();
-                return false;
-            }
-
-        }
-        else {
-            showError("No products.");
-            return false;
-        }
+        return viewModel.getPresenter().addProductToBuy((PharmacudicalProduct) productsSpinner.getSelectedItem(), quantity.getText().toString());
     }
 
     @Override

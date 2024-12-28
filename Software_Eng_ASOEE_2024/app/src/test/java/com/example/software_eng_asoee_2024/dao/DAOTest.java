@@ -205,19 +205,17 @@ public class DAOTest {
         Assert.assertNull(productDAO.find("Product1"));
     }
 
-
-
-
-
-
-
-
     /*
     PrescriptionProductDAO tests
      */
     @Test
     public void findRegisteredPrescription(){
         Assert.assertEquals((prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123123))).size(), 1);
+    }
+
+    @Test
+    public void findPrescriptionById(){
+        Assert.assertEquals((prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123123))).get(0), prescriptionDAO.findPrescriptionById(prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123123)).get(0).getId()));
     }
 
     @Test
