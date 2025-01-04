@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements LoginView{
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Initializer initializer = new MemoryInitializer(); // Replace with your concrete Initializer
+        Initializer initializer = new MemoryInitializer();
         initializer.prepareData();
 
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);

@@ -27,9 +27,19 @@ public class SignUpPresenter {
     }
 
     public boolean signUp(String username, String password, String repeatPassword, String speciality, String user){
+        // Check if every field is filled
+        if (username.isEmpty() || password.isEmpty()){
+            view.showError("Username and/or password fields can't be empty");
+            return false;
+        }
         // Password miss match check
         if (!(password.equals(repeatPassword))) {
             view.showError("Passwords don't match, try again.");
+            return false;
+        }
+
+        if (userExists(username, password)){
+            view.showError("Chosen credentials already in use.");
             return false;
         }
 
@@ -40,17 +50,19 @@ public class SignUpPresenter {
                 return false;
             }
             doctorDAO.save(new Doctor(username, password, speciality));
-            // Check to make sure that it works
-            for (Doctor doc : doctorDAO.findAll()){
-                System.out.println(doc.getFirstName());
-                System.out.println(doc.getLastName());
-                System.out.println(doc.getSpecialty());
-            }
-            return true;
         }
         else{
             pharmacistDAO.save(new Pharmacist(username, password));
-            return true;
         }
+        return true;
     }
+
+    public boolean userExists(String username, String password){
+        System.out.println(username + " " + password);
+        // Check if the user with those credentials already exists
+        if (doctorDAO.find(username, password) != null) return true;
+        if (pharmacistDAO.find(username, password) != null) return true;
+        return false;
+    }
+
 }

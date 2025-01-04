@@ -93,19 +93,20 @@ public class PrescriptionExecutionPresenter {
 
     }
 
-    public void finishExecution(Prescription prescription){
+    public String finishExecution(Prescription prescription){
         // Remove the prescription from the DAO
         prescriptionDAO.delete(prescription);
         // Print the final price
-        System.out.println("YEAH");
+        return String.valueOf(getTotalCost());
+        /*System.out.println("YEAH");
         for (ProductQuantity pq : prescriptionExecution.getProductQuantities()){
             System.out.println(pq);
         }
         System.out.println(getTotalCost());
-        System.out.println("YEAH");
+        System.out.println("YEAH");*/
     }
 
-    public float getTotalCost(){
-        return prescriptionExecution.calculateTotalCost();
+    public double getTotalCost(){
+        return prescriptionExecution.calculateTotalCost()/100.0;
     }
 }

@@ -32,6 +32,7 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
     private Button advanceExecutionButton;
     private EditText quantity;
     private TextView showPrescriptionLineInstructions;
+    private TextView finalPrice;
     private TextView errorMessage;
     private ImageView logo;
     private Spinner productsSpinner;
@@ -55,6 +56,7 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
         advanceExecutionButton = findViewById(R.id.advance_execution_button);
         quantity = findViewById(R.id.product_quantity);
         showPrescriptionLineInstructions = findViewById(R.id.execution_instructions);
+        finalPrice = findViewById(R.id.total_price);
         errorMessage = findViewById(R.id.error_text_exe);
         logo = findViewById(R.id.eopyy_image_login);
         productsSpinner = findViewById(R.id.product_spinner);
@@ -102,9 +104,9 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
     public void finishExecution(Prescription prescription){
         boolean finished = addProduct(prescription, 0, true);
         if (finished) {
-            viewModel.getPresenter().finishExecution(prescription);
-            finish();
+            finalPrice.setText(viewModel.getPresenter().finishExecution(prescription) + "€");
         }
+        advanceExecutionButton.setEnabled(false);
     }
 
     @Override

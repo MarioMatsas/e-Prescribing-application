@@ -1,5 +1,7 @@
 package com.example.software_eng_asoee_2024.domain;/* DONE  */
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,11 +66,12 @@ public class Prescription implements Serializable {
         return prescriptionLines;
     }
 
-    /*public String toString() {
-        String activeSubstances = "";
+    @NonNull
+    public String toString() {
+        String activeSubstances = doctor.getFirstName() + " " + doctor.getLastName() + ": ";
         for (PrescriptionLine line : prescriptionLines){
             activeSubstances += line.getActiveSubstance().getName() +" | ";
         }
         return activeSubstances;
-    }*/
+    }
 }

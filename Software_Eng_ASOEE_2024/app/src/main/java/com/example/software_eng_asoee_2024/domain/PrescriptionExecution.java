@@ -51,7 +51,8 @@ public class PrescriptionExecution {
         for (ProductQuantity productQuantity : productQuantities) {
             totalCost += productQuantity.getProductQuantity() * productQuantity.getProduct().getFinalPrice();
         }
-        return totalCost;
+        // TODO MAYBE DON'T ADD THE X100, DID IT SO THAT THE PRICES MAKE SENSE
+        return totalCost * 100;
     }
 
     public Prescription getPrescription() {

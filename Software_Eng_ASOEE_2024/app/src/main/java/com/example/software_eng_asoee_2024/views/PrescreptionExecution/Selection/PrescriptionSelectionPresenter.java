@@ -59,6 +59,9 @@ public class PrescriptionSelectionPresenter {
             }
 
             List<Prescription> prescriptions = prescriptionDAO.findPrescriptionByPatient(patient);
+            if (prescriptions.isEmpty()){
+                view.showError("No prescriptions found.");
+            }
             view.updatePrescriptionSpinner(prescriptions);
 
         }
