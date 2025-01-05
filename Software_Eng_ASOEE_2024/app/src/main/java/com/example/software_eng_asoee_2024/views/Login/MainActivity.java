@@ -79,10 +79,11 @@ public class MainActivity extends AppCompatActivity implements LoginView{
     }
 
     @Override
-    public void navigateToDoctorScreen() {
-        /*Intent intent = new Intent(this, DoctorActivity.class);
+    public void navigateToDoctorScreen(Doctor doctor) {
+        Intent intent = new Intent(this, PatientSearchingActivity.class);
+        intent.putExtra("doctor", doctor);
         startActivity(intent);
-        finish();*/
+        //finish();
     }
 
     @Override

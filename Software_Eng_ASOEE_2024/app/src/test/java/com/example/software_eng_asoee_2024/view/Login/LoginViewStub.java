@@ -13,7 +13,7 @@ public class LoginViewStub implements LoginView {
     }
 
     @Override
-    public void navigateToDoctorScreen() {
+    public void navigateToDoctorScreen(Doctor doctor) {
         navDocMessage = "Success doctor";
     }
 
