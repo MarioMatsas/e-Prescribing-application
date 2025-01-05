@@ -21,5 +21,21 @@ public class PatientSearchingPresenter {
     public void setPatientDAO(PatientDAOMemory patientDAO) {
         this.patientDAO = patientDAO;
     }
+
+    public Patient check_patient_login(String inputSSN) {
+        try {
+            int ssn = Integer.parseInt(inputSSN);  // Try to parse the ssn
+            Patient patient = patientDAO.find(ssn);
+            if (patient != null) {
+                //view.navigateToCreationScreen(patient);
+                return patient;
+            }
+            view.showError("Patient NOT FOUND");
+        } catch (NumberFormatException e) {
+            view.showError("Invalid SSN format.");
+            //clearProductSpinner();
+        }
+        return null;
+    }
 }
 

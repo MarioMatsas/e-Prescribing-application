@@ -20,15 +20,19 @@ public class PrescriptionCreationPresenter {
         this.view = view;
     }
 
-    public void init(Prescription prescription, Doctor doctor){
-
-    }
+//    public void init(Prescription prescription, Doctor doctor){
+//
+//    }
 
     public void setPrescriptionDAO(PrescriptionDAOMemory prescriptionDAO) {
         this.prescriptionDAO = prescriptionDAO;
     }
 
-    public Prescription getPrescription(int Id){
-        return prescriptionDAO.findPrescriptionById(Id);
+    public void setActiveSubstanceDAO(ActiveSubstanceDAOMemory actSubsDAO) {
+        this.activeSubstanceDAO = actSubsDAO;
     }
+
+//    public Prescription getPrescription(int Id){
+//        return prescriptionDAO.findPrescriptionById(Id);
+//    }
 }

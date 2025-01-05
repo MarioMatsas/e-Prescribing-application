@@ -21,8 +21,11 @@ import com.example.software_eng_asoee_2024.domain.Pharmacist;
 import com.example.software_eng_asoee_2024.domain.Prescription;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Execution.PrescriptionExecutionPresenter;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Execution.PrescriptionExecutionViewModel;
+import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionActivity;
 import com.example.software_eng_asoee_2024.views.PrescriptionCreation.Creation.PrescriptionCreationViewModel;
 import com.example.software_eng_asoee_2024.views.PrescriptionCreation.Creation.PrescriptionCreationView;
+import com.example.software_eng_asoee_2024.views.PrescriptionCreation.PatientSearching.PatientSearchingActivity;
+import com.example.software_eng_asoee_2024.views.SignUp.SignUpActivity;
 
 public class PrescriptionCreationActivity extends AppCompatActivity implements PrescriptionCreationView {
 
@@ -70,5 +73,48 @@ public class PrescriptionCreationActivity extends AppCompatActivity implements P
         presenter.init(selectedPrescription, doctor);
         //updateDisplayInfo(selectedPrescription, 0);
     }
+
+//    @Override
+//    protected void onResume() {//todo
+//        super.onResume();
+//
+//        // Reset username and password fields
+//        username.setText("");
+//        password.setText("");
+//
+//        // Reset error message
+//        errorMessage.setText(""); // Hides the error message
+//    }
+//
+//    @Override
+//    public void login() {//todo
+//        viewModel.getPresenter().login(username.getText().toString(), password.getText().toString());
+//    }
+    //todo
+//    @Override
+//    public void navigateToDoctorScreen(Doctor doctor) {
+//        Intent intent = new Intent(this, PatientSearchingActivity.class);
+//        intent.putExtra("doctor", doctor);
+//        startActivity(intent);
+//        //finish();
+//    }
+//
+//    @Override
+//    public void navigateToPharmacistScreen(Pharmacist pharmacist) {
+//        Intent intent = new Intent(this, PrescriptionSelectionActivity.class);
+//        intent.putExtra("pharmacist", pharmacist);
+//        startActivity(intent);
+//    }
+//
+//    @Override
+//    public void navigateToSignUpScreen() {
+//        Intent intent = new Intent(this, SignUpActivity.class);
+//        startActivity(intent);
+//    }
+//
+//    @Override
+//    public void showError(String message) {
+//        errorMessage.setText(message);
+//    }
 
 }

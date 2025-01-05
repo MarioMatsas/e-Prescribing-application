@@ -2,8 +2,9 @@ package com.example.software_eng_asoee_2024.views.PrescriptionCreation.PatientSe
 
 import android.util.Log;
 import androidx.lifecycle.ViewModel;
+
+import com.example.software_eng_asoee_2024.memorydao.DoctorDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
-import com.example.software_eng_asoee_2024.views.PrescriptionCreation.PatientSearching.PatientSearchingPresenter;
 
 public class PatientSearchingViewModel extends ViewModel{
 
@@ -21,5 +22,6 @@ public class PatientSearchingViewModel extends ViewModel{
     @Override
     protected void onCleared() {
         super.onCleared();
+        Log.d("PatientSearching", "On Cleared");
     }
 }
