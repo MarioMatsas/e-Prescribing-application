@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Software_Eng_ASOEE_2024</string>
+    <string-array name="roles">
+        <item>Doctor</item>
+        <item>Pharmacist</item>
+    </string-array>
+</resources>
