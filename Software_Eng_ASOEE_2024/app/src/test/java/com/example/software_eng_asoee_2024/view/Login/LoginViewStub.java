@@ -1,5 +1,6 @@
 package com.example.software_eng_asoee_2024.view.Login;
 
+import com.example.software_eng_asoee_2024.domain.Doctor;
 import com.example.software_eng_asoee_2024.domain.Pharmacist;
 import com.example.software_eng_asoee_2024.views.Login.LoginView;
 

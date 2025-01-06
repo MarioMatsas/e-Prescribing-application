@@ -16,9 +16,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.software_eng_asoee_2024.R;
 import com.example.software_eng_asoee_2024.dao.Initializer;
+import com.example.software_eng_asoee_2024.domain.Doctor;
 import com.example.software_eng_asoee_2024.domain.Pharmacist;
 import com.example.software_eng_asoee_2024.memorydao.MemoryInitializer;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionActivity;
+import com.example.software_eng_asoee_2024.views.PrescriptionCreation.PatientSearching.PatientSearchingActivity;
 import com.example.software_eng_asoee_2024.views.SignUp.SignUpActivity;
 
 public class MainActivity extends AppCompatActivity implements LoginView{

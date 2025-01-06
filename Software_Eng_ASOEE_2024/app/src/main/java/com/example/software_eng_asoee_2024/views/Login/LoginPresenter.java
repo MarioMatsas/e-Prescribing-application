@@ -31,7 +31,7 @@ public class LoginPresenter {
         // Search through the doctor accounts
         Doctor doc = doctorDAO.find(username, password);
         if (doc != null) {
-            view.navigateToDoctorScreen();
+            view.navigateToDoctorScreen(doc);
             return;
         }
         // Search through the pharmacist accounts
