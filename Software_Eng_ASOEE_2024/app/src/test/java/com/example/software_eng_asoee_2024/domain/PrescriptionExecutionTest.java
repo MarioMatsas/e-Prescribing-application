@@ -24,7 +24,7 @@ public class PrescriptionExecutionTest {
         presc.addLine(line);
         pharm = new Pharmacist("Bob", "Smith");
         activeSubs.add(new ActiveSubstance("Paracetamol", 500.0));
-        qntt = new ProductQuantity(new PharmacudicalProduct("Depon", 998, Form.DISK, MedicineType.ORIGINAL, activeSubs, "2 big pills"), 10);
+        qntt = new ProductQuantity(new PharmaceuticalProduct("Depon", 998, Form.DISK, MedicineType.ORIGINAL, activeSubs, "2 big pills"), 10);
         prescExc = new PrescriptionExecution(pharm, presc);
         qntts =  new ArrayList<ProductQuantity>();
         qntts.add(qntt);

@@ -6,14 +6,14 @@ import com.example.software_eng_asoee_2024.domain.Doctor;
 import com.example.software_eng_asoee_2024.domain.Form;
 import com.example.software_eng_asoee_2024.domain.Patient;
 import com.example.software_eng_asoee_2024.domain.Pharmacist;
-import com.example.software_eng_asoee_2024.domain.PharmacudicalProduct;
+import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.domain.Prescription;
 import com.example.software_eng_asoee_2024.domain.PrescriptionExecution;
 import com.example.software_eng_asoee_2024.domain.PrescriptionLine;
 import com.example.software_eng_asoee_2024.domain.ProductQuantity;
 import com.example.software_eng_asoee_2024.domain.Unit;
 import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
-import com.example.software_eng_asoee_2024.memorydao.PharmacudicalProductDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionView;
 
@@ -23,7 +23,7 @@ import java.util.List;
 public class PrescriptionExecutionPresenter {
     private PrescriptionExecutionView view;
     private PrescriptionDAOMemory prescriptionDAO;
-    private PharmacudicalProductDAOMemory productDAO;
+    private PharmaceuticalProductDAOMemory productDAO;
     private PrescriptionExecution prescriptionExecution;
 
     public PrescriptionExecutionView getView() {
@@ -39,7 +39,7 @@ public class PrescriptionExecutionPresenter {
     public void setPrescriptionDAO(PrescriptionDAOMemory prescriptionDAO) {
         this.prescriptionDAO = prescriptionDAO;
     }
-    public void setPharmacudicalProdcutDAO(PharmacudicalProductDAOMemory productDAO){
+    public void setPharmaceuticalProdcutDAO(PharmaceuticalProductDAOMemory productDAO){
         this.productDAO = productDAO;
     }
 
@@ -49,8 +49,8 @@ public class PrescriptionExecutionPresenter {
 
     public void showPrescriptionLineProducts(PrescriptionLine line){
         // Find all the products that have the same active substance as the one in the line
-        List<PharmacudicalProduct> productsToShow = new ArrayList<PharmacudicalProduct>();
-        for (PharmacudicalProduct product: productDAO.findAll()){
+        List<PharmaceuticalProduct> productsToShow = new ArrayList<PharmaceuticalProduct>();
+        for (PharmaceuticalProduct product: productDAO.findAll()){
             //product.getActiveSubstances().contains(line.getActiveSubstance())
             if (product.getForm().equals(line.getForm()) && product.getActiveSubstances().contains(line.getActiveSubstance())) {
                 productsToShow.add(product);
@@ -65,7 +65,7 @@ public class PrescriptionExecutionPresenter {
 
     }
 
-    public boolean addProductToBuy(PharmacudicalProduct productFromSpinner, String valueFromTextView){
+    public boolean addProductToBuy(PharmaceuticalProduct productFromSpinner, String valueFromTextView){
         if (productFromSpinner != null){
             if (valueFromTextView.isEmpty()) {  // Check if the quantity field is empty
                 view.showError("Quantity cannot be empty.");

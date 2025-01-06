@@ -3,7 +3,7 @@ package com.example.software_eng_asoee_2024.domain;/* DONE  */
 import java.util.ArrayList;
 import java.util.List;
 
-public class PharmacudicalProduct {
+public class PharmaceuticalProduct {
     private String name;
     private Integer retailPrice; // in cents
     private Form form;
@@ -12,10 +12,10 @@ public class PharmacudicalProduct {
 
     private String infortmation;
 
-    public PharmacudicalProduct() {
+    public PharmaceuticalProduct() {
     }
 
-    public PharmacudicalProduct(String name, Integer retailPrice, Form form, MedicineType type, ArrayList<ActiveSubstance> activeSubs, String info) {
+    public PharmaceuticalProduct(String name, Integer retailPrice, Form form, MedicineType type, ArrayList<ActiveSubstance> activeSubs, String info) {
         this.name = name;
         this.retailPrice = retailPrice;
         this.form = form;

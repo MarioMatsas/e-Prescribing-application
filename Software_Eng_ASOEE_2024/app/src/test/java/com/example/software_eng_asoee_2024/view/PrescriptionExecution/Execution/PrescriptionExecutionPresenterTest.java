@@ -5,13 +5,13 @@ import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Concentration;
 import com.example.software_eng_asoee_2024.domain.Form;
 import com.example.software_eng_asoee_2024.domain.Pharmacist;
-import com.example.software_eng_asoee_2024.domain.PharmacudicalProduct;
+import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.domain.PrescriptionLine;
 import com.example.software_eng_asoee_2024.domain.Unit;
 import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.MemoryInitializer;
 import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
-import com.example.software_eng_asoee_2024.memorydao.PharmacudicalProductDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
 import com.example.software_eng_asoee_2024.view.PrescriptionExecution.Selection.PrescriptionSelectionViewStub;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Execution.PrescriptionExecutionPresenter;
@@ -33,7 +33,7 @@ public class PrescriptionExecutionPresenterTest {
         viewStub = new PrescriptionExecutionViewStub();
         presenter = new PrescriptionExecutionPresenter();
         presenter.setView(viewStub);
-        presenter.setPharmacudicalProdcutDAO(new PharmacudicalProductDAOMemory());
+        presenter.setPharmaceuticalProdcutDAO(new PharmaceuticalProductDAOMemory());
         presenter.setPrescriptionDAO(new PrescriptionDAOMemory());
         presenter.init(new PrescriptionDAOMemory().findAll().get(0), new Pharmacist());
     }
@@ -65,18 +65,18 @@ public class PrescriptionExecutionPresenterTest {
 
     @Test
     public void productFound(){
-        Assert.assertTrue(presenter.addProductToBuy(new PharmacudicalProductDAOMemory().find("Brufen Plus"), "5"));
+        Assert.assertTrue(presenter.addProductToBuy(new PharmaceuticalProductDAOMemory().find("Brufen Plus"), "5"));
     }
 
     @Test
     public void emptyQuantity(){
-        presenter.addProductToBuy(new PharmacudicalProductDAOMemory().find("Brufen Plus"), "");
+        presenter.addProductToBuy(new PharmaceuticalProductDAOMemory().find("Brufen Plus"), "");
         Assert.assertEquals(viewStub.getErrorMessage(), "Quantity cannot be empty.");
     }
 
     @Test
     public void invalidQuantityFormat(){
-        presenter.addProductToBuy(new PharmacudicalProductDAOMemory().find("Brufen Plus"), "asf532");
+        presenter.addProductToBuy(new PharmaceuticalProductDAOMemory().find("Brufen Plus"), "asf532");
         Assert.assertEquals(viewStub.getErrorMessage(), "Invalid quantity format.");
     }
 

@@ -7,7 +7,7 @@ import com.example.software_eng_asoee_2024.domain.Form;
 import com.example.software_eng_asoee_2024.domain.MedicineType;
 import com.example.software_eng_asoee_2024.domain.Patient;
 import com.example.software_eng_asoee_2024.domain.Pharmacist;
-import com.example.software_eng_asoee_2024.domain.PharmacudicalProduct;
+import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.domain.Prescription;
 import com.example.software_eng_asoee_2024.domain.PrescriptionLine;
 import com.example.software_eng_asoee_2024.domain.Unit;
@@ -16,7 +16,7 @@ import com.example.software_eng_asoee_2024.memorydao.DoctorDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.MemoryInitializer;
 import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmacistDAOMemory;
-import com.example.software_eng_asoee_2024.memorydao.PharmacudicalProductDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
 
 import org.junit.Assert;
@@ -30,7 +30,7 @@ public class DAOTest {
     private PharmacistDAO pharmacistDAO;
     private PatientDAO patientDAO;
     private ActivaSubstanceDAO activeSubstanceDAO;
-    private PharmacudicalProductDAO productDAO;
+    private PharmaceuticalProductDAO productDAO;
     private PrescriptionDAO prescriptionDAO;
     private Prescription presc;
 
@@ -43,7 +43,7 @@ public class DAOTest {
         pharmacistDAO = new PharmacistDAOMemory();
         patientDAO = new PatientDAOMemory();
         activeSubstanceDAO = new ActiveSubstanceDAOMemory();
-        productDAO = new PharmacudicalProductDAOMemory();
+        productDAO = new PharmaceuticalProductDAOMemory();
         prescriptionDAO = new PrescriptionDAOMemory();
 
         presc = new Prescription("Whatever...", doctorDAO.find("m", "m"), patientDAO.find(123123123));
@@ -174,33 +174,33 @@ public class DAOTest {
     }
 
     /*
-    PharmacudicalProductDAO tests
+    PharmaceuticalProductDAO tests
      */
     @Test
-    public void findRegisteredPharmacudicalProduct(){
+    public void findRegisteredPharmaceuticalProduct(){
         Assert.assertNotNull(productDAO.find("Brufen Plus"));
     }
 
     @Test
-    public void findUnregisteredPharmacudicalProduct(){
+    public void findUnregisteredPharmaceuticalProduct(){
         Assert.assertNull(productDAO.find("Brufen Plus_FAKE"));
     }
 
     @Test
-    public void findAllPharmacudicalProducts(){
+    public void findAllPharmaceuticalProducts(){
         Assert.assertTrue(productDAO.findAll().contains(productDAO.find("Advil")));
     }
 
     @Test
-    public void savePharmacudicalProduct(){
+    public void savePharmaceuticalProduct(){
         ArrayList<ActiveSubstance> as = new ArrayList<ActiveSubstance>();
         as.add(activeSubstanceDAO.find("Paracetamol"));
-        productDAO.save(new PharmacudicalProduct("Product1", 600, Form.PILL, MedicineType.GENERIC, as, "8 pills in pack"));
+        productDAO.save(new PharmaceuticalProduct("Product1", 600, Form.PILL, MedicineType.GENERIC, as, "8 pills in pack"));
         Assert.assertNotNull(productDAO.find("Product1"));
     }
 
     @Test
-    public void deletePharmacudicalProduct(){
+    public void deletePharmaceuticalProduct(){
         productDAO.delete(productDAO.find("Product1"));
         Assert.assertNull(productDAO.find("Product1"));
     }

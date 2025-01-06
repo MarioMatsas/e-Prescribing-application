@@ -1,12 +1,12 @@
 package com.example.software_eng_asoee_2024.domain;/* DONE  *//* DONE */
 
 public class ProductQuantity {
-    private final PharmacudicalProduct product;
+    private final PharmaceuticalProduct product;
     private final Integer quantity;
 
-    public ProductQuantity(PharmacudicalProduct product, Integer quantity) {
+    public ProductQuantity(PharmaceuticalProduct product, Integer quantity) {
         if (product == null) {
-            throw new IllegalArgumentException("PharmacudicalProduct null error");
+            throw new IllegalArgumentException("PharmaceuticalProduct null error");
         }
         this.product = product;
         this.quantity = quantity;
@@ -16,7 +16,7 @@ public class ProductQuantity {
         return this.quantity;
     }
 
-    public PharmacudicalProduct getProduct() {
+    public PharmaceuticalProduct getProduct() {
         return this.product;
     }
 

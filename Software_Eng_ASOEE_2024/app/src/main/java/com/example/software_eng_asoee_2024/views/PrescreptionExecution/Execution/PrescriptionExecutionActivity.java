@@ -18,7 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
 import com.example.software_eng_asoee_2024.domain.Pharmacist;
-import com.example.software_eng_asoee_2024.domain.PharmacudicalProduct;
+import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.domain.Prescription;
 import com.example.software_eng_asoee_2024.domain.PrescriptionLine;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionPresenter;
@@ -97,7 +97,7 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
     }
     @Override
     public boolean addProduct(Prescription prescription, int index, boolean finalLine){
-        return viewModel.getPresenter().addProductToBuy((PharmacudicalProduct) productsSpinner.getSelectedItem(), quantity.getText().toString());
+        return viewModel.getPresenter().addProductToBuy((PharmaceuticalProduct) productsSpinner.getSelectedItem(), quantity.getText().toString());
     }
 
     @Override
@@ -110,9 +110,9 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
     }
 
     @Override
-    public void updateProductSpinner(List<PharmacudicalProduct> products) {
+    public void updateProductSpinner(List<PharmaceuticalProduct> products) {
         //currentPrescriptions = prescriptions;
-        ArrayAdapter<PharmacudicalProduct> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, products);
+        ArrayAdapter<PharmaceuticalProduct> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, products);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         productsSpinner.setAdapter(adapter);
 

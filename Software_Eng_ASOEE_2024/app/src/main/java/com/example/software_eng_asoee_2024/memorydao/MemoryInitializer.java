@@ -5,13 +5,13 @@ import com.example.software_eng_asoee_2024.dao.DoctorDAO;
 import com.example.software_eng_asoee_2024.dao.Initializer;
 import com.example.software_eng_asoee_2024.dao.PatientDAO;
 import com.example.software_eng_asoee_2024.dao.PharmacistDAO;
-import com.example.software_eng_asoee_2024.dao.PharmacudicalProductDAO;
+import com.example.software_eng_asoee_2024.dao.PharmaceuticalProductDAO;
 import com.example.software_eng_asoee_2024.dao.PrescriptionDAO;
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Doctor;
 import com.example.software_eng_asoee_2024.domain.Patient;
 import com.example.software_eng_asoee_2024.domain.Pharmacist;
-import com.example.software_eng_asoee_2024.domain.PharmacudicalProduct;
+import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.domain.Prescription;
 
 public class MemoryInitializer extends Initializer {
@@ -33,8 +33,8 @@ public class MemoryInitializer extends Initializer {
             getActiveSubstanceDAO().delete(activeSub);
         }
         // Delete products
-        for (PharmacudicalProduct product: getPharmacudicalProductDAO().findAll()){
-            getPharmacudicalProductDAO().delete(product);
+        for (PharmaceuticalProduct product: getPharmaceuticalProductDAO().findAll()){
+            getPharmaceuticalProductDAO().delete(product);
         }
         // Delete prescriptions
         for (Prescription prescription: getPrescriptionDAO().findAll()){
@@ -57,8 +57,8 @@ public class MemoryInitializer extends Initializer {
         return new ActiveSubstanceDAOMemory();
     }
 
-    public PharmacudicalProductDAO getPharmacudicalProductDAO(){
-        return new PharmacudicalProductDAOMemory();
+    public PharmaceuticalProductDAO getPharmaceuticalProductDAO(){
+        return new PharmaceuticalProductDAOMemory();
     }
 
     public PrescriptionDAO getPrescriptionDAO(){

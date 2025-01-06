@@ -13,7 +13,7 @@ public class ProductQuantityTest {
     public void init() {
         ArrayList<ActiveSubstance> as = new ArrayList<ActiveSubstance>();
         as.add(new ActiveSubstance("Paracetamol", 20d));
-        qnt = new ProductQuantity(new PharmacudicalProduct("name", 900, Form.PILL, MedicineType.GENERIC, as,"8 pills per pack"), 10);
+        qnt = new ProductQuantity(new PharmaceuticalProduct("name", 900, Form.PILL, MedicineType.GENERIC, as,"8 pills per pack"), 10);
     }
 
     @Test

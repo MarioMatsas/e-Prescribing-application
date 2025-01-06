@@ -4,9 +4,9 @@ import android.util.Log;
 
 import androidx.lifecycle.ViewModel;
 
-import com.example.software_eng_asoee_2024.domain.PharmacudicalProduct;
+import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
-import com.example.software_eng_asoee_2024.memorydao.PharmacudicalProductDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionPresenter;
 
@@ -16,7 +16,7 @@ public class PrescriptionExecutionViewModel extends ViewModel {
     public PrescriptionExecutionViewModel() {
         presenter = new PrescriptionExecutionPresenter();
         presenter.setPrescriptionDAO(new PrescriptionDAOMemory());
-        presenter.setPharmacudicalProdcutDAO(new PharmacudicalProductDAOMemory());
+        presenter.setPharmaceuticalProdcutDAO(new PharmaceuticalProductDAOMemory());
     }
 
     public PrescriptionExecutionPresenter getPresenter() {

@@ -1,6 +1,6 @@
 package com.example.software_eng_asoee_2024.view.PrescriptionExecution.Execution;
 
-import com.example.software_eng_asoee_2024.domain.PharmacudicalProduct;
+import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.domain.Prescription;
 import com.example.software_eng_asoee_2024.domain.PrescriptionLine;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Execution.PrescriptionExecutionView;
@@ -18,7 +18,7 @@ public class PrescriptionExecutionViewStub implements PrescriptionExecutionView 
 
     }
 
-    public void updateProductSpinner(List<PharmacudicalProduct> products){
+    public void updateProductSpinner(List<PharmaceuticalProduct> products){
         updateSpinnerMessage = String.valueOf(products.size());
     }
 
