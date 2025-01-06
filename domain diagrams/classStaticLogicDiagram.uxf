@@ -57,6 +57,7 @@ _+ getLastEmpid(): Integer {query}_
 - retailPrice : Integer
 - form : Form
 - type : MedicineType
+- activeSubstanceConcentrations : List&lt;Concentration&gt; {readOnly}
 --
 + getName() : String {query}
 + setName( name : String )
@@ -69,7 +70,7 @@ _+ getLastEmpid(): Integer {query}_
 + getCustomerParticiption() : Double {query}
 + getFinalPrice() : Integer {query}
 + getActiveSubstances() : List&lt;ActiveSubstance&gt; {query}
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>970</x><y>310</y><w>330</w><h>160</h></coordinates><panel_attributes>PrescriptionLine
++ getActiveSubstanceConcentrations() : List&lt;Concentration&gt; {query}</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>970</x><y>310</y><w>330</w><h>160</h></coordinates><panel_attributes>PrescriptionLine
 --
 - form: Form {readOnly}
 - concentration : Concentration {readOnly}

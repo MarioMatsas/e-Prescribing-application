@@ -9,22 +9,24 @@ public class PharmaceuticalProduct {
     private Form form;
     private MedicineType type;
     private List<ActiveSubstance> activeSubstances;
+    private List<Concentration> activeSubstanceConcentrations;
 
-    private String infortmation;
+    private String information;
 
     public PharmaceuticalProduct() {
     }
 
-    public PharmaceuticalProduct(String name, Integer retailPrice, Form form, MedicineType type, ArrayList<ActiveSubstance> activeSubs, String info) {
+    public PharmaceuticalProduct(String name, Integer retailPrice, Form form, MedicineType type, ArrayList<ActiveSubstance> activeSubs, List<Concentration> activeSubstanceConcentrations, String info) {
         this.name = name;
         this.retailPrice = retailPrice;
         this.form = form;
         this.type = type;
         this.activeSubstances = activeSubs;
-        this.infortmation = info;
+        this.activeSubstanceConcentrations = activeSubstanceConcentrations;
+        this.information = info;
     }
     public String getInformation() {
-        return this.infortmation;
+        return this.information;
     }
 
     public String getName() {
@@ -74,11 +76,15 @@ public class PharmaceuticalProduct {
         return (int) Math.round((getRetailPrice() * getCustomerParticipation()));
     }
 
+
     public List<ActiveSubstance> getActiveSubstances(){
         return activeSubstances;
     }
+    public List<Concentration> getActiveSubstanceConcentrations(){
+        return activeSubstanceConcentrations;
+    }
 
     public String toString(){
-        return name + " " + getFinalPrice()/100.0 + " " + infortmation;
+        return name + " " + getFinalPrice()/100.0 + " " + information;
     }
 }
