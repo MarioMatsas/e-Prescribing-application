@@ -29,6 +29,7 @@ public class PatientSearchingActivity extends AppCompatActivity implements Patie
     private PatientSearchingViewModel viewModel;
     private Button createPrescriptionButton;
     private EditText SSN;
+    private EditText diagnosis;
     private TextView errorMessage;
     private ImageView logo;
     private Doctor doctor;
@@ -52,6 +53,7 @@ public class PatientSearchingActivity extends AppCompatActivity implements Patie
 
         createPrescriptionButton = findViewById(R.id.create_prescr_btn);
         SSN = findViewById(R.id.find_patient);
+        diagnosis = findViewById(R.id.Diagnosis);
         errorMessage = findViewById(R.id.error_message_patient_search);
         logo = findViewById(R.id.eopyy_image_login);
 
@@ -79,11 +81,19 @@ public class PatientSearchingActivity extends AppCompatActivity implements Patie
 //    }
 
     public void navigateToCreation(){//with this, the presenter just checks if everything is okay, the control is in activity
+        if(diagnosis.getText().toString().isEmpty()){
+//                showError("Give Diagnosis First");
+            errorMessage.setText("Give Diagnosis First");
+            return;
+        }
+
         Patient res = viewModel.getPresenter().check_patient_login(SSN.getText().toString());
+//        String diag = (String) ((CharSequence) diagnosis);
         if (res != null){
             Intent intent = new Intent(this, PrescriptionCreationActivity.class);
             intent.putExtra("patient", res);
             intent.putExtra("doctor", doctor);
+            intent.putExtra("diagnosis", diagnosis.getText().toString());
             startActivity(intent);
         }
     }

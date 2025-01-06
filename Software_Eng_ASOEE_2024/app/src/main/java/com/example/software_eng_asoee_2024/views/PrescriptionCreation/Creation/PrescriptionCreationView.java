@@ -1,6 +1,9 @@
 package com.example.software_eng_asoee_2024.views.PrescriptionCreation.Creation;
 
+import com.example.software_eng_asoee_2024.domain.Prescription;
+
 public interface PrescriptionCreationView {
-//    void navigateToSignUpScreen();//todo
-//    void showError(String message);//todo
+    void showError(String message);
+    void addPrescriptionLine();
+    void finishCreation();
 }

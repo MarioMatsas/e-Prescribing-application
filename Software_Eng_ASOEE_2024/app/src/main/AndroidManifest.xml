@@ -33,11 +33,9 @@
         <activity
             android:name=".views.PrescriptionCreation.PatientSearching.PatientSearchingActivity"
             android:exported="true" />
-        <!--
         <activity
             android:name=".views.PrescriptionCreation.Creation.PrescriptionCreationActivity"
             android:exported="true" />
-        -->
     </application>
 
 </manifest>
