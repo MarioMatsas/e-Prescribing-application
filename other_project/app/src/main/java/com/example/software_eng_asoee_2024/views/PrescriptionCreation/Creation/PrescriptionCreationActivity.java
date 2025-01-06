@@ -115,8 +115,7 @@ public class PrescriptionCreationActivity extends AppCompatActivity implements P
         formSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Form selectedForm = formOptions[position]; // Get the selected Form enum value directly
-                switch (selectedForm) {
+                switch (formOptions[position]) {
                     case PILL:
                         concentrationUnit.setText(Unit.mg_per_disk.name());
                         updateText("Pills p.d", "Days");

@@ -4,7 +4,12 @@ import com.example.software_eng_asoee_2024.domain.Doctor;
 import com.example.software_eng_asoee_2024.domain.Pharmacist;
 import com.example.software_eng_asoee_2024.dao.DoctorDAO;
 import com.example.software_eng_asoee_2024.dao.PharmacistDAO;
-
+/**
+ *
+ *  A class used to handle data, via the use
+ *  of domain classes and DAO's, which is used
+ *  by the SignUpActivity in order to update the screen
+ */
 public class SignUpPresenter {
     private SignUpView view;
     private DoctorDAO doctorDAO;

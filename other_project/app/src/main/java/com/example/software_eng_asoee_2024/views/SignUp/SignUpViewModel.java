@@ -7,6 +7,12 @@ import androidx.lifecycle.ViewModel;
 import com.example.software_eng_asoee_2024.memorydao.DoctorDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmacistDAOMemory;
 
+/**
+ *
+ * Sets up the DAO's that the presenter will use.
+ * Is used by the activity to interact with the presenter
+ *
+ */
 public class SignUpViewModel extends ViewModel  {
     private SignUpPresenter presenter;
 

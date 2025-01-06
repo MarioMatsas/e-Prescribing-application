@@ -37,6 +37,9 @@
         <activity
             android:name=".views.PrescriptionCreation.Creation.PrescriptionCreationActivity"
             android:exported="true" />
+        <activity
+            android:name=".views.Report.ReportActivity"
+            android:exported="true" />
 
     </application>
 

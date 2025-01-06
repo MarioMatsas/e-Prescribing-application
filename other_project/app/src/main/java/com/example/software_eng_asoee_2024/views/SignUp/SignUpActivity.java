@@ -17,7 +17,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
 
-
+/**
+ *
+ *  A class used to handle all of the sign up screen's UI
+ *  and user interactions with the screen.
+ *
+ */
 public class SignUpActivity extends AppCompatActivity implements SignUpView {
     private SignUpViewModel viewModel;
     private Button signupButton;

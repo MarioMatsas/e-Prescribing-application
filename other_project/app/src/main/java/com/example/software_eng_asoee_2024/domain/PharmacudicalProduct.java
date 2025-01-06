@@ -9,7 +9,7 @@ public class PharmacudicalProduct {
     private Form form;
     private MedicineType type;
     private List<ActiveSubstance> activeSubstances;
-
+    private Concentration concentration;
     private String infortmation;
 
     public PharmacudicalProduct() {
@@ -21,7 +21,9 @@ public class PharmacudicalProduct {
         this.form = form;
         this.type = type;
         this.activeSubstances = activeSubs;
+        this.concentration = concentration;
         this.infortmation = info;
+        //, Concentration concentration
     }
     public String getInformation() {
         return this.infortmation;
@@ -77,6 +79,8 @@ public class PharmacudicalProduct {
     public List<ActiveSubstance> getActiveSubstances(){
         return activeSubstances;
     }
+
+    //public Concentration getConcentration() { return concentration; }
 
     public String toString(){
         return name + " " + getFinalPrice()/100.0 + " " + infortmation;

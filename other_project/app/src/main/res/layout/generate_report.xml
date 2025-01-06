@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/generate_report_id"
+    android:background="@drawable/login_page_background_colour"
+    tools:context=".views.Report.ReportActivity">
+
+    <ImageView
+        android:id="@+id/eopyy_image_login"
+        android:layout_width="182dp"
+        android:layout_height="159dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.153"
+        app:srcCompat="@drawable/eopyy_logo_1" />
+
+    <Button
+        android:id="@+id/generate_report_btn"
+        android:layout_width="225dp"
+        android:layout_height="48dp"
+        android:background="@drawable/login_button_colour"
+        android:text="Generate report"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.887" />
+
+    <TextView
+        android:id="@+id/unlawful_docs_txt"
+        android:layout_width="180dp"
+        android:layout_height="51dp"
+        android:gravity="center"
+        android:text="Unlawful doctors"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.404" />
+
+    <Spinner
+        android:id="@+id/report_spinner"
+        android:layout_width="319dp"
+        android:layout_height="19dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.542" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,7 @@ import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmacistDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmacudicalProductDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.ReportObjectDAOMemory;
 
 import java.util.ArrayList;
 
@@ -58,12 +59,14 @@ public abstract class Initializer {
         line = new PrescriptionLine(Form.PILL, new Concentration(40.0, Unit.mg_per_g), "For 20 days, 1 pill in the morning", activeSubstanceDAO.find("Ibuprofen"));
         presc.addLine(line);
         prescriptionDAO.save(presc);
-
         presc = new Prescription("Mild headache", doctorDAO.find("m", "m"), patientDAO.find(123123123));
         line = new PrescriptionLine(Form.PILL, new Concentration(10.0, Unit.mg_per_g), "For 10 days, 2 pills per day", activeSubstanceDAO.find("Paracetamol"));
         presc.addLine(line);
         prescriptionDAO.save(presc);
 
+        ReportObjectDAO reportDAO = new ReportObjectDAOMemory();
+        reportDAO.addUn(new Doctor("Mike", "Bibby", "cool guy"), 3);
+        reportDAO.addUn(new Doctor("Kobe", "Bryant", "cooked"), 5);
     }
 
     public abstract DoctorDAO getDoctorDAO();

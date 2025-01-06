@@ -1,15 +1,21 @@
 package com.example.software_eng_asoee_2024.dao;
 
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
+import com.example.software_eng_asoee_2024.domain.Date;
+import com.example.software_eng_asoee_2024.domain.Doctor;
+import com.example.software_eng_asoee_2024.domain.Patient;
+import com.example.software_eng_asoee_2024.helperClasses.DoctorPatientSubstanceTruple;
 
+
+import java.util.HashMap;
 import java.util.List;
 
 public interface ReportObjectDAO {
-    void delete(ActiveSubstance entity);
+    void update(Doctor doctor, Patient patient, ActiveSubstance substance, Date date, Double amount);
 
-    List<ActiveSubstance> findAll();
+    void checkForUnlawful(DoctorPatientSubstanceTruple truple);
 
-    void save(ActiveSubstance entity);
+    HashMap<Doctor, Integer> getUnlawfulDoctors();
 
-    ActiveSubstance find(String name);
+    void addUn(Doctor doc, Integer i);
 }
