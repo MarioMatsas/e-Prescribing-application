@@ -17,6 +17,7 @@ public class PharmaceuticalProduct {
     }
 
     public PharmaceuticalProduct(String name, Integer retailPrice, Form form, MedicineType type, ArrayList<ActiveSubstance> activeSubs, List<Concentration> activeSubstanceConcentrations, String info) {
+        if(activeSubs.size() != activeSubstanceConcentrations.size()) throw new IllegalArgumentException("Active Substances and Concentrations must correspond");
         this.name = name;
         this.retailPrice = retailPrice;
         this.form = form;

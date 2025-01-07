@@ -1,4 +1,4 @@
-package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Creation;
+package com.example.software_eng_asoee_2024.views.NOHCS;
 
 import android.util.Log;
 
@@ -6,15 +6,15 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 
-public class ActiveSubstanceCreationViewModel extends ViewModel {
-    private ActiveSubstanceCreationPresenter presenter;
+public class NOHCSSelectionViewModel extends ViewModel {
+    private NOHCSSelectionPresenter presenter;
 
-    public ActiveSubstanceCreationViewModel(){
-        presenter = new ActiveSubstanceCreationPresenter();
+    public NOHCSSelectionViewModel(){
+        presenter = new NOHCSSelectionPresenter();
         presenter.setActiveSubstanceDAO(new ActiveSubstanceDAOMemory());
     }
 
-    public ActiveSubstanceCreationPresenter getPresenter() {
+    public NOHCSSelectionPresenter getPresenter() {
         return presenter;
     }
 

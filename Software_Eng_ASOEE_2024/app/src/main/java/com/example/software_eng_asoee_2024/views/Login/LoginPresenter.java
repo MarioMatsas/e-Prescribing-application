@@ -2,14 +2,17 @@ package com.example.software_eng_asoee_2024.views.Login;
 
 
 import com.example.software_eng_asoee_2024.domain.Doctor;
+import com.example.software_eng_asoee_2024.domain.NOHCS_Employee;
 import com.example.software_eng_asoee_2024.domain.Pharmacist;
 import com.example.software_eng_asoee_2024.dao.DoctorDAO;
 import com.example.software_eng_asoee_2024.dao.PharmacistDAO;
+import com.example.software_eng_asoee_2024.dao.NOHCSEmployeeDAO;
 
 public class LoginPresenter {
     private LoginView view;
     private DoctorDAO doctorDAO;
     private PharmacistDAO pharmacistDAO;
+    private NOHCSEmployeeDAO NOHCSEmployeeDAO;
 
     public LoginView getView() {
         return view;
@@ -21,6 +24,9 @@ public class LoginPresenter {
 
     public void setDoctorDAO(DoctorDAO doctorDAO) {
         this.doctorDAO = doctorDAO;
+    }
+    public void setNOHCSEmployeeDAO(NOHCSEmployeeDAO NOHCSEmployeeDAO) {
+        this.NOHCSEmployeeDAO = NOHCSEmployeeDAO;
     }
 
     public void setPharmacistDAO(PharmacistDAO pharmacistDAO) {
@@ -41,6 +47,11 @@ public class LoginPresenter {
         Pharmacist ph = pharmacistDAO.find(username, password);
         if (ph != null) {
             view.navigateToPharmacistScreen(ph);
+            return;
+        }
+        NOHCS_Employee emp = NOHCSEmployeeDAO.find(username, password);
+        if (emp != null) {
+            view.navigateToNOHCSScreen(emp);
             return;
         }
         view.showError("User not found.");

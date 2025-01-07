@@ -17,8 +17,10 @@ import android.widget.TextView;
 import com.example.software_eng_asoee_2024.R;
 import com.example.software_eng_asoee_2024.dao.Initializer;
 import com.example.software_eng_asoee_2024.domain.Doctor;
+import com.example.software_eng_asoee_2024.domain.NOHCS_Employee;
 import com.example.software_eng_asoee_2024.domain.Pharmacist;
 import com.example.software_eng_asoee_2024.memorydao.MemoryInitializer;
+import com.example.software_eng_asoee_2024.views.NOHCS.NOHCSSelectionActivity;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionActivity;
 import com.example.software_eng_asoee_2024.views.PrescriptionCreation.PatientSearching.PatientSearchingActivity;
 import com.example.software_eng_asoee_2024.views.SignUp.SignUpActivity;
@@ -92,6 +94,13 @@ public class MainActivity extends AppCompatActivity implements LoginView{
     public void navigateToPharmacistScreen(Pharmacist pharmacist) {
         Intent intent = new Intent(this, PrescriptionSelectionActivity.class);
         intent.putExtra("pharmacist", pharmacist);
+        startActivity(intent);
+    }
+
+    @Override
+    public void navigateToNOHCSScreen(NOHCS_Employee employee) {
+        Intent intent = new Intent(this, NOHCSSelectionActivity.class);
+        intent.putExtra("employee", employee);
         startActivity(intent);
     }
 

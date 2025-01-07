@@ -1,6 +1,8 @@
 package com.example.software_eng_asoee_2024.domain;/* DONE  */
 
-public class NOHCS_Employee extends Person {
+import java.io.Serializable;
+
+public class NOHCS_Employee extends Person implements Serializable {
 
     private static Integer LastEmpId = 0;
     private final Integer empId;

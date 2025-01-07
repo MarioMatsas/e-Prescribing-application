@@ -1,21 +1,18 @@
-package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Creation;
+package com.example.software_eng_asoee_2024.views.NOHCS;
 
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
-import com.example.software_eng_asoee_2024.domain.Doctor;
-import com.example.software_eng_asoee_2024.domain.Patient;
-import com.example.software_eng_asoee_2024.domain.Prescription;
 import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 
 
-public class ActiveSubstanceCreationPresenter {
-    private ActiveSubstanceCreationView view;
+public class NOHCSSelectionPresenter {
+    private NOHCSSelectionView view;
     private ActiveSubstanceDAOMemory activeSubstanceDAO;//to add the new ActiveSubstance
 
-    public ActiveSubstanceCreationView getView() {
+    public NOHCSSelectionView getView() {
         return view;
     }
 
-    public void setView(ActiveSubstanceCreationView view) {
+    public void setView(NOHCSSelectionView view) {
         this.view = view;
     }
 

@@ -1,33 +1,20 @@
-package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Creation;
+package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Choice;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
-import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
-import com.example.software_eng_asoee_2024.domain.Doctor;
-import com.example.software_eng_asoee_2024.domain.Form;
-import com.example.software_eng_asoee_2024.domain.Patient;
-import com.example.software_eng_asoee_2024.domain.Unit;
-import com.example.software_eng_asoee_2024.views.Login.MainActivity;
 
-public class ActiveSubstanceCreationActivity extends AppCompatActivity implements ActiveSubstanceCreationView {
+public class ActiveSubstanceChoiceActivity extends AppCompatActivity implements ActiveSubstanceChoiceView {
 
-    private ActiveSubstanceCreationViewModel viewModel;
+    private ActiveSubstanceChoiceViewModel viewModel;
     private Button addActiveSubstanceBtn;
     private EditText ActiveSubstanceName;
     private EditText ExpectedQuantityPerMonth;
@@ -45,8 +32,8 @@ public class ActiveSubstanceCreationActivity extends AppCompatActivity implement
 //            return insets;
 //        });  TODO: WTF is this ^^^^ ?
 
-        viewModel = new ViewModelProvider(this).get(ActiveSubstanceCreationViewModel.class);
-        ActiveSubstanceCreationPresenter presenter = viewModel.getPresenter();
+        viewModel = new ViewModelProvider(this).get(ActiveSubstanceChoiceViewModel.class);
+        ActiveSubstanceChoicePresenter presenter = viewModel.getPresenter();
         presenter.setView(this);
 
         addActiveSubstanceBtn = findViewById(R.id.create_active_substance_btn);

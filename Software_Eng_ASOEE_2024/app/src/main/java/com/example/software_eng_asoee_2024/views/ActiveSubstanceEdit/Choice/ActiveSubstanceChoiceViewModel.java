@@ -1,4 +1,4 @@
-package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Creation;
+package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Choice;
 
 import android.util.Log;
 
@@ -6,15 +6,15 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 
-public class ActiveSubstanceCreationViewModel extends ViewModel {
-    private ActiveSubstanceCreationPresenter presenter;
+public class ActiveSubstanceChoiceViewModel extends ViewModel {
+    private ActiveSubstanceChoicePresenter presenter;
 
-    public ActiveSubstanceCreationViewModel(){
-        presenter = new ActiveSubstanceCreationPresenter();
+    public ActiveSubstanceChoiceViewModel(){
+        presenter = new ActiveSubstanceChoicePresenter();
         presenter.setActiveSubstanceDAO(new ActiveSubstanceDAOMemory());
     }
 
-    public ActiveSubstanceCreationPresenter getPresenter() {
+    public ActiveSubstanceChoicePresenter getPresenter() {
         return presenter;
     }
 

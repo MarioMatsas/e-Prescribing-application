@@ -4,6 +4,7 @@ import android.util.Log;
 
 import androidx.lifecycle.ViewModel;
 
+import com.example.software_eng_asoee_2024.memorydao.NOHCSEmployeeDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmacistDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.DoctorDAOMemory;
 
@@ -14,6 +15,7 @@ public class LoginViewModel extends ViewModel {
         presenter = new LoginPresenter();
         presenter.setDoctorDAO(new DoctorDAOMemory());
         presenter.setPharmacistDAO(new PharmacistDAOMemory());
+        presenter.setNOHCSEmployeeDAO(new NOHCSEmployeeDAOMemory());
 
     }
 
