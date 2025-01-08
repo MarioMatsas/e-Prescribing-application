@@ -11,16 +11,9 @@ public class ActiveSubstanceChoiceViewModel extends ViewModel {
 
     public ActiveSubstanceChoiceViewModel(){
         presenter = new ActiveSubstanceChoicePresenter();
-        presenter.setActiveSubstanceDAO(new ActiveSubstanceDAOMemory());
     }
 
     public ActiveSubstanceChoicePresenter getPresenter() {
         return presenter;
-    }
-
-    @Override
-    protected void onCleared() {
-        super.onCleared();
-        Log.d("ActiveSubstanceCreation", "On Cleared");
     }
 }

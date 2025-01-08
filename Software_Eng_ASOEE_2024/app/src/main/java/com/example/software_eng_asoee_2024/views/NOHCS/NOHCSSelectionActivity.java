@@ -6,6 +6,9 @@ import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
@@ -23,6 +26,11 @@ public class NOHCSSelectionActivity extends AppCompatActivity implements NOHCSSe
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.nohcs_select);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.nohcs_select), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         viewModel = new ViewModelProvider(this).get(NOHCSSelectionViewModel.class);
         NOHCSSelectionPresenter presenter = viewModel.getPresenter();

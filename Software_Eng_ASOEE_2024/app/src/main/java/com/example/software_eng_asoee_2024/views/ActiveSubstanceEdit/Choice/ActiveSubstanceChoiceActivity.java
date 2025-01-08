@@ -1,73 +1,66 @@
 package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Choice;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
+import com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Creation.ActiveSubstanceCreationActivity;
 
 public class ActiveSubstanceChoiceActivity extends AppCompatActivity implements ActiveSubstanceChoiceView {
 
     private ActiveSubstanceChoiceViewModel viewModel;
-    private Button addActiveSubstanceBtn;
-    private EditText ActiveSubstanceName;
-    private EditText ExpectedQuantityPerMonth;
-    private TextView errorMessage;
-    private ImageView logo;
+    private Button addActiveSubstanceChoiceBtn;
+    private Button changeActiveSubstanceChoiceBtn;
+    private Button deleteActiveSubstanceChoiceBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.create_active_substance);
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.creating_prescription), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });  TODO: WTF is this ^^^^ ?
+        setContentView(R.layout.active_substance_choices);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.active_substance_choices), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         viewModel = new ViewModelProvider(this).get(ActiveSubstanceChoiceViewModel.class);
         ActiveSubstanceChoicePresenter presenter = viewModel.getPresenter();
         presenter.setView(this);
 
-        addActiveSubstanceBtn = findViewById(R.id.create_active_substance_btn);
-        ActiveSubstanceName = findViewById(R.id.select_active_substance_name);
-        ExpectedQuantityPerMonth = findViewById(R.id.select_active_substance_eqpm);
-        errorMessage = findViewById(R.id.error_text_cas);
-        logo = findViewById(R.id.eopyy_image_login);
-
+        addActiveSubstanceChoiceBtn = findViewById(R.id.new_active_substance_btn);
+        changeActiveSubstanceChoiceBtn = findViewById(R.id.edit_active_substance_btn);
+        deleteActiveSubstanceChoiceBtn = findViewById(R.id.delete_active_substance_btn);
 
         //defining the behavior of the two buttons
-        addActiveSubstanceBtn.setOnClickListener(v -> addActiveSubstance());
+        addActiveSubstanceChoiceBtn.setOnClickListener(v -> navigateToAddActiveSubstance());
+        changeActiveSubstanceChoiceBtn.setOnClickListener(v -> navigateToEditActiveSubstance());
+        deleteActiveSubstanceChoiceBtn.setOnClickListener(v -> navigateToDeleteActiveSubstance());
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-
-        // Reset error message
-        errorMessage.setText(""); // Hides the error message
+    public void navigateToAddActiveSubstance() {
+        Intent intent = new Intent(this, ActiveSubstanceCreationActivity.class);
+        startActivity(intent);
     }
 
     @Override
-    public void showError(String message) {
-        errorMessage.setText(message);
+    public void navigateToEditActiveSubstance() {
+        Intent intent = new Intent(this, ActiveSubstanceEditActivity.class);
+        startActivity(intent);
     }
 
     @Override
-    public void addActiveSubstance() {
-        viewModel.getPresenter().createActiveSubstance(ActiveSubstanceName.toString(), Double.parseDouble(ExpectedQuantityPerMonth.toString()));
+    public void navigateToDeleteActiveSubstance() {
+        Intent intent = new Intent(this, ActiveSubstanceDeleteActivity.class);
+        startActivity(intent);
     }
-
-    @Override
-    public void finishCreation() {
-        return;
-    }
-
 }

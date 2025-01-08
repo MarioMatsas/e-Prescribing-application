@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/creating_prescription"
+    android:id="@+id/active_substance_choices"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_page_background_colour"
-    tools:context=".views.PrescriptionCreation.Creation.PrescriptionCreationActivity">
+    tools:context=".views.ActiveSubstanceEdit.Choice.ActiveSubstanceChoiceActivity">
 
     <ImageView
         android:id="@+id/eopyy_image_login"
@@ -57,6 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_active_substance_btn"
         app:layout_constraintVertical_bias="0.05" />
+
     <Button
         android:id="@+id/delete_active_substance_btn"
         android:layout_width="wrap_content"
@@ -64,8 +65,8 @@
         android:text="Delete Active Substance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_active_substance_btn"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.048" />
 </androidx.constraintlayout.widget.ConstraintLayout>

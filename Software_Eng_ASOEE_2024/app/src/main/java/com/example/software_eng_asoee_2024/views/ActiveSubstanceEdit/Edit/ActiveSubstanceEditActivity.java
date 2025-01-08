@@ -1,4 +1,4 @@
-package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Creation;
+package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Edit;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -14,9 +14,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
 
-public class ActiveSubstanceCreationActivity extends AppCompatActivity implements ActiveSubstanceCreationView {
+public class ActiveSubstanceEditActivity extends AppCompatActivity implements ActiveSubstanceEditView {
 
-    private ActiveSubstanceCreationViewModel viewModel;
+    private ActiveSubstanceEditViewModel viewModel;
     private Button addActiveSubstanceBtn;
     private EditText ActiveSubstanceName;
     private EditText ExpectedQuantityPerMonth;
@@ -33,8 +33,8 @@ public class ActiveSubstanceCreationActivity extends AppCompatActivity implement
             return insets;
         });
 
-        viewModel = new ViewModelProvider(this).get(ActiveSubstanceCreationViewModel.class);
-        ActiveSubstanceCreationPresenter presenter = viewModel.getPresenter();
+        viewModel = new ViewModelProvider(this).get(ActiveSubstanceEditViewModel.class);
+        ActiveSubstanceEditPresenter presenter = viewModel.getPresenter();
         presenter.setView(this);
 
         addActiveSubstanceBtn = findViewById(R.id.create_active_substance_btn);

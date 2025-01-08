@@ -13,10 +13,6 @@
         android:theme="@style/Theme.Software_Eng_ASOEE_2024"
         tools:targetApi="31">
         <activity
-            android:name=".views.ActiveSubstanceEdit.ActiveSubstanceCreate"
-            android:exported="false"
-            android:theme="@style/Theme.Software_Eng_ASOEE_2024" />
-        <activity
             android:name=".views.Login.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -39,6 +35,30 @@
             android:exported="true" />
         <activity
             android:name=".views.PrescriptionCreation.Creation.PrescriptionCreationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.NOHCS.NOHCSSelectionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.ActiveSubstanceEdit.Choice.ActiveSubstanceChoiceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.ActiveSubstanceEdit.Creation.ActiveSubstanceCreationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.ActiveSubstanceEdit.Edit.ActiveSubstanceEditActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.ActiveSubstanceEdit.Deletion.ActiveSubstanceDeleteActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.PharmaceuticalProductEdit.Creation.PharmaceuticalProductCreationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.PharmaceuticalProductEdit.Edit.PharmaceuticalProductEditActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.PharmaceuticalProductEdit.Deletion.PharmaceuticalProductDeleteActivity"
             android:exported="true" />
     </application>
 

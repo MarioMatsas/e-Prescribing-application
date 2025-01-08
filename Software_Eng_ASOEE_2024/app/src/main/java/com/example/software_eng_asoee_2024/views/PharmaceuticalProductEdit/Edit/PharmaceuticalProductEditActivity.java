@@ -1,4 +1,4 @@
-package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Creation;
+package com.example.software_eng_asoee_2024.views.PharmaceuticalProductEdit.Edit;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -14,11 +14,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
 
-public class ActiveSubstanceCreationActivity extends AppCompatActivity implements ActiveSubstanceCreationView {
+public class PharmaceuticalProductEditActivity extends AppCompatActivity implements PharmaceuticalProductEditView {
 
-    private ActiveSubstanceCreationViewModel viewModel;
-    private Button addActiveSubstanceBtn;
-    private EditText ActiveSubstanceName;
+    private PharmaceuticalProductEditViewModel viewModel;
+    private Button addPharmaceuticalProductBtn;
+    private EditText PharmaceuticalProductName;
     private EditText ExpectedQuantityPerMonth;
     private TextView errorMessage;
 
@@ -33,18 +33,18 @@ public class ActiveSubstanceCreationActivity extends AppCompatActivity implement
             return insets;
         });
 
-        viewModel = new ViewModelProvider(this).get(ActiveSubstanceCreationViewModel.class);
-        ActiveSubstanceCreationPresenter presenter = viewModel.getPresenter();
+        viewModel = new ViewModelProvider(this).get(PharmaceuticalProductEditViewModel.class);
+        PharmaceuticalProductEditPresenter presenter = viewModel.getPresenter();
         presenter.setView(this);
 
-        addActiveSubstanceBtn = findViewById(R.id.create_active_substance_btn);
-        ActiveSubstanceName = findViewById(R.id.select_active_substance_name);
+        addPharmaceuticalProductBtn = findViewById(R.id.create_active_substance_btn);
+        PharmaceuticalProductName = findViewById(R.id.select_active_substance_name);
         ExpectedQuantityPerMonth = findViewById(R.id.select_active_substance_eqpm);
         errorMessage = findViewById(R.id.error_text_cas);
 
 
         //defining the behavior of the two buttons
-        addActiveSubstanceBtn.setOnClickListener(v -> addActiveSubstance());
+        addPharmaceuticalProductBtn.setOnClickListener(v -> addPharmaceuticalProduct());
     }
 
     @Override
@@ -61,8 +61,8 @@ public class ActiveSubstanceCreationActivity extends AppCompatActivity implement
     }
 
     @Override
-    public void addActiveSubstance() {
-        viewModel.getPresenter().createActiveSubstance(ActiveSubstanceName.toString(), Double.parseDouble(ExpectedQuantityPerMonth.toString()));
+    public void addPharmaceuticalProduct() {
+        viewModel.getPresenter().createPharmaceuticalProduct(PharmaceuticalProductName.toString(), Double.parseDouble(ExpectedQuantityPerMonth.toString()));
     }
 
     @Override
