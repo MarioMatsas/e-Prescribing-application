@@ -1,5 +1,8 @@
 package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Deletion;
 
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 
@@ -23,5 +26,9 @@ public class ActiveSubstanceDeletePresenter {
 
     public void setActiveSubstanceDAO(ActiveSubstanceDAOMemory actSubsDAO) {
         this.activeSubstanceDAO = actSubsDAO;
+    }
+
+    public void createActiveSubstanceSpinner() {
+        view.createActiveSubstanceSpinner(activeSubstanceDAO.findAll());
     }
 }

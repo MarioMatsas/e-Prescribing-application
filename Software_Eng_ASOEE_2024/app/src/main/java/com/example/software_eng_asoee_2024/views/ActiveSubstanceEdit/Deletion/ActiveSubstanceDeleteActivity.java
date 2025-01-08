@@ -1,8 +1,10 @@
 package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Deletion;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -13,14 +15,16 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
+import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
+import com.example.software_eng_asoee_2024.domain.Prescription;
+
+import java.util.List;
 
 public class ActiveSubstanceDeleteActivity extends AppCompatActivity implements ActiveSubstanceDeleteView {
 
     private ActiveSubstanceDeleteViewModel viewModel;
-    private Button addActiveSubstanceBtn;
-    private EditText ActiveSubstanceName;
-    private EditText ExpectedQuantityPerMonth;
-    private TextView errorMessage;
+    private Button deleteActiveSubstanceBtn;
+    private Spinner ActiveSubstanceSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,38 +41,19 @@ public class ActiveSubstanceDeleteActivity extends AppCompatActivity implements 
         ActiveSubstanceDeletePresenter presenter = viewModel.getPresenter();
         presenter.setView(this);
 
-        addActiveSubstanceBtn = findViewById(R.id.create_active_substance_btn);
-        ActiveSubstanceName = findViewById(R.id.select_active_substance_name);
-        ExpectedQuantityPerMonth = findViewById(R.id.select_active_substance_eqpm);
-        errorMessage = findViewById(R.id.error_text_cas);
+        ActiveSubstanceSpinner = findViewById(R.id.delete_active_substance_spinner);
 
-
-        //defining the behavior of the two buttons
-//        addActiveSubstanceBtn.setOnClickListener(v -> addActiveSubstance());
+        presenter.createActiveSubstanceSpinner();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
-        // Reset error message
-        errorMessage.setText(""); // Hides the error message
     }
 
-    @Override
-    public void showError(String message) {
-        errorMessage.setText(message);
+    public void createActiveSubstanceSpinner(List<ActiveSubstance> activeSubstances) {
+        ArrayAdapter<ActiveSubstance> adapter = new ArrayAdapter<ActiveSubstance>(this, android.R.layout.simple_spinner_item, activeSubstances);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        ActiveSubstanceSpinner.setAdapter(adapter);
     }
-
-    //    @Override
-//    public void addActiveSubstance() {
-//        viewModel.getPresenter().createActiveSubstance(ActiveSubstanceName.toString(), Double.parseDouble(ExpectedQuantityPerMonth.toString()));
-//    }
-//
-//    @Override
-//    public void finishCreation() {
-//        // TODO
-//        return;
-//    }
-
 }
