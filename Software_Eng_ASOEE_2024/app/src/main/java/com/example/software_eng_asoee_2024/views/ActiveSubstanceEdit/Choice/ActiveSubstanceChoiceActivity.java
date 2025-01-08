@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
 import com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Creation.ActiveSubstanceCreationActivity;
+import com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Edit.ActiveSubstanceEditActivity;
+import com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Deletion.ActiveSubstanceDeleteActivity;
 
 public class ActiveSubstanceChoiceActivity extends AppCompatActivity implements ActiveSubstanceChoiceView {
 

@@ -4,6 +4,6 @@ import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 
 public interface PharmaceuticalProductDeleteView {
     void showError(String message);
-    void deletePharmaceuticalProduct(PharmaceuticalProduct as);
-    void finishDeletion();
+//    void deletePharmaceuticalProduct(PharmaceuticalProduct as);
+//    void finishDeletion();
 }

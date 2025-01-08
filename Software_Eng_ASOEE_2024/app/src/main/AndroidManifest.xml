@@ -52,6 +52,9 @@
             android:name=".views.ActiveSubstanceEdit.Deletion.ActiveSubstanceDeleteActivity"
             android:exported="true" />
         <activity
+            android:name=".views.PharmaceuticalProductEdit.Choice.PharmaceuticalProductChoiceActivity"
+            android:exported="true" />
+        <activity
             android:name=".views.PharmaceuticalProductEdit.Creation.PharmaceuticalProductCreationActivity"
             android:exported="true" />
         <activity

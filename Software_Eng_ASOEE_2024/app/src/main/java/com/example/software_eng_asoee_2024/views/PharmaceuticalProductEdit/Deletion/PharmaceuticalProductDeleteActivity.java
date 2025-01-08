@@ -44,7 +44,7 @@ public class PharmaceuticalProductDeleteActivity extends AppCompatActivity imple
 
 
         //defining the behavior of the two buttons
-        addPharmaceuticalProductBtn.setOnClickListener(v -> addPharmaceuticalProduct());
+//        addPharmaceuticalProductBtn.setOnClickListener(v -> addPharmaceuticalProduct());
     }
 
     @Override
@@ -60,15 +60,15 @@ public class PharmaceuticalProductDeleteActivity extends AppCompatActivity imple
         errorMessage.setText(message);
     }
 
-    @Override
-    public void addPharmaceuticalProduct() {
-        viewModel.getPresenter().createPharmaceuticalProduct(PharmaceuticalProductName.toString(), Double.parseDouble(ExpectedQuantityPerMonth.toString()));
-    }
-
-    @Override
-    public void finishCreation() {
-        // TODO
-        return;
-    }
+//    @Override
+//    public void addPharmaceuticalProduct() {
+//        viewModel.getPresenter().createPharmaceuticalProduct(PharmaceuticalProductName.toString(), Double.parseDouble(ExpectedQuantityPerMonth.toString()));
+//    }
+//
+//    @Override
+//    public void finishCreation() {
+//        // TODO
+//        return;
+//    }
 
 }

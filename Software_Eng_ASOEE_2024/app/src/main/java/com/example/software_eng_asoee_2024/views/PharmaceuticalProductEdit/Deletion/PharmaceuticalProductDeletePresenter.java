@@ -17,7 +17,7 @@ public class PharmaceuticalProductDeletePresenter {
     }
 
     public boolean createPharmaceuticalProduct(String name, Double expectedQuantityPerMonth) {
-        this.activeSubstanceDAO.save(new PharmaceuticalProduct(name, expectedQuantityPerMonth));
+//        this.activeSubstanceDAO.save(new PharmaceuticalProduct(name, expectedQuantityPerMonth));
         return true;
     }
 

@@ -44,7 +44,7 @@ public class ActiveSubstanceDeleteActivity extends AppCompatActivity implements 
 
 
         //defining the behavior of the two buttons
-        addActiveSubstanceBtn.setOnClickListener(v -> addActiveSubstance());
+//        addActiveSubstanceBtn.setOnClickListener(v -> addActiveSubstance());
     }
 
     @Override
@@ -60,15 +60,15 @@ public class ActiveSubstanceDeleteActivity extends AppCompatActivity implements 
         errorMessage.setText(message);
     }
 
-    @Override
-    public void addActiveSubstance() {
-        viewModel.getPresenter().createActiveSubstance(ActiveSubstanceName.toString(), Double.parseDouble(ExpectedQuantityPerMonth.toString()));
-    }
-
-    @Override
-    public void finishCreation() {
-        // TODO
-        return;
-    }
+    //    @Override
+//    public void addActiveSubstance() {
+//        viewModel.getPresenter().createActiveSubstance(ActiveSubstanceName.toString(), Double.parseDouble(ExpectedQuantityPerMonth.toString()));
+//    }
+//
+//    @Override
+//    public void finishCreation() {
+//        // TODO
+//        return;
+//    }
 
 }
