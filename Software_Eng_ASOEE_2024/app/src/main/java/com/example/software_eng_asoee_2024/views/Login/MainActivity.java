@@ -23,6 +23,7 @@ import com.example.software_eng_asoee_2024.memorydao.MemoryInitializer;
 import com.example.software_eng_asoee_2024.views.NOHCS.NOHCSSelectionActivity;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionActivity;
 import com.example.software_eng_asoee_2024.views.PrescriptionCreation.PatientSearching.PatientSearchingActivity;
+import com.example.software_eng_asoee_2024.views.Report.ReportActivity;
 import com.example.software_eng_asoee_2024.views.SignUp.SignUpActivity;
 
 public class MainActivity extends AppCompatActivity implements LoginView{
@@ -83,11 +84,16 @@ public class MainActivity extends AppCompatActivity implements LoginView{
     }
 
     @Override
+    public void navigateToReportScreen(){
+        Intent intent = new Intent(this, ReportActivity.class);
+        startActivity(intent);
+    }
+
     public void navigateToDoctorScreen(Doctor doctor) {
         Intent intent = new Intent(this, PatientSearchingActivity.class);
-        intent.putExtra("doctor", doctor);
+        intent.putExtra("doctorName", doctor.getFirstName());
+        intent.putExtra("doctorSurname", doctor.getLastName());
         startActivity(intent);
-        //finish();
     }
 
     @Override

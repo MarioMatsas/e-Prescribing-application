@@ -22,20 +22,24 @@ public class PatientSearchingPresenter {
         this.patientDAO = patientDAO;
     }
 
-    public Patient check_patient_login(String inputSSN) {
-        try {
-            int ssn = Integer.parseInt(inputSSN);  // Try to parse the ssn
-            Patient patient = patientDAO.find(ssn);
-            if (patient != null) {
-                //view.navigateToCreationScreen(patient);
-                return patient;
-            }
-            view.showError("Patient NOT FOUND");
-        } catch (NumberFormatException e) {
-            view.showError("Invalid SSN format.");
-            //clearProductSpinner();
+    public void findPatient(String SSN, String diagnosis){
+        if (SSN.isEmpty() || diagnosis.isEmpty()) {  // Check if the SSN field is empty
+            view.showError("Fields can't be empty.");
+            return;
         }
-        return null;
+        try {
+            int ssn = Integer.parseInt(SSN);  // Try to parse the SSN
+            // Check if there is a user with the given SSN
+            Patient patient = patientDAO.find(ssn);
+            if (patient == null) {
+                view.showError("Patient not found.");
+                return;
+            }
+            view.navigateToCreation(ssn);
+        }
+        catch (NumberFormatException e) {
+            view.showError("Invalid SSN format.");
+        }
     }
 }
 

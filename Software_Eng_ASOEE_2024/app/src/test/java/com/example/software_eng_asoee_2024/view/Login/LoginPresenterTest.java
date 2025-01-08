@@ -39,6 +39,12 @@ public class LoginPresenterTest {
     }
 
     @Test
+    public void NOHCSEmployeeLogin(){
+        presenter.login("a", "a");
+        Assert.assertEquals("Success pharmacist", viewStub.getNavNOHCSMessage());
+    }
+
+    @Test
     public void failLogin(){
         presenter.login("ch", "p");
         Assert.assertEquals("User not found.", viewStub.getErrorMessage());

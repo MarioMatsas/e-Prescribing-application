@@ -20,7 +20,7 @@ import com.example.software_eng_asoee_2024.R;
 
 import com.example.software_eng_asoee_2024.domain.Doctor;
 import com.example.software_eng_asoee_2024.domain.Patient;
-import com.example.software_eng_asoee_2024.domain.Prescription;
+import com.example.software_eng_asoee_2024.domain.Pharmacist;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Execution.PrescriptionExecutionActivity;
 import com.example.software_eng_asoee_2024.views.PrescriptionCreation.Creation.PrescriptionCreationActivity;
 
@@ -33,6 +33,8 @@ public class PatientSearchingActivity extends AppCompatActivity implements Patie
     private TextView errorMessage;
     private ImageView logo;
     private Doctor doctor;
+    String doctorName;
+    String doctorSurname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,53 +51,39 @@ public class PatientSearchingActivity extends AppCompatActivity implements Patie
         PatientSearchingPresenter presenter = viewModel.getPresenter();
         presenter.setView(this);
 
-        doctor = (Doctor) getIntent().getSerializableExtra("doctor");
-
         createPrescriptionButton = findViewById(R.id.create_prescr_btn);
         SSN = findViewById(R.id.find_patient);
         diagnosis = findViewById(R.id.Diagnosis);
         errorMessage = findViewById(R.id.error_message_patient_search);
         logo = findViewById(R.id.eopyy_image_login);
+        createPrescriptionButton.setOnClickListener(v -> prepareForCreate());
 
-        createPrescriptionButton.setOnClickListener(v -> navigateToCreation());
+        Intent intent = getIntent();
+        doctorName = intent.getStringExtra("doctorName");
+        doctorSurname = intent.getStringExtra("doctorSurname");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         SSN.setText("");
+        diagnosis.setText("");
         errorMessage.setText(""); // Clear error message
     }
 
-//    @Override
-//    public void patient_login() {
-//        viewModel.getPresenter().patient_login(SSN.getText().toString());
-//    }
+    public void prepareForCreate(){
+        viewModel.getPresenter().findPatient(SSN.getText().toString(), diagnosis.getText().toString());
+    }
 
-//    @Override
-//    public void navigateToCreationScreen(Patient patient){//this is called in presenter, so the control is in presenter, we dont want that
-//        Intent intent = new Intent(this, PrescriptionCreationActivity.class);
-//        intent.putExtra("patient", patient);
-//        intent.putExtra("doctor", doctor); //also passing the doctor because the prescription needs the information of doctor
-//        startActivity(intent);
-//    }
-
-    public void navigateToCreation(){//with this, the presenter just checks if everything is okay, the control is in activity
-        if(diagnosis.getText().toString().isEmpty()){
-//                showError("Give Diagnosis First");
-            errorMessage.setText("Give Diagnosis First");
-            return;
-        }
-
-        Patient res = viewModel.getPresenter().check_patient_login(SSN.getText().toString());
-//        String diag = (String) ((CharSequence) diagnosis);
-        if (res != null){
-            Intent intent = new Intent(this, PrescriptionCreationActivity.class);
-            intent.putExtra("patient", res);
-            intent.putExtra("doctor", doctor);
-            intent.putExtra("diagnosis", diagnosis.getText().toString());
-            startActivity(intent);
-        }
+    @Override
+    public void navigateToCreation(Integer patientSSN){
+        Intent intent = new Intent(this, PrescriptionCreationActivity.class);
+        // Pass the patient ssn, and doctor credentials in order to use the same objects from the dao's
+        intent.putExtra("doctorName", doctorName);
+        intent.putExtra("doctorSurname", doctorSurname);
+        intent.putExtra("patientSSN", patientSSN);
+        intent.putExtra("diagnosis", diagnosis.getText().toString());
+        startActivity(intent);
     }
 
     @Override

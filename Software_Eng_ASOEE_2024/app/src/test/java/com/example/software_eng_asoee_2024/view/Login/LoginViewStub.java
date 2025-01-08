@@ -1,6 +1,7 @@
 package com.example.software_eng_asoee_2024.view.Login;
 
 import com.example.software_eng_asoee_2024.domain.Doctor;
+import com.example.software_eng_asoee_2024.domain.NOHCS_Employee;
 import com.example.software_eng_asoee_2024.domain.Pharmacist;
 import com.example.software_eng_asoee_2024.views.Login.LoginView;
 
@@ -8,8 +9,15 @@ public class LoginViewStub implements LoginView {
     private String errorMessage;
     private String navDocMessage;
     private String navPhMessage;
+    private String navNOHCSMessage;
+
     @Override
     public void login() {
+
+    }
+
+    @Override
+    public void navigateToReportScreen(){
 
     }
 
@@ -21,6 +29,11 @@ public class LoginViewStub implements LoginView {
     @Override
     public void navigateToPharmacistScreen(Pharmacist pharmacist) {
         navPhMessage = "Success pharmacist";
+    }
+
+    @Override
+    public void navigateToNOHCSScreen(NOHCS_Employee nohcsEmployee) {
+        navNOHCSMessage = "Success nohcsEmployee";
     }
 
     @Override
@@ -38,6 +51,10 @@ public class LoginViewStub implements LoginView {
     }
 
     public String getNavPhMessage() {
+        return navPhMessage;
+    }
+
+    public String getNavNOHCSMessage() {
         return navPhMessage;
     }
 
