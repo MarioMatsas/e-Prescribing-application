@@ -53,6 +53,7 @@ public class Prescription implements Serializable {
     public Patient getPatient() {
         return patient;
     }
+    public Doctor getDoctor() { return doctor; }
 
     public String getDiagnosis() {
         return diagnosis;

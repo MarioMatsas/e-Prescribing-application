@@ -3,23 +3,23 @@ package com.example.software_eng_asoee_2024.domain;/* DONE  */
 import java.io.Serializable;
 
 public class Concentration implements Serializable {
-    private Integer quantity;
+    private Double quantity;
     private Unit unit;
 
 
     public Concentration() {
     }
 
-    public Concentration(Integer quantity, Unit unit) {
+    public Concentration(Double quantity, Unit unit) {
         this.quantity = quantity;
         this.unit = unit;
     }
 
-    public Integer getQuantity() {
+    public Double getQuantity() {
         return this.quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 

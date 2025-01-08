@@ -25,7 +25,7 @@
         android:layout_width="260dp"
         android:layout_height="48dp"
         android:background="@drawable/login_outline_colour"
-        android:hint="Give Patient SSN"
+        android:hint="Patient SSN"
         android:inputType="text"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,18 +37,18 @@
 
     <EditText
         android:id="@+id/Diagnosis"
-        android:layout_width="305dp"
-        android:layout_height="50dp"
+        android:layout_width="260dp"
+        android:layout_height="48dp"
         android:background="@drawable/login_outline_colour"
-        android:hint="Give Diagnosis"
+        android:hint="Diagnosis"
         android:inputType="text"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.651" />
+        app:layout_constraintVertical_bias="0.641" />
 
     <TextView
         android:id="@+id/find_patient_txt"

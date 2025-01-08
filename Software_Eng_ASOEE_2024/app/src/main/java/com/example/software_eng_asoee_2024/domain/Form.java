@@ -5,6 +5,6 @@ import java.io.Serializable;
 public enum Form implements Serializable {
     PILL,
     CREAM,
-    DISK,
+    SPRAY,
     SYRUP
 }

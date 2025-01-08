@@ -23,31 +23,29 @@ import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Doctor;
 import com.example.software_eng_asoee_2024.domain.Form;
 import com.example.software_eng_asoee_2024.domain.Patient;
-import com.example.software_eng_asoee_2024.domain.Pharmacist;
 import com.example.software_eng_asoee_2024.domain.Prescription;
 import com.example.software_eng_asoee_2024.domain.Unit;
-import com.example.software_eng_asoee_2024.views.Login.MainActivity;
-import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Execution.PrescriptionExecutionPresenter;
-import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Execution.PrescriptionExecutionViewModel;
-import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionActivity;
-import com.example.software_eng_asoee_2024.views.PrescriptionCreation.Creation.PrescriptionCreationViewModel;
-import com.example.software_eng_asoee_2024.views.PrescriptionCreation.Creation.PrescriptionCreationView;
-import com.example.software_eng_asoee_2024.views.PrescriptionCreation.PatientSearching.PatientSearchingActivity;
-import com.example.software_eng_asoee_2024.views.SignUp.SignUpActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PrescriptionCreationActivity extends AppCompatActivity implements PrescriptionCreationView {
 
     private PrescriptionCreationViewModel viewModel;
     private Button addLineBtn;
     private Button createPrescriptionBtn;
-    private EditText conc_qty;
+    private EditText concentrationAmount;
+    private EditText concentrationUnit;
     private EditText instructions;
-//    private EditText diagnosis;
+    private EditText amountPerDay;
+    private EditText numberOfDay;
     private TextView errorMessage;
     private ImageView logo;
     private Spinner unitSpinner;
     private Spinner formSpinner;
     private Spinner activeSubstanceSpinner;
+    private Patient patient;
+    private Doctor doctor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,109 +64,110 @@ public class PrescriptionCreationActivity extends AppCompatActivity implements P
 
         createPrescriptionBtn = findViewById(R.id.create_prescr_btn);
         addLineBtn = findViewById(R.id.add_line_button);
-        conc_qty = findViewById(R.id.select_conc_qty);
-        instructions = findViewById(R.id.instructions);
-//        diagnosis = findViewById(R.id.Diagnosis);
+        concentrationAmount = findViewById(R.id.select_conc_qty);
+        concentrationUnit = findViewById(R.id.concentration_unit);
+        instructions = findViewById(R.id.extra_instructions);
+        numberOfDay = findViewById(R.id.number_of_days);
+        amountPerDay = findViewById(R.id.amount_per_day);
         errorMessage = findViewById(R.id.error_text_cre);
         logo = findViewById(R.id.eopyy_image_login);
-        unitSpinner = findViewById(R.id.select_unit_spinner);
         activeSubstanceSpinner = findViewById(R.id.select_ActiveSubstance_spinner);
         formSpinner = findViewById(R.id.select_form_spinner);
 
-        Doctor selectedDoctor = (Doctor) getIntent().getSerializableExtra("doctor");
-        Patient selectedPatient = (Patient) getIntent().getSerializableExtra("patient");
-        String givenDiagnosis = (String) getIntent().getSerializableExtra("diagnosis");
-        presenter.init(selectedDoctor, selectedPatient, givenDiagnosis);
+        createPrescriptionBtn.setOnClickListener(v -> createPrescription());
+
+        addLineBtn.setOnClickListener(v -> addLine());
+
+        Intent intent = getIntent();
+        String doctorName = intent.getStringExtra("doctorName");
+        String doctorSurname = intent.getStringExtra("doctorSurname");
+        Integer patientSSN = intent.getIntExtra("patientSSN", 0);
+        String diagnosis = intent.getStringExtra("diagnosis");
+
+        viewModel.getPresenter().init(doctorName, doctorSurname, patientSSN, diagnosis);
         //updateDisplayInfo(selectedPrescription, 0);
+        populateActiveSubSpinner();
+        setupFormSpinner();
+    }
 
-        //defining the behavior of the two buttons
-        addLineBtn.setOnClickListener(v -> addPrescriptionLine());
-        createPrescriptionBtn.setOnClickListener(v -> finishCreation());
+    @Override
+    public void populateActiveSubSpinner() {
+        // Fetch active substances from the presenter
+        List<ActiveSubstance> activeSubs = viewModel.getPresenter().getActiveSubs();
 
-        //initializing the spinners
-//        ArrayAdapter<Form> formArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, presenter.initFormSpinner());
-//        formArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        formSpinner.setAdapter(formArrayAdapter);
-        //defining the behavior of the spinners
+        // Set up the adapter to work directly with ActiveSubstance objects
+        ArrayAdapter<ActiveSubstance> activeSubAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, activeSubs);
+        activeSubAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        activeSubstanceSpinner.setAdapter(activeSubAdapter);
+    }
+
+    @Override
+    public void setupFormSpinner() {
+        // Get all enum values as an array of Form
+        Form[] formOptions = Form.values();
+
+        // Set up the adapter with the enum values themselves
+        ArrayAdapter<Form> formAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, formOptions);
+        formAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        formSpinner.setAdapter(formAdapter);
+
+        // Add listener for item selection
         formSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // This triggers even for the first/default selection
-                Form selectedItem = (Form) parent.getItemAtPosition(position);
-                //Toast.makeText(getApplicationContext(), "Selected: " + selectedItem, Toast.LENGTH_SHORT).show();
+                switch (formOptions[position]) {
+                    case PILL:
+                        concentrationUnit.setText(Unit.mg_per_disk.name());
+                        updateText("Pills p.d", "Days");
+                        break;
+                    case CREAM:
+                        concentrationUnit.setText(Unit.mg_per_g.name());
+                        updateText("Grams p.d", "Days");
+                        break;
+                    case SPRAY:
+                        concentrationUnit.setText(Unit.mg_per_dose.name());
+                        updateText("Doses p.d", "Days");
+                        break;
+                    case SYRUP:
+                        concentrationUnit.setText(Unit.mg_per_ml.name());
+                        updateText("mL p.d", "Days");
+                        break;
+                    default:
+                        break;
+                }
             }
-
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Not triggered unless the Spinner is cleared or reset
-            }
+            public void onNothingSelected(AdapterView<?> parent) { }
         });
-
-//        ArrayAdapter<Unit> unitArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, presenter.initUnitSpinner());
-//        unitArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        unitSpinner.setAdapter(unitArrayAdapter);
-        unitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // This triggers even for the first/default selection
-                Unit selectedItem = (Unit) parent.getItemAtPosition(position);
-                //Toast.makeText(getApplicationContext(), "Selected: " + selectedItem, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Not triggered unless the Spinner is cleared or reset
-            }
-        });
-
-//        ArrayAdapter<ActiveSubstance> actSubArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, presenter.initActiveSubstanceSpinner());
-//        actSubArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        activeSubstanceSpinner.setAdapter(actSubArrayAdapter);
-        activeSubstanceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // This triggers even for the first/default selection
-                ActiveSubstance selectedItem = (ActiveSubstance) parent.getItemAtPosition(position);
-                //Toast.makeText(getApplicationContext(), "Selected: " + selectedItem, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Not triggered unless the Spinner is cleared or reset
-            }
-        });
+    }
+    public void updateText(String amount, String days){
+        amountPerDay.setText("");
+        amountPerDay.setHint(amount);
+        numberOfDay.setText("");
+        numberOfDay.setHint(days);
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-//        unitSpinner.setAdapter(null);
-//        formSpinner.setAdapter(null);
-//        activeSubstanceSpinner.setAdapter(null);
-        //maybe i won't let the information to be lost when the activity pauses
-
-        // Reset error message
-        errorMessage.setText(""); // Hides the error message
-    }
-
-    @Override
-    public void addPrescriptionLine() {
-        boolean res = viewModel.getPresenter().
-                addPrescriptionLine((ActiveSubstance) activeSubstanceSpinner.getSelectedItem(), (Form) formSpinner.getSelectedItem(),
-                        (Unit) unitSpinner.getSelectedItem(), conc_qty.getText().toString(), instructions.getText().toString());
-    }
-
-    @Override
-    public void finishCreation() {
-        //todo
-        boolean invalid_prescr = viewModel.getPresenter().registerPrescription();//if empty then it's invalid
-        if(invalid_prescr){
-            errorMessage.setText("No line is registered yet");
-            return;
+    public void createPrescription(){
+        if (viewModel.getPresenter().createPrescription()){
+            finish();
         }
+    }
 
-        Intent intent = new Intent(this, MainActivity.class);//Do???: after creating the prescription we go to the the sign up screen
-        startActivity(intent);
+    @Override
+    public void addLine(){
+        viewModel.getPresenter().addPrescriptionline((ActiveSubstance) activeSubstanceSpinner.getSelectedItem(),
+                (Form) formSpinner.getSelectedItem(), concentrationAmount.getText().toString(), concentrationUnit.getText().toString(),
+                amountPerDay.getText().toString(), numberOfDay.getText().toString(), instructions.getText().toString());
+    }
+
+    @Override
+    public void clearFields(){
+        concentrationAmount.setText("");
+        amountPerDay.setText("");
+        numberOfDay.setText("");
+        instructions.setText("");
+        showError("");
     }
 
     @Override
