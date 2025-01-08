@@ -68,12 +68,10 @@ public abstract class Initializer {
         line = new PrescriptionLine(Form.PILL, new Concentration(40, Unit.mg_per_g), "For 20 days, 1 pill in the morning", activeSubstanceDAO.find("Ibuprofen"));
         presc.addLine(line);
         prescriptionDAO.save(presc);
-
         presc = new Prescription("Mild headache", doctorDAO.find("m", "m"), patientDAO.find(123123123));
         line = new PrescriptionLine(Form.PILL, new Concentration(10, Unit.mg_per_g), "For 10 days, 2 pills per day", activeSubstanceDAO.find("Paracetamol"));
         presc.addLine(line);
         prescriptionDAO.save(presc);
-
     }
 
     public abstract DoctorDAO getDoctorDAO();
