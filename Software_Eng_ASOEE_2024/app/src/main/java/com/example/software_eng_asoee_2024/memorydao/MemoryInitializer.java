@@ -46,6 +46,7 @@ public class MemoryInitializer extends Initializer {
         for (Prescription prescription: getPrescriptionDAO().findAll()){
             getPrescriptionDAO().delete(prescription);
         }
+        getReportDAO().clearData();
     }
     public DoctorDAO getDoctorDAO(){
         return new DoctorDAOMemory();
@@ -74,4 +75,5 @@ public class MemoryInitializer extends Initializer {
     public PrescriptionDAO getPrescriptionDAO(){
         return new PrescriptionDAOMemory();
     }
+    public ReportObjectDAOMemory getReportDAO() { return new ReportObjectDAOMemory(); }
 }
