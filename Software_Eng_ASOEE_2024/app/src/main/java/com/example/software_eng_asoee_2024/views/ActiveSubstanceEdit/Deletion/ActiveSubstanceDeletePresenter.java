@@ -19,9 +19,10 @@ public class ActiveSubstanceDeletePresenter {
         this.view = view;
     }
 
-    public void deleteActiveSubstance(ActiveSubstance ac) {
+    public boolean deleteActiveSubstance(ActiveSubstance ac) {
         this.activeSubstanceDAO.delete(ac);
         createActiveSubstanceSpinner();
+        return(this.activeSubstanceDAO.findAll().isEmpty());
     }
 
     public void setActiveSubstanceDAO(ActiveSubstanceDAOMemory actSubsDAO) {

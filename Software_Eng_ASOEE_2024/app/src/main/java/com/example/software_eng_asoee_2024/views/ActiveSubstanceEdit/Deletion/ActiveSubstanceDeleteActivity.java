@@ -81,12 +81,16 @@ public class ActiveSubstanceDeleteActivity extends AppCompatActivity implements 
                 selected = activeSubstances.get(position);
             }
             @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
     }
 
     public void deleteActiveSubstance(ActiveSubstance ac) {
-        viewModel.getPresenter().deleteActiveSubstance(ac);
+        if(selected == null) return;
+        if(viewModel.getPresenter().deleteActiveSubstance(ac)) {
+            name.setText("");
+            eqpm.setText("");
+        }
         out.setText("Done!");
     }
 }

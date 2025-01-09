@@ -3,6 +3,8 @@ package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Creation;
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 
+import java.util.Objects;
+
 
 public class ActiveSubstanceCreationPresenter {
     private ActiveSubstanceCreationView view;
@@ -16,9 +18,11 @@ public class ActiveSubstanceCreationPresenter {
         this.view = view;
     }
 
-    public boolean createActiveSubstance(String name, Double expectedQuantityPerMonth) {
-        this.activeSubstanceDAO.save(new ActiveSubstance(name, expectedQuantityPerMonth));
-        return true;
+    public void createActiveSubstance(ActiveSubstance ac) {
+        for(ActiveSubstance tempAc : activeSubstanceDAO.findAll()) {
+            if(Objects.equals(ac.getName(), tempAc.getName())) throw new IllegalArgumentException("Cant have two active substances with same name!");
+        }
+        this.activeSubstanceDAO.save(ac);
     }
 
     public void setActiveSubstanceDAO(ActiveSubstanceDAOMemory actSubsDAO) {

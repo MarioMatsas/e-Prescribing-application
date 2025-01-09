@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
+import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 
 public class ActiveSubstanceCreationActivity extends AppCompatActivity implements ActiveSubstanceCreationView {
 
@@ -20,7 +21,7 @@ public class ActiveSubstanceCreationActivity extends AppCompatActivity implement
     private Button addActiveSubstanceBtn;
     private EditText ActiveSubstanceName;
     private EditText ExpectedQuantityPerMonth;
-    private TextView errorMessage;
+    private TextView out;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class ActiveSubstanceCreationActivity extends AppCompatActivity implement
         addActiveSubstanceBtn = findViewById(R.id.create_active_substance_btn);
         ActiveSubstanceName = findViewById(R.id.select_active_substance_name);
         ExpectedQuantityPerMonth = findViewById(R.id.select_active_substance_eqpm);
-        errorMessage = findViewById(R.id.error_text_cas);
+        out = findViewById(R.id.error_text_cas);
 
 
         //defining the behavior of the two buttons
@@ -50,25 +51,20 @@ public class ActiveSubstanceCreationActivity extends AppCompatActivity implement
     @Override
     protected void onResume() {
         super.onResume();
-
-        // Reset error message
-        errorMessage.setText(""); // Hides the error message
-    }
-
-    @Override
-    public void showError(String message) {
-        errorMessage.setText(message);
     }
 
     @Override
     public void addActiveSubstance() {
-        viewModel.getPresenter().createActiveSubstance(ActiveSubstanceName.toString(), Double.parseDouble(ExpectedQuantityPerMonth.toString()));
-    }
+        try {
+            if (ActiveSubstanceName.getText().toString().isEmpty() || ExpectedQuantityPerMonth.getText().toString().isEmpty())
+                throw new IllegalArgumentException("Not all fields are filled in");
+            viewModel.getPresenter().createActiveSubstance(new ActiveSubstance(ActiveSubstanceName.getText().toString(), Double.parseDouble(ExpectedQuantityPerMonth.getText().toString())));
+            out.setText("Done!");
+        } catch (NumberFormatException e) {
+            out.setText("Expected Quantity Per Month should be a number");
+        } catch (Exception e) {
+            out.setText(e.getMessage());
 
-    @Override
-    public void finishCreation() {
-        // TODO
-        return;
+        }
     }
-
 }
