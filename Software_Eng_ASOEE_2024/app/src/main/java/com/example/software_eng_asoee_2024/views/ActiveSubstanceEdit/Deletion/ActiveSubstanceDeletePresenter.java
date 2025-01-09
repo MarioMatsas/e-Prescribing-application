@@ -19,9 +19,9 @@ public class ActiveSubstanceDeletePresenter {
         this.view = view;
     }
 
-    public boolean createActiveSubstance(String name, Double expectedQuantityPerMonth) {
-        this.activeSubstanceDAO.save(new ActiveSubstance(name, expectedQuantityPerMonth));
-        return true;
+    public void deleteActiveSubstance(ActiveSubstance ac) {
+        this.activeSubstanceDAO.delete(ac);
+        createActiveSubstanceSpinner();
     }
 
     public void setActiveSubstanceDAO(ActiveSubstanceDAOMemory actSubsDAO) {

@@ -1,5 +1,7 @@
 package com.example.software_eng_asoee_2024.domain;/* DONE  */
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class ActiveSubstance implements Serializable {
@@ -29,5 +31,10 @@ public class ActiveSubstance implements Serializable {
     public void setExpectedQuantityPerMonth(Double expectedQuantityPerMonth) {
         this.expectedQuantityPerMonth = expectedQuantityPerMonth;
     }
-    
+
+    @NonNull
+    @Override
+    public String toString() {
+        return getName() + " | " + getExpectedQuantityPerMonth();
+    }
 }

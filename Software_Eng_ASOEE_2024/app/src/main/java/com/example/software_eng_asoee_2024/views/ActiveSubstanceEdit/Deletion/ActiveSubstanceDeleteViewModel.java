@@ -21,6 +21,6 @@ public class ActiveSubstanceDeleteViewModel extends ViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
-        Log.d("ActiveSubstanceCreation", "On Cleared");
+        Log.d("ActiveSubstanceDeletion", "On Cleared");
     }
 }
