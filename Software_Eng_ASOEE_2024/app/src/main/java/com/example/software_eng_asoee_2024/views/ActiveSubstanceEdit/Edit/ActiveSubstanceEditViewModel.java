@@ -21,6 +21,6 @@ public class ActiveSubstanceEditViewModel extends ViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
-        Log.d("ActiveSubstanceCreation", "On Cleared");
+        Log.d("ActiveSubstanceEdit", "On Cleared");
     }
 }
