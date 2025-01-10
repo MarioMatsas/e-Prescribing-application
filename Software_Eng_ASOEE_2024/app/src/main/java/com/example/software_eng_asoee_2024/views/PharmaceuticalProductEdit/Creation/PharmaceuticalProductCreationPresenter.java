@@ -3,10 +3,12 @@ package com.example.software_eng_asoee_2024.views.PharmaceuticalProductEdit.Crea
 import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 
+import java.util.Objects;
+
 
 public class PharmaceuticalProductCreationPresenter {
     private PharmaceuticalProductCreationView view;
-    private PharmaceuticalProductDAOMemory activeSubstanceDAO;//to add the new PharmaceuticalProduct
+    private PharmaceuticalProductDAOMemory pharmaceuticalProductDAO;//to add the new PharmaceuticalProduct
 
     public PharmaceuticalProductCreationView getView() {
         return view;
@@ -16,12 +18,14 @@ public class PharmaceuticalProductCreationPresenter {
         this.view = view;
     }
 
-    public boolean createPharmaceuticalProduct(String name, Double expectedQuantityPerMonth) {
-//        this.activeSubstanceDAO.save(new PharmaceuticalProduct(name, expectedQuantityPerMonth));
-        return true;
+    public void createPharmaceuticalProduct(PharmaceuticalProduct ac) {
+        for(PharmaceuticalProduct tempAc : pharmaceuticalProductDAO.findAll()) {
+            if(Objects.equals(ac.getName(), tempAc.getName())) throw new IllegalArgumentException("Cant have two active substances with same name!");
+        }
+        this.pharmaceuticalProductDAO.save(ac);
     }
 
     public void setPharmaceuticalProductDAO(PharmaceuticalProductDAOMemory actSubsDAO) {
-        this.activeSubstanceDAO = actSubsDAO;
+        this.pharmaceuticalProductDAO = actSubsDAO;
     }
 }
