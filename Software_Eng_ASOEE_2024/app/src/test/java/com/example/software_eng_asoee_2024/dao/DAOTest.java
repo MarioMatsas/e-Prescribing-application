@@ -24,6 +24,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DAOTest {
     private DoctorDAO doctorDAO;
@@ -47,7 +48,7 @@ public class DAOTest {
         prescriptionDAO = new PrescriptionDAOMemory();
 
         presc = new Prescription("Whatever...", doctorDAO.find("m", "m"), patientDAO.find(123123123));
-        PrescriptionLine line = new PrescriptionLine(Form.PILL, new Concentration(15, Unit.mg_per_g), "For 5 days, 2 pills per day", activeSubstanceDAO.find("Paracetamol"));
+        PrescriptionLine line = new PrescriptionLine(Form.PILL, new Concentration(15.0, Unit.mg_per_g), "For 5 days, 2 pills per day", activeSubstanceDAO.find("Paracetamol"));
         presc.addLine(line);
     }
 
@@ -195,7 +196,9 @@ public class DAOTest {
     public void savePharmaceuticalProduct(){
         ArrayList<ActiveSubstance> as = new ArrayList<ActiveSubstance>();
         as.add(activeSubstanceDAO.find("Paracetamol"));
-        productDAO.save(new PharmaceuticalProduct("Product1", 600, Form.PILL, MedicineType.GENERIC, as, "8 pills in pack"));
+        List<Concentration> conc_list = new ArrayList<Concentration>();
+        conc_list.add(new Concentration(3.2, Unit.mg_per_disk));
+        productDAO.save(new PharmaceuticalProduct("Product1", 600, Form.PILL, MedicineType.GENERIC, as, conc_list,"8 pills in pack"));
         Assert.assertNotNull(productDAO.find("Product1"));
     }
 

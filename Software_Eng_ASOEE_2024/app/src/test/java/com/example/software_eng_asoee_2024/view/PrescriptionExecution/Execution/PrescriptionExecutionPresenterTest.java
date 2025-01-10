@@ -41,18 +41,18 @@ public class PrescriptionExecutionPresenterTest {
     @Test
     public void noProductsToShow(){
         ActiveSubstance as = new ActiveSubstance();
-        PrescriptionLine line = new PrescriptionLine(Form.PILL, new Concentration(10, Unit.mg_per_g), "For 10 days, 2 pills per day", as);
+        PrescriptionLine line = new PrescriptionLine(Form.PILL, new Concentration(10.0, Unit.mg_per_g), "For 10 days, 2 pills per day", as);
         presenter.showPrescriptionLineProducts(line);
         Assert.assertEquals(viewStub.getErrorMessage(), "No products found.");
 
-        line = new PrescriptionLine(Form.CREAM, new Concentration(10, Unit.mg_per_g), "For 10 days, 2 pills per day", as);
+        line = new PrescriptionLine(Form.CREAM, new Concentration(10.0, Unit.mg_per_g), "For 10 days, 2 pills per day", as);
         presenter.showPrescriptionLineProducts(line);
         Assert.assertEquals(viewStub.getErrorMessage(), "No products found.");
     }
 
     @Test
     public void productsToShow(){
-        PrescriptionLine line = new PrescriptionLine(Form.PILL, new Concentration(10, Unit.mg_per_g), "For 10 days, 2 pills per day", new ActiveSubstanceDAOMemory().find("Ibuprofen"));
+        PrescriptionLine line = new PrescriptionLine(Form.PILL, new Concentration(10.0, Unit.mg_per_g), "For 10 days, 2 pills per day", new ActiveSubstanceDAOMemory().find("Ibuprofen"));
         presenter.showPrescriptionLineProducts(line);
         Assert.assertEquals(viewStub.getUpdateMessage(), "2");
     }

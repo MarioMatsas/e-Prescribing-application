@@ -42,7 +42,7 @@ public class PrescriptionTest {
     @Test
     public void testLines() {
         Assert.assertEquals(presc.getPrescriptionLines().size(), 0);
-        PrescriptionLine line = new PrescriptionLine(Form.CREAM, new Concentration(10, Unit.mg_per_g), "For 10 days", new ActiveSubstance("Paracetamol", 20d));
+        PrescriptionLine line = new PrescriptionLine(Form.CREAM, new Concentration(10.0, Unit.mg_per_g), "For 10 days", new ActiveSubstance("Paracetamol", 20d));
         presc.addLine(line);
         Assert.assertEquals(presc.getPrescriptionLines().size(), 1);
         Assert.assertEquals(presc.getPrescriptionLines().get(0), line);
