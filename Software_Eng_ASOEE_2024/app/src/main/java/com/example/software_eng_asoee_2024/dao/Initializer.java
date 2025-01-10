@@ -56,7 +56,7 @@ public abstract class Initializer {
         as.add(activeSubstanceDAO.find("Paracetamol"));
         asCs.add(new Concentration(10.0, Unit.mg_per_g));
         as.add(activeSubstanceDAO.find("Ibuprofen"));
-        asCs.add(new Concentration(20.0, Unit.mg_per_disk));
+        asCs.add(new Concentration(20.0, Unit.mg_per_g));
         as2.add(activeSubstanceDAO.find("Ibuprofen"));
         asCs2.add(new Concentration(100.0, Unit.mg_per_ml));
         pharmaceuticalProductDAO.save(new PharmaceuticalProduct("Brufen Plus", 600, Form.PILL, MedicineType.GENERIC, as, asCs, "32 pills in pack"));

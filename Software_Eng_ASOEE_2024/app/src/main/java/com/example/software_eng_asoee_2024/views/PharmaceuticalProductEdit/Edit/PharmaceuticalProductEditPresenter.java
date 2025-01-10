@@ -22,7 +22,7 @@ public class PharmaceuticalProductEditPresenter {
 
     public void editPharmaceuticalProduct(PharmaceuticalProduct oldPp, PharmaceuticalProduct newPp) {
         for(PharmaceuticalProduct tempAc : pharmaceuticalProductDAO.findAll()) {
-            if(tempAc.equals(newPp)) throw new IllegalArgumentException("Cant have two identical pharmaceutical products");
+            if(tempAc.equals(newPp) && !tempAc.equals(oldPp)) throw new IllegalArgumentException("Cant have two identical pharmaceutical products");
         }
         this.pharmaceuticalProductDAO.delete(oldPp);
         this.pharmaceuticalProductDAO.save(newPp);

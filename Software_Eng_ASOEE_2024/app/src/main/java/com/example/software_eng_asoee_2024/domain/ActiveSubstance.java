@@ -1,6 +1,7 @@
 package com.example.software_eng_asoee_2024.domain;/* DONE  */
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.io.Serializable;
 
@@ -36,5 +37,13 @@ public class ActiveSubstance implements Serializable {
     @Override
     public String toString() {
         return getName() + " | " + getExpectedQuantityPerMonth();
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if(obj == null) return false;
+        if(obj.getClass() != this.getClass()) return false;
+        ActiveSubstance ac = (ActiveSubstance) obj;
+        return ac.getName().equals(this.getName()) && ac.getExpectedQuantityPerMonth().equals(this.getExpectedQuantityPerMonth());
     }
 }
