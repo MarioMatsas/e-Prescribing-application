@@ -100,6 +100,8 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, temp);
         activeSubstanceViewList.setAdapter(adapter);
+
+        formSpinner.setEnabled(temp.isEmpty());
     }
 
     @Override

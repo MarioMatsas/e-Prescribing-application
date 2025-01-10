@@ -21,6 +21,12 @@ public class PharmaceuticalProduct {
 
     public PharmaceuticalProduct(String name, Integer retailPrice, Form form, MedicineType type, ArrayList<ActiveSubstance> activeSubs, List<Concentration> activeSubstanceConcentrations, String info) {
         if(activeSubs.size() != activeSubstanceConcentrations.size()) throw new IllegalArgumentException("Active Substances and Concentrations must correspond");
+        if(activeSubs.isEmpty()) throw new IllegalArgumentException("Must have at least one Active Substance");
+        Unit unit = activeSubstanceConcentrations.get(0).getUnit();
+        for(int i = 1; i < activeSubstanceConcentrations.size(); i++) {
+            if(!activeSubstanceConcentrations.get(i).getUnit().equals(unit))
+                throw new IllegalArgumentException("All active substances must be of the same unit");
+        }
         this.name = name;
         this.retailPrice = retailPrice;
         this.form = form;

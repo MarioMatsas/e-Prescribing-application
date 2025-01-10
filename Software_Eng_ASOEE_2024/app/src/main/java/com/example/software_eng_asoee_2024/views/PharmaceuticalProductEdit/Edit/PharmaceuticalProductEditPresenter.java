@@ -1,6 +1,7 @@
 package com.example.software_eng_asoee_2024.views.PharmaceuticalProductEdit.Edit;
 
 import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
+import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 
 import java.util.Objects;
@@ -8,7 +9,8 @@ import java.util.Objects;
 
 public class PharmaceuticalProductEditPresenter {
     private PharmaceuticalProductEditView view;
-    private PharmaceuticalProductDAOMemory pharmaceuticalProductDAO;//to add the new PharmaceuticalProduct
+    private PharmaceuticalProductDAOMemory pharmaceuticalProductDAO;
+    private ActiveSubstanceDAOMemory activeSubstanceDAO;
 
     public PharmaceuticalProductEditView getView() {
         return view;
@@ -18,15 +20,12 @@ public class PharmaceuticalProductEditPresenter {
         this.view = view;
     }
 
-    public void editPharmaceuticalProduct(PharmaceuticalProduct oldAc, PharmaceuticalProduct newAc) {
-        if(!newAc.getName().equals(oldAc.getName())) {
-            for (PharmaceuticalProduct tempAc : pharmaceuticalProductDAO.findAll()) {
-                if (Objects.equals(newAc.getName(), tempAc.getName()))
-                    throw new IllegalArgumentException("Cant have two active substances with same name!");
-            }
+    public void editPharmaceuticalProduct(PharmaceuticalProduct oldPp, PharmaceuticalProduct newPp) {
+        for(PharmaceuticalProduct tempAc : pharmaceuticalProductDAO.findAll()) {
+            if(tempAc.equals(newPp)) throw new IllegalArgumentException("Cant have two identical pharmaceutical products");
         }
-        this.pharmaceuticalProductDAO.delete(oldAc);
-        this.pharmaceuticalProductDAO.save(newAc);
+        this.pharmaceuticalProductDAO.delete(oldPp);
+        this.pharmaceuticalProductDAO.save(newPp);
         createPharmaceuticalProductSpinner();
     }
 
@@ -36,5 +35,13 @@ public class PharmaceuticalProductEditPresenter {
 
     public void createPharmaceuticalProductSpinner() {
         view.createPharmaceuticalProductSpinner(pharmaceuticalProductDAO.findAll());
+    }
+
+    public void setActiveSubstanceDAO(ActiveSubstanceDAOMemory activeSubstanceDAOMemory) {
+        this.activeSubstanceDAO = activeSubstanceDAOMemory;
+    }
+
+    public void createActiveSubstanceSpinner() {
+        view.createActiveSubstanceSpinner(activeSubstanceDAO.findAll());
     }
 }

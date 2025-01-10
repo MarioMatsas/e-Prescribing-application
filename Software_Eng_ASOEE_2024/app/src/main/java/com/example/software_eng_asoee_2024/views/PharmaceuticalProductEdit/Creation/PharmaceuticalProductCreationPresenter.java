@@ -22,11 +22,11 @@ public class PharmaceuticalProductCreationPresenter {
         this.view = view;
     }
 
-    public void createPharmaceuticalProduct(PharmaceuticalProduct ac) {
+    public void createPharmaceuticalProduct(PharmaceuticalProduct pp) {
         for(PharmaceuticalProduct tempAc : pharmaceuticalProductDAO.findAll()) {
-            if(tempAc.equals(ac)) throw new IllegalArgumentException("Cant have two identical active substances");
+            if(tempAc.equals(pp)) throw new IllegalArgumentException("Cant have two identical pharmaceutical products");
         }
-        this.pharmaceuticalProductDAO.save(ac);
+        this.pharmaceuticalProductDAO.save(pp);
     }
 
     public void setPharmaceuticalProductDAO(PharmaceuticalProductDAOMemory pharmaceuticalProductDAO) {
