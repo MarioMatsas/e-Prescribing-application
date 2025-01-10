@@ -116,7 +116,7 @@ public class PrescriptionCreationPresenter {
     }
 
     public boolean error(String stringToCheck, String type){
-        if (stringToCheck.isEmpty()) {  // Check if the SSN field is empty
+        if (stringToCheck.isEmpty()) {  // Check if the stringToCheck field is empty
             view.showError("Make sure all fields are filled");
             return true;
         }

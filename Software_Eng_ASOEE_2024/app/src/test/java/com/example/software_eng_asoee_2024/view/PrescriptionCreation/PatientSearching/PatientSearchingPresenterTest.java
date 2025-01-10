@@ -29,9 +29,21 @@ public class PatientSearchingPresenterTest {
     }
 
     @Test
-    public void patientFoundCheck(){
-        presenter.findPatient(String.valueOf(1231230023), "The Flu");
+    public void checkGetView(){
+        presenter.setView(viewStub);
+        Assert.assertEquals(presenter.getView(), viewStub);
+    }
+
+    @Test
+    public void patientNotFoundCheck(){
+        presenter.findPatient("1213433", "The Flu");
         Assert.assertEquals(viewStub.getErrorMessage(), "Patient not found.");
+    }
+
+    @Test
+    public void patientFoundCheck(){
+        presenter.findPatient("123123123", "The Flu");
+        Assert.assertNull(viewStub.getErrorMessage());
     }
 
     @Test
