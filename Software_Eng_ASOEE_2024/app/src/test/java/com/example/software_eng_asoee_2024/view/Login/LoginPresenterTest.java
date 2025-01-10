@@ -3,6 +3,7 @@ package com.example.software_eng_asoee_2024.view.Login;
 import com.example.software_eng_asoee_2024.dao.Initializer;
 import com.example.software_eng_asoee_2024.memorydao.DoctorDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.MemoryInitializer;
+import com.example.software_eng_asoee_2024.memorydao.NOHCSEmployeeDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmacistDAOMemory;
 import com.example.software_eng_asoee_2024.views.Login.LoginPresenter;
 
@@ -24,6 +25,7 @@ public class LoginPresenterTest {
         presenter.setView(viewStub);
         presenter.setDoctorDAO(new DoctorDAOMemory());
         presenter.setPharmacistDAO(new PharmacistDAOMemory());
+        presenter.setNOHCSEmployeeDAO(new NOHCSEmployeeDAOMemory());
     }
 
     @Test
@@ -41,7 +43,7 @@ public class LoginPresenterTest {
     @Test
     public void NOHCSEmployeeLogin(){
         presenter.login("a", "a");
-        Assert.assertEquals("Success pharmacist", viewStub.getNavNOHCSMessage());
+        Assert.assertEquals("Success nohcsEmployee", viewStub.getNavNOHCSMessage());
     }
 
     @Test

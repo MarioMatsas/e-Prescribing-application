@@ -22,7 +22,7 @@ public class PrescriptionCreationViewStub implements PrescriptionCreationView {
 
     }
     public void showError(String message){
-
+        errorMessage = message;
     }
 
     public String getErrorMessage(){

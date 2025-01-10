@@ -78,9 +78,8 @@ public abstract class Initializer {
 
         ReportObjectDAO reportDAO = new ReportObjectDAOMemory();
         reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), presc1.getDate(), 5.0);
-        reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Ibuprofen"), presc1.getDate(), 10.0);
+        reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Ibuprofen"), presc1.getDate(), 12.0);
         reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), presc2.getDate(), 13.0);
-
     }
 
     public abstract DoctorDAO getDoctorDAO();

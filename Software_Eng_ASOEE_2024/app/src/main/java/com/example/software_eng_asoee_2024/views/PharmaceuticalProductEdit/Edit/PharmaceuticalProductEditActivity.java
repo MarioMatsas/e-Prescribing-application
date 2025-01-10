@@ -120,7 +120,6 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
             pharmaceuticalProductSpinner.setAdapter(null);
             return;
         }
-
         ArrayAdapter<PharmaceuticalProduct> adapter = new ArrayAdapter<PharmaceuticalProduct>(this, android.R.layout.simple_spinner_item, pharmaceuticalProducts);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         pharmaceuticalProductSpinner.setAdapter(adapter);
@@ -135,8 +134,10 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
                 formSpinner.setSelection(formDict.get(selected.getForm()));
                 typeSpinner.setSelection(selected.getMedicineType().equals(MedicineType.GENERIC) ? 0 : 1);
                 information.setText(selected.getInformation());
-                activeSubstanceList = (ArrayList<ActiveSubstance>) selected.getActiveSubstances();
-                concentrationList = (ArrayList<Concentration>) selected.getActiveSubstanceConcentrations();
+                activeSubstanceList.clear();
+                activeSubstanceList.addAll(selected.getActiveSubstances());
+                concentrationList.clear();
+                concentrationList.addAll(selected.getActiveSubstanceConcentrations());
 
                 createActiveSubstanceList();
                 createFormAndTypeSpinners();
@@ -148,6 +149,7 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
                 activeSubstanceSpinner.setEnabled(true);
                 concentrationInput.setEnabled(true);
                 information.setEnabled(true);
+                selected = pharmaceuticalProducts.get(position);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {activeSubstanceList.clear();
@@ -184,7 +186,22 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
     }
 
     public void editPharmaceuticalProduct() {
-        viewModel.getPresenter().editPharmaceuticalProduct(selected, pharmaceuticalProductName.getText().toString(), retailPrice.getText().toString(), (Form) formSpinner.getSelectedItem(), (MedicineType) typeSpinner.getSelectedItem(), activeSubstanceList, concentrationList, information.getText().toString());
+        if(selected == null) return;
+        try {
+            if (pharmaceuticalProductName.getText().toString().isEmpty() || retailPrice.getText().toString().isEmpty())
+                throw new IllegalArgumentException("Not all fields are filled in");
+            if(activeSubstanceList.isEmpty())
+                throw new IllegalArgumentException("No Active Substances have been given");
+
+            PharmaceuticalProduct pp = new PharmaceuticalProduct(pharmaceuticalProductName.getText().toString(), Integer.parseInt(retailPrice.getText().toString()), (Form) formSpinner.getSelectedItem(), (MedicineType) typeSpinner.getSelectedItem(), activeSubstanceList, concentrationList, information.getText().toString());
+            viewModel.getPresenter().editPharmaceuticalProduct(selected, pp);
+
+            showMessage("Done!");
+        } catch (NumberFormatException e) {
+            showMessage("Expected Quantity Per Month should be a number");
+        } catch (Exception e) {
+            showMessage(e.getMessage());
+        }
     }
 
     public void addActiveSubstanceToPharmaceuticalProduct() {
@@ -204,6 +221,10 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
         }
     }
     public void createActiveSubstanceList() {
+
+        for(ActiveSubstance ac : activeSubstanceList)
+            System.out.println(ac.toString());
+
         ArrayList<String> temp = new ArrayList<>();
         for(int i = 0; i < activeSubstanceList.size(); i++) {
             temp.add(activeSubstanceList.get(i).toString() + "\n" + concentrationList.get(i) + "\n-");

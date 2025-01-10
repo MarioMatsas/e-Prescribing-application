@@ -111,7 +111,19 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
 
     @Override
     public void addPharmaceuticalProduct() {
-        viewModel.getPresenter().createPharmaceuticalProduct(pharmaceuticalProductName.getText().toString(), retailPrice.getText().toString(), (Form) formSpinner.getSelectedItem(), (MedicineType) typeSpinner.getSelectedItem(), activeSubstanceList, concentrationList, information.getText().toString());
+        try {
+            if (pharmaceuticalProductName.getText().toString().isEmpty() || retailPrice.getText().toString().isEmpty())
+                throw new IllegalArgumentException("Not all fields are filled in");
+            if(activeSubstanceList.isEmpty())
+                throw new IllegalArgumentException("No Active Substances have been given");
+            PharmaceuticalProduct pp = new PharmaceuticalProduct(pharmaceuticalProductName.getText().toString(), Integer.parseInt(retailPrice.getText().toString()), (Form) formSpinner.getSelectedItem(), (MedicineType) typeSpinner.getSelectedItem(), activeSubstanceList, concentrationList, information.getText().toString());
+            viewModel.getPresenter().createPharmaceuticalProduct(pp);
+            showMessage("Done!");
+        } catch (NumberFormatException e) {
+            showMessage("Expected Quantity Per Month should be a number");
+        } catch (Exception e) {
+            showMessage(e.getMessage());
+        }
     }
 
     @Override

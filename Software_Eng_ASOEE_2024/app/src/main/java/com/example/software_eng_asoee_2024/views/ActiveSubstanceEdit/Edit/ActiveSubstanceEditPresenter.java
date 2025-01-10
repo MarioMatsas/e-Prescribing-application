@@ -18,31 +18,16 @@ public class ActiveSubstanceEditPresenter {
         this.view = view;
     }
 
-    public void editActiveSubstance(ActiveSubstance selected, String name, String eqpm) {
-        if(selected == null) throw new IllegalArgumentException("None selected to be edited");
-        try {
-            if (name.isEmpty() || eqpm.isEmpty())
-                throw new IllegalArgumentException("Not all fields are filled in");
-
-            ActiveSubstance newAc = new ActiveSubstance(name, Double.parseDouble(eqpm));
-
-            if(!newAc.getName().equals(selected.getName())) {
-                for (ActiveSubstance tempAc : activeSubstanceDAO.findAll()) {
-                    if (Objects.equals(newAc.getName(), tempAc.getName()))
-                        throw new IllegalArgumentException("Cant have two active substances with same name!");
-                }
+    public void editActiveSubstance(ActiveSubstance oldAc, ActiveSubstance newAc) {
+        if(!newAc.getName().equals(oldAc.getName())) {
+            for (ActiveSubstance tempAc : activeSubstanceDAO.findAll()) {
+                if (Objects.equals(newAc.getName(), tempAc.getName()))
+                    throw new IllegalArgumentException("Cant have two active substances with same name!");
             }
-
-            this.activeSubstanceDAO.delete(selected);
-            this.activeSubstanceDAO.save(newAc);
-            createActiveSubstanceSpinner();
-            view.showMessage("Done!");
-        } catch (NumberFormatException e) {
-            view.showMessage("Expected Quantity Per Month should be a number");
-        } catch (Exception e) {
-            view.showMessage(e.getMessage());
-
         }
+        this.activeSubstanceDAO.delete(oldAc);
+        this.activeSubstanceDAO.save(newAc);
+        createActiveSubstanceSpinner();
     }
 
     public void setActiveSubstanceDAO(ActiveSubstanceDAOMemory actSubsDAO) {

@@ -20,13 +20,8 @@ public class ActiveSubstanceDeletePresenter {
     }
 
     public boolean deleteActiveSubstance(ActiveSubstance ac) {
-        if(ac == null) {
-            view.showMessage("None selected to be edited");
-            return false;
-        }
         this.activeSubstanceDAO.delete(ac);
         createActiveSubstanceSpinner();
-        view.showMessage("Done!");
         return(this.activeSubstanceDAO.findAll().isEmpty());
     }
 

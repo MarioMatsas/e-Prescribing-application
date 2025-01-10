@@ -43,6 +43,7 @@ public class ActiveSubstanceCreationActivity extends AppCompatActivity implement
         ExpectedQuantityPerMonth = findViewById(R.id.select_active_substance_eqpm);
         out = findViewById(R.id.error_text_cas);
 
+
         //defining the behavior of the buttons
         addActiveSubstanceBtn.setOnClickListener(v -> addActiveSubstance());
     }

@@ -20,13 +20,8 @@ public class PharmaceuticalProductDeletePresenter {
     }
 
     public boolean deletePharmaceuticalProduct(PharmaceuticalProduct ac) {
-        if(ac == null) {
-            view.showMessage("None selected to be delete");
-            return false;
-        }
         this.pharmaceuticalProductDAO.delete(ac);
         createPharmaceuticalProductSpinner();
-        view.showMessage("Done!");
         return(this.pharmaceuticalProductDAO.findAll().isEmpty());
     }
 

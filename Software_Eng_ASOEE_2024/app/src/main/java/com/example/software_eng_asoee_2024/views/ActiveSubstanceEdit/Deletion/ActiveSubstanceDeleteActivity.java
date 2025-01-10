@@ -86,10 +86,12 @@ public class ActiveSubstanceDeleteActivity extends AppCompatActivity implements 
     }
 
     public void deleteActiveSubstance(ActiveSubstance ac) {
+        if(selected == null) return;
         if(viewModel.getPresenter().deleteActiveSubstance(ac)) {
             name.setText("");
             eqpm.setText("");
         }
+        showMessage("Done!");
     }
     @Override
     public void showMessage(String s) {

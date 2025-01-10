@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
 
+import java.util.Optional;
+
 public class PrescriptionLineTest {
     static PrescriptionLine line;
 
@@ -15,7 +17,7 @@ public class PrescriptionLineTest {
     @Test
     public void testInit() {
         Assert.assertEquals(line.getForm(), Form.CREAM);
-        Assert.assertEquals(line.getConcentration().getQuantity(), (Integer)10);
+        Assert.assertEquals(Optional.ofNullable(line.getConcentration().getQuantity()), 10);
         Assert.assertEquals(line.getInstructions(), "For 10 days");
         Assert.assertEquals(line.getActiveSubstance().getName(), "Paracetamol");
     }
