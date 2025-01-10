@@ -1,5 +1,7 @@
 package com.example.software_eng_asoee_2024.domain;/* DONE  */
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class Concentration implements Serializable {
@@ -29,6 +31,12 @@ public class Concentration implements Serializable {
 
     public void setUnit(Unit unit) {
         this.unit = unit;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return quantity + " | " + unit.name();
     }
 
 }

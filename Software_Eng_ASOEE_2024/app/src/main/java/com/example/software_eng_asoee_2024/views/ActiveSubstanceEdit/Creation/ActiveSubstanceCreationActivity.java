@@ -44,7 +44,7 @@ public class ActiveSubstanceCreationActivity extends AppCompatActivity implement
         out = findViewById(R.id.error_text_cas);
 
 
-        //defining the behavior of the two buttons
+        //defining the behavior of the buttons
         addActiveSubstanceBtn.setOnClickListener(v -> addActiveSubstance());
     }
 

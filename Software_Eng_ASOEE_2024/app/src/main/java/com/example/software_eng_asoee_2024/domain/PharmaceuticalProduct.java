@@ -1,7 +1,10 @@
 package com.example.software_eng_asoee_2024.domain;/* DONE  */
 
+import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PharmaceuticalProduct {
     private String name;
@@ -87,5 +90,13 @@ public class PharmaceuticalProduct {
 
     public String toString(){
         return name + " " + getFinalPrice()/100.0 + " " + information;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if(obj == null) return false;
+        if(obj.getClass() != this.getClass()) return false;
+        PharmaceuticalProduct temp = (PharmaceuticalProduct) obj;
+        return temp.getName().equals(this.getName()) && temp.getInformation().equals(this.getInformation()) && temp.getForm() == this.getForm() && temp.getMedicineType() == this.getMedicineType() && temp.getActiveSubstances() == this.getActiveSubstances() && temp.getActiveSubstanceConcentrations() == this.getActiveSubstanceConcentrations();
     }
 }

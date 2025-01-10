@@ -35,20 +35,56 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/create_pharmaceutical_product_btn"
+        android:id="@+id/create_pharmaceutical_product_add_ac_btn"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="@+id/create_pharmaceutical_product_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/create_pharmaceutical_product_btn"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/create_pharmaceutical_product_pop_ac_btn"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="@+id/create_pharmaceutical_product_add_ac_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/create_pharmaceutical_product_add_ac_btn"
+        app:layout_constraintTop_toTopOf="@+id/create_pharmaceutical_product_add_ac_btn"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/create_pharmaceutical_product_button_txt"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Active Substance"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/create_pharmaceutical_product_pop_ac_btn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/create_pharmaceutical_product_add_ac_btn"
+        app:layout_constraintTop_toBottomOf="@+id/create_pharmaceutical_product_add_ac_btn"
+        app:layout_constraintVertical_bias="0" />
+
+    <Button
+        android:id="@+id/create_pharmaceutical_product_btn"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Create Pharmaceutical Product"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_pharmaceutical_product_eqpm"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintTop_toBottomOf="@+id/create_pharmaceutical_product_concentration_unit"
+        app:layout_constraintVertical_bias="0.3" />
 
     <EditText
-        android:id="@+id/select_pharmaceutical_product_name"
-        android:layout_width="300dp"
+        android:id="@+id/create_pharmaceutical_product_name"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:background="@drawable/login_outline_colour"
         android:hint="Name"
@@ -56,35 +92,130 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_prescription_txt"
-        app:layout_constraintVertical_bias="0.097" />
+        app:layout_constraintVertical_bias="0.05" />
 
     <EditText
-        android:id="@+id/select_pharmaceutical_product_eqpm"
-        android:layout_width="300dp"
+        android:id="@+id/create_pharmaceutical_product_price"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:background="@drawable/login_outline_colour"
-        android:hint="Expected Quantity Per Month"
-        android:inputType="text"
+        android:hint="Retail Price"
+        android:inputType="number"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/create_pharmaceutical_product_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/create_pharmaceutical_product_name"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Spinner
+        android:id="@+id/create_pharmaceutical_product_form_spinner"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_pharmaceutical_product_name"
+        app:layout_constraintTop_toBottomOf="@+id/create_pharmaceutical_product_name"
         app:layout_constraintVertical_bias="0.05" />
 
+    <Spinner
+        android:id="@+id/create_pharmaceutical_product_type_spinner"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/create_pharmaceutical_product_form_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/create_pharmaceutical_product_form_spinner"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Spinner
+        android:id="@+id/create_pharmaceutical_product_acs_spinner"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_pharmaceutical_product_form_spinner"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/create_pharmaceutical_product_concentration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_outline_colour"
+        android:hint="Concentration"
+        android:inputType="number"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/create_pharmaceutical_product_acs_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/create_pharmaceutical_product_acs_spinner"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/create_pharmaceutical_product_concentration_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_outline_colour"
+        android:hint="Concentration"
+        android:inputType="number"
+        android:textColor="#000000"
+        android:enabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_pharmaceutical_product_concentration"
+        app:layout_constraintVertical_bias="0" />
+
     <TextView
-        android:id="@+id/error_text_cas"
+        android:id="@+id/create_pharmaceutical_product_output_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/create_pharmaceutical_product_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_pharmaceutical_product_eqpm"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toBottomOf="@+id/create_pharmaceutical_product_info"
+        app:layout_constraintVertical_bias="0.7" />
+
+    <EditText
+        android:id="@+id/create_pharmaceutical_product_info"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_outline_colour"
+        android:hint="Extra info(e.g.\nnum of pills)"
+        android:inputType="text"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_pharmaceutical_product_acs_spinner"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <ListView
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:background="@drawable/login_outline_colour"
+        android:id="@+id/create_pharmaceutical_product_ac_list"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_pharmaceutical_product_btn"
+        app:layout_constraintVertical_bias="0.5"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

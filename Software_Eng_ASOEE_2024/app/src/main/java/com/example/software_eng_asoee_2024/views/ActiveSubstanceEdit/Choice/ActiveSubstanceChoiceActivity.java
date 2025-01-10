@@ -42,7 +42,7 @@ public class ActiveSubstanceChoiceActivity extends AppCompatActivity implements 
         changeActiveSubstanceChoiceBtn = findViewById(R.id.edit_active_substance_btn);
         deleteActiveSubstanceChoiceBtn = findViewById(R.id.delete_active_substance_btn);
 
-        //defining the behavior of the two buttons
+        //defining the behavior of the buttons
         addActiveSubstanceChoiceBtn.setOnClickListener(v -> navigateToAddActiveSubstance());
         changeActiveSubstanceChoiceBtn.setOnClickListener(v -> navigateToEditActiveSubstance());
         deleteActiveSubstanceChoiceBtn.setOnClickListener(v -> navigateToDeleteActiveSubstance());
