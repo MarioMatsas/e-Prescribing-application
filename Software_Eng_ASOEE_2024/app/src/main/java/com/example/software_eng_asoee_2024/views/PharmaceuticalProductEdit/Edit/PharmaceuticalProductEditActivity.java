@@ -120,6 +120,7 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
             pharmaceuticalProductSpinner.setAdapter(null);
             return;
         }
+
         ArrayAdapter<PharmaceuticalProduct> adapter = new ArrayAdapter<PharmaceuticalProduct>(this, android.R.layout.simple_spinner_item, pharmaceuticalProducts);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         pharmaceuticalProductSpinner.setAdapter(adapter);
@@ -134,10 +135,8 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
                 formSpinner.setSelection(formDict.get(selected.getForm()));
                 typeSpinner.setSelection(selected.getMedicineType().equals(MedicineType.GENERIC) ? 0 : 1);
                 information.setText(selected.getInformation());
-                activeSubstanceList.clear();
-                activeSubstanceList.addAll(selected.getActiveSubstances());
-                concentrationList.clear();
-                concentrationList.addAll(selected.getActiveSubstanceConcentrations());
+                activeSubstanceList = (ArrayList<ActiveSubstance>) selected.getActiveSubstances();
+                concentrationList = (ArrayList<Concentration>) selected.getActiveSubstanceConcentrations();
 
                 createActiveSubstanceList();
                 createFormAndTypeSpinners();
@@ -149,7 +148,6 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
                 activeSubstanceSpinner.setEnabled(true);
                 concentrationInput.setEnabled(true);
                 information.setEnabled(true);
-                selected = pharmaceuticalProducts.get(position);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {activeSubstanceList.clear();
@@ -221,10 +219,6 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
         }
     }
     public void createActiveSubstanceList() {
-
-        for(ActiveSubstance ac : activeSubstanceList)
-            System.out.println(ac.toString());
-
         ArrayList<String> temp = new ArrayList<>();
         for(int i = 0; i < activeSubstanceList.size(); i++) {
             temp.add(activeSubstanceList.get(i).toString() + "\n" + concentrationList.get(i) + "\n-");
