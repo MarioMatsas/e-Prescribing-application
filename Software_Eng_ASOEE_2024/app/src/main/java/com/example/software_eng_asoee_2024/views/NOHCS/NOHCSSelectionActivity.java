@@ -40,7 +40,7 @@ public class NOHCSSelectionActivity extends AppCompatActivity implements NOHCSSe
         PharmaceuticalProductBtn = findViewById(R.id.pharmaceutical_product_btn);
 
 
-        //defining the behavior of the two buttons
+        //defining the behavior of the buttons
         ActiveSubstanceBtn.setOnClickListener(v -> navigateToActiveSubstanceChoicesScreen());
         PharmaceuticalProductBtn.setOnClickListener(v -> navigateToPharmaceuticalProductChoicesScreen());
     }

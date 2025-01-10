@@ -77,7 +77,7 @@ public class PharmaceuticalProductDeleteActivity extends AppCompatActivity imple
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 name.setText(pharmaceuticalProducts.get(position).getName());
-                eqpm.setText(pharmaceuticalProducts.get(position).getExpectedQuantityPerMonth().toString());
+//                eqpm.setText(pharmaceuticalProducts.get(position).getExpectedQuantityPerMonth().toString());
                 selected = pharmaceuticalProducts.get(position);
             }
             @Override

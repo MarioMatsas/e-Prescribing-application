@@ -1,14 +1,18 @@
 package com.example.software_eng_asoee_2024.views.PharmaceuticalProductEdit.Creation;
 
+import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
+import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 
 public class PharmaceuticalProductCreationPresenter {
     private PharmaceuticalProductCreationView view;
-    private PharmaceuticalProductDAOMemory pharmaceuticalProductDAO;//to add the new PharmaceuticalProduct
+    private PharmaceuticalProductDAOMemory pharmaceuticalProductDAO;
+    private ActiveSubstanceDAOMemory activeSubstanceDAO;
 
     public PharmaceuticalProductCreationView getView() {
         return view;
@@ -20,12 +24,20 @@ public class PharmaceuticalProductCreationPresenter {
 
     public void createPharmaceuticalProduct(PharmaceuticalProduct ac) {
         for(PharmaceuticalProduct tempAc : pharmaceuticalProductDAO.findAll()) {
-            if(Objects.equals(ac.getName(), tempAc.getName())) throw new IllegalArgumentException("Cant have two active substances with same name!");
+            if(tempAc.equals(ac)) throw new IllegalArgumentException("Cant have two identical active substances");
         }
         this.pharmaceuticalProductDAO.save(ac);
     }
 
-    public void setPharmaceuticalProductDAO(PharmaceuticalProductDAOMemory actSubsDAO) {
-        this.pharmaceuticalProductDAO = actSubsDAO;
+    public void setPharmaceuticalProductDAO(PharmaceuticalProductDAOMemory pharmaceuticalProductDAO) {
+        this.pharmaceuticalProductDAO = pharmaceuticalProductDAO;
+    }
+
+    public void createActiveSubstanceSpinner() {
+        view.createActiveSubstanceSpinner(activeSubstanceDAO.findAll());
+    }
+
+    public void setActiveSubstanceDAO(ActiveSubstanceDAOMemory activeSubstanceDAOMemory) {
+        this.activeSubstanceDAO = activeSubstanceDAOMemory;
     }
 }

@@ -80,7 +80,7 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 name.setText(pharmaceuticalProducts.get(position).getName());
-                eqpm.setText(pharmaceuticalProducts.get(position).getExpectedQuantityPerMonth().toString());
+//                eqpm.setText(pharmaceuticalProducts.get(position).getExpectedQuantityPerMonth().toString());
                 name.setEnabled(true);
                 eqpm.setEnabled(true);
                 selected = pharmaceuticalProducts.get(position);
@@ -98,7 +98,7 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
         try {
             if (name.getText().toString().isEmpty() || eqpm.getText().toString().isEmpty())
                 throw new IllegalArgumentException("Not all fields are filled in");
-            viewModel.getPresenter().editPharmaceuticalProduct(selected, new PharmaceuticalProduct(name.getText().toString(), Double.parseDouble(eqpm.getText().toString())));
+//            viewModel.getPresenter().editPharmaceuticalProduct(selected, new PharmaceuticalProduct(name.getText().toString(), Double.parseDouble(eqpm.getText().toString())));
             out.setText("Done!");
         } catch (NumberFormatException e) {
             out.setText("Expected Quantity Per Month should be a number");

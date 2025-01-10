@@ -2,6 +2,8 @@ package com.example.software_eng_asoee_2024.views.PharmaceuticalProductEdit.Crea
 
 import android.util.Log;
 import androidx.lifecycle.ViewModel;
+
+import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 
 public class PharmaceuticalProductCreationViewModel extends ViewModel {
@@ -10,6 +12,7 @@ public class PharmaceuticalProductCreationViewModel extends ViewModel {
     public PharmaceuticalProductCreationViewModel(){
         presenter = new PharmaceuticalProductCreationPresenter();
         presenter.setPharmaceuticalProductDAO(new PharmaceuticalProductDAOMemory());
+        presenter.setActiveSubstanceDAO(new ActiveSubstanceDAOMemory());
     }
 
     public PharmaceuticalProductCreationPresenter getPresenter() {
