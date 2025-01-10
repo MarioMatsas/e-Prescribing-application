@@ -13,8 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.software_eng_asoee_2024.R;
-import com.example.software_eng_asoee_2024.views.PharmaceuticalProductEdit.Creation.PharmaceuticalProductCreationView;
-import com.example.software_eng_asoee_2024.views.PharmaceuticalProductEdit.Creation.PharmaceuticalProductCreationViewModel;
+import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 
 public class PharmaceuticalProductCreationActivity extends AppCompatActivity implements PharmaceuticalProductCreationView {
 
@@ -22,14 +21,14 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
     private Button addPharmaceuticalProductBtn;
     private EditText PharmaceuticalProductName;
     private EditText ExpectedQuantityPerMonth;
-    private TextView errorMessage;
+    private TextView out;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.create_active_substance);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.create_active_substance), (v, insets) -> {
+        setContentView(R.layout.create_pharmaceutical_product);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.create_pharmaceutical_product), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -39,10 +38,10 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
         PharmaceuticalProductCreationPresenter presenter = viewModel.getPresenter();
         presenter.setView(this);
 
-        addPharmaceuticalProductBtn = findViewById(R.id.create_active_substance_btn);
-        PharmaceuticalProductName = findViewById(R.id.select_active_substance_name);
-        ExpectedQuantityPerMonth = findViewById(R.id.select_active_substance_eqpm);
-        errorMessage = findViewById(R.id.error_text_cas);
+        addPharmaceuticalProductBtn = findViewById(R.id.create_pharmaceutical_product_btn);
+        PharmaceuticalProductName = findViewById(R.id.select_pharmaceutical_product_name);
+        ExpectedQuantityPerMonth = findViewById(R.id.select_pharmaceutical_product_eqpm);
+        out = findViewById(R.id.error_text_cas);
 
 
         //defining the behavior of the two buttons
@@ -52,25 +51,20 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
     @Override
     protected void onResume() {
         super.onResume();
-
-        // Reset error message
-        errorMessage.setText(""); // Hides the error message
-    }
-
-    @Override
-    public void showError(String message) {
-        errorMessage.setText(message);
     }
 
     @Override
     public void addPharmaceuticalProduct() {
-        viewModel.getPresenter().createPharmaceuticalProduct(PharmaceuticalProductName.toString(), Double.parseDouble(ExpectedQuantityPerMonth.toString()));
-    }
+        try {
+            if (PharmaceuticalProductName.getText().toString().isEmpty() || ExpectedQuantityPerMonth.getText().toString().isEmpty())
+                throw new IllegalArgumentException("Not all fields are filled in");
+            viewModel.getPresenter().createPharmaceuticalProduct(new PharmaceuticalProduct(PharmaceuticalProductName.getText().toString(), Double.parseDouble(ExpectedQuantityPerMonth.getText().toString())));
+            out.setText("Done!");
+        } catch (NumberFormatException e) {
+            out.setText("Expected Quantity Per Month should be a number");
+        } catch (Exception e) {
+            out.setText(e.getMessage());
 
-    @Override
-    public void finishCreation() {
-        // TODO
-        return;
+        }
     }
-
 }

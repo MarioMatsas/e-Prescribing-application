@@ -21,6 +21,6 @@ public class PharmaceuticalProductEditViewModel extends ViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
-        Log.d("PharmaceuticalProductCreation", "On Cleared");
+        Log.d("PharmaceuticalProductEdit", "On Cleared");
     }
 }

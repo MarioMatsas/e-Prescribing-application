@@ -1,12 +1,15 @@
 package com.example.software_eng_asoee_2024.views.PharmaceuticalProductEdit.Deletion;
 
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
 import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 
 
 public class PharmaceuticalProductDeletePresenter {
     private PharmaceuticalProductDeleteView view;
-    private PharmaceuticalProductDAOMemory activeSubstanceDAO;//to add the new PharmaceuticalProduct
+    private PharmaceuticalProductDAOMemory pharmaceuticalProductDAO;//to add the new PharmaceuticalProduct
 
     public PharmaceuticalProductDeleteView getView() {
         return view;
@@ -16,12 +19,17 @@ public class PharmaceuticalProductDeletePresenter {
         this.view = view;
     }
 
-    public boolean createPharmaceuticalProduct(String name, Double expectedQuantityPerMonth) {
-//        this.activeSubstanceDAO.save(new PharmaceuticalProduct(name, expectedQuantityPerMonth));
-        return true;
+    public boolean deletePharmaceuticalProduct(PharmaceuticalProduct ac) {
+        this.pharmaceuticalProductDAO.delete(ac);
+        createPharmaceuticalProductSpinner();
+        return(this.pharmaceuticalProductDAO.findAll().isEmpty());
     }
 
     public void setPharmaceuticalProductDAO(PharmaceuticalProductDAOMemory actSubsDAO) {
-        this.activeSubstanceDAO = actSubsDAO;
+        this.pharmaceuticalProductDAO = actSubsDAO;
+    }
+
+    public void createPharmaceuticalProductSpinner() {
+        view.createPharmaceuticalProductSpinner(pharmaceuticalProductDAO.findAll());
     }
 }

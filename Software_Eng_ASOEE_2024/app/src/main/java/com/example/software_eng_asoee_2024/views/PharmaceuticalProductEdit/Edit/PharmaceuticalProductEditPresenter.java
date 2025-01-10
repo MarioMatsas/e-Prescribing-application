@@ -3,10 +3,12 @@ package com.example.software_eng_asoee_2024.views.PharmaceuticalProductEdit.Edit
 import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 
+import java.util.Objects;
+
 
 public class PharmaceuticalProductEditPresenter {
     private PharmaceuticalProductEditView view;
-    private PharmaceuticalProductDAOMemory activeSubstanceDAO;//to add the new PharmaceuticalProduct
+    private PharmaceuticalProductDAOMemory pharmaceuticalProductDAO;//to add the new PharmaceuticalProduct
 
     public PharmaceuticalProductEditView getView() {
         return view;
@@ -16,12 +18,23 @@ public class PharmaceuticalProductEditPresenter {
         this.view = view;
     }
 
-    public boolean createPharmaceuticalProduct(String name, Double expectedQuantityPerMonth) {
-//        this.activeSubstanceDAO.save(new PharmaceuticalProduct(name, expectedQuantityPerMonth));
-        return true;
+    public void editPharmaceuticalProduct(PharmaceuticalProduct oldAc, PharmaceuticalProduct newAc) {
+        if(!newAc.getName().equals(oldAc.getName())) {
+            for (PharmaceuticalProduct tempAc : pharmaceuticalProductDAO.findAll()) {
+                if (Objects.equals(newAc.getName(), tempAc.getName()))
+                    throw new IllegalArgumentException("Cant have two active substances with same name!");
+            }
+        }
+        this.pharmaceuticalProductDAO.delete(oldAc);
+        this.pharmaceuticalProductDAO.save(newAc);
+        createPharmaceuticalProductSpinner();
     }
 
     public void setPharmaceuticalProductDAO(PharmaceuticalProductDAOMemory actSubsDAO) {
-        this.activeSubstanceDAO = actSubsDAO;
+        this.pharmaceuticalProductDAO = actSubsDAO;
+    }
+
+    public void createPharmaceuticalProductSpinner() {
+        view.createPharmaceuticalProductSpinner(pharmaceuticalProductDAO.findAll());
     }
 }
