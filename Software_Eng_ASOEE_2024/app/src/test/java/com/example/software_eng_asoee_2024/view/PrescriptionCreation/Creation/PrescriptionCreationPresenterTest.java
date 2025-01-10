@@ -31,13 +31,9 @@ public class PrescriptionCreationPresenterTest {
         presenter = new PrescriptionCreationPresenter();
         presenter.setView(viewStub);
         presenter.setPatientDAO(new PatientDAOMemory());
-//        presenter.setPatientDAO((PatientDAOMemory) initializer.getPatientDAO());
         presenter.setDoctorDAO(new DoctorDAOMemory());
-//        presenter.setDoctorDAO((DoctorDAOMemory) initializer.getDoctorDAO());
         presenter.setPrescriptionDAO(new PrescriptionDAOMemory());
-//        presenter.setPrescriptionDAO((PrescriptionDAOMemory) initializer.getPrescriptionDAO());
         presenter.setSubstanceDAO(new ActiveSubstanceDAOMemory());
-//        presenter.setSubstanceDAO((ActiveSubstanceDAOMemory) initializer.getActiveSubstanceDAO());
         presenter.setReportDAO(new ReportObjectDAOMemory());
         presenter.init("m", "m", 123123123, "The Flu");
     }

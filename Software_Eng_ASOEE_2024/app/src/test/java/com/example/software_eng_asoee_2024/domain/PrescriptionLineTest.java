@@ -14,8 +14,8 @@ public class PrescriptionLineTest {
 
     @Test
     public void testInit() {
-        Assert.assertEquals(line.getForm(), Form.CREAM);
-        Assert.assertEquals(line.getConcentration().getQuantity(), (Integer)10);
+        Assert.assertEquals(line.getForm(), Form.CREAM);;
+        Assert.assertEquals(line.getConcentration().getQuantity(), (Double)10.0);
         Assert.assertEquals(line.getInstructions(), "For 10 days");
         Assert.assertEquals(line.getActiveSubstance().getName(), "Paracetamol");
     }
