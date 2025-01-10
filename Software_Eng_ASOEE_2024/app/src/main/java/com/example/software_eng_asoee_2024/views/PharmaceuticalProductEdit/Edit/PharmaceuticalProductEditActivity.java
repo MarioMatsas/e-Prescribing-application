@@ -184,22 +184,7 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
     }
 
     public void editPharmaceuticalProduct() {
-        if(selected == null) return;
-        try {
-            if (pharmaceuticalProductName.getText().toString().isEmpty() || retailPrice.getText().toString().isEmpty())
-                throw new IllegalArgumentException("Not all fields are filled in");
-            if(activeSubstanceList.isEmpty())
-                throw new IllegalArgumentException("No Active Substances have been given");
-
-            PharmaceuticalProduct pp = new PharmaceuticalProduct(pharmaceuticalProductName.getText().toString(), Integer.parseInt(retailPrice.getText().toString()), (Form) formSpinner.getSelectedItem(), (MedicineType) typeSpinner.getSelectedItem(), activeSubstanceList, concentrationList, information.getText().toString());
-            viewModel.getPresenter().editPharmaceuticalProduct(selected, pp);
-
-            showMessage("Done!");
-        } catch (NumberFormatException e) {
-            showMessage("Expected Quantity Per Month should be a number");
-        } catch (Exception e) {
-            showMessage(e.getMessage());
-        }
+        viewModel.getPresenter().editPharmaceuticalProduct(selected, pharmaceuticalProductName.getText().toString(), retailPrice.getText().toString(), (Form) formSpinner.getSelectedItem(), (MedicineType) typeSpinner.getSelectedItem(), activeSubstanceList, concentrationList, information.getText().toString());
     }
 
     public void addActiveSubstanceToPharmaceuticalProduct() {

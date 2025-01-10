@@ -109,7 +109,6 @@ public class PharmaceuticalProductDeleteActivity extends AppCompatActivity imple
     }
 
     public void deletePharmaceuticalProduct(PharmaceuticalProduct ac) {
-        if(selected == null) return;
         if(viewModel.getPresenter().deletePharmaceuticalProduct(ac)) {
             selected = null;
             pharmaceuticalProductName.setText("");
@@ -121,7 +120,6 @@ public class PharmaceuticalProductDeleteActivity extends AppCompatActivity imple
             concentrationList.clear();
             createActiveSubstanceList();
         }
-        showMessage("Done!");
     }
 
     public void createActiveSubstanceList() {
