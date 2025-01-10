@@ -9,4 +9,5 @@ public interface PharmaceuticalProductCreationView {
     void addPharmaceuticalProduct();
     void addActiveSubstanceToPharmaceuticalProduct();
     void createActiveSubstanceSpinner(List<ActiveSubstance> activeSubstances);
+    void showMessage(String s);
 }

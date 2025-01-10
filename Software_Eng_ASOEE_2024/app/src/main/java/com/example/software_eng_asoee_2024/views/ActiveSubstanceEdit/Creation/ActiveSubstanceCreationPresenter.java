@@ -18,11 +18,19 @@ public class ActiveSubstanceCreationPresenter {
         this.view = view;
     }
 
-    public void createActiveSubstance(ActiveSubstance ac) {
-        for(ActiveSubstance tempAc : activeSubstanceDAO.findAll()) {
-            if(Objects.equals(ac.getName(), tempAc.getName())) throw new IllegalArgumentException("Cant have two active substances with same name!");
+    public void createActiveSubstance(String ActiveSubstanceName, String ExpectedQuantityPerMonth) {
+        try {
+            ActiveSubstance ac = new ActiveSubstance(ActiveSubstanceName, Double.parseDouble(ExpectedQuantityPerMonth));
+            for(ActiveSubstance tempAc : activeSubstanceDAO.findAll()) {
+                if(Objects.equals(ac.getName(), tempAc.getName())) throw new IllegalArgumentException("Cant have two active substances with same name!");
+            }
+            this.activeSubstanceDAO.save(ac);
+            this.view.showMessage("Done!");
+        } catch (NumberFormatException e) {
+            this.view.showMessage("Expected Quantity Per Month should be a number");
+        } catch (Exception e) {
+            this.view.showMessage(e.getMessage());
         }
-        this.activeSubstanceDAO.save(ac);
     }
 
     public void setActiveSubstanceDAO(ActiveSubstanceDAOMemory actSubsDAO) {

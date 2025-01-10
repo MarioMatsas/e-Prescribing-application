@@ -118,11 +118,11 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
                 throw new IllegalArgumentException("No Active Substances have been given");
             PharmaceuticalProduct pp = new PharmaceuticalProduct(pharmaceuticalProductName.getText().toString(), Integer.parseInt(retailPrice.getText().toString()), (Form) formSpinner.getSelectedItem(), (MedicineType) typeSpinner.getSelectedItem(), activeSubstanceList, concentrationList, information.getText().toString());
             viewModel.getPresenter().createPharmaceuticalProduct(pp);
-            out.setText("Done!");
+            showMessage("Done!");
         } catch (NumberFormatException e) {
-            out.setText("Expected Quantity Per Month should be a number");
+            showMessage("Expected Quantity Per Month should be a number");
         } catch (Exception e) {
-            out.setText(e.getMessage());
+            showMessage(e.getMessage());
         }
     }
 
@@ -136,11 +136,11 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
             concentrationList.add(new Concentration(Double.parseDouble(concentrationInput.getText().toString()), selectedUnit));
             createActiveSubstanceList();
             viewModel.getPresenter().createActiveSubstanceSpinner();
-            out.setText("Added!");
+            showMessage("Added!");
         } catch (NumberFormatException e) {
-            out.setText("Concentration should be a number");
+            showMessage("Concentration should be a number");
         } catch (Exception e) {
-            out.setText(e.getMessage());
+            showMessage(e.getMessage());
         }
     }
 
@@ -200,5 +200,9 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
         ArrayAdapter<ActiveSubstance> adapter = new ArrayAdapter<ActiveSubstance>(this, android.R.layout.simple_spinner_item, temp);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         activeSubstanceSpinner.setAdapter(adapter);
+    }
+    @Override
+    public void showMessage(String s) {
+        out.setText(s);
     }
 }

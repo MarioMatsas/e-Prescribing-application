@@ -7,4 +7,6 @@ import java.util.List;
 public interface ActiveSubstanceEditView {
     void editActiveSubstance();
     void createActiveSubstanceSpinner(List<ActiveSubstance> activeSubstances);
+
+    void showMessage(String s);
 }

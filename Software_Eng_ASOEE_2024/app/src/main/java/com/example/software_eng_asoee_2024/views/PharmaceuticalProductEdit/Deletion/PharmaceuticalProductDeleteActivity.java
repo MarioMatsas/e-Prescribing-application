@@ -121,7 +121,7 @@ public class PharmaceuticalProductDeleteActivity extends AppCompatActivity imple
             concentrationList.clear();
             createActiveSubstanceList();
         }
-        out.setText("Done!");
+        showMessage("Done!");
     }
 
     public void createActiveSubstanceList() {
@@ -131,5 +131,9 @@ public class PharmaceuticalProductDeleteActivity extends AppCompatActivity imple
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, temp);
         activeSubstanceViewList.setAdapter(adapter);
+    }
+    @Override
+    public void showMessage(String s) {
+        out.setText(s);
     }
 }

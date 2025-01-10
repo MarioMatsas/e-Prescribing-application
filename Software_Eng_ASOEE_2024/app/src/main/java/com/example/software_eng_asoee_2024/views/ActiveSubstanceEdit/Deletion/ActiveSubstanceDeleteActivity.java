@@ -91,6 +91,10 @@ public class ActiveSubstanceDeleteActivity extends AppCompatActivity implements 
             name.setText("");
             eqpm.setText("");
         }
-        out.setText("Done!");
+        showMessage("Done!");
+    }
+    @Override
+    public void showMessage(String s) {
+        out.setText(s);
     }
 }

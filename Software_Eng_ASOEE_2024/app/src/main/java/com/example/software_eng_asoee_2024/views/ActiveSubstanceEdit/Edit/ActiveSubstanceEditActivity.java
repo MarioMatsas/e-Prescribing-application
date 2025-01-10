@@ -99,12 +99,17 @@ public class ActiveSubstanceEditActivity extends AppCompatActivity implements Ac
             if (name.getText().toString().isEmpty() || eqpm.getText().toString().isEmpty())
                 throw new IllegalArgumentException("Not all fields are filled in");
             viewModel.getPresenter().editActiveSubstance(selected, new ActiveSubstance(name.getText().toString(), Double.parseDouble(eqpm.getText().toString())));
-            out.setText("Done!");
+            showMessage("Done!");
         } catch (NumberFormatException e) {
-            out.setText("Expected Quantity Per Month should be a number");
+            showMessage("Expected Quantity Per Month should be a number");
         } catch (Exception e) {
-            out.setText(e.getMessage());
+            showMessage(e.getMessage());
 
         }
+    }
+
+    @Override
+    public void showMessage(String s) {
+        out.setText(s);
     }
 }

@@ -9,4 +9,5 @@ import java.util.List;
 public interface PharmaceuticalProductDeleteView {
     void createPharmaceuticalProductSpinner(List<PharmaceuticalProduct> pharmaceuticalProducts);
     void deletePharmaceuticalProduct(PharmaceuticalProduct as);
+    void showMessage(String s);
 }

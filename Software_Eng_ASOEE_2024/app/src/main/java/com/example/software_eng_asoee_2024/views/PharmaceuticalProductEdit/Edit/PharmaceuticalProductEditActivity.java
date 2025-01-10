@@ -192,13 +192,15 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
                 throw new IllegalArgumentException("Not all fields are filled in");
             if(activeSubstanceList.isEmpty())
                 throw new IllegalArgumentException("No Active Substances have been given");
+
             PharmaceuticalProduct pp = new PharmaceuticalProduct(pharmaceuticalProductName.getText().toString(), Integer.parseInt(retailPrice.getText().toString()), (Form) formSpinner.getSelectedItem(), (MedicineType) typeSpinner.getSelectedItem(), activeSubstanceList, concentrationList, information.getText().toString());
             viewModel.getPresenter().editPharmaceuticalProduct(selected, pp);
-            out.setText("Done!");
+
+            showMessage("Done!");
         } catch (NumberFormatException e) {
-            out.setText("Expected Quantity Per Month should be a number");
+            showMessage("Expected Quantity Per Month should be a number");
         } catch (Exception e) {
-            out.setText(e.getMessage());
+            showMessage(e.getMessage());
         }
     }
 
@@ -211,14 +213,18 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
             concentrationList.add(new Concentration(Double.parseDouble(concentrationInput.getText().toString()), selectedUnit));
             createActiveSubstanceList();
             viewModel.getPresenter().createActiveSubstanceSpinner();
-            out.setText("Added!");
+            showMessage("Added!");
         } catch (NumberFormatException e) {
-            out.setText("Concentration should be a number");
+            showMessage("Concentration should be a number");
         } catch (Exception e) {
-            out.setText(e.getMessage());
+            showMessage(e.getMessage());
         }
     }
     public void createActiveSubstanceList() {
+
+        for(ActiveSubstance ac : activeSubstanceList)
+            System.out.println(ac.toString());
+
         ArrayList<String> temp = new ArrayList<>();
         for(int i = 0; i < activeSubstanceList.size(); i++) {
             temp.add(activeSubstanceList.get(i).toString() + "\n" + concentrationList.get(i) + "\n-");
@@ -271,5 +277,9 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
             public void onNothingSelected(AdapterView<?> parent) { }
         });
 
+    }
+    @Override
+    public void showMessage(String s) {
+        out.setText(s);
     }
 }

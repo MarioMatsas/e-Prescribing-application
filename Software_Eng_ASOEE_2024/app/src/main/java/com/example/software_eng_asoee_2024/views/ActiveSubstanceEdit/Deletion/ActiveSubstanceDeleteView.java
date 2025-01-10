@@ -6,4 +6,5 @@ import java.util.List;
 public interface ActiveSubstanceDeleteView {
     void createActiveSubstanceSpinner(List<ActiveSubstance> activeSubstances);
     void deleteActiveSubstance(ActiveSubstance as);
+    void showMessage(String s);
 }

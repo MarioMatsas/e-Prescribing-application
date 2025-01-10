@@ -52,19 +52,12 @@ public class ActiveSubstanceCreationActivity extends AppCompatActivity implement
     protected void onResume() {
         super.onResume();
     }
-
     @Override
     public void addActiveSubstance() {
-        try {
-            if (ActiveSubstanceName.getText().toString().isEmpty() || ExpectedQuantityPerMonth.getText().toString().isEmpty())
-                throw new IllegalArgumentException("Not all fields are filled in");
-            viewModel.getPresenter().createActiveSubstance(new ActiveSubstance(ActiveSubstanceName.getText().toString(), Double.parseDouble(ExpectedQuantityPerMonth.getText().toString())));
-            out.setText("Done!");
-        } catch (NumberFormatException e) {
-            out.setText("Expected Quantity Per Month should be a number");
-        } catch (Exception e) {
-            out.setText(e.getMessage());
-
-        }
+        viewModel.getPresenter().createActiveSubstance(ActiveSubstanceName.getText().toString(), ExpectedQuantityPerMonth.getText().toString());
+    }
+    @Override
+    public void showMessage(String s) {
+        out.setText(s);
     }
 }
