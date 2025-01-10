@@ -17,7 +17,5 @@ public interface ReportObjectDAO {
 
     HashMap<Doctor, Integer> getUnlawfulDoctors();
 
-    void addUn(Doctor doc, Integer i);
-
     void clearData();
 }
