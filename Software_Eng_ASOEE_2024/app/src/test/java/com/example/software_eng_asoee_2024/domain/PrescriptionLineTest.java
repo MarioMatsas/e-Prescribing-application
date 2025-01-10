@@ -9,7 +9,7 @@ public class PrescriptionLineTest {
 
     @Before
     public void init() {
-        line = new PrescriptionLine(Form.CREAM, new Concentration(10, Unit.mg_per_g), "For 10 days", new ActiveSubstance("Paracetamol", 10d));
+        line = new PrescriptionLine(Form.CREAM, new Concentration(10.0, Unit.mg_per_g), "For 10 days", new ActiveSubstance("Paracetamol", 10d));
     }
 
     @Test
@@ -23,7 +23,7 @@ public class PrescriptionLineTest {
     @Test
     public void testConstruct() {
         Assert.assertThrows(IllegalArgumentException.class, () -> {
-            line = new PrescriptionLine(Form.CREAM, new Concentration(10, Unit.mg_per_g), "For 10 days", null);
+            line = new PrescriptionLine(Form.CREAM, new Concentration(10.0, Unit.mg_per_g), "For 10 days", null);
         });
     }
 

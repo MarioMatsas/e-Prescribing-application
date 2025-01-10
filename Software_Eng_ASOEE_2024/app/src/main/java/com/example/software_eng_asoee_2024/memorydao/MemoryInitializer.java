@@ -8,6 +8,7 @@ import com.example.software_eng_asoee_2024.dao.PatientDAO;
 import com.example.software_eng_asoee_2024.dao.PharmacistDAO;
 import com.example.software_eng_asoee_2024.dao.PharmaceuticalProductDAO;
 import com.example.software_eng_asoee_2024.dao.PrescriptionDAO;
+import com.example.software_eng_asoee_2024.dao.ReportObjectDAO;
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Doctor;
 import com.example.software_eng_asoee_2024.domain.NOHCS_Employee;
@@ -46,6 +47,7 @@ public class MemoryInitializer extends Initializer {
         for (Prescription prescription: getPrescriptionDAO().findAll()){
             getPrescriptionDAO().delete(prescription);
         }
+        // Delete all the the report data
         getReportDAO().clearData();
     }
     public DoctorDAO getDoctorDAO(){
@@ -75,5 +77,5 @@ public class MemoryInitializer extends Initializer {
     public PrescriptionDAO getPrescriptionDAO(){
         return new PrescriptionDAOMemory();
     }
-    public ReportObjectDAOMemory getReportDAO() { return new ReportObjectDAOMemory(); }
+    public ReportObjectDAO getReportDAO() { return new ReportObjectDAOMemory(); }
 }

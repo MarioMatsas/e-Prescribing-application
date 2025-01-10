@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.Before;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductQuantityTest {
     private static ProductQuantity qnt;
@@ -13,7 +14,12 @@ public class ProductQuantityTest {
     public void init() {
         ArrayList<ActiveSubstance> as = new ArrayList<ActiveSubstance>();
         as.add(new ActiveSubstance("Paracetamol", 20d));
-        qnt = new ProductQuantity(new PharmaceuticalProduct("name", 900, Form.PILL, MedicineType.GENERIC, as,"8 pills per pack"), 10);
+
+        List<Concentration> conc_list = new ArrayList<Concentration>();
+        conc_list.add(new Concentration(3.2, Unit.mg_per_disk));
+
+        //qnt = new ProductQuantity(new PharmaceuticalProduct("name", 900, Form.PILL, MedicineType.GENERIC, as, "8 pills per pack"), 10);
+        qnt = new ProductQuantity(new PharmaceuticalProduct("name", 900, Form.PILL, MedicineType.GENERIC, as, conc_list, "8 pills per pack"), 10);
     }
 
     @Test

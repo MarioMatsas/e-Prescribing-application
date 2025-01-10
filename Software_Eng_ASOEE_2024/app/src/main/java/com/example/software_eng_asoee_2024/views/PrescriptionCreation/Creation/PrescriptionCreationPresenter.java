@@ -88,15 +88,17 @@ public class PrescriptionCreationPresenter {
         return true;
     }
 
-    public void addPrescriptionline(ActiveSubstance sub, Form form, String concAmount, String unit, String pdAmount, String days, String Instructions){
+    public Boolean addPrescriptionline(ActiveSubstance sub, Form form, String concAmount, String unit, String pdAmount, String days, String Instructions){
+        //boolean so we can run tests
         if (errorsFound(form, concAmount, pdAmount, days)){
-            return;
+            return false;
         }
         Unit u = Unit.valueOf(unit);
         prescription.addLine(new PrescriptionLine(form, new Concentration(Double.parseDouble(concAmount), u), pdAmount+", "+days+", "+Instructions, sub));
         // The check has already been completed so parsing into double is fine.
         amounts.add(Double.parseDouble(concAmount)*Double.parseDouble(pdAmount)*Double.parseDouble(days));
         view.clearFields();
+        return true;
     }
 
     public boolean errorsFound(Form form, String concAmount, String pdAmount, String days){

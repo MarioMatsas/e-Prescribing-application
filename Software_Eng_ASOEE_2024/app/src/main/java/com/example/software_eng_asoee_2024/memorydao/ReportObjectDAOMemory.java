@@ -61,12 +61,6 @@ public class ReportObjectDAOMemory implements ReportObjectDAO {
         return unlawful;
     }
 
-    public void addUn(Doctor doc, Integer i){
-        System.out.println("CUZ");
-        unlawful.put(doc, i);
-        System.out.println(unlawful.size());
-    }
-
     public void clearData(){
         map.clear();
         unlawful.clear();

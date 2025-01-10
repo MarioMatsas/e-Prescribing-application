@@ -3,6 +3,7 @@ package com.example.software_eng_asoee_2024.domain;
 import org.junit.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PrescriptionExecutionTest {
     static Doctor doc;
@@ -20,11 +21,15 @@ public class PrescriptionExecutionTest {
         doc = new Doctor("John", "Doe", "Cardiology");
         pat = new Patient("Tom", "Hobs", 123123123);
         presc = new Prescription("Wolff-Parkinson-White", doc, pat);
-        line = new PrescriptionLine(Form.DISK, new Concentration(10, Unit.mg_per_disk), "For a week", new ActiveSubstance("Paracetamol", 10d));
+//        line = new PrescriptionLine(Form.DISK, new Concentration(10, Unit.mg_per_disk), "For a week", new ActiveSubstance("Paracetamol", 10d));
+        line = new PrescriptionLine(Form.PILL, new Concentration(10.0, Unit.mg_per_disk), "For a week", new ActiveSubstance("Paracetamol", 10d));
         presc.addLine(line);
         pharm = new Pharmacist("Bob", "Smith");
         activeSubs.add(new ActiveSubstance("Paracetamol", 500.0));
-        qntt = new ProductQuantity(new PharmaceuticalProduct("Depon", 998, Form.DISK, MedicineType.ORIGINAL, activeSubs, "2 big pills"), 10);
+//        qntt = new ProductQuantity(new PharmaceuticalProduct("Depon", 998, Form.PILL, MedicineType.ORIGINAL, activeSubs, "2 big pills"), 10);
+        List<Concentration> conc_list = new ArrayList<Concentration>();
+        conc_list.add(new Concentration(3.2, Unit.mg_per_disk));
+        qntt = new ProductQuantity(new PharmaceuticalProduct("Depon", 998, Form.PILL, MedicineType.ORIGINAL, activeSubs, conc_list, "2 big pills"), 10);
         prescExc = new PrescriptionExecution(pharm, presc);
         qntts =  new ArrayList<ProductQuantity>();
         qntts.add(qntt);

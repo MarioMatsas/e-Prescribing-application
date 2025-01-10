@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class PharmaceuticalProductTest {
@@ -42,12 +43,18 @@ public class PharmaceuticalProductTest {
     public void testCustomerParticipation(){
         ArrayList<ActiveSubstance> as = new ArrayList<ActiveSubstance>();
         as.add(new ActiveSubstance("Paracetamol", 20d));
+
+        List<Concentration> conc_list = new ArrayList<Concentration>();
+        conc_list.add(new Concentration(3.2, Unit.mg_per_disk));
+
         PharmaceuticalProduct php1 =
-                new PharmaceuticalProduct("testName1", 500, PILL, MedicineType.GENERIC, as, "16 pills included");
+//                new PharmaceuticalProduct("testName1", 500, PILL, MedicineType.GENERIC, as, "16 pills included");
+                new PharmaceuticalProduct("testName1", 500, PILL, MedicineType.GENERIC, as, conc_list, "16 pills included");
         Assert.assertEquals(0.02, php1.getCustomerParticipation(), 0.0);
 
         PharmaceuticalProduct php2 =
-                new PharmaceuticalProduct("testName2", 500, PILL, MedicineType.ORIGINAL, as, "16 pills included");
+//                new PharmaceuticalProduct("testName2", 500, PILL, MedicineType.ORIGINAL, as, "16 pills included");
+                new PharmaceuticalProduct("testName2", 500, PILL, MedicineType.ORIGINAL, as, conc_list, "16 pills included");
         Assert.assertEquals(0.1, php2.getCustomerParticipation(), 0.0);
     }
 
@@ -55,12 +62,18 @@ public class PharmaceuticalProductTest {
     public void testFinalPrice(){
         ArrayList<ActiveSubstance> as = new ArrayList<ActiveSubstance>();
         as.add(new ActiveSubstance("Paracetamol", 20d));
+
+        List<Concentration> conc_list = new ArrayList<Concentration>();
+        conc_list.add(new Concentration(3.2, Unit.mg_per_disk));
+
         PharmaceuticalProduct php1 =
-                new PharmaceuticalProduct("testName1", 4285, PILL, MedicineType.ORIGINAL, as, "16 pills included");
+//                new PharmaceuticalProduct("testName1", 4285, PILL, MedicineType.ORIGINAL, as, "16 pills included");
+                new PharmaceuticalProduct("testName1", 4285, PILL, MedicineType.ORIGINAL, as, conc_list, "16 pills included");
         Assert.assertEquals((Integer) 429, php1.getFinalPrice());
 
         PharmaceuticalProduct php2 =
-                new PharmaceuticalProduct("testName2", 746, PILL, MedicineType.GENERIC, as, "16 pills included");
+//                new PharmaceuticalProduct("testName2", 746, PILL, MedicineType.GENERIC, as, "16 pills included");
+                new PharmaceuticalProduct("testName2", 746, PILL, MedicineType.GENERIC, as, conc_list, "16 pills included");
         Assert.assertEquals((Integer) 15, php2.getFinalPrice());
     }
 }

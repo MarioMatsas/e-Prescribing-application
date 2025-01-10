@@ -19,6 +19,7 @@ import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmacistDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.ReportObjectDAOMemory;
 
 import java.util.ArrayList;
 
@@ -62,16 +63,24 @@ public abstract class Initializer {
         pharmaceuticalProductDAO.save(new PharmaceuticalProduct("Advil", 300, Form.PILL, MedicineType.GENERIC, as2, asCs2, "16 pills in pack"));
 
         PrescriptionDAO prescriptionDAO = new PrescriptionDAOMemory();
-        Prescription presc = new Prescription("Wolff-Parkinson-White", doctorDAO.find("m", "m"), patientDAO.find(123123123));
+        Prescription presc1 = new Prescription("Wolff-Parkinson-White", doctorDAO.find("m", "m"), patientDAO.find(123123123));
         PrescriptionLine line = new PrescriptionLine(Form.PILL, new Concentration(10.0, Unit.mg_per_g), "For 10 days, 2 pills per day", activeSubstanceDAO.find("Paracetamol"));
-        presc.addLine(line);
+        presc1.addLine(line);
         line = new PrescriptionLine(Form.PILL, new Concentration(40.0, Unit.mg_per_g), "For 20 days, 1 pill in the morning", activeSubstanceDAO.find("Ibuprofen"));
-        presc.addLine(line);
-        prescriptionDAO.save(presc);
-        presc = new Prescription("Mild headache", doctorDAO.find("m", "m"), patientDAO.find(123123123));
+        presc1.addLine(line);
+        prescriptionDAO.save(presc1);
+        Prescription presc2 = new Prescription("Mild headache", doctorDAO.find("m", "m"), patientDAO.find(123123123));
         line = new PrescriptionLine(Form.PILL, new Concentration(10.0, Unit.mg_per_g), "For 10 days, 2 pills per day", activeSubstanceDAO.find("Paracetamol"));
-        presc.addLine(line);
-        prescriptionDAO.save(presc);
+        presc2.addLine(line);
+        prescriptionDAO.save(presc2);
+
+        // reportDAO.update(prescription.getDoctor(), prescription.getPatient(), line.getActiveSubstance(), prescription.getDate(), amounts.get(i));
+
+        ReportObjectDAO reportDAO = new ReportObjectDAOMemory();
+        reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), presc1.getDate(), 5.0);
+        reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Ibuprofen"), presc1.getDate(), 10.0);
+        reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), presc2.getDate(), 13.0);
+
     }
 
     public abstract DoctorDAO getDoctorDAO();
@@ -84,6 +93,8 @@ public abstract class Initializer {
     public abstract PharmaceuticalProductDAO getPharmaceuticalProductDAO();
 
     public abstract PrescriptionDAO getPrescriptionDAO();
+
+    public abstract ReportObjectDAO getReportDAO();
 
 }
 
