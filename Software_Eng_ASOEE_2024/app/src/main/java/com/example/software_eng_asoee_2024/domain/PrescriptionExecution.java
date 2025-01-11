@@ -24,20 +24,13 @@ public class PrescriptionExecution {
     }
 
     public void addProductQuantity(ProductQuantity productQuantity) {
+        System.out.println("\n\nSSSSSSSSSSS\n\n");
+        System.out.println(productQuantity.getProduct());
         boolean found = false;
-        for(ProductQuantity prQ : productQuantities){//checking if the product of productquantity is already registered
-            if(prQ.getProduct().equals(productQuantity.getProduct())){
-                found = true;
-                break;
-            }
-        }
-        if (found)
-            return;
-
         List<PrescriptionLine> prescrLines = prescription.getPrescriptionLines();
-        found = false;
         for (PrescriptionLine prline : prescrLines){
             if(productQuantity.getProduct().getActiveSubstances().contains(prline.getActiveSubstance())){
+                System.out.println("FOUND");
                 found = true; // checking if there is at least one substance in prescrLines that is contained in productQuantity.product
                 break;
             }

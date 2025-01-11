@@ -43,6 +43,7 @@ public abstract class Initializer {
 
         NOHCSEmployeeDAO empDAO = new NOHCSEmployeeDAOMemory();
         empDAO.save(new NOHCS_Employee("a", "a"));
+        empDAO.save(new NOHCS_Employee("admin", "0000"));
 
         ActivaSubstanceDAO activeSubstanceDAO = new ActiveSubstanceDAOMemory();
         activeSubstanceDAO.save(new ActiveSubstance("Paracetamol", 20d));

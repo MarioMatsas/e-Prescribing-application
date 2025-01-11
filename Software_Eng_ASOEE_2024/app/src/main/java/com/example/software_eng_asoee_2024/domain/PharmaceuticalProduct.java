@@ -94,9 +94,9 @@ public class PharmaceuticalProduct {
         return activeSubstanceConcentrations;
     }
 
-    public String toString(){
+    /*public String toString(){
         return name + " " + getFinalPrice()/100.0 + " " + information;
-    }
+    }*/
 
     @Override
     public boolean equals(@Nullable Object obj) {

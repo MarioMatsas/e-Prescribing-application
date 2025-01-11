@@ -55,7 +55,7 @@ public class LoginViewStub implements LoginView {
     }
 
     public String getNavNOHCSMessage() {
-        return navPhMessage;
+        return navNOHCSMessage;
     }
 
     public String getErrorMessage() {

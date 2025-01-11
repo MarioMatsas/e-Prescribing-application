@@ -80,8 +80,7 @@ public class MainActivity extends AppCompatActivity implements LoginView{
 
     @Override
     public void login() {
-//        viewModel.getPresenter().login(username.getText().toString(), password.getText().toString());
-    navigateToNOHCSScreen(new NOHCS_Employee("a", "a"));
+        viewModel.getPresenter().login(username.getText().toString(), password.getText().toString());
     }
 
     @Override
