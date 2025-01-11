@@ -16,6 +16,10 @@ public interface ReportObjectDAO {
     void checkForUnlawful(DoctorPatientSubstanceTruple truple);
 
     HashMap<Doctor, Integer> getUnlawfulDoctors();
+    HashMap<DoctorPatientSubstanceTruple, Double> getMap();
+    Integer getYear();
+
+    Integer getMonth();
 
     void clearData();
 }

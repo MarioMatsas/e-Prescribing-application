@@ -13,22 +13,24 @@ import java.util.HashSet;
 import java.util.List;
 
 public class ReportObjectDAOMemory implements ReportObjectDAO {
-    private Integer month;
-    private Integer year;
+    static Integer month = 0;
+    static Integer year = 0;
     static HashMap<DoctorPatientSubstanceTruple, Double> map = new HashMap<DoctorPatientSubstanceTruple, Double>();
     static HashMap<Doctor, Integer> unlawful = new HashMap<Doctor, Integer>();
 
     public void update(Doctor doctor, Patient patient, ActiveSubstance substance, Date date, Double amount){
         // Check for month change
-        if (date.getMonth() != month || date.getYear() != year){
+        if (date.getMonth().equals(month) || date.getYear().equals(year)){
             month = date.getMonth();
             year = date.getYear();
             clearData();
         }
-        // Check if the pair is already in the map
+        // Check if the truple is already in the map
         boolean found = false;
         for (DoctorPatientSubstanceTruple truple : map.keySet()){
+
             if (truple.getDoctor() == doctor && truple.getPatient() == patient && truple.getActiveSub() == substance){
+
                 map.put(truple, map.get(truple) + amount);
                 checkForUnlawful(truple);
                 found = true;
@@ -61,6 +63,17 @@ public class ReportObjectDAOMemory implements ReportObjectDAO {
         return unlawful;
     }
 
+    public HashMap<DoctorPatientSubstanceTruple, Double> getMap() {
+        return map;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public Integer getMonth() {
+        return month;
+    }
     public void clearData(){
         map.clear();
         unlawful.clear();

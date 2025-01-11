@@ -2,6 +2,7 @@ package com.example.software_eng_asoee_2024.dao;
 
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Concentration;
+import com.example.software_eng_asoee_2024.domain.Date;
 import com.example.software_eng_asoee_2024.domain.Doctor;
 import com.example.software_eng_asoee_2024.domain.Form;
 import com.example.software_eng_asoee_2024.domain.MedicineType;
@@ -18,6 +19,7 @@ import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmacistDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.ReportObjectDAOMemory;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -34,6 +36,7 @@ public class DAOTest {
     private PharmaceuticalProductDAO productDAO;
     private PrescriptionDAO prescriptionDAO;
     private Prescription presc;
+    private ReportObjectDAO reportDAO;
 
     @Before
     public void setUp() {
@@ -46,10 +49,14 @@ public class DAOTest {
         activeSubstanceDAO = new ActiveSubstanceDAOMemory();
         productDAO = new PharmaceuticalProductDAOMemory();
         prescriptionDAO = new PrescriptionDAOMemory();
+        reportDAO = new ReportObjectDAOMemory();
+
+
 
         presc = new Prescription("Whatever...", doctorDAO.find("m", "m"), patientDAO.find(123123123));
         PrescriptionLine line = new PrescriptionLine(Form.PILL, new Concentration(15.0, Unit.mg_per_g), "For 5 days, 2 pills per day", activeSubstanceDAO.find("Paracetamol"));
         presc.addLine(line);
+
     }
 
     /*
@@ -213,7 +220,7 @@ public class DAOTest {
      */
     @Test
     public void findRegisteredPrescription(){
-        Assert.assertEquals((prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123123))).size(), 1);
+        Assert.assertEquals((prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123123))).size(), 2);
     }
 
     @Test
@@ -234,13 +241,76 @@ public class DAOTest {
     @Test
     public void savePrescription(){
         prescriptionDAO.save(presc);
-        Assert.assertEquals((prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123123))).size(), 2);
+        Assert.assertEquals((prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123123))).size(), 3);
     }
 
     @Test
     public void deletePrescription(){
+        prescriptionDAO.save(presc);
         prescriptionDAO.delete(presc);
-        Assert.assertEquals((prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123123))).size(), 1);
+        Assert.assertEquals((prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123123))).size(), 2);
     }
+
+    /*
+    ReportObjectDAO tests
+    */
+    @Test
+    public void clearDataMonth(){
+        reportDAO.update(new Doctor("name", "sur", "whatever"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(reportDAO.getYear(), 7,3), 123.0);
+        Assert.assertEquals(reportDAO.getMonth(), (Integer)7);
+    }
+
+    @Test
+    public void clearDataYear(){
+        reportDAO.update(new Doctor("name", "sur", "whatever"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(5000, reportDAO.getMonth(), 3), 123.0);
+        Assert.assertEquals(reportDAO.getYear(), (Integer)5000);
+    }
+
+    @Test
+    public void differentDoctor(){
+        reportDAO.update(new Doctor("name", "sur", "whatever"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(), 0.5);
+        Assert.assertEquals(reportDAO.getMap().size(), 3);
+    }
+
+    @Test
+    public void differentPatient(){
+        reportDAO.update(doctorDAO.find("m", "m"), new Patient("name", "sur", 777), activeSubstanceDAO.find("Paracetamol"), new Date(), 0.5);
+        Assert.assertEquals(reportDAO.getMap().size(), 3);
+    }
+
+    @Test
+    public void differentActiveSub(){
+        reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), new ActiveSubstance("new", 20.0), new Date(), 0.5);
+        Assert.assertEquals(reportDAO.getMap().size(), 3);
+    }
+
+    @Test
+    public void sameTrupleValues(){
+        reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(), 0.5);
+        Assert.assertEquals(reportDAO.getMap().size(), 2);
+    }
+
+    @Test
+    public void oldUnlawful(){
+        reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(), 10.0);
+        reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(), 1.0);
+        Assert.assertEquals(reportDAO.getUnlawfulDoctors().size(), 1);
+        reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Ibuprofen"), new Date(), 7.0);
+        Assert.assertEquals(reportDAO.getUnlawfulDoctors().size(), 1);
+    }
+
+    @Test
+    public void newUnlawful(){
+        reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(), 10.0);
+        reportDAO.update(new Doctor(), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(), 30.0);
+        Assert.assertEquals(reportDAO.getUnlawfulDoctors().size(), 2);
+    }
+
+    @Test
+    public void noUnlawful(){
+        reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(), 0.5);
+        Assert.assertEquals(reportDAO.getUnlawfulDoctors().size(), 0);
+    }
+
 
 }
