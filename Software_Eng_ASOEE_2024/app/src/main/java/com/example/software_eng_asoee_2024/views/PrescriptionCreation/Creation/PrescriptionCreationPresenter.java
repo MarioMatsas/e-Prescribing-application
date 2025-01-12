@@ -41,6 +41,15 @@ public class PrescriptionCreationPresenter {
         this.view = view;
     }
 
+    /**
+     * Αρχικοποιεί τον presenter με τις χρήσιμες, για την συνταγή, πληροφορίες.
+     * Οι πληροφορίες θεωρείται ΚΑΙ είναι σωστές. Αλλιώς δεν θα είμασταν
+     * στο στάδιο της δημιουργίας συνταγής.
+     * @param name όνομα γιατρού
+     * @param surname επώνυμο γιατρού
+     * @param ssn ΑΜΚΑ ασθενή
+     * @param diagnosis διάγνωση συνταγής
+     */
     public void init(String name, String surname, int ssn, String diagnosis){
         doctor = doctorDAO.find(name, surname);
         System.out.println(doctor);
@@ -62,18 +71,33 @@ public class PrescriptionCreationPresenter {
     public void setSubstanceDAO(ActiveSubstanceDAOMemory activeSubDAO) {
         this.activeSubDAO = activeSubDAO;
     }
+
     public void setReportDAO(ReportObjectDAOMemory reportDAO){
         this.reportDAO = reportDAO;
     }
 
+    /**
+     * Επιστρέφει την συγκεκριμένει συνταγή, που υπάρχει στην μνήμη.
+     * @param Id το id της συγκεκριμένης συνταγής που θέλουμε να βρούνε στην μνήμη
+     * @return Επιστρέφει την συγκεκριμένει συνταγή, που υπάρχει στην μνήμη.
+     */
     public Prescription getPrescription(int Id){
         return prescriptionDAO.findPrescriptionById(Id);
     }
 
+    /**
+     * Επιστρέφει όλες τις δραστικές ουσίες που υπάρχουν στην μνήμη.
+     * @return επιστρέφει όλες τις δραστικές ουσίες που υπάρχουν στην μνήμη
+     */
     public List<ActiveSubstance> getActiveSubs(){
         return activeSubDAO.findAll();
     }
 
+    /**
+     * Δημιουργεί την συνταγή και τη αποθηκεύει στην μνήμη.
+     * Αν δεν υπάρχουν ακόμη γραμμές στην συνταγή, δεν δημιουργείται τίποτα.
+     * @return επιστρέφει αν ήταν επιτυχής(true) ή αποτυχής(false) η δημιουργία.
+     */
     public boolean createPrescription(){
         if (prescription.getPrescriptionLines().isEmpty()){
             view.showError("Prescription is empty");
@@ -88,6 +112,18 @@ public class PrescriptionCreationPresenter {
         return true;
     }
 
+    /**
+     * Δημιουργεί και προσθέτει μια γραμμή στην συνταγή.
+     * Αν υπάρχει κάποιο λάθος στην είσοδο, δεν γίνεται τίποτα.
+     * @param concAmount περιεκτικότητα της ουσίας που χορηγείται
+     * @param unit μονάδα μέτρησης του form
+     * @param pdAmount ποσότητα ανα μέρα από την συγκεκριμένη ουσία
+     * @param sub δραστική ουσία
+     * @param Instructions οδηγίες για την συγκεκριμένη γραμμή
+     * @param form μορφή φαρμάκου
+     * @param days μέρες εκτέλεσης της γραμμής από τον ασθενή
+     * @return επιστρέφει αν ήταν επιτυχής(true) ή αποτυχής(false) η προσθήκη.
+     */
     public Boolean addPrescriptionline(ActiveSubstance sub, Form form, String concAmount, String unit, String pdAmount, String days, String Instructions){
         //boolean so we can run tests
         if (errorsFound(form, concAmount, pdAmount, days)){
@@ -101,6 +137,15 @@ public class PrescriptionCreationPresenter {
         return true;
     }
 
+    /**
+     * Ελέγχει να δεί αν υπάρχει κάποιο λάθος στην είσοδο.
+     * Συγκεκριμένα, κοιτάει αν μπορούν να γίνουν σωστά parse τα string δεδομένα βάσει περιορισμών.
+     * @param concAmount περιεκτικότητα της ουσίας που χορηγείται
+     * @param pdAmount ποσότητα ανα μέρα
+     * @param form μορφή φαρμάκου
+     * @param days μέρες που πρέπει ο ασθενής να ακολουθήσει αυτή την γραμμή συνταγής
+     * @return επιστρέφει αν βρέθηκε σφάλμα(true) ή οχι(false)
+     */
     public boolean errorsFound(Form form, String concAmount, String pdAmount, String days){
         if (error(concAmount, "double")) return true;
 
@@ -115,6 +160,14 @@ public class PrescriptionCreationPresenter {
         return false;
     }
 
+    /**
+     * Ελέγχει να δεί αν υπάρχει κάποιο λάθος στην είσοδο.
+     * Συγκεκριμένα, κοιτάει αν μπορούν να γίνει σωστά parse το string δεδομένο,
+     * ανάλογα τον τύπο του.
+     * @param stringToCheck το string του οποίου περιεχόμενο ελέγχουμε.
+     * @param type επιθυμητός τύπος δεδομένων του περιεχομένου του stringToCheck
+     * @return επιστρέφει αν βρέθηκε σφάλμα(true) ή οχι(false)
+     */
     public boolean error(String stringToCheck, String type){
         if (stringToCheck.isEmpty()) {  // Check if the stringToCheck field is empty
             view.showError("Make sure all fields are filled");

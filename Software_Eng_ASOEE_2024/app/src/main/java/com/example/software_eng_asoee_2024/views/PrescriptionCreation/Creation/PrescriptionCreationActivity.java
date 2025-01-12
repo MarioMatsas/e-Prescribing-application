@@ -47,6 +47,11 @@ public class PrescriptionCreationActivity extends AppCompatActivity implements P
     private Patient patient;
     private Doctor doctor;
 
+    /**
+     * Δημιουργεί to layout και αρχικοποιεί
+     * το activity.
+     * @param savedInstanceState το Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +95,9 @@ public class PrescriptionCreationActivity extends AppCompatActivity implements P
         setupFormSpinner();
     }
 
+    /**
+     * Δημιουργεί και γεμίζει το spinner για τις δραστικές ουσίες.
+     */
     @Override
     public void populateActiveSubSpinner() {
         // Fetch active substances from the presenter
@@ -101,6 +109,11 @@ public class PrescriptionCreationActivity extends AppCompatActivity implements P
         activeSubstanceSpinner.setAdapter(activeSubAdapter);
     }
 
+    /**
+     * Αρχικοποιεί το spinner της οθόνης, για το Form.
+     * Κάθε Form έχει δική του μονάδα μέτρησης (Unit) και
+     * για αυτό υπάρχει switch για να κάνει έλεγχο κάθε φορά.
+     */
     @Override
     public void setupFormSpinner() {
         // Get all enum values as an array of Form
@@ -140,6 +153,12 @@ public class PrescriptionCreationActivity extends AppCompatActivity implements P
             public void onNothingSelected(AdapterView<?> parent) { }
         });
     }
+
+    /**
+     * Θέτει κατάλληλα τα hints για τον χρήστη.
+     * @param amount Το περιεχόμενο του μηνύματος
+     * @param days Ο αριθμός των ημερών, που θα φαίνεται στο μήνυμα
+     */
     public void updateText(String amount, String days){
         amountPerDay.setText("");
         amountPerDay.setHint(amount);
@@ -147,6 +166,10 @@ public class PrescriptionCreationActivity extends AppCompatActivity implements P
         numberOfDay.setHint(days);
     }
 
+    /**
+     * Κοιτά αν μπορεί να δημιουργηθεί η συνταγή(μέσω του presenter)
+     * και αν μπορεί, τερματίζει το activity.
+     */
     @Override
     public void createPrescription(){
         if (viewModel.getPresenter().createPrescription()){
@@ -154,6 +177,9 @@ public class PrescriptionCreationActivity extends AppCompatActivity implements P
         }
     }
 
+    /**
+     * Καλεί τον presenter, μέσω του viewModel, για να προσθέσει την γραμμή στην συνταγή.
+     */
     @Override
     public void addLine(){
         viewModel.getPresenter().addPrescriptionline((ActiveSubstance) activeSubstanceSpinner.getSelectedItem(),
@@ -161,6 +187,9 @@ public class PrescriptionCreationActivity extends AppCompatActivity implements P
                 amountPerDay.getText().toString(), numberOfDay.getText().toString(), instructions.getText().toString());
     }
 
+    /**
+     * Καθαρίζει τα πεδία συμπλήρωσης, για να μήν μπερδευτεί ο χρήστης.
+     */
     @Override
     public void clearFields(){
         concentrationAmount.setText("");
@@ -170,6 +199,11 @@ public class PrescriptionCreationActivity extends AppCompatActivity implements P
         showError("");
     }
 
+    /**
+     * Ορίζει στο errorMessage μήνυμα,
+     * το περιεχόμενο του message.
+     * @param message Το περιεχόμενο του μηνύματος
+     */
     @Override
     public void showError(String message) {
         errorMessage.setText(message);

@@ -22,6 +22,14 @@ public class PatientSearchingPresenter {
         this.patientDAO = patientDAO;
     }
 
+    /**
+     * Βρίσκει τον ασθενή, ώστε να συνεχιστεί η διαδικασία δημιουργίας συνταγής,
+     * για τον συγκεκριμένο ασθενή.
+     * Αν δεν τον βρεί, εμφανίζεται κατάλληλο μήνυμα.
+     * Αν δοθεί λάθος input, πάλι εμφανίζεται κατάλληλο μήνυμα.
+     * @param diagnosis διάγνωση για αυτό τον ασθενή
+     * @param SSN ΑΜΚΑ ασθενή
+     */
     public void findPatient(String SSN, String diagnosis){
         if (SSN.isEmpty() || diagnosis.isEmpty()) {  // Check if the SSN field is empty
             view.showError("Fields can't be empty.");
