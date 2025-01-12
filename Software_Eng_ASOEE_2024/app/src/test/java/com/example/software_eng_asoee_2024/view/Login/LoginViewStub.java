@@ -10,6 +10,7 @@ public class LoginViewStub implements LoginView {
     private String navDocMessage;
     private String navPhMessage;
     private String navNOHCSMessage;
+    private String navReportMessage;
 
     @Override
     public void login() {
@@ -18,7 +19,7 @@ public class LoginViewStub implements LoginView {
 
     @Override
     public void navigateToReportScreen(){
-
+        navReportMessage = "Success admin";
     }
 
     @Override
@@ -33,13 +34,14 @@ public class LoginViewStub implements LoginView {
 
     @Override
     public void navigateToNOHCSScreen(NOHCS_Employee nohcsEmployee) {
-        navNOHCSMessage = "Success nohcsEmployee";
+        navNOHCSMessage = "Success NOHCSEmployee";
     }
 
     @Override
     public void navigateToSignUpScreen() {
 
     }
+
 
     @Override
     public void showError(String message) {
@@ -55,7 +57,11 @@ public class LoginViewStub implements LoginView {
     }
 
     public String getNavNOHCSMessage() {
-        return navPhMessage;
+        return navNOHCSMessage;
+    }
+
+    public String getNavReportMessage() {
+        return navReportMessage;
     }
 
     public String getErrorMessage() {

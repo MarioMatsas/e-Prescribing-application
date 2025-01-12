@@ -7,12 +7,12 @@ import org.junit.Assert;
 public class NOHCS_EmployeeTest {
     @Test
     public void testId(){
-        assertEquals((Integer)0, NOHCS_Employee.getLastEmpid());
+        assertEquals(NOHCS_Employee.getLastEmpid(), (Integer)0);
         NOHCS_Employee emp_jordan = new NOHCS_Employee("Michael", "Jordan");
-        assertEquals((Integer)1, emp_jordan.getEmpid());
-        assertEquals((Integer)1, NOHCS_Employee.getLastEmpid());
+        assertEquals(emp_jordan.getEmpid(), (Integer)1);
+        assertEquals(NOHCS_Employee.getLastEmpid(), (Integer)1);
         NOHCS_Employee emp_lebron = new NOHCS_Employee("LeBron", "James");
-        assertEquals((Integer)2, emp_lebron.getEmpid());
-        assertEquals((Integer)2, NOHCS_Employee.getLastEmpid());
+        assertEquals(emp_lebron.getEmpid(), (Integer)2);
+        assertEquals(NOHCS_Employee.getLastEmpid(), (Integer)2);
     }
 }

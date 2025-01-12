@@ -1,8 +1,10 @@
 package com.example.software_eng_asoee_2024.view.Login;
 
 import com.example.software_eng_asoee_2024.dao.Initializer;
+import com.example.software_eng_asoee_2024.dao.NOHCSEmployeeDAO;
 import com.example.software_eng_asoee_2024.memorydao.DoctorDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.MemoryInitializer;
+import com.example.software_eng_asoee_2024.memorydao.NOHCSEmployeeDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmacistDAOMemory;
 import com.example.software_eng_asoee_2024.views.Login.LoginPresenter;
 
@@ -24,6 +26,7 @@ public class LoginPresenterTest {
         presenter.setView(viewStub);
         presenter.setDoctorDAO(new DoctorDAOMemory());
         presenter.setPharmacistDAO(new PharmacistDAOMemory());
+        presenter.setNOHCSEmployeeDAO(new NOHCSEmployeeDAOMemory());
     }
 
     @Test
@@ -39,15 +42,27 @@ public class LoginPresenterTest {
     }
 
     @Test
+    public void AdminLogin(){
+        presenter.login("admin", "0000");
+        Assert.assertEquals("Success admin", viewStub.getNavReportMessage());
+    }
+
+    @Test
     public void NOHCSEmployeeLogin(){
         presenter.login("a", "a");
-        Assert.assertEquals("Success pharmacist", viewStub.getNavNOHCSMessage());
+        Assert.assertEquals("Success NOHCSEmployee", viewStub.getNavNOHCSMessage());
     }
 
     @Test
     public void failLogin(){
         presenter.login("ch", "p");
         Assert.assertEquals("User not found.", viewStub.getErrorMessage());
+    }
+
+    @Test
+    public void getViewTest(){
+        presenter.setView(viewStub);
+        Assert.assertEquals(viewStub, presenter.getView());
     }
 
 }

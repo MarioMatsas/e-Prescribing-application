@@ -88,7 +88,7 @@ public class PrescriptionCreationPresenterTest {
     public void ErrorsFoundWrongConcAmount(){//concAmount should be double
         Assert.assertTrue(presenter.errorsFound(Form.PILL, "a2f", "3", "4"));
         Assert.assertTrue(presenter.errorsFound(Form.PILL, "a39", "3", "4"));
-//        Assert.assertTrue(presenter.errorsFound(Form.PILL, "3.02f", "3", "4"));
+        Assert.assertTrue(presenter.errorsFound(Form.PILL, "3.02f", "3", "4"));
         Assert.assertTrue(presenter.errorsFound(Form.PILL, "True", "3", "4"));
     }
 
@@ -152,6 +152,10 @@ public class PrescriptionCreationPresenterTest {
 
 //        Assert.assertEquals(viewStub.getErrorMessage(), "Make sure to enter numbers");
         Assert.assertTrue(presenter.error("fifo", "double"));
+
+        Assert.assertTrue(presenter.error("3.0f", "int"));
+
+        Assert.assertTrue(presenter.error("3.0f", "double"));
     }
 
     @Test
