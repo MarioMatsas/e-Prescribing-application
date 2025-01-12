@@ -41,7 +41,6 @@ public class ActiveSubstanceDeletePresenter {
         for (Prescription p : this.prescriptionDAO.findAll()) {
             p.getPrescriptionLines().removeIf(pl -> pl.getActiveSubstance().equals(ac));
             if(p.getPrescriptionLines().isEmpty()) {
-
                 prescriptionDAO.delete(p);
             }
         }
