@@ -33,8 +33,7 @@ public class ActiveSubstanceEditPresenter {
                 }
             }
 
-            this.activeSubstanceDAO.delete(selected);
-            this.activeSubstanceDAO.save(newAc);
+            this.activeSubstanceDAO.edit(selected, newAc);
             createActiveSubstanceSpinner();
             view.showMessage("Done!");
         } catch (NumberFormatException e) {

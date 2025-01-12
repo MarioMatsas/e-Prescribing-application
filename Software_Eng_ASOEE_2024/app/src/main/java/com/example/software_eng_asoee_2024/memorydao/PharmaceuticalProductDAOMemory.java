@@ -2,6 +2,7 @@ package com.example.software_eng_asoee_2024.memorydao;
 
 import com.example.software_eng_asoee_2024.dao.PharmaceuticalProductDAO;
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
+import com.example.software_eng_asoee_2024.domain.Concentration;
 import com.example.software_eng_asoee_2024.domain.Form;
 import com.example.software_eng_asoee_2024.domain.MedicineType;
 import com.example.software_eng_asoee_2024.domain.Patient;
@@ -26,6 +27,15 @@ public class PharmaceuticalProductDAOMemory implements PharmaceuticalProductDAO 
 
     public void save(PharmaceuticalProduct entity) {
         entities.add(entity);
+    }
+
+    public void edit(PharmaceuticalProduct edit, PharmaceuticalProduct editTo) {
+        edit.setName(editTo.getName());
+        edit.setForm(editTo.getForm());
+        edit.setMedicineType(editTo.getMedicineType());
+        edit.setRetailPrice(editTo.getRetailPrice());
+        edit.setActiveSubstances(editTo.getActiveSubstances());
+        edit.setActiveSubstanceConcentrations(editTo.getActiveSubstanceConcentrations());
     }
 
     public PharmaceuticalProduct find(String name){

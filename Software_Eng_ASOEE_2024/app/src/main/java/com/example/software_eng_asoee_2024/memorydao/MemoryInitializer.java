@@ -1,6 +1,6 @@
 package com.example.software_eng_asoee_2024.memorydao;
 
-import com.example.software_eng_asoee_2024.dao.ActivaSubstanceDAO;
+import com.example.software_eng_asoee_2024.dao.ActiveSubstanceDAO;
 import com.example.software_eng_asoee_2024.dao.DoctorDAO;
 import com.example.software_eng_asoee_2024.dao.Initializer;
 import com.example.software_eng_asoee_2024.dao.NOHCSEmployeeDAO;
@@ -66,7 +66,7 @@ public class MemoryInitializer extends Initializer {
         return new PatientDAOMemory();
     }
 
-    public ActivaSubstanceDAO getActiveSubstanceDAO(){
+    public ActiveSubstanceDAO getActiveSubstanceDAO(){
         return new ActiveSubstanceDAOMemory();
     }
 

@@ -90,13 +90,22 @@ public class PharmaceuticalProduct {
     public List<ActiveSubstance> getActiveSubstances(){
         return activeSubstances;
     }
+
+    public void setActiveSubstances(List<ActiveSubstance> activeSubstances) {
+        this.activeSubstances = activeSubstances;
+    }
+
+    public void setActiveSubstanceConcentrations(List<Concentration> activeSubstanceConcentrations) {
+        this.activeSubstanceConcentrations = activeSubstanceConcentrations;
+    }
+
     public List<Concentration> getActiveSubstanceConcentrations(){
         return activeSubstanceConcentrations;
     }
 
-    /*public String toString(){
+    public String toString(){
         return name + " " + getFinalPrice()/100.0 + " " + information;
-    }*/
+    }
 
     @Override
     public boolean equals(@Nullable Object obj) {

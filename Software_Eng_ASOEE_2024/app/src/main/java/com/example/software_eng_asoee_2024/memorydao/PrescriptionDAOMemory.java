@@ -21,8 +21,7 @@ public class PrescriptionDAOMemory implements PrescriptionDAO {
     }
 
     public List<Prescription> findAll() {
-        ArrayList<Prescription> result = new ArrayList<Prescription>();
-        result.addAll(entities);
+        ArrayList<Prescription> result = new ArrayList<Prescription>(entities);
         return result;
     }
 

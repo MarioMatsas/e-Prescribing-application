@@ -38,8 +38,8 @@ public class PharmaceuticalProductEditPresenter {
             for(PharmaceuticalProduct tempAc : pharmaceuticalProductDAO.findAll()) {
                 if(tempAc.equals(pp) && !tempAc.equals(selected)) throw new IllegalArgumentException("Cant have two identical pharmaceutical products");
             }
-            this.pharmaceuticalProductDAO.delete(selected);
-            this.pharmaceuticalProductDAO.save(pp);
+
+            this.pharmaceuticalProductDAO.edit(selected, pp);
             createPharmaceuticalProductSpinner();
 
             view.showMessage("Done!");

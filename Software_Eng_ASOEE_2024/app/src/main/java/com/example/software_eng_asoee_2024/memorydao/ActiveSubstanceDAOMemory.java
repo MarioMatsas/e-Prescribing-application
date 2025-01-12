@@ -1,13 +1,13 @@
 package com.example.software_eng_asoee_2024.memorydao;
 
-import com.example.software_eng_asoee_2024.dao.ActivaSubstanceDAO;
+import com.example.software_eng_asoee_2024.dao.ActiveSubstanceDAO;
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Doctor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActiveSubstanceDAOMemory implements ActivaSubstanceDAO {
+public class ActiveSubstanceDAOMemory implements ActiveSubstanceDAO {
     static ArrayList<ActiveSubstance> entities = new ArrayList<ActiveSubstance>();
 
     public void delete(ActiveSubstance entity) {
@@ -22,6 +22,11 @@ public class ActiveSubstanceDAOMemory implements ActivaSubstanceDAO {
 
     public void save(ActiveSubstance entity) {
         entities.add(entity);
+    }
+
+    public void edit(ActiveSubstance edit, ActiveSubstance editTo) {
+        edit.setName(editTo.getName());
+        editTo.setExpectedQuantityPerMonth(editTo.getExpectedQuantityPerMonth());
     }
 
     public ActiveSubstance find(String name) {

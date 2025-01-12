@@ -10,6 +10,7 @@ public interface PharmaceuticalProductDAO {
     List<PharmaceuticalProduct> findAll();
 
     void save(PharmaceuticalProduct entity);
+    public void edit(PharmaceuticalProduct edit, PharmaceuticalProduct editTo);
 
     PharmaceuticalProduct find(String name);
 }
