@@ -26,7 +26,7 @@ public class ActiveSubstanceDAOMemory implements ActiveSubstanceDAO {
 
     public void edit(ActiveSubstance edit, ActiveSubstance editTo) {
         edit.setName(editTo.getName());
-        editTo.setExpectedQuantityPerMonth(editTo.getExpectedQuantityPerMonth());
+        edit.setExpectedQuantityPerMonth(editTo.getExpectedQuantityPerMonth());
     }
 
     public ActiveSubstance find(String name) {
