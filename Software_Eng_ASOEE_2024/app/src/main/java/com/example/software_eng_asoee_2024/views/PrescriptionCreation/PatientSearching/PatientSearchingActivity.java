@@ -36,6 +36,11 @@ public class PatientSearchingActivity extends AppCompatActivity implements Patie
     String doctorName;
     String doctorSurname;
 
+    /**
+     * Δημιουργεί to layout και αρχικοποιεί
+     * το activity.
+     * @param savedInstanceState το Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,10 +76,18 @@ public class PatientSearchingActivity extends AppCompatActivity implements Patie
         errorMessage.setText(""); // Clear error message
     }
 
+    /**
+     * Καλεί τον presenter, μέσω του viewModel, να ελέγξει και να επιβεβαιώσει
+     * την δημιουργία του επόμενου activity(PrescriptionCreation).
+     */
     public void prepareForCreate(){
         viewModel.getPresenter().findPatient(SSN.getText().toString(), diagnosis.getText().toString());
     }
 
+    /**
+     * Δημιουργεί το επόμενο activity και το εκκινεί.
+     * @param patientSSN ΑΜΚΑ ασθενή
+     */
     @Override
     public void navigateToCreation(Integer patientSSN){
         Intent intent = new Intent(this, PrescriptionCreationActivity.class);
@@ -86,6 +99,11 @@ public class PatientSearchingActivity extends AppCompatActivity implements Patie
         startActivity(intent);
     }
 
+    /**
+     * Ορίζει στο errorMessage μήνυμα,
+     * το περιεχόμενο του message.
+     * @param message Το περιεχόμενο του μηνύματος
+     */
     @Override
     public void showError(String message) {
         errorMessage.setText(message);

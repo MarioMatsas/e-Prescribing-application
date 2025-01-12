@@ -15,6 +15,10 @@ import com.example.software_eng_asoee_2024.views.PrescriptionCreation.Creation.P
 public class PrescriptionCreationViewModel extends ViewModel {
     private PrescriptionCreationPresenter presenter;
 
+    /**
+     * Ο κατασκευαστής του viewModel.
+     * Δημιουργεί την μνήμη του presenter.
+     */
     public PrescriptionCreationViewModel() {
         presenter = new PrescriptionCreationPresenter();
         presenter.setPrescriptionDAO(new PrescriptionDAOMemory());
@@ -24,10 +28,17 @@ public class PrescriptionCreationViewModel extends ViewModel {
         presenter.setReportDAO(new ReportObjectDAOMemory());
     }
 
+    /**
+     * Επιστρέφει τον presenter του activity αυτού.
+     * @return ο presenter του activity αυτού
+     */
     public PrescriptionCreationPresenter getPresenter() {
         return presenter;
     }
 
+    /**
+     * Για debugging είναι η μέθοδος αυτή.
+     */
     @Override
     protected void onCleared() {
         super.onCleared();

@@ -22,6 +22,9 @@ public class PrescriptionCreationPresenterTest {
     PrescriptionCreationViewStub viewStub;
     PrescriptionCreationPresenter presenter;
 
+    /**
+     * Πριν τα τεστ, δημιουργεί και αρχικοποιεί την μνήμη του presenter.
+     */
     @Before
     public void setup(){
         Initializer initializer = new MemoryInitializer();
@@ -48,19 +51,26 @@ public class PrescriptionCreationPresenterTest {
         Assert.assertNotNull(presenter.getActiveSubs());
     }
 
+    /**
+     * Ελέγχει την λειτουρία της μεθόδου getView.
+     */
     @Test
     public void checkGetView(){
         presenter.setView(viewStub);
         Assert.assertEquals(presenter.getView(), viewStub);
     }
 
+    /**
+     * Ελέγχει αν θα επιστραψεί false για άδεια συνταγή.
+     */
     @Test
     public void emptyPrescriptionTest(){
-//        presenter.createPrescription();
-//        Assert.assertEquals(viewStub.getErrorMessage(), "Prescription is empty");
         Assert.assertFalse(presenter.createPrescription());
     }
 
+    /**
+     * Ελέγχει αν θα επιστραψεί true για συνταγή που έχει γραμμές.
+     */
     @Test
     public void createdPrescriptionTest(){
         presenter.addPrescriptionline(
@@ -69,6 +79,9 @@ public class PrescriptionCreationPresenterTest {
         Assert.assertTrue(presenter.createPrescription());
     }
 
+    /**
+     * Ελέγχει αν όντως δεν θα δημιουργηθεί η γραμμή συνταγής, καθώς έχει λάθος input.
+     */
     @Test
     public void prescriptionLineNotAdded(){
         //conc_amount and days are  wrong
@@ -77,6 +90,9 @@ public class PrescriptionCreationPresenterTest {
                 "3.0f", String.valueOf(Unit.mg_per_disk), "32.1", "22d", "Every Morning"));
     }
 
+    /**
+     * Ελέγχει αν όντως θα δημιουργηθεί η γραμμή συνταγής, καθώς έχει σωστό input.
+     */
     @Test
     public void prescriptionLineAdded(){
         Assert.assertTrue(presenter.addPrescriptionline(
@@ -88,20 +104,29 @@ public class PrescriptionCreationPresenterTest {
     public void ErrorsFoundWrongConcAmount(){//concAmount should be double
         Assert.assertTrue(presenter.errorsFound(Form.PILL, "a2f", "3", "4"));
         Assert.assertTrue(presenter.errorsFound(Form.PILL, "a39", "3", "4"));
-//        Assert.assertTrue(presenter.errorsFound(Form.PILL, "3.02f", "3", "4"));
+        Assert.assertTrue(presenter.errorsFound(Form.PILL, "3.02f", "3", "4"));
         Assert.assertTrue(presenter.errorsFound(Form.PILL, "True", "3", "4"));
     }
 
+    /**
+     * Ελέγχει αν θα επιστρέψει οτι δεν υπάρχει σφάλμα,
+     * για σωστό input pdAmount για το συγκεκριμένο form.
+     */
     @Test
-    public void checkErrorsFoundpdAmountForm(){
+    public void checkErrorsNotFoundpdAmountForm(){
         Assert.assertFalse(presenter.errorsFound(Form.PILL, "32.2", "3", "4"));
         Assert.assertFalse(presenter.errorsFound(Form.SPRAY, "32.2", "3", "4"));
         Assert.assertFalse(presenter.errorsFound(Form.CREAM, "32.2", "3.0", "4"));
         Assert.assertFalse(presenter.errorsFound(Form.SYRUP, "32.2", "3.0", "4"));
 
     }
+
+    /**
+     * Ελέγχει αν θα επιστρέψει οτι υπάρχει σφάλμα,
+     * για λάθος input pdAmount, για το συγκεκριμένο form.
+     */
     @Test
-    public void checkErrorsNotFoundpdAmountForm(){//for pill or spray: pdAmount should be int, else: pdAmount should be double
+    public void checkErrorsFoundpdAmountForm(){//for pill or spray: pdAmount should be int, else: pdAmount should be double
         Assert.assertTrue(presenter.errorsFound(Form.PILL, "32.2", "afk", "4"));
         Assert.assertTrue(presenter.errorsFound(Form.PILL, "32.2", "32.0", "4"));
 
@@ -112,6 +137,10 @@ public class PrescriptionCreationPresenterTest {
         Assert.assertTrue(presenter.errorsFound(Form.SYRUP, "32.2", "afg", "4"));
     }
 
+    /**
+     * Ελέγχει αν θα επιστρέψει οτι υπάρχει σφάλμα,
+     * για λάθος input mer;vn, για το συγκεκριμένο form.
+     */
     @Test
     public void checkErrorsFoundDays(){//days should be int
         Assert.assertTrue(presenter.errorsFound(Form.CREAM, "32.2", "3.0", "4.0f"));
@@ -119,6 +148,10 @@ public class PrescriptionCreationPresenterTest {
 
     }
 
+    /**
+     * Ελέγχει αν θα επιστρέψει οτι υπάρχει σφάλμα,
+     * για λάθος input pdAmount, για το συγκεκριμένο form.
+     */
     @Test
     public void checkErrorsFoundRightInput(){
         Assert.assertFalse(presenter.errorsFound(Form.SYRUP, "32.2", "3.0", "4"));
@@ -126,40 +159,49 @@ public class PrescriptionCreationPresenterTest {
     }
 
 
+    /**
+     * Ελέγχει αν θα επιστρέψει οτι υπάρχει σφάλμα για λάθος input pdAmount, για το συγκεκριμένο form
+     */
     @Test
     public void noErrorsFound(){
         Assert.assertFalse(presenter.errorsFound(Form.PILL, "32.2", "3", "2"));
     }
 
+    /**
+     * Ελέγχει αν θα επιστρέψει οτι υπάρχει σφάλμα για λάθος input pdAmount, για το συγκεκριμένο form
+     */
     @Test
     public void checkErrorEmptyString(){
-//        presenter.error("", "int");
-//        Assert.assertEquals(viewStub.getErrorMessage(), "Make sure all fields are filled");
         Assert.assertTrue(presenter.error("", "int"));
 
-
-//        presenter.error("", "double");
-//        Assert.assertEquals(viewStub.getErrorMessage(), "Make sure all fields are filled");
         Assert.assertTrue(presenter.error("", "double"));
     }
 
+
+    /**
+     * Ελέγχει αν θα επιστρέψει οτι υπάρχει σφάλμα για λάθος input.
+     */
     @Test
     public void checkErrorWrongInput() {
 
-//        presenter.error("asdf ", "int");
-//        Assert.assertEquals(viewStub.getErrorMessage(), "Make sure to enter numbers");
         Assert.assertTrue(presenter.error("asdf ", "int"));
 
-//        Assert.assertEquals(viewStub.getErrorMessage(), "Make sure to enter numbers");
         Assert.assertTrue(presenter.error("fifo", "double"));
+
+        Assert.assertTrue(presenter.error("3.5f", "double"));
     }
 
+    /**
+     * Ελέγχει αν θα επιστρέψει οτι δεν υπάρχει σφάλμα για σωστό input.
+     */
     @Test
     public void checkErrorRightInput() {
 
         Assert.assertFalse(presenter.error("12", "int"));
 
         Assert.assertFalse(presenter.error("12.3", "double"));
+
+        Assert.assertFalse(presenter.error("12.3", "test string"));
 
     }
 
