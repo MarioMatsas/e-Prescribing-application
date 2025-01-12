@@ -1,13 +1,8 @@
 package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Deletion;
 
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.domain.Prescription;
-import com.example.software_eng_asoee_2024.domain.PrescriptionExecution;
-import com.example.software_eng_asoee_2024.domain.PrescriptionLine;
 import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
@@ -34,7 +29,15 @@ public class ActiveSubstanceDeletePresenter {
         }
 
         for (PharmaceuticalProduct p : this.pharmaceuticalProductDAO.findAll()) {
-            if(p.getActiveSubstances().contains(ac) && p.getActiveSubstances().size() == 1)
+            for(int i = 0; i < p.getActiveSubstances().size(); i++) {
+                ActiveSubstance tmpAc = p.getActiveSubstances().get(i);
+                if(tmpAc.equals(ac)) {
+                    p.getActiveSubstances().remove(i);
+                    p.getActiveSubstanceConcentrations().remove(i);
+                    i--;
+                }
+            }
+            if(p.getActiveSubstances().isEmpty())
                 this.pharmaceuticalProductDAO.delete(p);
         }
 
