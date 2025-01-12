@@ -26,4 +26,10 @@ public class ConcentrationTest {
         con.setUnit(Unit.mg_per_ml);
         Assert.assertEquals(Unit.mg_per_ml, con.getUnit());
     }
+
+    @Test
+    public void testToString(){
+        Concentration con2 = new Concentration(5.0, Unit.mg_per_disk);
+        Assert.assertEquals(con2.toString(), "5.0 | mg_per_disk");
+    }
 }

@@ -5,12 +5,15 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 
 public class PatientTest {
-    
+
     @Test
     public void getSSNTest(){
         Patient person = new Patient("FirstName", "LastName", 123456789);
         Integer num = 123456789;
         Assert.assertEquals(num, person.getSSN());
+
+        Patient p = new Patient();
+        Assert.assertEquals(p.getSSN(), (Integer)0);
     }
 
 }

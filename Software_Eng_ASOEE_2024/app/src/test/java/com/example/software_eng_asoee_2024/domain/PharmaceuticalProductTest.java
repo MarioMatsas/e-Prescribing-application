@@ -76,4 +76,17 @@ public class PharmaceuticalProductTest {
                 new PharmaceuticalProduct("testName2", 746, PILL, MedicineType.GENERIC, as, conc_list, "16 pills included");
         Assert.assertEquals((Integer) 15, php2.getFinalPrice());
     }
+
+    @Test
+    public void testSubstanceUnitException(){
+        ArrayList<ActiveSubstance> a = new ArrayList<>();
+        ArrayList<Concentration> c = new ArrayList<>();
+        a.add(new ActiveSubstance("Paracetamol", 20d));
+        a.add(new ActiveSubstance("Paracetamol", 20d));
+        c.add(new Concentration(10.0, Unit.mg_per_g));
+        c.add( new Concentration(10.0, Unit.mg_per_disk));
+        Assert.assertThrows(IllegalArgumentException.class, () -> {
+            PharmaceuticalProduct p = new PharmaceuticalProduct("n",1234, PILL, MedicineType.GENERIC, a, c, "blah");
+        });
+    }
 }

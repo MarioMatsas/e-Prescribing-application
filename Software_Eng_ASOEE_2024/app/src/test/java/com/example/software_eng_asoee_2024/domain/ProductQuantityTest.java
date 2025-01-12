@@ -36,4 +36,9 @@ public class ProductQuantityTest {
         Assert.assertEquals((int) 180, qnt.getProductQuantity() * qnt.getProduct().getFinalPrice());
     }
 
+    @Test
+    public void testToString(){
+        Assert.assertEquals(qnt.toString(), "name 0.18 8 pills per pack 10");
+    }
+
 }

@@ -29,4 +29,10 @@ public class ActiveSubstanceTest {
         act_sub2.setExpectedQuantityPerMonth(25.5);
         Assert.assertEquals((Double)25.5, act_sub2.getExpectedQuantityPerMonth());
     }
+
+    @Test
+    public void TestToString(){
+        ActiveSubstance act_sub1 = new ActiveSubstance("hhhh", 2025.0);
+        Assert.assertEquals(act_sub1.toString(), "hhhh | 2025.0");
+    }
 }
