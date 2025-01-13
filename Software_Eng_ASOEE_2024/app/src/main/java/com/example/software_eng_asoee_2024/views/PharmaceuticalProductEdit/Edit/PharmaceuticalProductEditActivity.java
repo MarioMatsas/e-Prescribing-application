@@ -56,7 +56,7 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
     private ArrayList<Concentration> concentrationList = new ArrayList<Concentration>();
     private  PharmaceuticalProduct selected;
     private Unit selectedUnit;
-     private Map<Form, Integer> formDict = new HashMap<Form, Integer>();
+     private final Map<Form, Integer> formDict = new HashMap<Form, Integer>();
 
 
 
@@ -136,7 +136,9 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
                 typeSpinner.setSelection(selected.getMedicineType().equals(MedicineType.GENERIC) ? 0 : 1);
                 information.setText(selected.getInformation());
                 activeSubstanceList = (ArrayList<ActiveSubstance>) selected.getActiveSubstances();
+                activeSubstanceList = (ArrayList<ActiveSubstance>) activeSubstanceList.clone();
                 concentrationList = (ArrayList<Concentration>) selected.getActiveSubstanceConcentrations();
+                concentrationList = (ArrayList<Concentration>) concentrationList.clone();
 
                 createActiveSubstanceList();
                 createFormAndTypeSpinners();
