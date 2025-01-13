@@ -32,12 +32,15 @@ public class DAOTest {
     private DoctorDAO doctorDAO;
     private PharmacistDAO pharmacistDAO;
     private PatientDAO patientDAO;
-    private ActivaSubstanceDAO activeSubstanceDAO;
+    private ActiveSubstanceDAO activeSubstanceDAO;
     private PharmaceuticalProductDAO productDAO;
     private PrescriptionDAO prescriptionDAO;
     private Prescription presc;
     private ReportObjectDAO reportDAO;
 
+    /**
+     * Πρίν απο τα τεστ, δημιουργεί και αρχικοποιεί την μνήμη.
+     */
     @Before
     public void setUp() {
         Initializer dataHelper = new MemoryInitializer();
@@ -62,28 +65,45 @@ public class DAOTest {
     /*
     DoctorDAO tests
      */
+    /**
+     * Για επιβεβαίωση οτι δεν θα επιστρέψει null, αν ψάξει υπάρχον γιατρό.
+     */
     @Test
     public void findRegisteredDoctor(){
         Assert.assertNotNull(doctorDAO.find("m","m"));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει null, αν ψάξει μη-υπάρχον γιατρό.
+     */
     @Test
     public void findUnregisteredDoctor(){
         Assert.assertNull(doctorDAO.find("hgj","ghgh"));
         Assert.assertNull(doctorDAO.find("m","ghgh"));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει true, αν επιστρέψει σωστή λίστα γιατρών.
+     * (Επιβεβαιώνει με έλεγχο ύπαρξης συγκεκριμένου γιατρού,
+     * που κανονικά πρέπει να υπάρχει στην λίστα)
+     */
     @Test
     public void findAllDoctors(){
         Assert.assertTrue(doctorDAO.findAll().contains(doctorDAO.find("m","m")));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα αποθηκευτεί σωστά ο γιατρός.
+     */
     @Test
     public void saveDoctor(){
         doctorDAO.save(new Doctor("d1", "p1", "whatever"));
         Assert.assertNotNull(doctorDAO.find("d1", "p1"));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα διαγραφεί σωστά ο γιατρός.
+     */
     @Test
     public void deleteDoctor(){
         doctorDAO.delete(doctorDAO.find("d1", "p1"));
@@ -93,28 +113,45 @@ public class DAOTest {
     /*
     PharmacistDAO tests
      */
+    /**
+     * Για επιβεβαίωση οτι δεν θα επιστρέψει null, αν ψάξει υπάρχον φαρμακοποιό.
+     */
     @Test
     public void findRegisteredPharmacist(){
         Assert.assertNotNull(pharmacistDAO.find("a", "p"));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει null, αν ψάξει μη-υπάρχον φαρμακοποιό.
+     */
     @Test
     public void findUnregisteredPharmacist(){
         Assert.assertNull(pharmacistDAO.find("hgj","ghgh"));
         Assert.assertNull(pharmacistDAO.find("a","ghgh"));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει true, αν επιστρέψει σωστή λίστα φαρμακοποιών.
+     * (Επιβεβαιώνει με έλεγχο ύπαρξης συγκεκριμένου φαρμακοποιού,
+     * που κανονικά πρέπει να υπάρχει στην λίστα)
+     */
     @Test
     public void findAllPharmacists(){
         Assert.assertTrue(pharmacistDAO.findAll().contains(pharmacistDAO.find("a", "p")));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα αποθηκευτεί σωστά ο φαρμακοποιός.
+     */
     @Test
     public void savePharmacist(){
         pharmacistDAO.save(new Pharmacist("d1", "p1"));
         Assert.assertNotNull(pharmacistDAO.find("d1", "p1"));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα διαγραφεί σωστά ο φαρμακοποιός.
+     */
     @Test
     public void deletePharmacist(){
         pharmacistDAO.delete(pharmacistDAO.find("d1", "p1"));
@@ -124,27 +161,44 @@ public class DAOTest {
     /*
     PatientDAO tests
      */
+    /**
+     * Για επιβεβαίωση οτι δεν θα επιστρέψει null, αν ψάξει υπάρχον ασθενή.
+     */
     @Test
     public void findRegisteredPatient(){
         Assert.assertNotNull(patientDAO.find(123123123));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει null, αν ψάξει μη-υπάρχον ασθενή.
+     */
     @Test
     public void findUnregisteredPatient(){
         Assert.assertNull(patientDAO.find(123123125));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει true, αν επιστρέψει σωστή λίστα ασθενών.
+     * (Επιβεβαιώνει με έλεγχο ύπαρξης συγκεκριμένου ασθενή,
+     * που κανονικά πρέπει να υπάρχει στην λίστα)
+     */
     @Test
     public void findAllPatients(){
         Assert.assertTrue(patientDAO.findAll().contains(patientDAO.find(123123123)));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα αποθηκευτεί σωστά ο ασθενής.
+     */
     @Test
     public void savePatient(){
         patientDAO.save(new Patient("super","mario",123123125));
         Assert.assertNotNull(patientDAO.find(123123125));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα διαγραφεί σωστά ο ασθενής.
+     */
     @Test
     public void deletePatient(){
         patientDAO.delete(patientDAO.find(123123125));
@@ -154,27 +208,44 @@ public class DAOTest {
     /*
     ActiveSubstanceDAO tests
      */
+    /**
+     * Για επιβεβαίωση οτι δεν θα επιστρέψει null, αν ψάξει υπάρχουσα ουσία.
+     */
     @Test
     public void findRegisteredActiveSubstance(){
         Assert.assertNotNull(activeSubstanceDAO.find("Paracetamol"));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει null, αν ψάξει μη-υπάρχουσα ουσία.
+     */
     @Test
     public void findUnregisteredActiveSubstance(){
         Assert.assertNull(activeSubstanceDAO.find("Paracetamol_FAKE"));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει true, αν επιστρέψει σωστή λίστα ουσιών.
+     * (Επιβεβαιώνει με έλεγχο ύπαρξης συγκεκριμένης ουσίας,
+     * που κανονικά πρέπει να υπάρχει στην λίστα)
+     */
     @Test
     public void findAllActiveSubstances(){
         Assert.assertTrue(activeSubstanceDAO.findAll().contains(activeSubstanceDAO.find("Ibuprofen")));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα αποθηκευτεί σωστά η ουσία.
+     */
     @Test
     public void saveActiveSubstance(){
         activeSubstanceDAO.save(new ActiveSubstance("SuperJuice", 30d));
         Assert.assertNotNull(activeSubstanceDAO.find("SuperJuice"));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα διαγραφεί σωστά η ουσία.
+     */
     @Test
     public void deleteActiveSubstance(){
         activeSubstanceDAO.delete(activeSubstanceDAO.find("SuperJuice"));
@@ -184,21 +255,35 @@ public class DAOTest {
     /*
     PharmaceuticalProductDAO tests
      */
+    /**
+     * Για επιβεβαίωση οτι δεν θα επιστρέψει null, αν ψάξει υπάρχον προϊόν.
+     */
     @Test
     public void findRegisteredPharmaceuticalProduct(){
         Assert.assertNotNull(productDAO.find("Brufen Plus"));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει null, αν ψάξει μη-υπάρχον προϊόν.
+     */
     @Test
     public void findUnregisteredPharmaceuticalProduct(){
         Assert.assertNull(productDAO.find("Brufen Plus_FAKE"));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει true, αν επιστρέψει σωστή λίστα προϊόντων.
+     * (Επιβεβαιώνει με έλεγχο ύπαρξης συγκεκριμένου προϊόντος,
+     * που κανονικά πρέπει να υπάρχει στην λίστα)
+     */
     @Test
     public void findAllPharmaceuticalProducts(){
         Assert.assertTrue(productDAO.findAll().contains(productDAO.find("Advil")));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα αποθηκευτεί σωστά το προϊόν.
+     */
     @Test
     public void savePharmaceuticalProduct(){
         ArrayList<ActiveSubstance> as = new ArrayList<ActiveSubstance>();
@@ -209,6 +294,9 @@ public class DAOTest {
         Assert.assertNotNull(productDAO.find("Product1"));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα διαγραφεί σωστά το προϊόν.
+     */
     @Test
     public void deletePharmaceuticalProduct(){
         productDAO.delete(productDAO.find("Product1"));
@@ -218,32 +306,52 @@ public class DAOTest {
     /*
     PrescriptionProductDAO tests
      */
+    /**
+     * Για επιβεβαίωση οτι δεν θα επιστρέψει null, αν ψάξει υπάρχουσα συνταγή.
+     */
     @Test
     public void findRegisteredPrescription(){
         Assert.assertEquals((prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123123))).size(), 2);
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει την σωστή συνταγή βάσει id.
+     */
     @Test
     public void findPrescriptionById(){
         Assert.assertEquals((prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123123))).get(0), prescriptionDAO.findPrescriptionById(prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123123)).get(0).getId()));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει null, αν ψάξει μη-υπάρχουσα συνταγή.
+     */
     @Test
     public void findUnregisteredPrescription(){
         Assert.assertEquals((prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123125))).size(), 0);
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει true, αν επιστρέψει σωστή λίστα συνταγών.
+     * (Επιβεβαιώνει με έλεγχο ύπαρξης συγκεκριμένης συνταγής,
+     * που κανονικά πρέπει να υπάρχει στην λίστα)
+     */
     @Test
     public void findAllPrescriptions(){
         Assert.assertEquals(prescriptionDAO.findAll(), prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123123)));
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα αποθηκευτεί σωστά η συνταγή.
+     */
     @Test
     public void savePrescription(){
         prescriptionDAO.save(presc);
         Assert.assertEquals((prescriptionDAO.findPrescriptionByPatient(patientDAO.find(123123123))).size(), 3);
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα διαγραφεί σωστά η συνταγή.
+     */
     @Test
     public void deletePrescription(){
         prescriptionDAO.save(presc);
@@ -254,42 +362,63 @@ public class DAOTest {
     /*
     ReportObjectDAO tests
     */
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει τον σωστό μήνα.
+     */
     @Test
     public void clearDataMonth(){
         reportDAO.update(new Doctor("name", "sur", "whatever"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(reportDAO.getYear(), 7,3), 123.0);
         Assert.assertEquals(reportDAO.getMonth(), (Integer)7);
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει τον σωστό χρόνο.
+     */
     @Test
     public void clearDataYear(){
         reportDAO.update(new Doctor("name", "sur", "whatever"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(5000, reportDAO.getMonth(), 3), 123.0);
         Assert.assertEquals(reportDAO.getYear(), (Integer)5000);
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα προστεθεί νέα τριάδα στο map (διαφορετικός γιατρός).
+     */
     @Test
     public void differentDoctor(){
         reportDAO.update(new Doctor("name", "sur", "whatever"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(), 0.5);
         Assert.assertEquals(reportDAO.getMap().size(), 3);
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα προστεθεί νέα τριάδα στο map (διαφορετικός ασθενής).
+     */
     @Test
     public void differentPatient(){
         reportDAO.update(doctorDAO.find("m", "m"), new Patient("name", "sur", 777), activeSubstanceDAO.find("Paracetamol"), new Date(), 0.5);
         Assert.assertEquals(reportDAO.getMap().size(), 3);
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα προστεθεί νέα τριάδα στο map (διαφορετική ουσία).
+     */
     @Test
     public void differentActiveSub(){
         reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), new ActiveSubstance("new", 20.0), new Date(), 0.5);
         Assert.assertEquals(reportDAO.getMap().size(), 3);
     }
 
+    /**
+     * Για επιβεβαίωση οτι απλά γίνεται ανανέωση συγκεκριμένης τριάδας στο map.
+     */
     @Test
     public void sameTrupleValues(){
         reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(), 0.5);
         Assert.assertEquals(reportDAO.getMap().size(), 2);
     }
 
+    /**
+     * Για επιβεβαίωση οτι απλά γίνεται ανανέωση συγκεκριμένης τριάδας στο map.
+     */
     @Test
     public void oldUnlawful(){
         reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(), 10.0);
@@ -299,6 +428,9 @@ public class DAOTest {
         Assert.assertEquals(reportDAO.getUnlawfulDoctors().size(), 1);
     }
 
+    /**
+     * Για επιβεβαίωση οτι απλά γίνεται ανανέωση στο map, με νέα τριάδα.
+     */
     @Test
     public void newUnlawful(){
         reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(), 10.0);
@@ -306,6 +438,9 @@ public class DAOTest {
         Assert.assertEquals(reportDAO.getUnlawfulDoctors().size(), 2);
     }
 
+    /**
+     * Για επιβεβαίωση οτι για μη-παράνομη τιμή, δεν υπάρχει στην λίστα ο γιατρός (όταν περάσει ο μήνας).
+     */
     @Test
     public void noUnlawful(){
         reportDAO.update(doctorDAO.find("m", "m"), patientDAO.find(123123123), activeSubstanceDAO.find("Paracetamol"), new Date(), 0.5);

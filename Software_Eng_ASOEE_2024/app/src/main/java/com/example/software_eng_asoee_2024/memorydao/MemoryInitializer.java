@@ -18,6 +18,9 @@ import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.domain.Prescription;
 
 public class MemoryInitializer extends Initializer {
+    /**
+     * Σβήνει όλα τα δεδομένα από την "βάση".
+     */
     protected void eraseData() {
         // Delete doctors
         for (Doctor doctor: getDoctorDAO().findAll()){

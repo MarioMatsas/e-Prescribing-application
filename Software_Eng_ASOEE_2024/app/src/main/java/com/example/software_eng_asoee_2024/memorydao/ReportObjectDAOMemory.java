@@ -18,6 +18,18 @@ public class ReportObjectDAOMemory implements ReportObjectDAO {
     static HashMap<DoctorPatientSubstanceTruple, Double> map = new HashMap<DoctorPatientSubstanceTruple, Double>();
     static HashMap<Doctor, Integer> unlawful = new HashMap<Doctor, Integer>();
 
+    /**
+     * Πρώτα ελέγχει αν έχει αλλάξει ο μήνας. Αν ναι,
+     * αδειάζει τα δεδομένα που υπήρχαν για προηγούμενο μήνα,
+     * μιας και έχουμε διαφορετικό report ανα μήνα.
+     * Μετά ελέγχει αν ο ίδιος γιατρός έχει δώσει στον ίδιο ασθενή την ίδια ουσία προηγουμένως.
+     * Αν ναι, ενημερώνει το map κατάλληλα, αλλιώς προσθέτει αυτή την τριάδα στο map.
+     * @param substance η χορηγημένη ουσία
+     * @param patient ο ασθενής που του χορηγήθηκε η ουσία
+     * @param doctor ο ύποπτος γιατρός
+     * @param date η τωρινή, για εκείνη την στιγμή, ημερομηνία
+     * @param amount το πλήθος ποου έχει δώσει ο γιατρός στον ασθενή
+     */
     public void update(Doctor doctor, Patient patient, ActiveSubstance substance, Date date, Double amount){
         // Check for month change
         if (date.getMonth().equals(month) || date.getYear().equals(year)){
@@ -47,6 +59,15 @@ public class ReportObjectDAOMemory implements ReportObjectDAO {
 
     }
 
+    /**
+     * Ελέγχει αν το ποσό της συντγογραφημένης ουσίας,
+     * που δίνεται σε συγκεκριμένο ασθενή από συγκεκριμένο γιατρό,
+     * ξεπερνά το καθορισμένο όριο.(ο γιατρός είναι παράνομος)
+     * Αν ναι, και ο γιατρός υπάρχει ήδη στην λίστα,
+     * ανανεώνουμε το πλήθος τψν φορών που έχει περάσει το όριο μηνιαίας δόσης.
+     * Αν δεν υπάρχει στην λίστα, απλά τον προθέτει στην λίστα παράνομων γιατρών.
+     * @param truple η τριάδα γιατρού, ασθενή, ουσίας που ελέγχεται
+     */
     public void checkForUnlawful(DoctorPatientSubstanceTruple truple) {
         // Check if the prescribed amount exceeds the expected quantity for the active substance
         if (map.get(truple) > truple.getActiveSub().getExpectedQuantityPerMonth()) {

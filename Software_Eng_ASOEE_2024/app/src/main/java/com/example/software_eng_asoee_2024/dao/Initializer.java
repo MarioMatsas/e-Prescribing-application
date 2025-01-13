@@ -24,8 +24,14 @@ import com.example.software_eng_asoee_2024.memorydao.ReportObjectDAOMemory;
 import java.util.ArrayList;
 
 public abstract class Initializer {
+    /**
+     * Σβήνει όλα τα δεδομένα από την "βάση".
+     */
     protected abstract void eraseData();
 
+    /**
+     * Δημιουργεί δεδομένα και τα βάζει στην "βάση".
+     */
     public void prepareData(){
         // Erase all the previous data
         eraseData();
