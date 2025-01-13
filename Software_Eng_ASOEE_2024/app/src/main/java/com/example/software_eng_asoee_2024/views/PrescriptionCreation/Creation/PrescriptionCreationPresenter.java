@@ -140,6 +140,7 @@ public class PrescriptionCreationPresenter {
     /**
      * Ελέγχει να δεί αν υπάρχει κάποιο λάθος στην είσοδο.
      * Συγκεκριμένα, κοιτάει αν μπορούν να γίνουν σωστά parse τα string δεδομένα βάσει περιορισμών.
+     * Επίσης, για λάθος input (<=0) ή λάθος αντιστοιχία unit/form, εμφανίζει κατάλληλο μήνυμα.
      * @param concAmount περιεκτικότητα της ουσίας που χορηγείται
      * @param pdAmount ποσότητα ανα μέρα
      * @param form μορφή φαρμάκου
@@ -147,16 +148,28 @@ public class PrescriptionCreationPresenter {
      * @return επιστρέφει αν βρέθηκε σφάλμα(true) ή οχι(false)
      */
     public boolean errorsFound(Form form, String concAmount, String pdAmount, String days){
-        if (error(concAmount, "double")) return true;
+        if (error(concAmount, "double") || Double.parseDouble(concAmount) <= 0) {
+            view.showError("Concentration Amount must be double and > 0");
+            return true;
+        }
 
         if (form.equals(Form.PILL) || form.equals(Form.SPRAY)){
-            if (error(pdAmount, "int")) return true;
+            if (error(pdAmount, "int") || Integer.parseInt(pdAmount) <= 0){
+                view.showError("Amount must be integer (for this form) and > 0");
+                return true;
+            }
         }
         else{
-            if (error(pdAmount, "double")) return true;
+            if (error(pdAmount, "double") || Double.parseDouble(pdAmount) <= 0){
+                view.showError("Amount must be Double (for this form) and > 0");
+                return true;
+            }
         }
 
-        if (error(days, "int")) return true;
+        if (error(days, "int") || Integer.parseInt(days) <= 0){
+            view.showError("Days must be integer and > 0");
+            return true;
+        }
         return false;
     }
 

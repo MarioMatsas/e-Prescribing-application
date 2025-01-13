@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Assert;
 // TODO maybe needs getters to be added to check constructor
+/**
+ * Για επιβεβαίωση οτι δουλεύει σωστά το στατικό πεδίο lastid, μετά από κάθε κλήση του constructor.
+ */
 public class NOHCS_EmployeeTest {
     @Test
     public void testId(){

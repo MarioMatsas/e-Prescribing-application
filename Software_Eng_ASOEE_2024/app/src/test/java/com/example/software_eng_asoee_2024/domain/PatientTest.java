@@ -6,6 +6,9 @@ import org.junit.Assert;
 
 public class PatientTest {
 
+    /**
+     * Για επιβεβαίωση οτι θα οριστεί σωστά ακόμη και ΑΜΚΑ του ασθενή.
+     */
     @Test
     public void getSSNTest(){
         Patient person = new Patient("FirstName", "LastName", 123456789);

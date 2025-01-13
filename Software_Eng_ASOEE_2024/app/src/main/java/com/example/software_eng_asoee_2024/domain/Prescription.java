@@ -17,6 +17,14 @@ public class Prescription implements Serializable {
     private final Date date;
     private Status status;
 
+    /**
+     * Ο κατασκευαστής.
+     * Πρέπει να δίνονται γιατρός και ασθενής αλλιώς δεν έχουμε συνταγή (πετάγεται exception).
+     * Αρχικοποιείται η συνταγή, στο ότι αναμένεται να εκτελεσθεί (pending).
+     * @param diagnosis διάγνωση του ασθενούς
+     * @param doctor ο γιατρός της συνταγής
+     * @param patient ο ασθενής της συνταγής
+     */
     public Prescription(String diagnosis, Doctor doctor, Patient patient) {
         if (doctor == null)
             throw new IllegalArgumentException("Doctor cant be null");
@@ -67,6 +75,11 @@ public class Prescription implements Serializable {
         return prescriptionLines;
     }
 
+    /**
+     * Επιστρέφεται, ως string, τη συνταγή.
+     * Συγκεκριμένα, πρέπει να εμφανίζονται στην σειρά όλες οι ουσίες της συνταγής.
+     * @return Επιστρέφεται, ως string, τη συνταγή
+     */
     @NonNull
     public String toString() {
         String activeSubstances = doctor.getFirstName() + " " + doctor.getLastName() + ": ";

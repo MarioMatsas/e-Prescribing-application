@@ -8,6 +8,14 @@ public class PrescriptionLine implements Serializable {
     private final Concentration concentration;
     private final String instructions;
 
+    /**
+     * Ο κατασκευαστής.
+     * Αν η ουσία δεν δοθεί πετάγεται σφάλμα.
+     * @param form η μορφή του φαρμάκου
+     * @param concentration η περιεκτικότητα
+     * @param instructions οδηγίες χρήσης, από γιατρό
+     * @param activeSubstance η φαρμακευτική ουσία
+     */
     public PrescriptionLine(Form form, Concentration concentration, String instructions, ActiveSubstance activeSubstance) {
         if (activeSubstance == null)
             throw new IllegalArgumentException("ActiveSubstance null error");

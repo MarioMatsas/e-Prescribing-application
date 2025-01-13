@@ -9,6 +9,9 @@ import org.junit.Test;
 import java.util.Optional;
 
 public class ConcentrationTest {
+    /**
+     * Για επιβεβαίωση οτι θα αλλάξει σωστά η ποσότητα.
+     */
     @Test
     public void testQuantity(){
         Concentration con1 = new Concentration();
@@ -20,6 +23,9 @@ public class ConcentrationTest {
         Assert.assertEquals((Double)20.0, con2.getQuantity());
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα αλλάξει σωστά η μονάδα μέτρησης.
+     */
     @Test
     public void testUnit(){
         Concentration con = new Concentration();
@@ -27,6 +33,9 @@ public class ConcentrationTest {
         Assert.assertEquals(Unit.mg_per_ml, con.getUnit());
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει το σωστό string.
+     */
     @Test
     public void testToString(){
         Concentration con2 = new Concentration(5.0, Unit.mg_per_disk);

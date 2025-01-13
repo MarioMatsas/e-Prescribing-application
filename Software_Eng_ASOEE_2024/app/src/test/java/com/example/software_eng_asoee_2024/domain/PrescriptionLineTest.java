@@ -7,11 +7,17 @@ import org.junit.Before;
 public class PrescriptionLineTest {
     static PrescriptionLine line;
 
+    /**
+     * Πριν τα τέστ, αρχικοποιείται το line.
+     */
     @Before
     public void init() {
         line = new PrescriptionLine(Form.CREAM, new Concentration(10.0, Unit.mg_per_g), "For 10 days", new ActiveSubstance("Paracetamol", 10d));
     }
 
+    /**
+     * Για επιβεβαίωση οτι δούλεψε σωστά το init().
+     */
     @Test
     public void testInit() {
         Assert.assertEquals(line.getForm(), Form.CREAM);;
@@ -20,6 +26,9 @@ public class PrescriptionLineTest {
         Assert.assertEquals(line.getActiveSubstance().getName(), "Paracetamol");
     }
 
+    /**
+     * Για επιβεβαίωση οτι δούλεψε σωστά ο κατασκευαστής.
+     */
     @Test
     public void testConstruct() {
         Assert.assertThrows(IllegalArgumentException.class, () -> {
@@ -27,6 +36,9 @@ public class PrescriptionLineTest {
         });
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα οριστεί σωστά η ουσία.
+     */
     @Test
     public void testSet() {
         line.setActiveSubstance(new ActiveSubstance("Ibuprofen", 5d));

@@ -19,6 +19,19 @@ public class PharmaceuticalProduct {
     public PharmaceuticalProduct() {
     }
 
+    /**
+     * Κατασκευαστής.
+     * Αν δεν αντιστοιχούν  οι μονάδες μέτρησης για κάθε μορφή σκευάσματος του φαρμάκου,
+     * το πλήθος των ουσιών δεν αντιστοιχεί με το πλήθος των περιεκτικοτήτων
+     * και δεν υπάρχουν ουσίες για αυτό το φάρμακο, ο κωδικας πετά σφάλμα.
+     * @param name όνομα φαρμάκου
+     * @param retailPrice λιανική τιμή φαρμάκου
+     * @param form μορφή σκευάσματος φαρμάκου
+     * @param type τύπος φαρμάκου (γενόσημο ή αυθεντικό)
+     * @param activeSubs δραστικές ουσίες που περιέχει το φάρμακο
+     * @param activeSubstanceConcentrations περιεκτικότητες για τις ουσίες
+     * @param info πληροφορίες για το φάρμακο
+     */
     public PharmaceuticalProduct(String name, Integer retailPrice, Form form, MedicineType type, ArrayList<ActiveSubstance> activeSubs, List<Concentration> activeSubstanceConcentrations, String info) {
         if(activeSubs.size() != activeSubstanceConcentrations.size()) throw new IllegalArgumentException("Active Substances and Concentrations must correspond");
         if(activeSubs.isEmpty()) throw new IllegalArgumentException("Must have at least one Active Substance");
@@ -71,6 +84,12 @@ public class PharmaceuticalProduct {
         this.type = type;
     }
 
+    /**
+     * Υπολογίζει την συμμετοχή του ασθενή.
+     * Ανάλογα αν είναι γενόσημο ή αυθεντικό,
+     * επιστρέφει 0.02 ή 0.1 αντίστοιχα.
+     * @return επιστρέφει την συμμετοχή του ασθενή
+     */
     public Double getCustomerParticipation() {
         Double participation;
         if (getMedicineType() == MedicineType.ORIGINAL) {
@@ -82,6 +101,12 @@ public class PharmaceuticalProduct {
         return participation;
     }
 
+    /**
+     * Επιστρέφει την τελική τιμή του φαρμάκου.
+     * Πολλαπλασιάζει την συμμετοχή επί την λιανική τιμή του.
+     * (Στρογγυλοποιεί προς τα κάτω, με τιμή σε cents)
+     * @return eπιστρέφει την τελική τιμή του φαρμάκου
+     */
     public Integer getFinalPrice() {
         return (int) Math.round((getRetailPrice() * getCustomerParticipation()));
     }
@@ -103,10 +128,20 @@ public class PharmaceuticalProduct {
         return activeSubstanceConcentrations;
     }
 
+    /**
+     * Επιστρέφει το string, απλα /100 την τελική τιμή για να την κάνουμε ευρώ
+     * @return Επιστρέφει το string, ως ευρώ
+     */
     public String toString(){
         return name + " " + getFinalPrice()/100.0 + " " + information;
     }
 
+    /**
+     * Override του equals για να καθορίσουμε εμείς πως θα συγκριθούν τα δύο προϊόντα.
+     * Αρκεί να έχουν ίδιες τιμές στα πεδία τους.
+     * @param obj το φάρμακο με το οποίο συγκρίνουμε το συγκεκριμένο
+     * @return επιστρέφει true αν είναι ίδιες οι δυο ουσίες, αλλιώς false
+     */
     @Override
     public boolean equals(@Nullable Object obj) {
         if(obj == null) return false;

@@ -9,11 +9,17 @@ import org.junit.Before;
 public class DateTest {
     public Date date; // static
 
+    /**
+     * Πρίν από τα τέστ, δημιουργεί αντικείμενο ημερομηνίας.
+     */
     @Before
     public void init() {
         this.date = new Date();
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει τα σωστά: μέρα, μήνα, χρόνο.
+     */
     @Test
     public void testInit() {
         Assert.assertEquals((Integer) LocalDate.now().getYear(), date.getYear());
@@ -21,6 +27,9 @@ public class DateTest {
         Assert.assertEquals((Integer) LocalDate.now().getDayOfMonth(), date.getDay());
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα θέσει σωστά τις τιμές.
+     */
     @Test
     public void testSet() {
         date.setYear(2004);
@@ -33,6 +42,9 @@ public class DateTest {
         Assert.assertEquals((Integer) 27, date.getDay());
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα πεταχτεί exception για λάθος input.
+     */
     @Test
     public void testIllegalArguments() {
         Assert.assertThrows(IllegalArgumentException.class, () -> {

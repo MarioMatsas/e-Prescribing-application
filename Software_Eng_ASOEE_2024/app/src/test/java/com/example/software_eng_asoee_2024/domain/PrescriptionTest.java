@@ -7,6 +7,9 @@ public class PrescriptionTest {
     static Patient pat;
     static Prescription presc;
 
+    /**
+     * Πριν τα τέστ, αρχικοποιούνται τα πεδία.
+     */
     @Before
     public void init() {
         doc = new Doctor("John", "Doe", "Cardiology");
@@ -14,6 +17,9 @@ public class PrescriptionTest {
         presc = new Prescription("Wolff-Parkinson-White", doc, pat);
     }
 
+    /**
+     * Για επιβεβαίωση οτι δούλεψε σωστά το init().
+     */
     @Test
     public void testInit() {
         Assert.assertEquals(presc.getDate().getDay(), (new Date()).getDay());
@@ -23,6 +29,9 @@ public class PrescriptionTest {
         Assert.assertEquals(presc.getDoctorInfo(), "Doctor Info: Name: " + doc.getFirstName() + " | Surname: " + doc.getLastName() + " | Specialty: " + doc.getSpecialty());
     }
 
+    /**
+     * Για επιβεβαίωση οτι δούλεψε σωστά ο κατασκευαστής.
+     */
     @Test
     public void testConstructors() {
         Assert.assertThrows(IllegalArgumentException.class, () -> {
@@ -33,12 +42,19 @@ public class PrescriptionTest {
         });
     }
 
+    /**
+     * Για επιβεβαίωση οτι ορίσθηκε σωστά η κατάσταση της συνταγής.
+     */
     @Test
     public void testSetter() {
         presc.setStatus(Status.COMPLETED);
         Assert.assertEquals(presc.getStatus(), Status.COMPLETED);
     }
 
+
+    /**
+     * Για επιβεβαίωση οτι δουλεύει σωστά το addLine().
+     */
     @Test
     public void testLines() {
         Assert.assertEquals(presc.getPrescriptionLines().size(), 0);
@@ -48,6 +64,9 @@ public class PrescriptionTest {
         Assert.assertEquals(presc.getPrescriptionLines().get(0), line);
     }
 
+    /**
+     * Για επιβεβαίωση οτι επιστρέφεται το σωστό string.
+     */
     @Test
     public void testToString(){
         PrescriptionLine line = new PrescriptionLine(Form.CREAM, new Concentration(10.0, Unit.mg_per_g), "For 10 days", new ActiveSubstance("Paracetamol", 20d));

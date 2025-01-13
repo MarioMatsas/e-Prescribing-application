@@ -4,6 +4,12 @@ public class ProductQuantity {
     private final PharmaceuticalProduct product;
     private final Integer quantity;
 
+    /**
+     * Ο κατασκευαστής.
+     * Αν δεν δοθεί φάρμακο, πετάγεται null.
+     * @param product το φάρμακο
+     * @param quantity το πλήθος των φαρμάκων
+     */
     public ProductQuantity(PharmaceuticalProduct product, Integer quantity) {
         if (product == null) {
             throw new IllegalArgumentException("PharmaceuticalProduct null error");

@@ -17,6 +17,9 @@ public class PrescriptionExecutionTest {
     ActiveSubstance a = new ActiveSubstance("Paracetamol", 500.0);
     ArrayList<ActiveSubstance> activeSubs = new ArrayList<>();
 
+    /**
+     * Πριν τα τέστ, αρχικοποιούνται τα πεδία.
+     */
     @Before
     public void init() {
         doc = new Doctor("John", "Doe", "Cardiology");
@@ -34,6 +37,9 @@ public class PrescriptionExecutionTest {
         qntts.add(qntt);
     }
 
+    /**
+     * Για επιβεβαίωση οτι δούλεψε σωστά το init().
+     */
     @Test
     public void testInit() {
         Assert.assertEquals(prescExc.completionDate.getDay(), (new Date()).getDay());
@@ -41,6 +47,9 @@ public class PrescriptionExecutionTest {
         Assert.assertEquals(prescExc.getPharmacist(), pharm);
     }
 
+    /**
+     * Για επιβεβαίωση οτι δούλεψε σωστά ο κατασκευαστής.
+     */
     @Test
     public void testConstruct() {
         Assert.assertThrows(IllegalArgumentException.class, () -> {
@@ -54,6 +63,9 @@ public class PrescriptionExecutionTest {
         });
     }
 
+    /**
+     * Για επιβεβαίωση οτι δούλεψε σωστά το addProductQuantity().
+     */
     @Test
     public void testProductQuantities() {
         // Product correctly added

@@ -39,6 +39,12 @@ public class ActiveSubstance implements Serializable {
         return getName() + " | " + getExpectedQuantityPerMonth();
     }
 
+    /**
+     * Override του equals για να καθορίσουμε εμείς πως θα συγκριθούν οι δύο ουσίες.
+     * Αρκεί να έχουν ίδιο όνομα και ίδια εκτιμώμενη ποσότητα ανά μήνα, για να είναι ίδιες.
+     * @param obj η ουσία με την οποία συγκρίνουμε την συγκεκριμένη
+     * @return επιστρέφει true αν είναι ίδιες οι δυο ουσίες, αλλιώς false
+     */
     @Override
     public boolean equals(@Nullable Object obj) {
         if(obj == null) return false;

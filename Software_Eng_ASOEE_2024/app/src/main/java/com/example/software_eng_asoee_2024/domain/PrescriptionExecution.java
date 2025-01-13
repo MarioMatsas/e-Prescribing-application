@@ -9,6 +9,12 @@ public class PrescriptionExecution {
     private List<ProductQuantity> productQuantities;
     public final Date completionDate;
 
+    /**
+     * Ο κατασκευαστής (ένας από τους κατασκευαστές).
+     * Αν δέν δοθεί συνταγή ή φαρμακοποιός, δεν έχουμε συνταγή (πετάγεται exception)
+     * @param pharmacist ο φαρμακοποιός που εκτελεί την συνταγή
+     * @param prescription η συνταγή
+     */
     public PrescriptionExecution(Pharmacist pharmacist, Prescription prescription) {
         if (pharmacist == null) throw new IllegalArgumentException("Pharmacist null error");
         if (prescription == null) throw new IllegalArgumentException("Prescription null error");
@@ -23,6 +29,11 @@ public class PrescriptionExecution {
         productQuantities = list;
     }
 
+    /**
+     * Προσθέτει το αντικείμενο productQuantity στην λίστα των productQuantities,
+     * εφόσον υπάρχει η ουσία του φαρμάκου σε κάποια γραμμή της συνταγής.
+     * @param productQuantity το πλήθος των φαρμάκων που θα αγοραστούν
+     */
     public void addProductQuantity(ProductQuantity productQuantity) {
         System.out.println("\n\nSSSSSSSSSSS\n\n");
         System.out.println(productQuantity.getProduct());
@@ -39,6 +50,12 @@ public class PrescriptionExecution {
             this.productQuantities.add(productQuantity);
     }
 
+    /**
+     * Επιστρέφει το συνολικό κόστος από την εκτέλεση της συνταγής.
+     * Πολλάπλασιάζεται επί 100, γιατί ο αριθμητής του γινομένου διαιρείται δια 10000,
+     * οπότε με επι 100 έρχεται στην μορφή ευρώ.
+     * @return Επιστρέφει το συνολικό κόστος από την εκτέλεση της συνταγής
+     */
     public Integer calculateTotalCost() {
         int totalCost = 0;
         for (ProductQuantity productQuantity : productQuantities) {

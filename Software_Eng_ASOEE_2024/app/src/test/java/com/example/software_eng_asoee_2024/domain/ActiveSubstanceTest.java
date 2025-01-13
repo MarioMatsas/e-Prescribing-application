@@ -8,6 +8,9 @@ import org.junit.Test;
 import java.util.Optional;
 
 public class ActiveSubstanceTest {
+    /**
+     * Για επιβεβαίωση οτι θα αλλάξει σωστά το όνομα.
+     */
     @Test
     public void testName(){
         ActiveSubstance act_sub1 = new ActiveSubstance();
@@ -19,6 +22,9 @@ public class ActiveSubstanceTest {
         Assert.assertEquals("testName2", act_sub2.getName());
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα αλλάξει σωστά την αναμενόμενη ποσότητα ανά μήνα.
+     */
     @Test
     public void testExpectedQuantPerMonth(){
         ActiveSubstance act_sub1 = new ActiveSubstance();
@@ -30,6 +36,9 @@ public class ActiveSubstanceTest {
         Assert.assertEquals((Double)25.5, act_sub2.getExpectedQuantityPerMonth());
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει το σωστό string.
+     */
     @Test
     public void TestToString(){
         ActiveSubstance act_sub1 = new ActiveSubstance("hhhh", 2025.0);

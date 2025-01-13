@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class PharmaceuticalProductTest {
+    /**
+     * Για επιβεβαίωση οτι θα οριστεί σωστά το όνομα.
+     */
     @Test
     public void testName(){
         PharmaceuticalProduct php = new PharmaceuticalProduct();
@@ -18,6 +21,9 @@ public class PharmaceuticalProductTest {
         Assert.assertEquals("name1", php.getName());
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα οριστεί σωστά η τιμή.
+     */
     @Test
     public void testRetailPrice(){
         PharmaceuticalProduct php = new PharmaceuticalProduct();
@@ -25,6 +31,9 @@ public class PharmaceuticalProductTest {
         Assert.assertEquals((Integer)500, php.getRetailPrice());
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα οριστεί σωστά η μορφή.
+     */
     @Test
     public void testForm(){
         PharmaceuticalProduct php = new PharmaceuticalProduct();
@@ -32,6 +41,9 @@ public class PharmaceuticalProductTest {
         Assert.assertEquals(PILL, php.getForm());
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα οριστεί σωστά ο τύπος.
+     */
     @Test
     public void testMedicineType(){
         PharmaceuticalProduct php = new PharmaceuticalProduct();
@@ -39,6 +51,9 @@ public class PharmaceuticalProductTest {
             Assert.assertEquals(MedicineType.GENERIC, php.getMedicineType());
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα οριστεί σωστά η συμμετοχή ασθενή.
+     */
     @Test
     public void testCustomerParticipation(){
         ArrayList<ActiveSubstance> as = new ArrayList<ActiveSubstance>();
@@ -58,6 +73,9 @@ public class PharmaceuticalProductTest {
         Assert.assertEquals(0.1, php2.getCustomerParticipation(), 0.0);
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα υπολογιστεί σωστά η τελική τιμή.
+     */
     @Test
     public void testFinalPrice(){
         ArrayList<ActiveSubstance> as = new ArrayList<ActiveSubstance>();
@@ -77,6 +95,9 @@ public class PharmaceuticalProductTest {
         Assert.assertEquals((Integer) 15, php2.getFinalPrice());
     }
 
+    /**
+     * Για επιβεβαίωση οτι θα πεταχτεί exception για λάθος ανιστίχοιση περιεκτηκότητας και μονάδας μέτρησης.
+     */
     @Test
     public void testSubstanceUnitException(){
         ArrayList<ActiveSubstance> a = new ArrayList<>();
