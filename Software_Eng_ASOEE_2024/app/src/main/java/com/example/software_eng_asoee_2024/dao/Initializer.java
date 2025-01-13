@@ -61,23 +61,23 @@ public abstract class Initializer {
         ArrayList<ActiveSubstance> as2 = new ArrayList<ActiveSubstance>();
         ArrayList<Concentration> asCs2 = new ArrayList<Concentration>();
         as.add(activeSubstanceDAO.find("Paracetamol"));
-        asCs.add(new Concentration(10.0, Unit.mg_per_g));
+        asCs.add(new Concentration(10.0, Unit.mg_per_disk));
         as.add(activeSubstanceDAO.find("Ibuprofen"));
-        asCs.add(new Concentration(20.0, Unit.mg_per_g));
+        asCs.add(new Concentration(20.0, Unit.mg_per_disk));
         as2.add(activeSubstanceDAO.find("Ibuprofen"));
-        asCs2.add(new Concentration(100.0, Unit.mg_per_ml));
+        asCs2.add(new Concentration(100.0, Unit.mg_per_disk));
         pharmaceuticalProductDAO.save(new PharmaceuticalProduct("Brufen Plus", 600, Form.PILL, MedicineType.GENERIC, as, asCs, "32 pills in pack"));
         pharmaceuticalProductDAO.save(new PharmaceuticalProduct("Advil", 300, Form.PILL, MedicineType.GENERIC, as2, asCs2, "16 pills in pack"));
 
         PrescriptionDAO prescriptionDAO = new PrescriptionDAOMemory();
         Prescription presc1 = new Prescription("Wolff-Parkinson-White", doctorDAO.find("m", "m"), patientDAO.find(123123123));
-        PrescriptionLine line = new PrescriptionLine(Form.PILL, new Concentration(10.0, Unit.mg_per_g), "For 10 days, 2 pills per day", activeSubstanceDAO.find("Paracetamol"));
+        PrescriptionLine line = new PrescriptionLine(Form.PILL, new Concentration(10.0, Unit.mg_per_disk), "For 10 days, 2 pills per day", activeSubstanceDAO.find("Paracetamol"));
         presc1.addLine(line);
-        line = new PrescriptionLine(Form.PILL, new Concentration(40.0, Unit.mg_per_g), "For 20 days, 1 pill in the morning", activeSubstanceDAO.find("Ibuprofen"));
+        line = new PrescriptionLine(Form.PILL, new Concentration(40.0, Unit.mg_per_disk), "For 20 days, 1 pill in the morning", activeSubstanceDAO.find("Ibuprofen"));
         presc1.addLine(line);
         prescriptionDAO.save(presc1);
         Prescription presc2 = new Prescription("Mild headache", doctorDAO.find("m", "m"), patientDAO.find(123123123));
-        line = new PrescriptionLine(Form.PILL, new Concentration(10.0, Unit.mg_per_g), "For 10 days, 2 pills per day", activeSubstanceDAO.find("Paracetamol"));
+        line = new PrescriptionLine(Form.PILL, new Concentration(10.0, Unit.mg_per_disk), "For 10 days, 2 pills per day", activeSubstanceDAO.find("Paracetamol"));
         presc2.addLine(line);
         prescriptionDAO.save(presc2);
 
