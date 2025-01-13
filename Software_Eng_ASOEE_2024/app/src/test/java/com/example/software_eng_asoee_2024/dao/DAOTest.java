@@ -10,6 +10,7 @@ import com.example.software_eng_asoee_2024.domain.Patient;
 import com.example.software_eng_asoee_2024.domain.Pharmacist;
 import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.domain.Prescription;
+import com.example.software_eng_asoee_2024.domain.PrescriptionExecution;
 import com.example.software_eng_asoee_2024.domain.PrescriptionLine;
 import com.example.software_eng_asoee_2024.domain.Unit;
 import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
@@ -19,6 +20,7 @@ import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmacistDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.PrescriptionExecutionDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.ReportObjectDAOMemory;
 
 import org.junit.Assert;
@@ -37,6 +39,7 @@ public class DAOTest {
     private PrescriptionDAO prescriptionDAO;
     private Prescription presc;
     private ReportObjectDAO reportDAO;
+    private PrescriptionExecutionDAO prescriptionExecutionDAO;
 
     /**
      * Πρίν απο τα τεστ, δημιουργεί και αρχικοποιεί την μνήμη.
@@ -53,7 +56,7 @@ public class DAOTest {
         productDAO = new PharmaceuticalProductDAOMemory();
         prescriptionDAO = new PrescriptionDAOMemory();
         reportDAO = new ReportObjectDAOMemory();
-
+        prescriptionExecutionDAO = new PrescriptionExecutionDAOMemory();
 
 
         presc = new Prescription("Whatever...", doctorDAO.find("m", "m"), patientDAO.find(123123123));
@@ -447,5 +450,27 @@ public class DAOTest {
         Assert.assertEquals(reportDAO.getUnlawfulDoctors().size(), 0);
     }
 
+    /**
+     *  Make sure that ExecutionObjects are saved and deleted correctly
+     */
+    @Test
+    public void testSaveDelete(){
+        PrescriptionExecution pexe = new PrescriptionExecution(pharmacistDAO.find("d","ch"), presc);
+        prescriptionExecutionDAO.save(pexe);
+        Assert.assertEquals(prescriptionExecutionDAO.findAll().size(), 1);
+        prescriptionExecutionDAO.delete(pexe);
+        Assert.assertEquals(prescriptionExecutionDAO.findAll().size(), 0);
+    }
+
+    /**
+     *  Check if objects are found by prescription id
+     */
+    @Test
+    public void testPrescExeById(){
+        PrescriptionExecution pexe = new PrescriptionExecution(pharmacistDAO.find("d","ch"), presc);
+        prescriptionExecutionDAO.save(pexe);
+        Assert.assertEquals(pexe, prescriptionExecutionDAO.findByPrescriptionId(pexe.getPrescription().getId()));
+        Assert.assertNull(prescriptionExecutionDAO.findByPrescriptionId(20));
+    }
 
 }

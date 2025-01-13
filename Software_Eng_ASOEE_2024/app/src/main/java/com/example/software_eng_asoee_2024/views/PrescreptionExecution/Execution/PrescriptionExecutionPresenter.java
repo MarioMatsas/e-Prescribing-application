@@ -15,6 +15,7 @@ import com.example.software_eng_asoee_2024.domain.Unit;
 import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.PrescriptionExecutionDAOMemory;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionView;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class PrescriptionExecutionPresenter {
     private PrescriptionExecutionView view;
     private PrescriptionDAOMemory prescriptionDAO;
     private PharmaceuticalProductDAOMemory productDAO;
+    private PrescriptionExecutionDAOMemory prescriptionExecutionDAO;
     private PrescriptionExecution prescriptionExecution;
 
     public PrescriptionExecutionView getView() {
@@ -41,6 +43,9 @@ public class PrescriptionExecutionPresenter {
     }
     public void setPharmaceuticalProdcutDAO(PharmaceuticalProductDAOMemory productDAO){
         this.productDAO = productDAO;
+    }
+    public void setPrescriptionExecutionDAO(PrescriptionExecutionDAOMemory prescriptionExDAO){
+        this.prescriptionExecutionDAO = prescriptionExDAO;
     }
 
     public Prescription getPrescription(int Id){
@@ -96,14 +101,10 @@ public class PrescriptionExecutionPresenter {
     public String finishExecution(Prescription prescription){
         // Remove the prescription from the DAO
         prescriptionDAO.delete(prescription);
-        // Print the final price
+        // Add the prescription execution to the DAO
+        prescriptionExecutionDAO.save(prescriptionExecution);
+        // Return the final price
         return String.valueOf(getTotalCost());
-        /*System.out.println("YEAH");
-        for (ProductQuantity pq : prescriptionExecution.getProductQuantities()){
-            System.out.println(pq);
-        }
-        System.out.println(getTotalCost());
-        System.out.println("YEAH");*/
     }
 
     public double getTotalCost(){
