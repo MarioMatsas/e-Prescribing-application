@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.ViewModel;
 
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.PrescriptionExecutionDAOMemory;
 
 public class PharmaceuticalProductDeleteViewModel extends ViewModel {
     private PharmaceuticalProductDeletePresenter presenter;
@@ -12,6 +13,7 @@ public class PharmaceuticalProductDeleteViewModel extends ViewModel {
     public PharmaceuticalProductDeleteViewModel(){
         presenter = new PharmaceuticalProductDeletePresenter();
         presenter.setPharmaceuticalProductDAO(new PharmaceuticalProductDAOMemory());
+        presenter.setPrescriptionExecutionDAO(new PrescriptionExecutionDAOMemory());
     }
 
     public PharmaceuticalProductDeletePresenter getPresenter() {
