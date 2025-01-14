@@ -1,5 +1,6 @@
 package com.example.software_eng_asoee_2024.views.PrescreptionExecution.Execution;
 
+import com.example.software_eng_asoee_2024.dao.PharmacistDAO;
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Concentration;
 import com.example.software_eng_asoee_2024.domain.Doctor;
@@ -14,6 +15,7 @@ import com.example.software_eng_asoee_2024.domain.ProductQuantity;
 import com.example.software_eng_asoee_2024.domain.Unit;
 import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.PharmacistDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionExecutionDAOMemory;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionView;
@@ -27,13 +29,14 @@ public class PrescriptionExecutionPresenter {
     private PharmaceuticalProductDAOMemory productDAO;
     private PrescriptionExecutionDAOMemory prescriptionExecutionDAO;
     private PrescriptionExecution prescriptionExecution;
+    private PharmacistDAOMemory pharmacistDAO;
 
     public PrescriptionExecutionView getView() {
         return view;
     }
 
-    public void init(Prescription prescription, Pharmacist pharmacist){
-        prescriptionExecution = new PrescriptionExecution(pharmacist, prescription);
+    public void init(Prescription prescription, String fn, String ln){
+        prescriptionExecution = new PrescriptionExecution(pharmacistDAO.find(fn, ln), prescription);
     }
     public void setView(PrescriptionExecutionView view) {
         this.view = view;
@@ -43,6 +46,9 @@ public class PrescriptionExecutionPresenter {
     }
     public void setPharmaceuticalProdcutDAO(PharmaceuticalProductDAOMemory productDAO){
         this.productDAO = productDAO;
+    }
+    public void setPharmacistDAO(PharmacistDAOMemory phDAO){
+        this.pharmacistDAO = phDAO;
     }
     public void setPrescriptionExecutionDAO(PrescriptionExecutionDAOMemory prescriptionExDAO){
         this.prescriptionExecutionDAO = prescriptionExDAO;

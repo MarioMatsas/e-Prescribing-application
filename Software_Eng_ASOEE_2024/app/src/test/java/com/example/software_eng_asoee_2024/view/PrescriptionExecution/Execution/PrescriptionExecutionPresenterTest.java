@@ -12,6 +12,7 @@ import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.MemoryInitializer;
 import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.PharmacistDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
 import com.example.software_eng_asoee_2024.view.PrescriptionExecution.Selection.PrescriptionSelectionViewStub;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Execution.PrescriptionExecutionPresenter;
@@ -35,7 +36,8 @@ public class PrescriptionExecutionPresenterTest {
         presenter.setView(viewStub);
         presenter.setPharmaceuticalProdcutDAO(new PharmaceuticalProductDAOMemory());
         presenter.setPrescriptionDAO(new PrescriptionDAOMemory());
-        presenter.init(new PrescriptionDAOMemory().findAll().get(0), new Pharmacist());
+        presenter.setPharmacistDAO(new PharmacistDAOMemory());
+        presenter.init(new PrescriptionDAOMemory().findAll().get(0), "d", "ch");
     }
 
     @Test

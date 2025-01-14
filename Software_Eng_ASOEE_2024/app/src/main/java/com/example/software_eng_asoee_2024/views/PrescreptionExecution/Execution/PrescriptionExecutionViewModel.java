@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.PharmacistDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionExecutionDAOMemory;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionPresenter;
@@ -19,6 +20,7 @@ public class PrescriptionExecutionViewModel extends ViewModel {
         presenter.setPrescriptionDAO(new PrescriptionDAOMemory());
         presenter.setPharmaceuticalProdcutDAO(new PharmaceuticalProductDAOMemory());
         presenter.setPrescriptionExecutionDAO(new PrescriptionExecutionDAOMemory());
+        presenter.setPharmacistDAO(new PharmacistDAOMemory());
     }
 
     public PrescriptionExecutionPresenter getPresenter() {

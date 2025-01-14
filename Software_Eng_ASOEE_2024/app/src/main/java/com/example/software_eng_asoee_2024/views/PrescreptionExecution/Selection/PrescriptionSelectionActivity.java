@@ -33,7 +33,8 @@ public class PrescriptionSelectionActivity extends AppCompatActivity implements 
     private TextView errorMessage;
     private ImageView logo;
     private Spinner prescription;
-    private Pharmacist pharmacist;
+    private String pharmacist_fn;
+    private String pharmacist_ln;
     //private List<Prescription> currentPrescriptions = new ArrayList<>();
 
     @Override
@@ -62,8 +63,8 @@ public class PrescriptionSelectionActivity extends AppCompatActivity implements 
         showPrescriptionsButton.setOnClickListener(v -> showPatientPrescriptions(presenter));
 
         executePrescriptionButton.setOnClickListener(v -> navigateToExecution());
-
-        pharmacist = (Pharmacist) getIntent().getSerializableExtra("pharmacist");
+        pharmacist_fn = getIntent().getStringExtra("pharmacistName");
+        pharmacist_ln = getIntent().getStringExtra("pharmacistSurname");
     }
 
     @Override
@@ -80,7 +81,8 @@ public class PrescriptionSelectionActivity extends AppCompatActivity implements 
             Prescription selectedPrescription = (Prescription) prescription.getSelectedItem();
             Intent intent = new Intent(this, PrescriptionExecutionActivity.class);
             intent.putExtra("selectedPrescriptionId", selectedPrescription.getId()); // Pass the chosen prescription to the execution
-            intent.putExtra("pharmacist", pharmacist);
+            intent.putExtra("pharmacistName", pharmacist_fn);
+            intent.putExtra("pharmacistSurname", pharmacist_ln);
             startActivity(intent);
         }
     }

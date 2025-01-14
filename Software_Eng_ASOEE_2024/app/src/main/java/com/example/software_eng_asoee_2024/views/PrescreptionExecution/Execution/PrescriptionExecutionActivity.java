@@ -63,8 +63,9 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
 
         Intent intent = getIntent();
         Prescription selectedPrescription = viewModel.getPresenter().getPrescription(((Integer) intent.getSerializableExtra("selectedPrescriptionId")));
-        Pharmacist pharmacist = (Pharmacist) getIntent().getSerializableExtra("pharmacist");
-        presenter.init(selectedPrescription, pharmacist);
+        String pharmacist_fn = getIntent().getStringExtra("pharmacistName");
+        String pharmacist_ln = getIntent().getStringExtra("pharmacistSurname");
+        presenter.init(selectedPrescription, pharmacist_ln, pharmacist_fn);
         updateDisplayInfo(selectedPrescription, 0);
     }
     @Override

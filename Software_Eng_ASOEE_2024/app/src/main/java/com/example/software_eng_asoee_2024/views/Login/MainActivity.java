@@ -78,17 +78,30 @@ public class MainActivity extends AppCompatActivity implements LoginView{
         errorMessage.setText(""); // Hides the error message
     }
 
+    /**
+     *
+     * Method used to login as a doctor, pharmacist, employee or admin
+     */
     @Override
     public void login() {
         viewModel.getPresenter().login(username.getText().toString(), password.getText().toString());
     }
 
+    /**
+     *
+     *  Navigates the admin to the report screen where he can view this month's unlawful doctors
+     */
     @Override
     public void navigateToReportScreen(){
         Intent intent = new Intent(this, ReportActivity.class);
         startActivity(intent);
     }
 
+    /**
+     *
+     * @param doctor
+     */
+    @Override
     public void navigateToDoctorScreen(Doctor doctor) {
         Intent intent = new Intent(this, PatientSearchingActivity.class);
         intent.putExtra("doctorName", doctor.getFirstName());
@@ -99,7 +112,9 @@ public class MainActivity extends AppCompatActivity implements LoginView{
     @Override
     public void navigateToPharmacistScreen(Pharmacist pharmacist) {
         Intent intent = new Intent(this, PrescriptionSelectionActivity.class);
-        intent.putExtra("pharmacist", pharmacist);
+        intent.putExtra("pharmacistName", pharmacist.getFirstName());
+        intent.putExtra("pharmacistSurname", pharmacist.getLastName());
+        //intent.putExtra("pharmacist", pharmacist);
         startActivity(intent);
     }
 
