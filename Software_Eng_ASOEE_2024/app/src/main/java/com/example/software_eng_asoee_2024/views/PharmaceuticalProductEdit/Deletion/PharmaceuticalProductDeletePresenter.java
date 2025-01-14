@@ -21,7 +21,7 @@ public class PharmaceuticalProductDeletePresenter {
 
     public boolean deletePharmaceuticalProduct(PharmaceuticalProduct ac) {
         if(ac == null) {
-            view.showMessage("None selected to be delete");
+            view.showMessage("None selected to be deleted");
             return false;
         }
         this.pharmaceuticalProductDAO.delete(ac);
