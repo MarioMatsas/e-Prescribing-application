@@ -13,7 +13,6 @@ public class PharmaceuticalProductChoiceViewModel extends ViewModel {
 
     public PharmaceuticalProductChoiceViewModel(){
         presenter = new PharmaceuticalProductChoicePresenter();
-        presenter.setPharmaceuticalProductDAO(new PharmaceuticalProductDAOMemory());
     }
 
     public PharmaceuticalProductChoicePresenter getPresenter() {

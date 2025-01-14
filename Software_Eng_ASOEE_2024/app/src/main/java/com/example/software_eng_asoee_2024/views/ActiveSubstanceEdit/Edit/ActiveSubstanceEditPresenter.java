@@ -19,8 +19,9 @@ public class ActiveSubstanceEditPresenter {
     }
 
     public void editActiveSubstance(ActiveSubstance selected, String name, String eqpm) {
-        if(selected == null) throw new IllegalArgumentException("None selected to be edited");
         try {
+            if(selected == null) throw new IllegalArgumentException("None selected to be edited");
+
             if (name.isEmpty() || eqpm.isEmpty())
                 throw new IllegalArgumentException("Not all fields are filled in");
 
@@ -40,7 +41,6 @@ public class ActiveSubstanceEditPresenter {
             view.showMessage("Expected Quantity Per Month should be a number");
         } catch (Exception e) {
             view.showMessage(e.getMessage());
-
         }
     }
 

@@ -40,7 +40,7 @@ public class PharmaceuticalProductCreationPresenter {
 
             view.showMessage("Done!");
         } catch (NumberFormatException e) {
-            view.showMessage("Expected Quantity Per Month should be a number");
+            view.showMessage("Retail Price should be a number");
         } catch (Exception e) {
             view.showMessage(e.getMessage());
         }

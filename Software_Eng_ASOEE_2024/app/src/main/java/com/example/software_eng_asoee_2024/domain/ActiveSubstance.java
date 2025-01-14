@@ -13,6 +13,7 @@ public class ActiveSubstance implements Serializable {
     }
     
     public ActiveSubstance(String name, Double expectedQuantityPerMonth) {
+        if(expectedQuantityPerMonth <= 0) throw new IllegalArgumentException("Quantity must be non zero positive number");
         this.name = name;
         this.expectedQuantityPerMonth = expectedQuantityPerMonth;
     }

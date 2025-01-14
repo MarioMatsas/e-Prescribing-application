@@ -13,6 +13,7 @@ public class Concentration implements Serializable {
     }
 
     public Concentration(Double quantity, Unit unit) {
+        if(quantity <= 0) throw new IllegalArgumentException("Quantity must be non zero positive integer");
         this.quantity = quantity;
         this.unit = unit;
     }
