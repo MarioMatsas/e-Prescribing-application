@@ -33,6 +33,13 @@ public class LoginPresenter {
         this.pharmacistDAO = pharmacistDAO;
     }
 
+    /**
+     * Uses the username and password in order to log the user
+     * in the correct account
+     *
+     * @param username
+     * @param password
+     */
     public void login(String username, String password){
 
         if (username.equals("admin") && password.equals("0000")){

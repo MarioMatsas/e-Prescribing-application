@@ -28,24 +28,51 @@ public class LoginPresenterTest {
         presenter.setNOHCSEmployeeDAO(new NOHCSEmployeeDAOMemory());
     }
 
+    /**
+     *
+     * Checks if the doctor was logged in successfully
+     */
     @Test
     public void doctorLogin(){
         presenter.login("m", "m");
         Assert.assertEquals("Success doctor", viewStub.getNavDocMessage());
     }
 
+    /**
+     *
+     * Checks if the pharmacist was logged in successfully
+     */
     @Test
     public void pharmacistLogin(){
         presenter.login("d", "ch");
         Assert.assertEquals("Success pharmacist", viewStub.getNavPhMessage());
     }
 
+    /**
+     *
+     * Checks if the employee was logged in successfully
+     */
     @Test
     public void NOHCSEmployeeLogin(){
         presenter.login("a", "a");
         Assert.assertEquals("Success nohcsEmployee", viewStub.getNavNOHCSMessage());
     }
 
+    /**
+     *
+     * Checks if the admin was logged in successfully
+     *
+     */
+    @Test
+    public void adminLogin(){
+        presenter.login("admin", "0000");
+        Assert.assertEquals("Success admin", viewStub.getNavReportMessage());
+    }
+
+    /**
+     *
+     * Checks if the login failed
+     */
     @Test
     public void failLogin(){
         presenter.login("ch", "p");

@@ -1,5 +1,6 @@
 package com.example.software_eng_asoee_2024.views.SignUp;
 
+import com.example.software_eng_asoee_2024.dao.NOHCSEmployeeDAO;
 import com.example.software_eng_asoee_2024.domain.Doctor;
 import com.example.software_eng_asoee_2024.domain.Pharmacist;
 import com.example.software_eng_asoee_2024.dao.DoctorDAO;
@@ -9,6 +10,8 @@ public class SignUpPresenter {
     private SignUpView view;
     private DoctorDAO doctorDAO;
     private PharmacistDAO pharmacistDAO;
+    private NOHCSEmployeeDAO empDAO;
+    // TODO EMP CHNGE
 
     public SignUpView getView() {
         return view;
@@ -22,10 +25,22 @@ public class SignUpPresenter {
         this.doctorDAO = doctorDAO;
     }
 
+
     public void setPharmacistDAO(PharmacistDAO pharmacistDAO) {
         this.pharmacistDAO = pharmacistDAO;
     }
 
+    /**
+     * Checks if the account is available. If so the user account is
+     * created as either a doctor or a pharmacist
+     *
+     * @param username
+     * @param password
+     * @param repeatPassword
+     * @param speciality
+     * @param user
+     * @return
+     */
     public boolean signUp(String username, String password, String repeatPassword, String speciality, String user){
         // Check if every field is filled
         if (username.isEmpty() || password.isEmpty()){
@@ -57,11 +72,19 @@ public class SignUpPresenter {
         return true;
     }
 
+    /**
+     * Checks if an account with such credentials already exists
+     *
+     * @param username
+     * @param password
+     * @return
+     */
     public boolean userExists(String username, String password){
         System.out.println(username + " " + password);
         // Check if the user with those credentials already exists
         if (doctorDAO.find(username, password) != null) return true;
         if (pharmacistDAO.find(username, password) != null) return true;
+        if (username.equals("admin") && password.equals("0000")) return true;
         return false;
     }
 

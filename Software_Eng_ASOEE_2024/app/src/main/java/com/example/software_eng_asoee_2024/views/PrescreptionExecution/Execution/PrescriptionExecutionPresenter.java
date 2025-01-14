@@ -58,6 +58,12 @@ public class PrescriptionExecutionPresenter {
         return prescriptionDAO.findPrescriptionById(Id);
     }
 
+    /**
+     * Shows all products that have the active substance
+     * present in the line
+     *
+     * @param line
+     */
     public void showPrescriptionLineProducts(PrescriptionLine line){
         // Find all the products that have the same active substance as the one in the line
         List<PharmaceuticalProduct> productsToShow = new ArrayList<PharmaceuticalProduct>();
@@ -76,6 +82,13 @@ public class PrescriptionExecutionPresenter {
 
     }
 
+    /**
+     * Checks if all fields are correct and adds the product to the buy list
+     *
+     * @param productFromSpinner
+     * @param valueFromTextView
+     * @return
+     */
     public boolean addProductToBuy(PharmaceuticalProduct productFromSpinner, String valueFromTextView){
         if (productFromSpinner != null){
             if (valueFromTextView.isEmpty()) {  // Check if the quantity field is empty
@@ -104,6 +117,13 @@ public class PrescriptionExecutionPresenter {
 
     }
 
+    /**
+     * After the process is over the prescription is deleted
+     * and the prescriptionExecution is saved to the DAO
+     *
+     * @param prescription
+     * @return
+     */
     public String finishExecution(Prescription prescription){
         // Remove the prescription from the DAO
         prescriptionDAO.delete(prescription);
@@ -113,6 +133,11 @@ public class PrescriptionExecutionPresenter {
         return String.valueOf(getTotalCost());
     }
 
+    /**
+     * Calculates cost of all the products
+     *
+     * @return
+     */
     public double getTotalCost(){
         return prescriptionExecution.calculateTotalCost()/100.0;
     }

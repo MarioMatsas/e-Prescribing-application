@@ -35,6 +35,12 @@ public class PrescriptionSelectionPresenter {
         this.patientDAO = patientDAO;
     }
 
+    /**
+     * Makes sure the SSN given is valid and updates the
+     * prescriptions shown.
+     *
+     * @param SSN
+     */
     public void showPatientPrescriptions(String SSN){
         if (SSN.isEmpty()) {  // Check if the SSN field is empty
             view.showError("SSN cannot be empty.");
@@ -71,6 +77,13 @@ public class PrescriptionSelectionPresenter {
         }
     }
 
+    /**
+     * Checks if there are no available prescriptions,
+     * if so the user can't execute a prescription
+     *
+     * @param spinnerItem
+     * @return
+     */
     public boolean navigateToExecution(Prescription spinnerItem){
         if (spinnerItem != null) {
             return true;

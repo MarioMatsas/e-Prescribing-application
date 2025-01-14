@@ -64,6 +64,11 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         signupButton.setOnClickListener(v -> signUp());
     }
 
+    /**
+     *  Tries to sign the user up. If the process is
+     *  a success the user is sent back to the login page.
+     *
+     */
     @Override
     public void signUp() {
         boolean res = viewModel.getPresenter().signUp(username.getText().toString(), password.getText().toString(),
@@ -71,6 +76,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         if (res) finish();
     }
 
+    /**
+     * Updates the screens error message.
+     * @param message
+     */
     @Override
     public void showError(String message) {
         errorMessage.setText(message);

@@ -68,6 +68,16 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
         presenter.init(selectedPrescription, pharmacist_ln, pharmacist_fn);
         updateDisplayInfo(selectedPrescription, 0);
     }
+
+    /**
+     * Updates the info displayed according to the data of the
+     * current prescription line. It also updates the function of the
+     * only button on the screen, so that if there are more lines to go through it says "Next Line"
+     * and calls the nextLine method, otherwise it says "Finish" and calls the finishExecution method
+     *
+     * @param prescription
+     * @param currentIndex
+     */
     @Override
     public void updateDisplayInfo(Prescription prescription, int currentIndex) {
         List<PrescriptionLine> lines = prescription.getPrescriptionLines();
@@ -87,6 +97,14 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
     public void updateLineInfo(PrescriptionLine line) {
         showPrescriptionLineInstructions.setText("Instructions: "+line.getInstructions());
     }
+
+    /**
+     * Calls the addProduct function and checks if the product got added.
+     * If successful the process advances, otherwise an error appears
+     *
+     * @param prescription
+     * @param index
+     */
     @Override
     public void nextLine(Prescription prescription, int index){
         if (addProduct(prescription, index, false)) { // Add product and proceed only if successful
@@ -96,11 +114,26 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
             updateDisplayInfo(prescription, index+1); // Update the display for the next line
         }
     }
+
+    /**
+     * Tries to add the selected product to the list of products to buy
+     *
+     * @param prescription
+     * @param index
+     * @param finalLine
+     * @return
+     */
     @Override
     public boolean addProduct(Prescription prescription, int index, boolean finalLine){
         return viewModel.getPresenter().addProductToBuy((PharmaceuticalProduct) productsSpinner.getSelectedItem(), quantity.getText().toString());
     }
 
+    /**
+     * Once the use has gone through the entire prescription
+     * the final price will appear and the button will be disabled.
+     *
+     * @param prescription
+     */
     @Override
     public void finishExecution(Prescription prescription){
         boolean finished = addProduct(prescription, 0, true);
@@ -110,6 +143,12 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
         advanceExecutionButton.setEnabled(false);
     }
 
+    /**
+     * Updates all of the spinners items,
+     * according to what product is available
+     *
+     * @param products
+     */
     @Override
     public void updateProductSpinner(List<PharmaceuticalProduct> products) {
         //currentPrescriptions = prescriptions;
@@ -120,6 +159,10 @@ public class PrescriptionExecutionActivity extends AppCompatActivity implements 
         //errorMessage.setText(""); // Clear previous errors
     }
 
+    /**
+     * Clears all of the spinners items
+     *
+     */
     @Override
     public void clearProductSpinner() {
         productsSpinner.setAdapter(null);

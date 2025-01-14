@@ -40,6 +40,10 @@ public class PrescriptionExecutionPresenterTest {
         presenter.init(new PrescriptionDAOMemory().findAll().get(0), "d", "ch");
     }
 
+    /**
+     *
+     * No products found that match the active substance, form and concentration in the line
+     */
     @Test
     public void noProductsToShow(){
         ActiveSubstance as = new ActiveSubstance();
@@ -52,6 +56,10 @@ public class PrescriptionExecutionPresenterTest {
         Assert.assertEquals(viewStub.getErrorMessage(), "No products found.");
     }
 
+    /**
+     *
+     * Check if the correct number of products is shown
+     */
     @Test
     public void productsToShow(){
         PrescriptionLine line = new PrescriptionLine(Form.PILL, new Concentration(10.0, Unit.mg_per_g), "For 10 days, 2 pills per day", new ActiveSubstanceDAOMemory().find("Ibuprofen"));
@@ -59,23 +67,39 @@ public class PrescriptionExecutionPresenterTest {
         Assert.assertEquals(viewStub.getUpdateMessage(), "2");
     }
 
+    /**
+     *
+     * Makes sure that no products were found that match the line info
+     */
     @Test
     public void productNotFound(){
         presenter.addProductToBuy(null, "12");
         Assert.assertEquals(viewStub.getErrorMessage(), "No products.");
     }
 
+    /**
+     *
+     * Makes sure that a product was found that match the line info
+     */
     @Test
     public void productFound(){
         Assert.assertTrue(presenter.addProductToBuy(new PharmaceuticalProductDAOMemory().find("Brufen Plus"), "5"));
     }
 
+    /**
+     *
+     * Checks for empty quantity field
+     */
     @Test
     public void emptyQuantity(){
         presenter.addProductToBuy(new PharmaceuticalProductDAOMemory().find("Brufen Plus"), "");
         Assert.assertEquals(viewStub.getErrorMessage(), "Quantity cannot be empty.");
     }
 
+    /**
+     *
+     * Checks for invalid quantity format
+     */
     @Test
     public void invalidQuantityFormat(){
         presenter.addProductToBuy(new PharmaceuticalProductDAOMemory().find("Brufen Plus"), "asf532");

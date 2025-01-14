@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements LoginView{
     }
 
     /**
-     *
+     * Navigates to doctor main screen
      * @param doctor
      */
     @Override
@@ -109,6 +109,11 @@ public class MainActivity extends AppCompatActivity implements LoginView{
         startActivity(intent);
     }
 
+    /**
+     *
+     * Navigates to pharmacist main screen
+     * @param pharmacist
+     */
     @Override
     public void navigateToPharmacistScreen(Pharmacist pharmacist) {
         Intent intent = new Intent(this, PrescriptionSelectionActivity.class);
@@ -118,6 +123,10 @@ public class MainActivity extends AppCompatActivity implements LoginView{
         startActivity(intent);
     }
 
+    /**
+     * Navigates to employee main screen
+     * @param employee
+     */
     @Override
     public void navigateToNOHCSScreen(NOHCS_Employee employee) {
         Intent intent = new Intent(this, NOHCSSelectionActivity.class);
@@ -125,12 +134,20 @@ public class MainActivity extends AppCompatActivity implements LoginView{
         startActivity(intent);
     }
 
+    /**
+     *
+     * Navigates to sign up page
+     */
     @Override
     public void navigateToSignUpScreen() {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Updates the sreens error message
+     * @param message
+     */
     @Override
     public void showError(String message) {
         errorMessage.setText(message);

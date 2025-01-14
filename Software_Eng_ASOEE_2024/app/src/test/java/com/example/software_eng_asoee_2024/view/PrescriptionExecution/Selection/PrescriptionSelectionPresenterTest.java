@@ -31,35 +31,59 @@ public class PrescriptionSelectionPresenterTest {
         presenter.setPrescriptionDAO(new PrescriptionDAOMemory());
     }
 
+    /**
+     *
+     * Check if patient was not found is handled correctly
+     */
     @Test
     public void patientNotFound(){
         presenter.showPatientPrescriptions("123123125");
         Assert.assertEquals(viewStub.getErrorMessage(), "Patient not found.");
     }
 
+    /**
+     *
+     * Check if patient was found
+     */
     @Test
     public void patientFound(){
         presenter.showPatientPrescriptions("123123123");
         Assert.assertEquals(viewStub.getUpdateMessage(), "message");
     }
 
+    /**
+     *
+     * Check if the empty SSN is handled correctly
+     */
     @Test
     public void emptySSN(){
         presenter.showPatientPrescriptions("");
         Assert.assertEquals(viewStub.getErrorMessage(), "SSN cannot be empty.");
     }
 
+    /**
+     *
+     * Check if an invalid SSN is handled correctly
+     */
     @Test
     public void invalidSSNFormat(){
         presenter.showPatientPrescriptions("123bc8d289");
         Assert.assertEquals(viewStub.getErrorMessage(), "Invalid SSN format.");
     }
 
+    /**
+     *
+     * Check if the navigation to the execution phase was successful
+     */
     @Test
     public void successExecutionNav(){
         Assert.assertTrue(presenter.navigateToExecution(new PrescriptionDAOMemory().findAll().get(0)));
     }
 
+    /**
+     *
+     * Check if the navigation to the execution phase was unsuccessful
+     */
     @Test
     public void notSuccessExecutionNav(){
         Assert.assertFalse(presenter.navigateToExecution(null));

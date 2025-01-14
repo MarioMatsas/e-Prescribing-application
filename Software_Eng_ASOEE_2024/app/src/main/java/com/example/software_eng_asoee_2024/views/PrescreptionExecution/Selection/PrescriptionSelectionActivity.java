@@ -74,6 +74,11 @@ public class PrescriptionSelectionActivity extends AppCompatActivity implements 
         prescription.setAdapter(null); // Clear spinner
         errorMessage.setText(""); // Clear error message
     }
+
+    /**
+     * Sends the user to the prescription execution screen
+     *
+     */
     @Override
     public void navigateToExecution(){
         boolean res = viewModel.getPresenter().navigateToExecution((Prescription)prescription.getSelectedItem());
@@ -86,11 +91,23 @@ public class PrescriptionSelectionActivity extends AppCompatActivity implements 
             startActivity(intent);
         }
     }
+
+    /**
+     * Makes a call to the presenter so he can update the prescription spinner
+     *
+     * @param presenter
+     */
     @Override
     public void showPatientPrescriptions(PrescriptionSelectionPresenter presenter){
         presenter.showPatientPrescriptions(SSN.getText().toString());
     }
 
+    /**
+     * Updates the product spinner, with the prescriptions available to
+     * that patient
+     *
+     * @param prescriptions
+     */
     @Override
     public void updatePrescriptionSpinner(List<Prescription> prescriptions) {
         //currentPrescriptions = prescriptions;
