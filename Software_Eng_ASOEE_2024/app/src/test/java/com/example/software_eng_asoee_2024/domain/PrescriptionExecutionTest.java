@@ -17,6 +17,7 @@ public class PrescriptionExecutionTest {
     ActiveSubstance a = new ActiveSubstance("Paracetamol", 500.0);
     ArrayList<ActiveSubstance> activeSubs = new ArrayList<>();
 
+
     /**
      * Πριν τα τέστ, αρχικοποιούνται τα πεδία.
      */
@@ -61,6 +62,16 @@ public class PrescriptionExecutionTest {
         Assert.assertThrows(IllegalArgumentException.class, () -> {
             prescExc = new PrescriptionExecution(null, presc, qntts);
         });
+    }
+
+    /**
+     *
+     * Test total price calculation
+     */
+    @Test
+    public void testTotalPrice(){
+        prescExc = new PrescriptionExecution(pharm, presc, qntts);
+        Assert.assertEquals(prescExc.calculateTotalCost(), (Integer)1000);
     }
 
     /**

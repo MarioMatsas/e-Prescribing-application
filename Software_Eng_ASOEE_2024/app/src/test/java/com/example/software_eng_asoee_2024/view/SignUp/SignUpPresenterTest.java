@@ -30,6 +30,15 @@ public class SignUpPresenterTest {
     }
 
     /**
+     * Test view getter
+     *
+     */
+    @Test
+    public void getView(){
+        Assert.assertEquals(viewStub, presenter.getView());
+    }
+
+    /**
      *
      * Successful doctor account created
      */
@@ -71,6 +80,20 @@ public class SignUpPresenterTest {
         boolean result = presenter.signUp("username2", "password4", "password4","", "Doctor");
         Assert.assertFalse(result);
         Assert.assertEquals(viewStub.getErrorMessage(), "You need to enter your speciality.");
+    }
+
+    /**
+     *
+     * Test username or password empty check
+     *
+     */
+    @Test
+    public void usernamePasswordEmpty(){
+        presenter.signUp("", "password4", "password4","", "Doctor");
+        Assert.assertEquals(viewStub.getErrorMessage(), "Username and/or password fields can't be empty");
+        boolean res = presenter.signUp("", "password4", "password4","", "Doctor");
+        Assert.assertFalse(res);
+        Assert.assertEquals(viewStub.getErrorMessage(), "Username and/or password fields can't be empty");
     }
 
     /**

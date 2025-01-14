@@ -14,6 +14,7 @@ import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmacistDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.PrescriptionExecutionDAOMemory;
 import com.example.software_eng_asoee_2024.view.PrescriptionExecution.Selection.PrescriptionSelectionViewStub;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Execution.PrescriptionExecutionPresenter;
 import com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selection.PrescriptionSelectionPresenter;
@@ -37,7 +38,17 @@ public class PrescriptionExecutionPresenterTest {
         presenter.setPharmaceuticalProdcutDAO(new PharmaceuticalProductDAOMemory());
         presenter.setPrescriptionDAO(new PrescriptionDAOMemory());
         presenter.setPharmacistDAO(new PharmacistDAOMemory());
+        presenter.setPrescriptionExecutionDAO(new PrescriptionExecutionDAOMemory());
         presenter.init(new PrescriptionDAOMemory().findAll().get(0), "d", "ch");
+    }
+
+    /**
+     * Test view getter
+     *
+     */
+    @Test
+    public void getView(){
+        Assert.assertEquals(viewStub, presenter.getView());
     }
 
     /**
@@ -46,7 +57,7 @@ public class PrescriptionExecutionPresenterTest {
      */
     @Test
     public void noProductsToShow(){
-        ActiveSubstance as = new ActiveSubstance();
+        ActiveSubstance as = new ActiveSubstance("HALLO!", 10.3);
         PrescriptionLine line = new PrescriptionLine(Form.PILL, new Concentration(10.0, Unit.mg_per_g), "For 10 days, 2 pills per day", as);
         presenter.showPrescriptionLineProducts(line);
         Assert.assertEquals(viewStub.getErrorMessage(), "No products found.");
@@ -62,9 +73,9 @@ public class PrescriptionExecutionPresenterTest {
      */
     @Test
     public void productsToShow(){
-        PrescriptionLine line = new PrescriptionLine(Form.PILL, new Concentration(10.0, Unit.mg_per_g), "For 10 days, 2 pills per day", new ActiveSubstanceDAOMemory().find("Ibuprofen"));
+        PrescriptionLine line = new PrescriptionLine(Form.PILL, new Concentration(40.0, Unit.mg_per_disk), "For 10 days, 2 pills per day", new ActiveSubstanceDAOMemory().find("Ibuprofen"));
         presenter.showPrescriptionLineProducts(line);
-        Assert.assertEquals(viewStub.getUpdateMessage(), "2");
+        Assert.assertEquals(viewStub.getUpdateMessage(), "1");
     }
 
     /**
@@ -88,6 +99,19 @@ public class PrescriptionExecutionPresenterTest {
 
     /**
      *
+     * Check non positive quantity
+     */
+    @Test
+    public void negQuantity(){
+        presenter.addProductToBuy(new PharmaceuticalProductDAOMemory().find("Brufen Plus"), "-6");
+        Assert.assertEquals(viewStub.getErrorMessage(), "Quantity must be positive.");
+        boolean f = presenter.addProductToBuy(new PharmaceuticalProductDAOMemory().find("Brufen Plus"), "0");
+        Assert.assertFalse(f);
+        Assert.assertEquals(viewStub.getErrorMessage(), "Quantity must be positive.");
+    }
+
+    /**
+     *
      * Checks for empty quantity field
      */
     @Test
@@ -104,6 +128,20 @@ public class PrescriptionExecutionPresenterTest {
     public void invalidQuantityFormat(){
         presenter.addProductToBuy(new PharmaceuticalProductDAOMemory().find("Brufen Plus"), "asf532");
         Assert.assertEquals(viewStub.getErrorMessage(), "Invalid quantity format.");
+    }
+
+    /**
+     *
+     * Check if the execution finishes the way it should
+     */
+    @Test
+    public void finishTest(){
+        presenter.addProductToBuy(new PharmaceuticalProductDAOMemory().find("Brufen Plus"), "3");
+        Integer i = new PrescriptionDAOMemory().findAll().get(0).getId();
+        String amount = presenter.finishExecution(presenter.getPrescription(i));
+        Assert.assertNull(new PrescriptionDAOMemory().findPrescriptionById(i));
+        Assert.assertNotNull(new PrescriptionExecutionDAOMemory().findByPrescriptionId(i));
+        Assert.assertEquals(amount, "3.6");
     }
 
 

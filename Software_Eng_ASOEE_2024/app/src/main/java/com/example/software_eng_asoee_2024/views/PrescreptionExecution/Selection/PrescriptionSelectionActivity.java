@@ -65,6 +65,9 @@ public class PrescriptionSelectionActivity extends AppCompatActivity implements 
         executePrescriptionButton.setOnClickListener(v -> navigateToExecution());
         pharmacist_fn = getIntent().getStringExtra("pharmacistName");
         pharmacist_ln = getIntent().getStringExtra("pharmacistSurname");
+        System.out.println("\n\nSELECT\n\n");
+        System.out.println(pharmacist_fn);
+        System.out.println(pharmacist_ln);
     }
 
     @Override

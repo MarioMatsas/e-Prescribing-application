@@ -119,6 +119,9 @@ public class MainActivity extends AppCompatActivity implements LoginView{
         Intent intent = new Intent(this, PrescriptionSelectionActivity.class);
         intent.putExtra("pharmacistName", pharmacist.getFirstName());
         intent.putExtra("pharmacistSurname", pharmacist.getLastName());
+        System.out.println("\n\nMAIN\n\n");
+        System.out.println(pharmacist.getFirstName());
+        System.out.println(pharmacist.getLastName());
         //intent.putExtra("pharmacist", pharmacist);
         startActivity(intent);
     }

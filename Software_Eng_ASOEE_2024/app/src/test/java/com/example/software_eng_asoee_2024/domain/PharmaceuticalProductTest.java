@@ -12,6 +12,20 @@ import java.util.Optional;
 
 public class PharmaceuticalProductTest {
     /**
+     *
+     * Test active substance and concentration setters
+     */
+    @Test
+    public void testSubstAndConcSetters(){
+        PharmaceuticalProduct php = new PharmaceuticalProduct();
+        ArrayList<ActiveSubstance> as = new ArrayList<>();
+        ArrayList<Concentration> c = new ArrayList<>();
+        php.setActiveSubstances(as);
+        php.setActiveSubstanceConcentrations(c);
+        Assert.assertEquals(as, php.getActiveSubstances());
+        Assert.assertEquals(c, php.getActiveSubstanceConcentrations());
+    }
+    /**
      * Για επιβεβαίωση οτι θα οριστεί σωστά το όνομα.
      */
     @Test
