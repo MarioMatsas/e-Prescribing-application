@@ -1,6 +1,7 @@
 package com.example.software_eng_asoee_2024.view.PrescriptionExecution.Selection;
 
 import com.example.software_eng_asoee_2024.dao.Initializer;
+import com.example.software_eng_asoee_2024.domain.Patient;
 import com.example.software_eng_asoee_2024.domain.Prescription;
 import com.example.software_eng_asoee_2024.memorydao.DoctorDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.MemoryInitializer;
@@ -29,6 +30,26 @@ public class PrescriptionSelectionPresenterTest {
         presenter.setView(viewStub);
         presenter.setPatientDAO(new PatientDAOMemory());
         presenter.setPrescriptionDAO(new PrescriptionDAOMemory());
+    }
+
+    /**
+     * Test view getter
+     *
+     */
+    @Test
+    public void getView(){
+        Assert.assertEquals(viewStub, presenter.getView());
+    }
+
+    /**
+     *
+     * Check if there are no prescriptions
+     */
+    @Test
+    public void noPrescriptionsTest(){
+        new PatientDAOMemory().save(new Patient("2", "3", 4));
+        presenter.showPatientPrescriptions("4");
+        Assert.assertEquals(viewStub.getErrorMessage(), "No prescriptions found.");
     }
 
     /**

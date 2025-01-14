@@ -40,5 +40,14 @@ public class Concentration implements Serializable {
         return quantity + " | " + unit.name();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Concentration that = (Concentration) obj;
+        if (quantity != null ? !quantity.equals(that.quantity) : that.quantity != null) return false;
+        return unit != null ? unit.equals(that.unit) : that.unit == null;
+    }
+
 }
 

@@ -29,6 +29,15 @@ public class LoginPresenterTest {
     }
 
     /**
+     * Test view getter
+     *
+     */
+    @Test
+    public void getView(){
+        Assert.assertEquals(viewStub, presenter.getView());
+    }
+
+    /**
      *
      * Checks if the doctor was logged in successfully
      */

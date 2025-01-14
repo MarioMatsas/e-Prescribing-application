@@ -63,11 +63,11 @@ public abstract class Initializer {
         as.add(activeSubstanceDAO.find("Paracetamol"));
         asCs.add(new Concentration(10.0, Unit.mg_per_disk));
         as.add(activeSubstanceDAO.find("Ibuprofen"));
-        asCs.add(new Concentration(20.0, Unit.mg_per_disk));
+        asCs.add(new Concentration(40.0, Unit.mg_per_disk));
         as2.add(activeSubstanceDAO.find("Ibuprofen"));
         asCs2.add(new Concentration(100.0, Unit.mg_per_disk));
-        pharmaceuticalProductDAO.save(new PharmaceuticalProduct("Brufen Plus", 600, Form.PILL, MedicineType.GENERIC, as, asCs, "32 pills in pack"));
-        pharmaceuticalProductDAO.save(new PharmaceuticalProduct("Advil", 300, Form.PILL, MedicineType.GENERIC, as2, asCs2, "16 pills in pack"));
+        pharmaceuticalProductDAO.save(new PharmaceuticalProduct("Brufen Plus", 6000, Form.PILL, MedicineType.GENERIC, as, asCs, "32 pills in pack"));
+        pharmaceuticalProductDAO.save(new PharmaceuticalProduct("Advil", 3000, Form.PILL, MedicineType.GENERIC, as2, asCs2, "16 pills in pack"));
 
         PrescriptionDAO prescriptionDAO = new PrescriptionDAOMemory();
         Prescription presc1 = new Prescription("Wolff-Parkinson-White", doctorDAO.find("m", "m"), patientDAO.find(123123123));

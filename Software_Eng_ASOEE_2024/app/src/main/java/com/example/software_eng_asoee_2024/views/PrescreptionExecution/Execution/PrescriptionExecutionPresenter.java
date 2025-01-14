@@ -69,8 +69,15 @@ public class PrescriptionExecutionPresenter {
         List<PharmaceuticalProduct> productsToShow = new ArrayList<PharmaceuticalProduct>();
         for (PharmaceuticalProduct product: productDAO.findAll()){
             //product.getActiveSubstances().contains(line.getActiveSubstance())
-            if (product.getForm().equals(line.getForm()) && product.getActiveSubstances().contains(line.getActiveSubstance())) {
-                productsToShow.add(product);
+            if (product.getForm().equals(line.getForm())) {
+                for (int i=0; i<product.getActiveSubstances().size(); i++){
+                    if (product.getActiveSubstances().get(i).equals(line.getActiveSubstance())
+                        && product.getActiveSubstanceConcentrations().get(i).equals(line.getConcentration())){
+                        productsToShow.add(product);
+                        break;
+                    }
+                }
+
             }
         }
         if (productsToShow.isEmpty()) {
@@ -97,7 +104,11 @@ public class PrescriptionExecutionPresenter {
                 return false;
             }
             try {
-                int quantity = Integer.parseInt(valueFromTextView);  // Try to parse the quantity
+                int quantity = Integer.parseInt(valueFromTextView);
+                if (quantity <= 0){
+                    view.showError("Quantity must be positive.");
+                    return false;
+                }// Try to parse the quantity
                 prescriptionExecution.addProductQuantity(new ProductQuantity(productFromSpinner, quantity));
                 return true;
 
