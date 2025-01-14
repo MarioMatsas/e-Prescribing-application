@@ -2,6 +2,8 @@ package com.example.software_eng_asoee_2024.views.PrescreptionExecution.Selectio
 
 import android.content.Intent;
 
+import com.example.software_eng_asoee_2024.dao.PatientDAO;
+import com.example.software_eng_asoee_2024.dao.PrescriptionDAO;
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Concentration;
 import com.example.software_eng_asoee_2024.domain.Doctor;
@@ -18,8 +20,8 @@ import java.util.List;
 
 public class PrescriptionSelectionPresenter {
     private PrescriptionSelectionView view;
-    private PrescriptionDAOMemory prescriptionDAO;
-    private PatientDAOMemory patientDAO;
+    private PrescriptionDAO prescriptionDAO;
+    private PatientDAO patientDAO;
 
     public PrescriptionSelectionView getView() {
         return view;
@@ -27,11 +29,11 @@ public class PrescriptionSelectionPresenter {
     public void setView(PrescriptionSelectionView view) {
         this.view = view;
     }
-    public void setPrescriptionDAO(PrescriptionDAOMemory prescriptionDAO) {
+    public void setPrescriptionDAO(PrescriptionDAO prescriptionDAO) {
         this.prescriptionDAO = prescriptionDAO;
     }
 
-    public void setPatientDAO(PatientDAOMemory patientDAO) {
+    public void setPatientDAO(PatientDAO patientDAO) {
         this.patientDAO = patientDAO;
     }
 

@@ -1,5 +1,10 @@
 package com.example.software_eng_asoee_2024.views.PrescriptionCreation.Creation;
 
+import com.example.software_eng_asoee_2024.dao.ActiveSubstanceDAO;
+import com.example.software_eng_asoee_2024.dao.DoctorDAO;
+import com.example.software_eng_asoee_2024.dao.PatientDAO;
+import com.example.software_eng_asoee_2024.dao.PrescriptionDAO;
+import com.example.software_eng_asoee_2024.dao.ReportObjectDAO;
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Concentration;
 import com.example.software_eng_asoee_2024.domain.Doctor;
@@ -22,15 +27,14 @@ import java.util.List;
 
 public class PrescriptionCreationPresenter {
     private PrescriptionCreationView view;
-    private PrescriptionDAOMemory prescriptionDAO;
-    private ActiveSubstanceDAOMemory activeSubstanceDAO;
+    private PrescriptionDAO prescriptionDAO;
     private Doctor doctor;
     private Patient patient;
     private Prescription prescription;
-    private PatientDAOMemory patientDAO;
-    private DoctorDAOMemory doctorDAO;
-    private ActiveSubstanceDAOMemory activeSubDAO;
-    private ReportObjectDAOMemory reportDAO;
+    private PatientDAO patientDAO;
+    private DoctorDAO doctorDAO;
+    private ActiveSubstanceDAO activeSubDAO;
+    private ReportObjectDAO reportDAO;
     private ArrayList<Double> amounts = new ArrayList<Double>();
 
     public PrescriptionCreationView getView() {
@@ -59,20 +63,20 @@ public class PrescriptionCreationPresenter {
         prescription.setStatus(Status.PENDING);
     }
 
-    public void setPrescriptionDAO(PrescriptionDAOMemory prescriptionDAO) {
+    public void setPrescriptionDAO(PrescriptionDAO prescriptionDAO) {
         this.prescriptionDAO = prescriptionDAO;
     }
-    public void setPatientDAO(PatientDAOMemory patientDAO) {
+    public void setPatientDAO(PatientDAO patientDAO) {
         this.patientDAO = patientDAO;
     }
-    public void setDoctorDAO(DoctorDAOMemory doctorDAO) {
+    public void setDoctorDAO(DoctorDAO doctorDAO) {
         this.doctorDAO = doctorDAO;
     }
-    public void setSubstanceDAO(ActiveSubstanceDAOMemory activeSubDAO) {
+    public void setSubstanceDAO(ActiveSubstanceDAO activeSubDAO) {
         this.activeSubDAO = activeSubDAO;
     }
 
-    public void setReportDAO(ReportObjectDAOMemory reportDAO){
+    public void setReportDAO(ReportObjectDAO reportDAO){
         this.reportDAO = reportDAO;
     }
 
