@@ -3,9 +3,13 @@ package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Deletion;
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.domain.Prescription;
+import com.example.software_eng_asoee_2024.domain.PrescriptionExecution;
+import com.example.software_eng_asoee_2024.domain.PrescriptionLine;
+import com.example.software_eng_asoee_2024.domain.ProductQuantity;
 import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.PrescriptionExecutionDAOMemory;
 
 
 public class ActiveSubstanceDeletePresenter {
@@ -13,6 +17,7 @@ public class ActiveSubstanceDeletePresenter {
     private ActiveSubstanceDAOMemory activeSubstanceDAO;
     private PharmaceuticalProductDAOMemory pharmaceuticalProductDAO;
     private PrescriptionDAOMemory prescriptionDAO;
+    private PrescriptionExecutionDAOMemory prescriptionExecutionDAO;
 
     public ActiveSubstanceDeleteView getView() {
         return view;
@@ -37,8 +42,16 @@ public class ActiveSubstanceDeletePresenter {
                     i--;
                 }
             }
-            if(p.getActiveSubstances().isEmpty())
+            if(p.getActiveSubstances().isEmpty()) {
+                for (PrescriptionExecution px : prescriptionExecutionDAO.findAll()) {
+                    px.getProductQuantities().remove(p);
+
+                    if(px.getProductQuantities().isEmpty())
+                        this.prescriptionExecutionDAO.delete(px);
+                }
+
                 this.pharmaceuticalProductDAO.delete(p);
+            }
         }
 
         for (Prescription p : this.prescriptionDAO.findAll()) {
@@ -60,6 +73,11 @@ public class ActiveSubstanceDeletePresenter {
     public void setPharmaceuticalProductDAO(PharmaceuticalProductDAOMemory pharmaceuticalProductDAO) {
         this.pharmaceuticalProductDAO = pharmaceuticalProductDAO;
     }
+
+    public void setPrescriptionExecutionDAO(PrescriptionExecutionDAOMemory PrescriptionExecutionDAO) {
+        this.prescriptionExecutionDAO = PrescriptionExecutionDAO;
+    }
+
     public void setPrescriptionDAO(PrescriptionDAOMemory prescriptionDAO) {
         this.prescriptionDAO = prescriptionDAO;
     }

@@ -4,12 +4,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
+import com.example.software_eng_asoee_2024.domain.PrescriptionExecution;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
+import com.example.software_eng_asoee_2024.memorydao.PrescriptionExecutionDAOMemory;
 
 
 public class PharmaceuticalProductDeletePresenter {
     private PharmaceuticalProductDeleteView view;
-    private PharmaceuticalProductDAOMemory pharmaceuticalProductDAO;//to add the new PharmaceuticalProduct
+    private PharmaceuticalProductDAOMemory pharmaceuticalProductDAO;
+    private PrescriptionExecutionDAOMemory prescriptionExecutionDAO;
 
     public PharmaceuticalProductDeleteView getView() {
         return view;
@@ -19,12 +22,20 @@ public class PharmaceuticalProductDeletePresenter {
         this.view = view;
     }
 
-    public boolean deletePharmaceuticalProduct(PharmaceuticalProduct ac) {
-        if(ac == null) {
+    public boolean deletePharmaceuticalProduct(PharmaceuticalProduct pp) {
+        if(pp == null) {
             view.showMessage("None selected to be deleted");
             return false;
         }
-        this.pharmaceuticalProductDAO.delete(ac);
+
+        for (PrescriptionExecution px : prescriptionExecutionDAO.findAll()) {
+            px.getProductQuantities().remove(pp);
+
+            if(px.getProductQuantities().isEmpty())
+                this.prescriptionExecutionDAO.delete(px);
+        }
+
+        this.pharmaceuticalProductDAO.delete(pp);
         createPharmaceuticalProductSpinner();
         view.showMessage("Done!");
         return(this.pharmaceuticalProductDAO.findAll().isEmpty());
@@ -36,5 +47,8 @@ public class PharmaceuticalProductDeletePresenter {
 
     public void createPharmaceuticalProductSpinner() {
         view.createPharmaceuticalProductSpinner(pharmaceuticalProductDAO.findAll());
+    }
+    public void setPrescriptionExecutionDAO(PrescriptionExecutionDAOMemory PrescriptionExecutionDAO) {
+        this.prescriptionExecutionDAO = PrescriptionExecutionDAO;
     }
 }
