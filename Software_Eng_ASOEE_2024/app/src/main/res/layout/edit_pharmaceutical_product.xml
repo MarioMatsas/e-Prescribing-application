@@ -10,14 +10,14 @@
 
     <ImageView
         android:id="@+id/eopyy_image_login"
-        android:layout_width="170dp"
-        android:layout_height="105dp"
+        android:layout_width="182dp"
+        android:layout_height="159dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintVertical_bias="0.153"
         app:srcCompat="@drawable/eopyy_logo_1" />
 
     <TextView
@@ -92,19 +92,19 @@
 
     <Button
         android:id="@+id/edit_pharmaceutical_product_btn"
-        android:layout_width="150dp"
+        android:layout_width="195dp"
+        android:layout_height="90dp"
         android:background="@drawable/login_button_colour"
+        android:text="Edit Pharmaceutical Product"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:backgroundTint="@null"
-        android:layout_height="wrap_content"
-        android:text="Edit Pharmaceutical Product"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.925"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_pharmaceutical_product_concentration_unit"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.324" />
 
     <EditText
         android:id="@+id/edit_pharmaceutical_product_name"
@@ -216,8 +216,8 @@
 
     <EditText
         android:id="@+id/edit_pharmaceutical_product_info"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="164dp"
+        android:layout_height="45dp"
         android:background="@drawable/login_outline_colour"
         android:hint="Extra info(e.g.\nnum of pills)"
         android:inputType="text"
@@ -230,16 +230,16 @@
         app:layout_constraintVertical_bias="0.05" />
 
     <ListView
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:background="@drawable/login_outline_colour"
         android:id="@+id/edit_pharmaceutical_product_ac_list"
+        android:layout_width="367dp"
+        android:layout_height="72dp"
+        android:background="@drawable/login_outline_colour"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_pharmaceutical_product_btn"
-        app:layout_constraintVertical_bias="0.5"/>
+        app:layout_constraintVertical_bias="0.7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
