@@ -1,5 +1,10 @@
 package com.example.software_eng_asoee_2024.views.PrescriptionCreation.Creation;
 
+import static com.example.software_eng_asoee_2024.domain.Form.CREAM;
+import static com.example.software_eng_asoee_2024.domain.Form.PILL;
+import static com.example.software_eng_asoee_2024.domain.Form.SPRAY;
+import static com.example.software_eng_asoee_2024.domain.Form.SYRUP;
+
 import com.example.software_eng_asoee_2024.dao.ActiveSubstanceDAO;
 import com.example.software_eng_asoee_2024.dao.DoctorDAO;
 import com.example.software_eng_asoee_2024.dao.PatientDAO;
@@ -23,7 +28,9 @@ import com.example.software_eng_asoee_2024.memorydao.ReportObjectDAOMemory;
 import com.example.software_eng_asoee_2024.views.PrescriptionCreation.Creation.PrescriptionCreationView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PrescriptionCreationPresenter {
     private PrescriptionCreationView view;
@@ -133,8 +140,15 @@ public class PrescriptionCreationPresenter {
         if (errorsFound(form, concAmount, pdAmount, days)){
             return false;
         }
+        Map<Form, String> map = new HashMap<>();
+
+        map.put(PILL, "pills");
+        map.put(CREAM, "grams");
+        map.put(SPRAY, "doses");
+        map.put(SYRUP, "mL");
+
         Unit u = Unit.valueOf(unit);
-        prescription.addLine(new PrescriptionLine(form, new Concentration(Double.parseDouble(concAmount), u), pdAmount+", "+days+", "+Instructions, sub));
+        prescription.addLine(new PrescriptionLine(form, new Concentration(Double.parseDouble(concAmount), u), pdAmount+" "+map.get(form)+" per day, for "+days+" days. "+Instructions, sub));
         // The check has already been completed so parsing into double is fine.
         amounts.add(Double.parseDouble(concAmount)*Double.parseDouble(pdAmount)*Double.parseDouble(days));
         view.clearFields();
@@ -157,7 +171,7 @@ public class PrescriptionCreationPresenter {
             return true;
         }
 
-        if (form.equals(Form.PILL) || form.equals(Form.SPRAY)){
+        if (form.equals(PILL) || form.equals(SPRAY)){
             if (error(pdAmount, "int") || Integer.parseInt(pdAmount) <= 0){
                 view.showError("Amount must be integer (for this form) and > 0");
                 return true;

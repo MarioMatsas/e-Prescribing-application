@@ -33,7 +33,7 @@ public class ActiveSubstanceDeletePresenter {
 
     public boolean deleteActiveSubstance(ActiveSubstance ac) {
         if(ac == null) {
-            view.showMessage("None selected to be edited");
+            view.showMessage("None selected to be deleted");
             return false;
         }
 

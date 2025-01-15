@@ -134,7 +134,7 @@ public class PharmaceuticalProduct {
      * @return Επιστρέφει το string, ως ευρώ
      */
     public String toString(){
-        return name + " " + getFinalPrice()/100.0 + " " + information;
+        return name + ", " + getFinalPrice()/100.0 + "€, " + information;
     }
 
     /**

@@ -37,7 +37,7 @@ public class ActiveSubstance implements Serializable {
     @NonNull
     @Override
     public String toString() {
-        return getName() + " | " + getExpectedQuantityPerMonth();
+        return getName() + ": " + getExpectedQuantityPerMonth() +" mg per month";
     }
 
     /**

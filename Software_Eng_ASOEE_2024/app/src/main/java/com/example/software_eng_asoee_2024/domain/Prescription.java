@@ -84,8 +84,9 @@ public class Prescription implements Serializable {
     public String toString() {
         String activeSubstances = doctor.getFirstName() + " " + doctor.getLastName() + ": ";
         for (PrescriptionLine line : prescriptionLines){
-            activeSubstances += line.getActiveSubstance().getName() +" | ";
+            activeSubstances += line.getActiveSubstance().getName() +" , ";
         }
+
         return activeSubstances;
     }
 }
