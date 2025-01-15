@@ -18,31 +18,33 @@ import java.util.List;
 public class PharmaceuticalProductEditPresenterTest {
     private PharmaceuticalProductEditViewStub view;
     private PharmaceuticalProductEditPresenter presenter;
-    private static PharmaceuticalProductDAOMemory ppMem;
-    private static ActiveSubstanceDAOMemory acMem;
-    private static ArrayList<ActiveSubstance> acList = new ArrayList<ActiveSubstance>();
-    private static ArrayList<Concentration> cList = new ArrayList<Concentration>();
+    private PharmaceuticalProductDAOMemory ppMem;
+    private ActiveSubstanceDAOMemory acMem;
+    private ArrayList<ActiveSubstance> acList = new ArrayList<ActiveSubstance>();
+    private ArrayList<Concentration> cList = new ArrayList<Concentration>();
 
 
-    @BeforeClass
-    public static void setUpOnce() {
-
+    @Before
+    public void setUp() {
         acList.add(new ActiveSubstance("1", 10d));
-
         cList.add(new Concentration(10d, Unit.mg_per_disk));
 
         ppMem = new PharmaceuticalProductDAOMemory();
+
+        for(PharmaceuticalProduct pp : ppMem.findAll())
+            ppMem.delete(pp);
 
         ppMem.save(new PharmaceuticalProduct("A", 100, Form.PILL, MedicineType.GENERIC, acList, cList, "info"));
         ppMem.save(new PharmaceuticalProduct("B", 350, Form.CREAM, MedicineType.ORIGINAL, acList, cList, "info2"));
 
         acMem = new ActiveSubstanceDAOMemory();
+
+        for(ActiveSubstance ac : acMem.findAll())
+            acMem.delete(ac);
+
         acMem.save(acList.get(0));
         acMem.save(new ActiveSubstance("2", 25d));
-    }
 
-    @Before
-    public void setUp() {
         view = new PharmaceuticalProductEditViewStub();
         presenter = new PharmaceuticalProductEditPresenter();
 

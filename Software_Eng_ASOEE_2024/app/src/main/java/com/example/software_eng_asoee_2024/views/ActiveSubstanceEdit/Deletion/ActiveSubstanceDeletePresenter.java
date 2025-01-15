@@ -44,7 +44,7 @@ public class ActiveSubstanceDeletePresenter {
             }
             if(p.getActiveSubstances().isEmpty()) {
                 for (PrescriptionExecution px : prescriptionExecutionDAO.findAll()) {
-                    px.getProductQuantities().remove(p);
+                    px.getProductQuantities().removeIf(v -> v.getProduct().equals(p));
 
                     if(px.getProductQuantities().isEmpty())
                         this.prescriptionExecutionDAO.delete(px);
@@ -57,6 +57,9 @@ public class ActiveSubstanceDeletePresenter {
         for (Prescription p : this.prescriptionDAO.findAll()) {
             p.getPrescriptionLines().removeIf(pl -> pl.getActiveSubstance().equals(ac));
             if(p.getPrescriptionLines().isEmpty()) {
+                for (PrescriptionExecution px : prescriptionExecutionDAO.findAll())
+                    if(px.getPrescription().equals(p))
+                        this.prescriptionExecutionDAO.delete(px);
                 prescriptionDAO.delete(p);
             }
         }

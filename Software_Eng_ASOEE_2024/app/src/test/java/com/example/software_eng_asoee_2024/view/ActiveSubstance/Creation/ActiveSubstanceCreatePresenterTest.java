@@ -1,5 +1,6 @@
 package com.example.software_eng_asoee_2024.view.ActiveSubstance.Creation;
 
+import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 import com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Creation.ActiveSubstanceCreationPresenter;
 import com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Creation.ActiveSubstanceCreationView;
@@ -13,7 +14,12 @@ public class ActiveSubstanceCreatePresenterTest {
     public void setUp() {
         view = new ActiveSubstanceCreateViewStub();
         presenter = new ActiveSubstanceCreationPresenter();
-        presenter.setActiveSubstanceDAO(new ActiveSubstanceDAOMemory());
+        ActiveSubstanceDAOMemory acMem = new ActiveSubstanceDAOMemory();
+
+        for(ActiveSubstance ac : acMem.findAll())
+            acMem.delete(ac);
+
+        presenter.setActiveSubstanceDAO(acMem);
         presenter.setView(view);
     }
 

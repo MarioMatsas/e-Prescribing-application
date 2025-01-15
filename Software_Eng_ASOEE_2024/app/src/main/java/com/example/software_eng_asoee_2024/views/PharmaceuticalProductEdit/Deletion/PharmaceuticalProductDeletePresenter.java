@@ -29,7 +29,7 @@ public class PharmaceuticalProductDeletePresenter {
         }
 
         for (PrescriptionExecution px : prescriptionExecutionDAO.findAll()) {
-            px.getProductQuantities().remove(pp);
+            px.getProductQuantities().removeIf(v -> v.getProduct().equals(pp));
 
             if(px.getProductQuantities().isEmpty())
                 this.prescriptionExecutionDAO.delete(px);
