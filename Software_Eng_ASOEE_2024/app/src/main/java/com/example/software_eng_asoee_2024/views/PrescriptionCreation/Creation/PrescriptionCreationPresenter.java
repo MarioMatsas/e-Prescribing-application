@@ -204,4 +204,23 @@ public class PrescriptionCreationPresenter {
             return true;
         }
     }
+
+    public void onFormSelected(Form form){
+        switch (form) {
+            case PILL:
+                view.updateText("Pills p.d", "Days", Unit.mg_per_disk.name());
+                break;
+            case CREAM:
+                view.updateText("Grams p.d", "Days", Unit.mg_per_g.name());
+                break;
+            case SPRAY:
+                view.updateText("Doses p.d", "Days", Unit.mg_per_dose.name());
+                break;
+            case SYRUP:
+                view.updateText("mL p.d", "Days", Unit.mg_per_ml.name());
+                break;
+            default:
+                break;
+        }
+    }
 }

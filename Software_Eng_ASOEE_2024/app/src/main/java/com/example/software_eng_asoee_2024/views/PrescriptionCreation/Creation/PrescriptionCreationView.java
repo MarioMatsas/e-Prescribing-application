@@ -30,5 +30,6 @@ public interface PrescriptionCreationView {
      * @param message Το περιεχόμενο του μηνύματος
      */
     void showError(String message);
+    void updateText(String amount, String days, String unit);
 
 }

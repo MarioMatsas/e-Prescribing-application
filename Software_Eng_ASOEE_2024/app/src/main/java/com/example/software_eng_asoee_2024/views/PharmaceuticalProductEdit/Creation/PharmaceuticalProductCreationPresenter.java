@@ -1,10 +1,16 @@
 package com.example.software_eng_asoee_2024.views.PharmaceuticalProductEdit.Creation;
 
+import static com.example.software_eng_asoee_2024.domain.Form.CREAM;
+import static com.example.software_eng_asoee_2024.domain.Form.PILL;
+import static com.example.software_eng_asoee_2024.domain.Form.SPRAY;
+import static com.example.software_eng_asoee_2024.domain.Form.SYRUP;
+
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Concentration;
 import com.example.software_eng_asoee_2024.domain.Form;
 import com.example.software_eng_asoee_2024.domain.MedicineType;
 import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
+import com.example.software_eng_asoee_2024.domain.Unit;
 import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 
@@ -56,5 +62,44 @@ public class PharmaceuticalProductCreationPresenter {
 
     public void setActiveSubstanceDAO(ActiveSubstanceDAOMemory activeSubstanceDAOMemory) {
         this.activeSubstanceDAO = activeSubstanceDAOMemory;
+    }
+
+    public void addSubToProduct(Object subSpin, String conc, ArrayList<ActiveSubstance> activeSubstanceList,
+        ArrayList<Concentration> concList, Unit unit){
+        if(subSpin == null) return;
+        try {
+            if (conc.isEmpty())
+                throw new IllegalArgumentException("Concentration isn't filled in");
+            activeSubstanceList.add((ActiveSubstance) subSpin);
+            concList.add(new Concentration(Double.parseDouble(conc), unit));
+            view.createActiveSubstanceList();
+            createActiveSubstanceSpinner();
+            view.showMessage("Added!");
+        } catch (NumberFormatException e) {
+            view.showMessage("Concentration should be a number");
+        } catch (Exception e) {
+            view.showMessage(e.getMessage());
+        }
+    }
+
+    public Unit onSelectedUnit(Form form){
+        Unit selectedUnit = null;
+        switch (form) {
+            case PILL:
+                selectedUnit = Unit.mg_per_disk;
+                break;
+            case CREAM:
+                selectedUnit = Unit.mg_per_g;
+                break;
+            case SPRAY:
+                selectedUnit = Unit.mg_per_dose;
+                break;
+            case SYRUP:
+                selectedUnit = Unit.mg_per_ml;
+                break;
+            default:
+                break;
+        }
+        return selectedUnit;
     }
 }

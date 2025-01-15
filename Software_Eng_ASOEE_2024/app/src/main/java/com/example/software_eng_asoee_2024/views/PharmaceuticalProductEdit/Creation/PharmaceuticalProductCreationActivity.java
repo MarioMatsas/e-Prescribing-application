@@ -93,7 +93,8 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
         });
     }
 
-    private void createActiveSubstanceList() {
+    @Override
+    public void createActiveSubstanceList() {
         ArrayList<String> temp = new ArrayList<>();
         for(int i = 0; i < activeSubstanceList.size(); i++) {
             temp.add(activeSubstanceList.get(i).toString() + "\n" + concentrationList.get(i) + "\n-");
@@ -116,7 +117,9 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
 
     @Override
     public void addActiveSubstanceToPharmaceuticalProduct() {
-        if(activeSubstanceSpinner.getSelectedItem() == null) return;
+        viewModel.getPresenter().addSubToProduct(activeSubstanceSpinner.getSelectedItem(), concentrationInput.getText().toString(),
+                activeSubstanceList, concentrationList, selectedUnit);
+        /*if(activeSubstanceSpinner.getSelectedItem() == null) return;
         try {
             if (concentrationInput.getText().toString().isEmpty())
                 throw new IllegalArgumentException("Concentration isn't filled in");
@@ -129,7 +132,7 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
             showMessage("Concentration should be a number");
         } catch (Exception e) {
             showMessage(e.getMessage());
-        }
+        }*/
     }
 
     public void createFormAndTypeSpinners() {
@@ -153,22 +156,7 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
         formSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (formOptions[position]) {
-                    case PILL:
-                        selectedUnit = Unit.mg_per_disk;
-                        break;
-                    case CREAM:
-                        selectedUnit = Unit.mg_per_g;
-                        break;
-                    case SPRAY:
-                        selectedUnit = Unit.mg_per_dose;
-                        break;
-                    case SYRUP:
-                        selectedUnit = Unit.mg_per_ml;
-                        break;
-                    default:
-                        break;
-                }
+                selectedUnit = viewModel.getPresenter().onSelectedUnit(formOptions[position]);
                 concentrationUnit.setText(selectedUnit.name());
             }
             @Override

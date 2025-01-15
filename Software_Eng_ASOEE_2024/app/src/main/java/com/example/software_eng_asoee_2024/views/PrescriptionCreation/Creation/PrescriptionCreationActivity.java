@@ -128,26 +128,7 @@ public class PrescriptionCreationActivity extends AppCompatActivity implements P
         formSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (formOptions[position]) {
-                    case PILL:
-                        concentrationUnit.setText(Unit.mg_per_disk.name());
-                        updateText("Pills p.d", "Days");
-                        break;
-                    case CREAM:
-                        concentrationUnit.setText(Unit.mg_per_g.name());
-                        updateText("Grams p.d", "Days");
-                        break;
-                    case SPRAY:
-                        concentrationUnit.setText(Unit.mg_per_dose.name());
-                        updateText("Doses p.d", "Days");
-                        break;
-                    case SYRUP:
-                        concentrationUnit.setText(Unit.mg_per_ml.name());
-                        updateText("mL p.d", "Days");
-                        break;
-                    default:
-                        break;
-                }
+                viewModel.getPresenter().onFormSelected(formOptions[position]);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) { }
@@ -159,11 +140,13 @@ public class PrescriptionCreationActivity extends AppCompatActivity implements P
      * @param amount Το περιεχόμενο του μηνύματος
      * @param days Ο αριθμός των ημερών, που θα φαίνεται στο μήνυμα
      */
-    public void updateText(String amount, String days){
+    @Override
+    public void updateText(String amount, String days, String unit){
         amountPerDay.setText("");
         amountPerDay.setHint(amount);
         numberOfDay.setText("");
         numberOfDay.setHint(days);
+        concentrationUnit.setText(unit);
     }
 
     /**

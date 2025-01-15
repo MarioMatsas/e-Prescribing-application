@@ -29,4 +29,9 @@ public class PharmaceuticalProductEditViewStub implements PharmaceuticalProductE
     public void showMessage(String s) {
         msg = s;
     }
+
+    @Override
+    public void createActiveSubstanceList(){
+
+    }
 }

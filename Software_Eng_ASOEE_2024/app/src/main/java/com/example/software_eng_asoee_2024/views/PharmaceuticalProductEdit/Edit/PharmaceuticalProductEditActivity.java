@@ -190,7 +190,9 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
     }
 
     public void addActiveSubstanceToPharmaceuticalProduct() {
-        if(activeSubstanceSpinner.getSelectedItem() == null) return;
+        viewModel.getPresenter().addSubToProduct(activeSubstanceSpinner.getSelectedItem(), concentrationInput.getText().toString(),
+                activeSubstanceList, concentrationList, selectedUnit);
+        /*if(activeSubstanceSpinner.getSelectedItem() == null) return;
         try {
             if (concentrationInput.getText().toString().isEmpty())
                 throw new IllegalArgumentException("Concentration isn't filled in");
@@ -203,8 +205,9 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
             showMessage("Concentration should be a number");
         } catch (Exception e) {
             showMessage(e.getMessage());
-        }
+        }*/
     }
+    @Override
     public void createActiveSubstanceList() {
         ArrayList<String> temp = new ArrayList<>();
         for(int i = 0; i < activeSubstanceList.size(); i++) {
@@ -236,6 +239,7 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
         formSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedUnit = viewModel.getPresenter().onSelectedUnit(formOptions[position]);
                 switch (formOptions[position]) {
                     case PILL:
                         selectedUnit = Unit.mg_per_disk;
