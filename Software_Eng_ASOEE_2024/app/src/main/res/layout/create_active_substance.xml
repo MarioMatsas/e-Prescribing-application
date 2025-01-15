@@ -23,7 +23,7 @@
     <TextView
         android:id="@+id/create_active_substance_txt"
         android:layout_width="241dp"
-        android:layout_height="41dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Create Active Substance"
         android:textColor="#000000"
