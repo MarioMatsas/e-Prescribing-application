@@ -16,11 +16,6 @@ public class NOHCSSelectionPresenter {
         this.view = view;
     }
 
-    public boolean createActiveSubstance(String name, Double expectedQuantityPerMonth) {
-        this.activeSubstanceDAO.save(new ActiveSubstance(name, expectedQuantityPerMonth));
-        return true;
-    }
-
     public void setActiveSubstanceDAO(ActiveSubstanceDAOMemory actSubsDAO) {
         this.activeSubstanceDAO = actSubsDAO;
     }
