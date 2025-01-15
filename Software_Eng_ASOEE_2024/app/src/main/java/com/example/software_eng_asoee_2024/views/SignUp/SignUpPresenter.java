@@ -11,7 +11,6 @@ public class SignUpPresenter {
     private DoctorDAO doctorDAO;
     private PharmacistDAO pharmacistDAO;
     private NOHCSEmployeeDAO empDAO;
-    // TODO EMP CHNGE
 
     public SignUpView getView() {
         return view;
@@ -28,6 +27,10 @@ public class SignUpPresenter {
 
     public void setPharmacistDAO(PharmacistDAO pharmacistDAO) {
         this.pharmacistDAO = pharmacistDAO;
+    }
+
+    public void setEmpDAO(NOHCSEmployeeDAO empDAO){
+        this.empDAO = empDAO;
     }
 
     /**
@@ -84,6 +87,7 @@ public class SignUpPresenter {
         // Check if the user with those credentials already exists
         if (doctorDAO.find(username, password) != null) return true;
         if (pharmacistDAO.find(username, password) != null) return true;
+        if (empDAO.find(username, password) != null) return true;
         if (username.equals("admin") && password.equals("0000")) return true;
         return false;
     }

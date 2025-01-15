@@ -1,5 +1,6 @@
 package com.example.software_eng_asoee_2024.views.ActiveSubstanceEdit.Edit;
 
+import com.example.software_eng_asoee_2024.dao.ActiveSubstanceDAO;
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 
@@ -8,7 +9,7 @@ import java.util.Objects;
 
 public class ActiveSubstanceEditPresenter {
     private ActiveSubstanceEditView view;
-    private ActiveSubstanceDAOMemory activeSubstanceDAO;//to add the new ActiveSubstance
+    private ActiveSubstanceDAO activeSubstanceDAO;//to add the new ActiveSubstance
 
     public ActiveSubstanceEditView getView() {
         return view;
@@ -54,7 +55,7 @@ public class ActiveSubstanceEditPresenter {
         }
     }
 
-    public void setActiveSubstanceDAO(ActiveSubstanceDAOMemory actSubsDAO) {
+    public void setActiveSubstanceDAO(ActiveSubstanceDAO actSubsDAO) {
         this.activeSubstanceDAO = actSubsDAO;
     }
 

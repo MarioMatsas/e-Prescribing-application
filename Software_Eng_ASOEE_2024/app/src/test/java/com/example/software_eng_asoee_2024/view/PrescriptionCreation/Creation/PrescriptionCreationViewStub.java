@@ -28,4 +28,8 @@ public class PrescriptionCreationViewStub implements PrescriptionCreationView {
     public String getErrorMessage(){
         return errorMessage;
     }
+
+    public void updateText(String amount, String days, String unit) {
+        errorMessage = amount +" "+ days +" "+ unit;
+    }
 }
