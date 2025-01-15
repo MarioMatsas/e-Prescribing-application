@@ -9,6 +9,20 @@ import java.util.Optional;
 
 public class ActiveSubstanceTest {
     /**
+     * Για επιβεβαίωση οτι θα πετάξει exception για μη-θετικό quantity.
+     */
+    @Test
+    public void testConstructorWrongQty(){
+        Assert.assertThrows(IllegalArgumentException.class, () -> {
+            ActiveSubstance act_sub1 = new ActiveSubstance("Paracetamol", -2.0);
+        });
+
+        Assert.assertThrows(IllegalArgumentException.class, () -> {
+            ActiveSubstance act_sub1 = new ActiveSubstance("Paracetamol2", 0.0);
+        });
+    }
+
+    /**
      * Για επιβεβαίωση οτι θα αλλάξει σωστά το όνομα.
      */
     @Test
@@ -34,6 +48,17 @@ public class ActiveSubstanceTest {
         ActiveSubstance act_sub2 = new ActiveSubstance("Jesse", 28.6);
         act_sub2.setExpectedQuantityPerMonth(25.5);
         Assert.assertEquals((Double)25.5, act_sub2.getExpectedQuantityPerMonth());
+    }
+
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει false, για σύγκριση διαφορετικών αντικειμένων ή null.
+     */
+    @Test
+    public void TestEqualsWrong(){
+        ActiveSubstance act_sub1 = new ActiveSubstance("hhhh", 2025.0);
+        ActiveSubstance act_sub2 = null;
+        Assert.assertFalse(act_sub1.equals(act_sub2));
+        Assert.assertFalse(act_sub1.equals("null"));
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.example.software_eng_asoee_2024.domain;
 
 
+import static com.example.software_eng_asoee_2024.domain.Form.CREAM;
 import static com.example.software_eng_asoee_2024.domain.Form.PILL;
 
 import org.junit.Assert;
@@ -11,6 +12,55 @@ import java.util.List;
 import java.util.Optional;
 
 public class PharmaceuticalProductTest {
+    /**
+     *
+     * Test constructor at throwing exception when the two lists have different sizes
+     */
+    @Test
+    public void testConstructorExceptionNotSameSize(){
+        ArrayList<ActiveSubstance> as = new ArrayList<>();
+        as.add(new ActiveSubstance("Meth", 3.9));
+        ArrayList<Concentration> c = new ArrayList<>();
+
+        Assert.assertThrows(IllegalArgumentException.class, () -> {
+            PharmaceuticalProduct php = new PharmaceuticalProduct("depon", 32, CREAM, MedicineType.GENERIC, as, c, "info");
+        });
+    }
+
+    /**
+     *
+     * Test constructor at throwing exception when there are no active subs
+     */
+    @Test
+    public void testConstructorExceptionNoActSub(){
+        ArrayList<ActiveSubstance> as = new ArrayList<>();
+        ArrayList<Concentration> c = new ArrayList<>();
+
+        Assert.assertThrows(IllegalArgumentException.class, () -> {
+            PharmaceuticalProduct php = new PharmaceuticalProduct("depon", 32, CREAM, MedicineType.GENERIC, as, c, "info");
+        });
+    }
+
+    /**
+     *
+     * Test constructor at throwing exception when there is wrong price
+     */
+    @Test
+    public void testConstructorExceptionWrongPrice(){
+        ArrayList<ActiveSubstance> as = new ArrayList<>();
+        as.add(new ActiveSubstance("Meth", 3.9));
+        ArrayList<Concentration> c = new ArrayList<>();
+        c.add(new Concentration(3.4, Unit.mg_per_g));
+
+        Assert.assertThrows(IllegalArgumentException.class, () -> {
+            PharmaceuticalProduct php = new PharmaceuticalProduct("depon", -32, CREAM, MedicineType.GENERIC, as, c, "info");
+        });//negative price
+
+        Assert.assertThrows(IllegalArgumentException.class, () -> {
+            PharmaceuticalProduct php = new PharmaceuticalProduct("depon", 0, CREAM, MedicineType.GENERIC, as, c, "info");
+        });//zero price
+    }
+
     /**
      *
      * Test active substance and concentration setters
@@ -124,4 +174,75 @@ public class PharmaceuticalProductTest {
             PharmaceuticalProduct p = new PharmaceuticalProduct("n",1234, PILL, MedicineType.GENERIC, a, c, "blah");
         });
     }
+
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει true όταν το φάρμακο είναι όμοιο.
+     */
+    @Test
+    public void testEqualsEqual(){
+        ArrayList<ActiveSubstance> a = new ArrayList<ActiveSubstance>();
+        a.add(new ActiveSubstance("Paracetamol", 20d));
+
+        List<Concentration> c = new ArrayList<Concentration>();
+        c.add(new Concentration(3.2, Unit.mg_per_disk));
+
+        PharmaceuticalProduct p1 = new PharmaceuticalProduct("n",1234, PILL, MedicineType.GENERIC, a, c, "blah");
+        PharmaceuticalProduct p2 = new PharmaceuticalProduct("n",1234, PILL, MedicineType.GENERIC, a, c, "blah");
+
+        Assert.assertTrue(p1.equals(p2));
+    }
+
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει false ότι το φάρμακο δεν είναι όμοιο.
+     */
+    @Test
+    public void testEqualsNotEqual(){
+        ArrayList<ActiveSubstance> a1 = new ArrayList<ActiveSubstance>();
+        a1.add(new ActiveSubstance("Paracetamol", 20d));
+        ArrayList<ActiveSubstance> a2 = new ArrayList<ActiveSubstance>();
+        a2.add(new ActiveSubstance("Aspirin", 20d));
+
+        List<Concentration> c1 = new ArrayList<Concentration>();
+        c1.add(new Concentration(3.2, Unit.mg_per_disk));
+        List<Concentration> c2 = new ArrayList<Concentration>();
+        c2.add(new Concentration(5.2, Unit.mg_per_disk));
+
+        PharmaceuticalProduct p1 = new PharmaceuticalProduct("n",1234, PILL, MedicineType.GENERIC, a1, c1, "blah1");
+        PharmaceuticalProduct p2 = new PharmaceuticalProduct("noo",1235, PILL, MedicineType.ORIGINAL, a2, c2, "blah2");
+
+        Assert.assertFalse(p1.equals(p2));
+    }
+
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει false όταν συγκρίνει ανόμοια αντικείμενα,
+     * ως προς τον τύπο κλάσης.
+     */
+    @Test
+    public void testEqualsNotEqualClass(){
+        ArrayList<ActiveSubstance> a = new ArrayList<ActiveSubstance>();
+        a.add(new ActiveSubstance("Paracetamol", 20d));
+
+        List<Concentration> c = new ArrayList<Concentration>();
+        c.add(new Concentration(3.2, Unit.mg_per_disk));
+
+        PharmaceuticalProduct p1 = new PharmaceuticalProduct("n",1234, PILL, MedicineType.GENERIC, a, c, "blah");
+        Assert.assertFalse(p1.equals("null"));
+
+    }
+
+    /**
+     * Για επιβεβαίωση οτι θα επιστρέψει false όταν συγκρίνει με null.
+     */
+    @Test
+    public void testEqualsNull(){
+        ArrayList<ActiveSubstance> a = new ArrayList<ActiveSubstance>();
+        a.add(new ActiveSubstance("Paracetamol", 20d));
+
+        List<Concentration> c = new ArrayList<Concentration>();
+        c.add(new Concentration(3.2, Unit.mg_per_disk));
+
+        PharmaceuticalProduct p1 = new PharmaceuticalProduct("n",1234, PILL, MedicineType.GENERIC, a, c, "blah");
+        Assert.assertFalse(p1.equals(null));
+    }
+
 }
