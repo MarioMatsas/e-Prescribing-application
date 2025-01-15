@@ -5,6 +5,8 @@ import static com.example.software_eng_asoee_2024.domain.Form.PILL;
 import static com.example.software_eng_asoee_2024.domain.Form.SPRAY;
 import static com.example.software_eng_asoee_2024.domain.Form.SYRUP;
 
+import com.example.software_eng_asoee_2024.dao.ActiveSubstanceDAO;
+import com.example.software_eng_asoee_2024.dao.PharmaceuticalProductDAO;
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Concentration;
 import com.example.software_eng_asoee_2024.domain.Form;
@@ -20,8 +22,8 @@ import java.util.Objects;
 
 public class PharmaceuticalProductCreationPresenter {
     private PharmaceuticalProductCreationView view;
-    private PharmaceuticalProductDAOMemory pharmaceuticalProductDAO;
-    private ActiveSubstanceDAOMemory activeSubstanceDAO;
+    private PharmaceuticalProductDAO pharmaceuticalProductDAO;
+    private ActiveSubstanceDAO activeSubstanceDAO;
 
     public PharmaceuticalProductCreationView getView() {
         return view;
@@ -52,7 +54,7 @@ public class PharmaceuticalProductCreationPresenter {
         }
     }
 
-    public void setPharmaceuticalProductDAO(PharmaceuticalProductDAOMemory pharmaceuticalProductDAO) {
+    public void setPharmaceuticalProductDAO(PharmaceuticalProductDAO pharmaceuticalProductDAO) {
         this.pharmaceuticalProductDAO = pharmaceuticalProductDAO;
     }
 
@@ -60,7 +62,7 @@ public class PharmaceuticalProductCreationPresenter {
         view.createActiveSubstanceSpinner(activeSubstanceDAO.findAll());
     }
 
-    public void setActiveSubstanceDAO(ActiveSubstanceDAOMemory activeSubstanceDAOMemory) {
+    public void setActiveSubstanceDAO(ActiveSubstanceDAO activeSubstanceDAOMemory) {
         this.activeSubstanceDAO = activeSubstanceDAOMemory;
     }
 

@@ -3,16 +3,17 @@ package com.example.software_eng_asoee_2024.views.PharmaceuticalProductEdit.Dele
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.example.software_eng_asoee_2024.dao.PrescriptionExecutionDAO;
 import com.example.software_eng_asoee_2024.domain.PharmaceuticalProduct;
 import com.example.software_eng_asoee_2024.domain.PrescriptionExecution;
 import com.example.software_eng_asoee_2024.memorydao.PharmaceuticalProductDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PrescriptionExecutionDAOMemory;
-
+import com.example.software_eng_asoee_2024.dao.PharmaceuticalProductDAO;
 
 public class PharmaceuticalProductDeletePresenter {
     private PharmaceuticalProductDeleteView view;
-    private PharmaceuticalProductDAOMemory pharmaceuticalProductDAO;
-    private PrescriptionExecutionDAOMemory prescriptionExecutionDAO;
+    private PharmaceuticalProductDAO pharmaceuticalProductDAO;
+    private PrescriptionExecutionDAO prescriptionExecutionDAO;
 
     public PharmaceuticalProductDeleteView getView() {
         return view;
@@ -41,14 +42,14 @@ public class PharmaceuticalProductDeletePresenter {
         return(this.pharmaceuticalProductDAO.findAll().isEmpty());
     }
 
-    public void setPharmaceuticalProductDAO(PharmaceuticalProductDAOMemory actSubsDAO) {
+    public void setPharmaceuticalProductDAO(PharmaceuticalProductDAO actSubsDAO) {
         this.pharmaceuticalProductDAO = actSubsDAO;
     }
 
     public void createPharmaceuticalProductSpinner() {
         view.createPharmaceuticalProductSpinner(pharmaceuticalProductDAO.findAll());
     }
-    public void setPrescriptionExecutionDAO(PrescriptionExecutionDAOMemory PrescriptionExecutionDAO) {
+    public void setPrescriptionExecutionDAO(PrescriptionExecutionDAO PrescriptionExecutionDAO) {
         this.prescriptionExecutionDAO = PrescriptionExecutionDAO;
     }
 }
