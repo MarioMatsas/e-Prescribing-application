@@ -38,28 +38,28 @@
     <Button
         android:id="@+id/active_substance_btn"
         android:layout_width="300dp"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/login_button_colour"
+        android:text="Edit Active Substances"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:backgroundTint="@null"
-        android:text="Edit Active Substances"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nohcs_settings_txt"
-        app:layout_constraintVertical_bias="0.25"/>
+        app:layout_constraintVertical_bias="0.25" />
 
     <Button
         android:id="@+id/pharmaceutical_product_btn"
         android:layout_width="300dp"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/login_button_colour"
+        android:text="Edit Pharmaceutical Products"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:backgroundTint="@null"
-        android:text="Edit Pharmaceutical Products"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

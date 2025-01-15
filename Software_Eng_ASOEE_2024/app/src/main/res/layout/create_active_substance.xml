@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/login_outline_colour"
         android:hint="Expected Quantity Per Month"
-        android:inputType="text"
+        android:inputType="numberDecimal"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -52,13 +52,13 @@
 
     <Button
         android:id="@+id/edit_active_substance_btn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/login_button_colour"
+        android:text="Change an Active Substance"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:backgroundTint="@null"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:text="Change an Active Substance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

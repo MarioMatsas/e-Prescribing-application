@@ -38,8 +38,8 @@
 
     <TextView
         android:id="@+id/execution_instructions"
-        android:layout_width="319dp"
-        android:layout_height="102dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:gravity="center"
         android:text="def text"
         android:textColor="#000000"
@@ -53,14 +53,14 @@
 
     <Spinner
         android:id="@+id/product_spinner"
-        android:layout_width="227dp"
-        android:layout_height="25dp"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.541" />
+        app:layout_constraintTop_toBottomOf="@+id/execution_instructions"
+        app:layout_constraintVertical_bias="0.05" />
 
     <EditText
         android:id="@+id/product_quantity"
