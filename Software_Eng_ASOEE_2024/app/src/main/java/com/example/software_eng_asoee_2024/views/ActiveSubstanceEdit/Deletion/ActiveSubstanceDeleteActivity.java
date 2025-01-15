@@ -63,6 +63,13 @@ public class ActiveSubstanceDeleteActivity extends AppCompatActivity implements 
         super.onResume();
     }
 
+    /**
+     * Creates and populates the active substance spinner with the provided list of active substances.
+     * If the list is empty, the spinner is cleared.
+     * Handles selection events and updates related fields.
+     *
+     * @param activeSubstances the list of available active substances
+     */
     public void createActiveSubstanceSpinner(List<ActiveSubstance> activeSubstances) {
         if(activeSubstances.isEmpty()) {
             activeSubstanceSpinner.setAdapter(null);
@@ -85,12 +92,24 @@ public class ActiveSubstanceDeleteActivity extends AppCompatActivity implements 
         });
     }
 
+    /**
+     * Deletes the specified active substance.
+     * If its the last one, its sets the text of UI elements as blank.
+     *
+     * @param ac the active substance to be deleted
+     */
     public void deleteActiveSubstance(ActiveSubstance ac) {
         if(viewModel.getPresenter().deleteActiveSubstance(ac)) {
             name.setText("");
             eqpm.setText("");
         }
     }
+
+    /**
+     * Displays a message to the user
+     *
+     * @param s the message to be displayed
+     */
     @Override
     public void showMessage(String s) {
         out.setText(s);

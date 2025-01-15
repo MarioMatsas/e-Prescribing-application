@@ -11,7 +11,6 @@ public class NOHCSSelectionViewModel extends ViewModel {
 
     public NOHCSSelectionViewModel(){
         presenter = new NOHCSSelectionPresenter();
-        presenter.setActiveSubstanceDAO(new ActiveSubstanceDAOMemory());
     }
 
     public NOHCSSelectionPresenter getPresenter() {
@@ -21,6 +20,6 @@ public class NOHCSSelectionViewModel extends ViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
-        Log.d("ActiveSubstanceCreation", "On Cleared");
+        Log.d("NOHCSSelection", "On Cleared");
     }
 }

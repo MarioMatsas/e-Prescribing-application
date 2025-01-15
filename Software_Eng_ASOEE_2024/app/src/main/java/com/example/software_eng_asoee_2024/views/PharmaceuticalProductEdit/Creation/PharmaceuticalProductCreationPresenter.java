@@ -31,6 +31,20 @@ public class PharmaceuticalProductCreationPresenter {
         this.view = view;
     }
 
+    /**
+     * Creates and saves a new pharmaceutical product.
+
+     * Validates input, checks for duplicate products (excluding the product being edited), creates
+     * the product object and saves it to the DAO.
+
+     * @param pharmaceuticalProductName the name of the pharmaceutical product
+     * @param retailPrice the retail price (as a String)
+     * @param form the form of the product (e.g., TABLET, CAPSULE)
+     * @param type the type of medicine (e.g., ANALGESIC, ANTIBIOTIC)
+     * @param activeSubstanceList the list of active substances in the product
+     * @param concentrationList the list of concentrations for each active substance
+     * @param information additional information about the product
+     */
     public void createPharmaceuticalProduct(String pharmaceuticalProductName, String retailPrice, Form form, MedicineType type, ArrayList<ActiveSubstance> activeSubstanceList, ArrayList<Concentration> concentrationList, String information) {
         try {
             if (pharmaceuticalProductName.isEmpty() || retailPrice.isEmpty())
@@ -56,6 +70,9 @@ public class PharmaceuticalProductCreationPresenter {
         this.pharmaceuticalProductDAO = pharmaceuticalProductDAO;
     }
 
+    /**
+     * Creates the active substance spinner in the view.
+     */
     public void createActiveSubstanceSpinner() {
         view.createActiveSubstanceSpinner(activeSubstanceDAO.findAll());
     }
@@ -64,6 +81,21 @@ public class PharmaceuticalProductCreationPresenter {
         this.activeSubstanceDAO = activeSubstanceDAOMemory;
     }
 
+    /**
+     * Adds an active substance and its corresponding concentration to the product.
+
+     * This method adds the selected active substance from the spinner
+     * and the specified concentration to the respective lists.
+
+     * It then updates the UI by creating the active substance list
+     * and refreshing the active substance spinner.
+
+     * @param subSpin the selected active substance from the spinner
+     * @param conc the concentration of the active substance
+     * @param activeSubstanceList the list of active substances in the product
+     * @param concList the list of corresponding concentrations in the product
+     * @param unit the unit of measurement for the concentration
+     */
     public void addSubToProduct(Object subSpin, String conc, ArrayList<ActiveSubstance> activeSubstanceList,
         ArrayList<Concentration> concList, Unit unit){
         if(subSpin == null) return;
@@ -82,6 +114,12 @@ public class PharmaceuticalProductCreationPresenter {
         }
     }
 
+    /**
+     * Helper function to determine unit of measurement based on each form.
+     *
+     * @param form the selected form of the medication
+     * @return the unit for the given form
+     */
     public Unit onSelectedUnit(Form form){
         Unit selectedUnit = null;
         switch (form) {

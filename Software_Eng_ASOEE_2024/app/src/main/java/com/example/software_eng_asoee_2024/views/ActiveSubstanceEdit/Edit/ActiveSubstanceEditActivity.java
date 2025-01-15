@@ -66,6 +66,13 @@ public class ActiveSubstanceEditActivity extends AppCompatActivity implements Ac
         super.onResume();
     }
 
+    /**
+     * Creates and populates the active substance spinner with the given list.
+     * If the list is empty, the spinner is cleared.
+     * Handles selection events and updates related fields.
+     *
+     * @param activeSubstances the list of active substances
+     */
     public void createActiveSubstanceSpinner(List<ActiveSubstance> activeSubstances) {
         if(activeSubstances.isEmpty()) {
             activeSubstanceSpinner.setAdapter(null);
@@ -93,10 +100,19 @@ public class ActiveSubstanceEditActivity extends AppCompatActivity implements Ac
         });
     }
 
+    /**
+     * Edits the selected active substance.
+     * Extracts data from the UI and calls the presenter function to edit the active substance.
+     */
     public void editActiveSubstance() {
         viewModel.getPresenter().editActiveSubstance(selected, name.getText().toString(), eqpm.getText().toString());
     }
 
+    /**
+     * Displays a message to the user
+     *
+     * @param s the message to be displayed
+     */
     @Override
     public void showMessage(String s) {
         out.setText(s);

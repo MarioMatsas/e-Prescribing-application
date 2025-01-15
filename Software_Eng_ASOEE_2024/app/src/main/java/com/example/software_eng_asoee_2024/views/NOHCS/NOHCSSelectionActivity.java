@@ -45,12 +45,20 @@ public class NOHCSSelectionActivity extends AppCompatActivity implements NOHCSSe
         PharmaceuticalProductBtn.setOnClickListener(v -> navigateToPharmaceuticalProductChoicesScreen());
     }
 
+    /**
+     *  Navigates the NOHCS Employee to the active-substance screen where he can navigate again to the specific action
+     *  he wants to do with active substances
+     */
     @Override
     public void navigateToActiveSubstanceChoicesScreen() {
         Intent intent = new Intent(this, ActiveSubstanceChoiceActivity.class);
         startActivity(intent);
     }
 
+    /**
+     *  Navigates the NOHCS Employee to the pharmaceutical-product screen where he can navigate again to the specific action
+     *  he wants to do with pharmaceutical products
+     */
     @Override
     public void navigateToPharmaceuticalProductChoicesScreen() {
         Intent intent = new Intent(this, PharmaceuticalProductChoiceActivity.class);

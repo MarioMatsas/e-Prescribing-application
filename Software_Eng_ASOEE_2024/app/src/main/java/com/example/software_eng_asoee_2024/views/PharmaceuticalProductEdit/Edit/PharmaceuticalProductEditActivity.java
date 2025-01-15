@@ -115,6 +115,15 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
         super.onResume();
     }
 
+    /**
+     * Creates and populates the pharmaceutical product spinner.
+     * Populates the spinner with the given list of pharmaceutical products.
+     * When a product is selected, it updates the UI fields
+     * (name, retail price, form, type, information, active substances, and concentrations)
+     * with the corresponding data from the selected product and enables the UI fields to be editable.
+
+     * @param pharmaceuticalProducts the list of pharmaceutical products to display in the spinner
+     */
     public void createPharmaceuticalProductSpinner(List<PharmaceuticalProduct> pharmaceuticalProducts) {
         if(pharmaceuticalProducts.isEmpty()) {
             pharmaceuticalProductSpinner.setAdapter(null);
@@ -170,6 +179,12 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
         });
     }
 
+    /**
+     * Creates and populates the active substance spinner.
+     * Removes from the given list the substances that are already part of the product.
+     *
+     * @param activeSubstances the list of available active substances
+     */
     @Override
     public void createActiveSubstanceSpinner(List<ActiveSubstance> activeSubstances) {
         if(activeSubstances.isEmpty()) {
@@ -185,10 +200,18 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
         activeSubstanceSpinner.setAdapter(adapter);
     }
 
+    /**
+     * Edits selected pharmaceutical product with data given.
+     * Extracts data from the UI and calls the presenter function to edit the pharmaceutical product.
+     */
     public void editPharmaceuticalProduct() {
         viewModel.getPresenter().editPharmaceuticalProduct(selected, pharmaceuticalProductName.getText().toString(), retailPrice.getText().toString(), (Form) formSpinner.getSelectedItem(), (MedicineType) typeSpinner.getSelectedItem(), activeSubstanceList, concentrationList, information.getText().toString());
     }
 
+    /**
+     * Adds the selected active substance with the corresponding concentration to the pharmaceutical product.
+     * Extracts data from the UI and calls the presenter function to complete the action.
+     */
     public void addActiveSubstanceToPharmaceuticalProduct() {
         viewModel.getPresenter().addSubToProduct(activeSubstanceSpinner.getSelectedItem(), concentrationInput.getText().toString(),
                 activeSubstanceList, concentrationList, selectedUnit);
@@ -207,6 +230,15 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
             showMessage(e.getMessage());
         }*/
     }
+
+    /**
+     * Creates and populates the active substance list in the UI.
+     * Combines the active substances and their corresponding
+     * concentrations into a list of strings and displays them.
+     * The "formSpinner" is enabled/disabled based on the existence
+     * of active substances in the list. (You can't change the form of the product if an active substance
+     * has already been added with a given form)
+     */
     @Override
     public void createActiveSubstanceList() {
         ArrayList<String> temp = new ArrayList<>();
@@ -219,6 +251,12 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
         formSpinner.setEnabled(temp.isEmpty());
     }
 
+    /**
+     * Creates and populates the form and type spinners in the UI.
+     * Sets up listeners to handle item selection.
+     * When an item is selected, it calls the presenter function to determine the corresponding unit
+     * and updates the "concentrationUnit" text field.
+     */
     public void createFormAndTypeSpinners() {
         // Get all enum values as an array of MedicineType
         MedicineType[] medicineTypeOptions = MedicineType.values();
@@ -240,22 +278,6 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedUnit = viewModel.getPresenter().onSelectedUnit(formOptions[position]);
-                switch (formOptions[position]) {
-                    case PILL:
-                        selectedUnit = Unit.mg_per_disk;
-                        break;
-                    case CREAM:
-                        selectedUnit = Unit.mg_per_g;
-                        break;
-                    case SPRAY:
-                        selectedUnit = Unit.mg_per_dose;
-                        break;
-                    case SYRUP:
-                        selectedUnit = Unit.mg_per_ml;
-                        break;
-                    default:
-                        break;
-                }
                 concentrationUnit.setText(selectedUnit.name());
             }
             @Override
@@ -263,6 +285,12 @@ public class PharmaceuticalProductEditActivity extends AppCompatActivity impleme
         });
 
     }
+
+    /**
+     * Displays a message to the user
+     *
+     * @param s the message to be displayed
+     */
     @Override
     public void showMessage(String s) {
         out.setText(s);

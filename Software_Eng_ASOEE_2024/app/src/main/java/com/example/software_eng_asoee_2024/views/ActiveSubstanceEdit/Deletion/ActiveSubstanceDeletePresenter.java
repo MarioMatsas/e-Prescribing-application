@@ -27,6 +27,18 @@ public class ActiveSubstanceDeletePresenter {
         this.view = view;
     }
 
+    /**
+     * Deletes the given active substance and updates related entities.
+     *
+     * This method removes the given active substance from all associated
+     * PharmaceuticalProducts and Prescriptions.
+     * If a PharmaceuticalProduct or Prescription becomes empty after the deletion,
+     * it is also deleted from the respective DAOs and
+     * the associated PrescriptionExecutions are updated and deleted as needed.
+     *
+     * @param ac the active substance to be deleted
+     * @return true if the deleted active substance was the last one in the DAO, false otherwise
+     */
     public boolean deleteActiveSubstance(ActiveSubstance ac) {
         if(ac == null) {
             view.showMessage("None selected to be edited");
@@ -89,6 +101,9 @@ public class ActiveSubstanceDeletePresenter {
         this.activeSubstanceDAO = actSubsDAO;
     }
 
+    /**
+     * Creates the active substance spinner in the view.
+     */
     public void createActiveSubstanceSpinner() {
         view.createActiveSubstanceSpinner(activeSubstanceDAO.findAll());
     }
