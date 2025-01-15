@@ -23,8 +23,13 @@ public class PharmaceuticalProductCreatePresenterTest {
         presenter = new PharmaceuticalProductCreationPresenter();
         presenter.setPharmaceuticalProductDAO(new PharmaceuticalProductDAOMemory());
         ActiveSubstanceDAOMemory acMem = new ActiveSubstanceDAOMemory();
+
+        for(ActiveSubstance ac : acMem.findAll())
+            acMem.delete(ac);
+
         acMem.save(new ActiveSubstance("1", 10d));
         acMem.save(new ActiveSubstance("2", 10d));
+
         presenter.setActiveSubstanceDAO(acMem);
         presenter.setView(view);
     }
