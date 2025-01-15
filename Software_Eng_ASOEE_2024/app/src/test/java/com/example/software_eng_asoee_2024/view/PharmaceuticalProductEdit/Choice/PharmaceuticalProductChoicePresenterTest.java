@@ -13,6 +13,9 @@ public class PharmaceuticalProductChoicePresenterTest {
         presenter = new PharmaceuticalProductChoicePresenter();
     }
 
+    /**
+     * tests the getter and setter of presenter
+     */
     @Test
     public void checkView() {
         presenter.setView(view);

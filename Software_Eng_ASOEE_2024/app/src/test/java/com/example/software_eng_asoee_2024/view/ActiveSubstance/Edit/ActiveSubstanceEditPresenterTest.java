@@ -28,18 +28,27 @@ public class ActiveSubstanceEditPresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * tests the getter and setter of presenter
+     */
     @Test
     public void checkView() {
         presenter.setView(view);
         Assert.assertEquals(presenter.getView(), view);
     }
 
+    /**
+     * checks if the spinner is loaded properly
+     */
     @Test
     public void checkSpinnerCreation() {
         presenter.createActiveSubstanceSpinner();
         Assert.assertEquals(view.acList, acList);
     }
 
+    /**
+     * Checks if the method sets the proper message per occasion
+     */
     @Test
     public void checkEdit() {
         presenter.editActiveSubstance(null, "A", "10");

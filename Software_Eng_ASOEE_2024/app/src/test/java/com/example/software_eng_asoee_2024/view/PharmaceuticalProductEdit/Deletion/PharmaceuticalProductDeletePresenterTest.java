@@ -68,12 +68,18 @@ public class PharmaceuticalProductDeletePresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * tests the getter and setter of presenter
+     */
     @Test
     public void checkView() {
         presenter.setView(view);
         Assert.assertEquals(presenter.getView(), view);
     }
 
+    /**
+     * checks if the items are deleted properly.
+     */
     @Test
     public void checkDelete() {
         List<PharmaceuticalProduct> ppList = ppMem.findAll();
@@ -106,6 +112,9 @@ public class PharmaceuticalProductDeletePresenterTest {
         Assert.assertEquals("Done!", view.msg);
     }
 
+    /**
+     * checks if the spinner is loaded properly
+     */
     @Test
     public void checkSpinner() {
         presenter.createPharmaceuticalProductSpinner();

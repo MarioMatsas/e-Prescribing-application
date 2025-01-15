@@ -39,12 +39,18 @@ public class PharmaceuticalProductCreatePresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * tests the getter and setter of presenter
+     */
     @Test
     public void checkView() {
         presenter.setView(view);
         Assert.assertEquals(presenter.getView(), view);
     }
 
+    /**
+     * Checks if the method sets the proper message per occasion
+     */
     @Test
     public void checkCreation() {
         ArrayList<ActiveSubstance> acList = new ArrayList<ActiveSubstance>();
@@ -67,6 +73,9 @@ public class PharmaceuticalProductCreatePresenterTest {
         Assert.assertEquals(view.msg, "Done!");
     }
 
+    /**
+     * checks if the spinner is loaded properly
+     */
     @Test
     public void checkSpinner() {
         presenter.createActiveSubstanceSpinner();

@@ -58,12 +58,18 @@ public class PharmaceuticalProductEditPresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * tests the getter and setter of presenter
+     */
     @Test
     public void checkView() {
         presenter.setView(view);
         Assert.assertEquals(presenter.getView(), view);
     }
 
+    /**
+     * checks if the spinner is loaded properly
+     */
     @Test
     public void checkSpinners() {
         presenter.createPharmaceuticalProductSpinner();
@@ -72,6 +78,9 @@ public class PharmaceuticalProductEditPresenterTest {
         Assert.assertEquals(acMem.findAll(), view.acSpinner);
     }
 
+    /**
+     * Checks if the method sets the proper message per occasion
+     */
     @Test
     public void checkEdit() {
         List<PharmaceuticalProduct> ppList = ppMem.findAll();

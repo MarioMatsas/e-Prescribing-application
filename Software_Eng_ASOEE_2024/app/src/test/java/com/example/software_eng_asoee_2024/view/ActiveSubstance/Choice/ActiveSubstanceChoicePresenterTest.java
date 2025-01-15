@@ -14,6 +14,9 @@ public class ActiveSubstanceChoicePresenterTest {
         presenter = new ActiveSubstanceChoicePresenter();
     }
 
+    /**
+     * tests if setting and getting a view works fine.
+     */
     @Test
     public void checkView() {
         presenter.setView(view);
