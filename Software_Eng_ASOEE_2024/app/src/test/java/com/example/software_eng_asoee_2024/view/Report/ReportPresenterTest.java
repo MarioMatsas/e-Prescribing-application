@@ -34,12 +34,30 @@ public class ReportPresenterTest {
         presenter.setReportDAO(new ReportObjectDAOMemory());
     }
 
+    /**
+     * Test the view getter
+     *
+     */
+    @Test
+    public void getView(){
+        presenter.setView(viewStub);
+        Assert.assertEquals(viewStub, presenter.getView());
+    }
+
+    /**
+     * Test the case that no report lines are added
+     *
+     */
     @Test
     public void getCleanReport(){
         ArrayList<String> reportLines = presenter.generateReport();
         Assert.assertTrue(reportLines.isEmpty());
     }
 
+    /**
+     * Test the case that a line is added
+     *
+     */
     @Test
     public void getSuspectReport(){
         new ReportObjectDAOMemory().update(new DoctorDAOMemory().find("m","m"),new PatientDAOMemory().find(123123123), new ActiveSubstanceDAOMemory().find("Paracetamol"), new Date(), 15.0);
