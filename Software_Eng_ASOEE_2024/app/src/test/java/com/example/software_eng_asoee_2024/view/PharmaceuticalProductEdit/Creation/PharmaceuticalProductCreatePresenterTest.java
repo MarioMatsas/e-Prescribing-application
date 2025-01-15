@@ -1,5 +1,10 @@
 package com.example.software_eng_asoee_2024.view.PharmaceuticalProductEdit.Creation;
 
+import static com.example.software_eng_asoee_2024.domain.Form.CREAM;
+import static com.example.software_eng_asoee_2024.domain.Form.PILL;
+import static com.example.software_eng_asoee_2024.domain.Form.SPRAY;
+import static com.example.software_eng_asoee_2024.domain.Form.SYRUP;
+
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Concentration;
 import com.example.software_eng_asoee_2024.domain.Form;
@@ -66,5 +71,40 @@ public class PharmaceuticalProductCreatePresenterTest {
     public void checkSpinner() {
         presenter.createActiveSubstanceSpinner();
         Assert.assertEquals(2, view.spinner.size());
+    }
+
+    /**
+     *
+     * Tests if the correct unit is returned, according to the selected form
+     */
+    @Test
+    public void testUnitReturn(){
+        Assert.assertEquals(presenter.onSelectedUnit(PILL), Unit.mg_per_disk);
+        Assert.assertEquals(presenter.onSelectedUnit(CREAM), Unit.mg_per_g);
+        Assert.assertEquals(presenter.onSelectedUnit(SPRAY), Unit.mg_per_dose);
+        Assert.assertEquals(presenter.onSelectedUnit(SYRUP), Unit.mg_per_ml);
+    }
+
+    /**
+     *
+     * Tests if the addition of the substance was handled correctly when it was added
+     */
+    @Test
+    public void testSubstAddToProd(){
+        // Used just to check the null
+        presenter.addSubToProduct(null, "123", new ArrayList<ActiveSubstance>(),
+                new ArrayList<Concentration>(), Unit.mg_per_disk);
+
+        presenter.addSubToProduct(new ActiveSubstanceDAOMemory().find("Paracetamol"), "", new ArrayList<ActiveSubstance>(),
+                new ArrayList<Concentration>(), Unit.mg_per_disk);
+        Assert.assertEquals("Concentration isn't filled in", view.msg);
+
+        presenter.addSubToProduct(new ActiveSubstanceDAOMemory().find("Paracetamol"), "ertet", new ArrayList<ActiveSubstance>(),
+                new ArrayList<Concentration>(), Unit.mg_per_disk);
+        Assert.assertEquals("Concentration should be a number", view.msg);
+
+        presenter.addSubToProduct(new ActiveSubstanceDAOMemory().find("Paracetamol"), "2", new ArrayList<ActiveSubstance>(),
+                new ArrayList<Concentration>(), Unit.mg_per_disk);
+        Assert.assertEquals("Added!", view.msg);
     }
 }

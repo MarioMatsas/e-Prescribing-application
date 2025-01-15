@@ -1,5 +1,10 @@
 package com.example.software_eng_asoee_2024.view.PrescriptionCreation.Creation;
 
+import static com.example.software_eng_asoee_2024.domain.Form.CREAM;
+import static com.example.software_eng_asoee_2024.domain.Form.PILL;
+import static com.example.software_eng_asoee_2024.domain.Form.SPRAY;
+import static com.example.software_eng_asoee_2024.domain.Form.SYRUP;
+
 import com.example.software_eng_asoee_2024.dao.Initializer;
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Form;
@@ -74,7 +79,7 @@ public class PrescriptionCreationPresenterTest {
     @Test
     public void createdPrescriptionTest(){
         presenter.addPrescriptionline(
-                new ActiveSubstance("Aspirin", 22d), Form.PILL,
+                new ActiveSubstance("Aspirin", 22d), PILL,
                 "32.2", String.valueOf(Unit.mg_per_disk), "32", "8", "Every Morning");
         Assert.assertTrue(presenter.createPrescription());
     }
@@ -86,7 +91,7 @@ public class PrescriptionCreationPresenterTest {
     public void prescriptionLineNotAdded(){
         //conc_amount and days are  wrong
         Assert.assertFalse(presenter.addPrescriptionline(
-                new ActiveSubstance("Aspirin", 5d), Form.PILL,
+                new ActiveSubstance("Aspirin", 5d), PILL,
                 "3.0f", String.valueOf(Unit.mg_per_disk), "32.1", "22d", "Every Morning"));
     }
 
@@ -96,7 +101,7 @@ public class PrescriptionCreationPresenterTest {
     @Test
     public void prescriptionLineAdded(){
         Assert.assertTrue(presenter.addPrescriptionline(
-                new ActiveSubstance("Aspirin", 22d), Form.PILL,
+                new ActiveSubstance("Aspirin", 22d), PILL,
                 "32.2", String.valueOf(Unit.mg_per_disk), "32", "22", "Every Morning"));
     }
 
@@ -106,12 +111,12 @@ public class PrescriptionCreationPresenterTest {
      */
     @Test
     public void ErrorsFoundWrongConcAmount(){//concAmount should be double
-        Assert.assertTrue(presenter.errorsFound(Form.PILL, "a2f", "3", "4"));
-        Assert.assertTrue(presenter.errorsFound(Form.PILL, "a39", "3", "4"));
-        Assert.assertTrue(presenter.errorsFound(Form.PILL, "True", "3", "4"));
+        Assert.assertTrue(presenter.errorsFound(PILL, "a2f", "3", "4"));
+        Assert.assertTrue(presenter.errorsFound(PILL, "a39", "3", "4"));
+        Assert.assertTrue(presenter.errorsFound(PILL, "True", "3", "4"));
 
-        Assert.assertTrue(presenter.errorsFound(Form.SYRUP, "-1.0", "3.0", "4"));
-        Assert.assertTrue(presenter.errorsFound(Form.SYRUP, "0", "3.0", "4"));
+        Assert.assertTrue(presenter.errorsFound(SYRUP, "-1.0", "3.0", "4"));
+        Assert.assertTrue(presenter.errorsFound(SYRUP, "0", "3.0", "4"));
     }
 
     /**
@@ -120,10 +125,10 @@ public class PrescriptionCreationPresenterTest {
      */
     @Test
     public void checkErrorsNotFoundpdAmountForm(){
-        Assert.assertFalse(presenter.errorsFound(Form.PILL, "32.2", "3", "4"));
-        Assert.assertFalse(presenter.errorsFound(Form.SPRAY, "32.2", "3", "4"));
-        Assert.assertFalse(presenter.errorsFound(Form.CREAM, "32.2", "3.0", "4"));
-        Assert.assertFalse(presenter.errorsFound(Form.SYRUP, "32.2", "3.0", "4"));
+        Assert.assertFalse(presenter.errorsFound(PILL, "32.2", "3", "4"));
+        Assert.assertFalse(presenter.errorsFound(SPRAY, "32.2", "3", "4"));
+        Assert.assertFalse(presenter.errorsFound(CREAM, "32.2", "3.0", "4"));
+        Assert.assertFalse(presenter.errorsFound(SYRUP, "32.2", "3.0", "4"));
 
     }
 
@@ -133,19 +138,19 @@ public class PrescriptionCreationPresenterTest {
      */
     @Test
     public void checkErrorsFoundpdAmountForm(){//for pill or spray: pdAmount should be int, else: pdAmount should be double
-        Assert.assertTrue(presenter.errorsFound(Form.PILL, "32.2", "afk", "4"));
-        Assert.assertTrue(presenter.errorsFound(Form.PILL, "32.2", "32.0", "4"));
+        Assert.assertTrue(presenter.errorsFound(PILL, "32.2", "afk", "4"));
+        Assert.assertTrue(presenter.errorsFound(PILL, "32.2", "32.0", "4"));
 
-        Assert.assertTrue(presenter.errorsFound(Form.SPRAY, "32.2", "3.0f", "4"));
+        Assert.assertTrue(presenter.errorsFound(SPRAY, "32.2", "3.0f", "4"));
 
-        Assert.assertTrue(presenter.errorsFound(Form.CREAM, "32.2f", "3a", "4"));
+        Assert.assertTrue(presenter.errorsFound(CREAM, "32.2f", "3a", "4"));
 
-        Assert.assertTrue(presenter.errorsFound(Form.SYRUP, "32.2", "afg", "4"));
+        Assert.assertTrue(presenter.errorsFound(SYRUP, "32.2", "afg", "4"));
 
-        Assert.assertTrue(presenter.errorsFound(Form.SYRUP, "32.2", "-1.0", "4"));
-        Assert.assertTrue(presenter.errorsFound(Form.SYRUP, "32.2", "0", "4"));
-        Assert.assertTrue(presenter.errorsFound(Form.PILL, "32.2", "0", "4"));
-        Assert.assertTrue(presenter.errorsFound(Form.PILL, "32.2", "-1", "4"));
+        Assert.assertTrue(presenter.errorsFound(SYRUP, "32.2", "-1.0", "4"));
+        Assert.assertTrue(presenter.errorsFound(SYRUP, "32.2", "0", "4"));
+        Assert.assertTrue(presenter.errorsFound(PILL, "32.2", "0", "4"));
+        Assert.assertTrue(presenter.errorsFound(PILL, "32.2", "-1", "4"));
     }
 
     /**
@@ -154,11 +159,11 @@ public class PrescriptionCreationPresenterTest {
      */
     @Test
     public void checkErrorsFoundDays(){//days should be int
-        Assert.assertTrue(presenter.errorsFound(Form.CREAM, "32.2", "3.0", "4.0f"));
-        Assert.assertTrue(presenter.errorsFound(Form.SPRAY, "32.2", "3", "a"));
+        Assert.assertTrue(presenter.errorsFound(CREAM, "32.2", "3.0", "4.0f"));
+        Assert.assertTrue(presenter.errorsFound(SPRAY, "32.2", "3", "a"));
 
-        Assert.assertTrue(presenter.errorsFound(Form.SYRUP, "32.2", "3.0", "-1"));
-        Assert.assertTrue(presenter.errorsFound(Form.SYRUP, "32.2", "3.0", "0"));
+        Assert.assertTrue(presenter.errorsFound(SYRUP, "32.2", "3.0", "-1"));
+        Assert.assertTrue(presenter.errorsFound(SYRUP, "32.2", "3.0", "0"));
     }
 
     /**
@@ -167,8 +172,8 @@ public class PrescriptionCreationPresenterTest {
      */
     @Test
     public void checkErrorsFoundRightInput(){
-        Assert.assertFalse(presenter.errorsFound(Form.SYRUP, "32.2", "3.0", "4"));
-        Assert.assertFalse(presenter.errorsFound(Form.SPRAY, "32.2", "3", "12"));
+        Assert.assertFalse(presenter.errorsFound(SYRUP, "32.2", "3.0", "4"));
+        Assert.assertFalse(presenter.errorsFound(SPRAY, "32.2", "3", "12"));
     }
 
 
@@ -177,7 +182,7 @@ public class PrescriptionCreationPresenterTest {
      */
     @Test
     public void noErrorsFound(){
-        Assert.assertFalse(presenter.errorsFound(Form.PILL, "32.2", "3", "2"));
+        Assert.assertFalse(presenter.errorsFound(PILL, "32.2", "3", "2"));
     }
 
     /**
@@ -215,6 +220,21 @@ public class PrescriptionCreationPresenterTest {
 
         Assert.assertFalse(presenter.error("12.3", "test string"));
 
+    }
+
+    /**
+     * Checks to see if the view fields are autocompleted correctly
+     */
+    @Test
+    public void testPresCreationAuto(){
+        presenter.onFormSelected(PILL);
+        Assert.assertEquals("Pills p.d Days mg_per_disk", viewStub.getErrorMessage());
+        presenter.onFormSelected(CREAM);
+        Assert.assertEquals("Grams p.d Days mg_per_g", viewStub.getErrorMessage());
+        presenter.onFormSelected(SPRAY);
+        Assert.assertEquals("Doses p.d Days mg_per_dose", viewStub.getErrorMessage());
+        presenter.onFormSelected(SYRUP);
+        Assert.assertEquals("mL p.d Days mg_per_ml", viewStub.getErrorMessage());
     }
 
 }

@@ -79,8 +79,10 @@ public class PharmaceuticalProductEditPresenter {
             createActiveSubstanceSpinner();
             view.showMessage("Added!");
         } catch (NumberFormatException e) {
+            System.out.println("ERROR1");
             view.showMessage("Concentration should be a number");
         } catch (Exception e) {
+            System.out.println("ERROR2");
             view.showMessage(e.getMessage());
         }
     }
