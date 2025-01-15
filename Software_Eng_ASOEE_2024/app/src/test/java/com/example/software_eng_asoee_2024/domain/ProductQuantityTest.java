@@ -50,7 +50,7 @@ public class ProductQuantityTest {
      */
     @Test
     public void testToString(){
-        Assert.assertEquals(qnt.toString(), "name 0.18 8 pills per pack 10");
+        Assert.assertEquals(qnt.toString(), "name, 0.18€, 8 pills per pack 10");
     }
 
 }

@@ -127,7 +127,7 @@ public class ActiveSubstanceDeletePresenterTest {
     public void checkDeletion() {
         List<ActiveSubstance> acList = acMem.findAll();
         Assert.assertFalse(presenter.deleteActiveSubstance(null));
-        Assert.assertEquals(view.msg, "None selected to be edited");
+        Assert.assertEquals(view.msg, "None selected to be deleted");
         Assert.assertEquals(3, acMem.findAll().size());
         Assert.assertEquals(2, prMem.findAll().size());
         Assert.assertEquals(2, ppMem.findAll().size());

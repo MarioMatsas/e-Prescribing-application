@@ -67,6 +67,6 @@ public class ActiveSubstanceTest {
     @Test
     public void TestToString(){
         ActiveSubstance act_sub1 = new ActiveSubstance("hhhh", 2025.0);
-        Assert.assertEquals(act_sub1.toString(), "hhhh | 2025.0");
+        Assert.assertEquals(act_sub1.toString(), "hhhh: 2025.0 mg per month");
     }
 }
