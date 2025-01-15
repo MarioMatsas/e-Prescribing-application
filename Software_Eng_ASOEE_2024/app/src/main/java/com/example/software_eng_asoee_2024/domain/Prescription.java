@@ -82,11 +82,10 @@ public class Prescription implements Serializable {
      */
     @NonNull
     public String toString() {
-        String activeSubstances = doctor.getFirstName() + " " + doctor.getLastName() + ": ";
+        String activeSubstances = doctor.getFirstName() + " " + doctor.getLastName() + ": " + diagnosis + " · " ;
         for (PrescriptionLine line : prescriptionLines){
             activeSubstances += line.getActiveSubstance().getName() +" , ";
         }
-
         return activeSubstances;
     }
 }
