@@ -23,6 +23,15 @@ public class PharmaceuticalProductDeletePresenter {
         this.view = view;
     }
 
+    /**
+     * Deletes the specified pharmaceutical product and updates related entities.
+     * Removes any associated product quantities from
+     * PrescriptionExecutions. If a PrescriptionExecution has no remaining
+     * product quantities after the deletion it is also deleted.
+     *
+     * @param pp the pharmaceutical product to be deleted
+     * @return true if the deleted pharmaceutical product the last one in the DAO, false otherwise
+     */
     public boolean deletePharmaceuticalProduct(PharmaceuticalProduct pp) {
         if(pp == null) {
             view.showMessage("None selected to be deleted");
@@ -46,6 +55,9 @@ public class PharmaceuticalProductDeletePresenter {
         this.pharmaceuticalProductDAO = actSubsDAO;
     }
 
+    /**
+     * Creates the pharmaceutical product spinner in the view.
+     */
     public void createPharmaceuticalProductSpinner() {
         view.createPharmaceuticalProductSpinner(pharmaceuticalProductDAO.findAll());
     }

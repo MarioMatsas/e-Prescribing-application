@@ -19,6 +19,16 @@ public class ActiveSubstanceEditPresenter {
         this.view = view;
     }
 
+    /**
+     * Edits the selected active substance with the data given.
+
+     * Validates the input data, checks for duplicate names,
+     * updates the active substance in the DAO and refreshes the UI.
+
+     * @param selected the active substance to be edited
+     * @param name the new name for the active substance
+     * @param eqpm the new expected quantity per month (as a String)
+     */
     public void editActiveSubstance(ActiveSubstance selected, String name, String eqpm) {
         try {
             if(selected == null) throw new IllegalArgumentException("None selected to be edited");
@@ -49,6 +59,9 @@ public class ActiveSubstanceEditPresenter {
         this.activeSubstanceDAO = actSubsDAO;
     }
 
+    /**
+     * Creates the active substance spinner in the view.
+     */
     public void createActiveSubstanceSpinner() {
         view.createActiveSubstanceSpinner(activeSubstanceDAO.findAll());
     }

@@ -78,6 +78,15 @@ public class PharmaceuticalProductDeleteActivity extends AppCompatActivity imple
         super.onResume();
     }
 
+    /**
+     * Creates and populates the pharmaceutical product spinner.
+     * Populates the spinner with the given list of pharmaceutical products.
+     * When a product is selected, it updates the UI fields
+     * (name, retail price, form, type, information, active substances, and concentrations)
+     * with the corresponding data from the selected product.
+
+     * @param pharmaceuticalProducts the list of pharmaceutical products to display in the spinner
+     */
     public void createPharmaceuticalProductSpinner(List<PharmaceuticalProduct> pharmaceuticalProducts) {
         if(pharmaceuticalProducts.isEmpty()) {
             pharmaceuticalProductSpinner.setAdapter(null);
@@ -108,6 +117,12 @@ public class PharmaceuticalProductDeleteActivity extends AppCompatActivity imple
         });
     }
 
+    /**
+     * Deletes the specified pharmaceutical product.
+     * If its the last one, its sets the UI elements as blank.
+     *
+     * @param ac the active substance to be deleted
+     */
     public void deletePharmaceuticalProduct(PharmaceuticalProduct ac) {
         if(viewModel.getPresenter().deletePharmaceuticalProduct(ac)) {
             selected = null;
@@ -122,6 +137,11 @@ public class PharmaceuticalProductDeleteActivity extends AppCompatActivity imple
         }
     }
 
+    /**
+     * Creates and populates the active substance list view.
+     * Combines the active substances and their corresponding
+     * concentrations into a list of strings and displays them in the UI.
+     */
     public void createActiveSubstanceList() {
         ArrayList<String> temp = new ArrayList<>();
         for(int i = 0; i < activeSubstanceList.size(); i++) {
@@ -130,6 +150,12 @@ public class PharmaceuticalProductDeleteActivity extends AppCompatActivity imple
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, temp);
         activeSubstanceViewList.setAdapter(adapter);
     }
+
+    /**
+     * Displays a message to the user
+     *
+     * @param s the message to be displayed
+     */
     @Override
     public void showMessage(String s) {
         out.setText(s);

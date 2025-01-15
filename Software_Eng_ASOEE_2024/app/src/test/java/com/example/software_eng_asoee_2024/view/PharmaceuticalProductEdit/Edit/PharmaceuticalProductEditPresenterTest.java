@@ -58,12 +58,18 @@ public class PharmaceuticalProductEditPresenterTest {
         presenter.setView(view);
     }
 
+    /**
+     * tests the getter and setter of presenter
+     */
     @Test
     public void checkView() {
         presenter.setView(view);
         Assert.assertEquals(presenter.getView(), view);
     }
 
+    /**
+     * checks if the spinner is loaded properly
+     */
     @Test
     public void checkSpinners() {
         presenter.createPharmaceuticalProductSpinner();
@@ -72,6 +78,9 @@ public class PharmaceuticalProductEditPresenterTest {
         Assert.assertEquals(acMem.findAll(), view.acSpinner);
     }
 
+    /**
+     * Checks if the method sets the proper message per occasion
+     */
     @Test
     public void checkEdit() {
         List<PharmaceuticalProduct> ppList = ppMem.findAll();
@@ -123,15 +132,15 @@ public class PharmaceuticalProductEditPresenterTest {
         presenter.addSubToProduct(null, "123", new ArrayList<ActiveSubstance>(),
                 new ArrayList<Concentration>(), Unit.mg_per_disk);
 
-        presenter.addSubToProduct(acMem.find("Paracetamol"), "", new ArrayList<ActiveSubstance>(),
+        presenter.addSubToProduct(new ActiveSubstance("Paracetamol", 10d), "", new ArrayList<ActiveSubstance>(),
                 new ArrayList<Concentration>(), Unit.mg_per_disk);
         Assert.assertEquals("Concentration isn't filled in", view.msg);
 
-        presenter.addSubToProduct(acMem.find("Paracetamol"), "ertet", new ArrayList<ActiveSubstance>(),
+        presenter.addSubToProduct(new ActiveSubstance("Paracetamol", 10d), "ertet", new ArrayList<ActiveSubstance>(),
                 new ArrayList<Concentration>(), Unit.mg_per_disk);
         Assert.assertEquals("Concentration should be a number", view.msg);
 
-        presenter.addSubToProduct(acMem.find("Paracetamol"), "2", new ArrayList<ActiveSubstance>(),
+        presenter.addSubToProduct(new ActiveSubstance("Paracetamol", 10d), "2", new ArrayList<ActiveSubstance>(),
                 new ArrayList<Concentration>(), Unit.mg_per_disk);
         Assert.assertEquals("Added!", view.msg);
     }

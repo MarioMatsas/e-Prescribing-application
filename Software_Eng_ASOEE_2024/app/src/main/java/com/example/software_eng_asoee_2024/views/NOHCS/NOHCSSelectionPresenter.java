@@ -7,7 +7,6 @@ import com.example.software_eng_asoee_2024.memorydao.ActiveSubstanceDAOMemory;
 
 public class NOHCSSelectionPresenter {
     private NOHCSSelectionView view;
-    private ActiveSubstanceDAO activeSubstanceDAO;//to add the new ActiveSubstance
 
     public NOHCSSelectionView getView() {
         return view;
@@ -17,7 +16,4 @@ public class NOHCSSelectionPresenter {
         this.view = view;
     }
 
-    public void setActiveSubstanceDAO(ActiveSubstanceDAO actSubsDAO) {
-        this.activeSubstanceDAO = actSubsDAO;
-    }
 }

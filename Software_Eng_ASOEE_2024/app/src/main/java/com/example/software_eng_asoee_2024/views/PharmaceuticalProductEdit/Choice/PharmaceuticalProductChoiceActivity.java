@@ -51,18 +51,27 @@ public class PharmaceuticalProductChoiceActivity extends AppCompatActivity imple
 
     }
 
+    /**
+     *  Navigates the NOHCS Employee to the add-pharmaceutical-product screen where he can create new pharmaceutical products
+     */
     @Override
     public void navigateToAddPharmaceuticalProduct() {
         Intent intent = new Intent(this, PharmaceuticalProductCreationActivity.class);
         startActivity(intent);
     }
 
+    /**
+     *  Navigates the NOHCS Employee to the edit-pharmaceutical-product screen where he can edit existing pharmaceutical products
+     */
     @Override
     public void navigateToEditPharmaceuticalProduct() {
         Intent intent = new Intent(this, PharmaceuticalProductEditActivity.class);
         startActivity(intent);
     }
 
+    /**
+     *  Navigates the NOHCS Employee to the delete-pharmaceutical-product screen where he can delete pharmaceutical products
+     */
     @Override
     public void navigateToDeletePharmaceuticalProduct() {
         Intent intent = new Intent(this, PharmaceuticalProductDeleteActivity.class);

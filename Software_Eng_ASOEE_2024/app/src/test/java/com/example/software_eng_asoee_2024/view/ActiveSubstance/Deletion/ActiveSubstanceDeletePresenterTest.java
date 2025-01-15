@@ -100,18 +100,29 @@ public class ActiveSubstanceDeletePresenterTest {
         presenter.setView(view);
     }
 
+
+    /**
+     * checks if the spinner is loaded properly
+     */
     @Test
     public void checkSpinnerCreation() {
         presenter.createActiveSubstanceSpinner();
         Assert.assertEquals(acList, view.acList);
     }
 
+    /**
+     * tests the getter and setter of presenter
+     */
     @Test
     public void checkView() {
         presenter.setView(view);
         Assert.assertEquals(presenter.getView(), view);
     }
 
+
+    /**
+     * checks if the items are deleted properly.
+     */
     @Test
     public void checkDeletion() {
         List<ActiveSubstance> acList = acMem.findAll();

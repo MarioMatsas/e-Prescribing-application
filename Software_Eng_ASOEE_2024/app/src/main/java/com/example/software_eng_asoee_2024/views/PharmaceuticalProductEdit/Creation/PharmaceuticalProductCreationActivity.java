@@ -92,7 +92,13 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
             }
         });
     }
-
+    /**
+     * Creates a list of active substances for display in the UI.
+     * Combines the active substances and their corresponding concentrations.
+     * The "formSpinner" is enabled/disabled based on the existence
+     * of active substances in the list. (You can't change the form of the product if an active substance
+     * has already been added with a given form)
+     */
     @Override
     public void createActiveSubstanceList() {
         ArrayList<String> temp = new ArrayList<>();
@@ -110,11 +116,19 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
         super.onResume();
     }
 
+    /**
+     * Adds a new pharmaceutical product to the system.
+     * Extracts data from the UI and calls the presenter function to create the pharmaceutical product.
+     */
     @Override
     public void addPharmaceuticalProduct() {
         viewModel.getPresenter().createPharmaceuticalProduct(pharmaceuticalProductName.getText().toString(), retailPrice.getText().toString(), (Form) formSpinner.getSelectedItem(), (MedicineType) typeSpinner.getSelectedItem(), activeSubstanceList, concentrationList, information.getText().toString());
     }
 
+    /**
+     * Adds the selected active substance with the corresponding concentration to the pharmaceutical product.
+     * Extracts data from the UI and calls the presenter function to complete the action.
+     */
     @Override
     public void addActiveSubstanceToPharmaceuticalProduct() {
         viewModel.getPresenter().addSubToProduct(activeSubstanceSpinner.getSelectedItem(), concentrationInput.getText().toString(),
@@ -135,6 +149,12 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
         }*/
     }
 
+    /**
+     * Creates and populates the form and type spinners in the UI.
+     * Sets up listeners to handle item selection.
+     * When an item is selected, it calls the presenter function to determine the corresponding unit
+     * and updates the "concentrationUnit" text field.
+     */
     public void createFormAndTypeSpinners() {
         // Get all enum values as an array of MedicineType
         MedicineType[] medicineTypeOptions = MedicineType.values();
@@ -162,8 +182,14 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
             @Override
             public void onNothingSelected(AdapterView<?> parent) { }
         });
-
     }
+
+    /**
+     * Creates and populates the active substance spinner.
+     * Removes from the given list the substances that are already part of the product.
+     *
+     * @param activeSubstances the list of available active substances
+     */
     public void createActiveSubstanceSpinner(List<ActiveSubstance> activeSubstances) {
         if(activeSubstances.isEmpty()) {
             activeSubstanceSpinner.setAdapter(null);
@@ -177,6 +203,12 @@ public class PharmaceuticalProductCreationActivity extends AppCompatActivity imp
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         activeSubstanceSpinner.setAdapter(adapter);
     }
+
+    /**
+     * Displays a message to the user
+     *
+     * @param s the message to be displayed
+     */
     @Override
     public void showMessage(String s) {
         out.setText(s);

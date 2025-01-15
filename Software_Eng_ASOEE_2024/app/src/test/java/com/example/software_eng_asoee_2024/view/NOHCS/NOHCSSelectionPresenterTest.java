@@ -23,7 +23,6 @@ public class NOHCSSelectionPresenterTest {
         viewStub = new NOHCSSelectionViewStub();
         presenter = new NOHCSSelectionPresenter();
         presenter.setView(viewStub);
-        presenter.setActiveSubstanceDAO(new ActiveSubstanceDAOMemory());
     }
 
     /**

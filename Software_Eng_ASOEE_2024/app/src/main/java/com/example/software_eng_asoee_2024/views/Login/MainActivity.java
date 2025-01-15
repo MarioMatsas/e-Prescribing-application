@@ -88,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements LoginView{
     }
 
     /**
-     *
      *  Navigates the admin to the report screen where he can view this month's unlawful doctors
      */
     @Override

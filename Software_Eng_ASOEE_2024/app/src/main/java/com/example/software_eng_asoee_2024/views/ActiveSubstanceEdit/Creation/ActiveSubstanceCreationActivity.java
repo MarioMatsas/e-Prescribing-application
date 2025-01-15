@@ -51,10 +51,21 @@ public class ActiveSubstanceCreationActivity extends AppCompatActivity implement
     protected void onResume() {
         super.onResume();
     }
+
+    /**
+     * Adds a new active substance to the system.
+     * Extracts data from the UI and calls the presenter function to create the active substance.
+     */
     @Override
     public void addActiveSubstance() {
         viewModel.getPresenter().createActiveSubstance(ActiveSubstanceName.getText().toString(), ExpectedQuantityPerMonth.getText().toString());
     }
+
+    /**
+     * Displays a message to the user
+     *
+     * @param s the message to be displayed
+     */
     @Override
     public void showMessage(String s) {
         out.setText(s);

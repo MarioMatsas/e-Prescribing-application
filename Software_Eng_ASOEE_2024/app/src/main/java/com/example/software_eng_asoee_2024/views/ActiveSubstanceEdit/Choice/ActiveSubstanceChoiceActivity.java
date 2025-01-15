@@ -48,18 +48,28 @@ public class ActiveSubstanceChoiceActivity extends AppCompatActivity implements 
         deleteActiveSubstanceChoiceBtn.setOnClickListener(v -> navigateToDeleteActiveSubstance());
     }
 
+
+    /**
+     *  Navigates the NOHCS Employee to the add-active-substance screen where he can create new active substances
+     */
     @Override
     public void navigateToAddActiveSubstance() {
         Intent intent = new Intent(this, ActiveSubstanceCreationActivity.class);
         startActivity(intent);
     }
 
+    /**
+     *  Navigates the NOHCS Employee to the edit-active-substance screen where he can edit existing active substances
+     */
     @Override
     public void navigateToEditActiveSubstance() {
         Intent intent = new Intent(this, ActiveSubstanceEditActivity.class);
         startActivity(intent);
     }
 
+    /**
+     *  Navigates the NOHCS Employee to the delete-active-substance screen where he can delete active substances
+     */
     @Override
     public void navigateToDeleteActiveSubstance() {
         Intent intent = new Intent(this, ActiveSubstanceDeleteActivity.class);

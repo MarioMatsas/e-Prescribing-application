@@ -19,6 +19,15 @@ public class ActiveSubstanceCreationPresenter {
         this.view = view;
     }
 
+    /**
+     * Creates ands adds a new active substance to the DAO.
+     *
+     * Validates that the "expected quantity per month" is a double.
+     * Checks for duplicate names.
+     *
+     * @param ActiveSubstanceName the name of the active substance
+     * @param ExpectedQuantityPerMonth the expected quantity per month (as a String)
+     */
     public void createActiveSubstance(String ActiveSubstanceName, String ExpectedQuantityPerMonth) {
         try {
             ActiveSubstance ac = new ActiveSubstance(ActiveSubstanceName, Double.parseDouble(ExpectedQuantityPerMonth));
