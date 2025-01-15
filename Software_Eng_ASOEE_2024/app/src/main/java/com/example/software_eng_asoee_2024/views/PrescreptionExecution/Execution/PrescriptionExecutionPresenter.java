@@ -1,6 +1,9 @@
 package com.example.software_eng_asoee_2024.views.PrescreptionExecution.Execution;
 
+import com.example.software_eng_asoee_2024.dao.PharmaceuticalProductDAO;
 import com.example.software_eng_asoee_2024.dao.PharmacistDAO;
+import com.example.software_eng_asoee_2024.dao.PrescriptionDAO;
+import com.example.software_eng_asoee_2024.dao.PrescriptionExecutionDAO;
 import com.example.software_eng_asoee_2024.domain.ActiveSubstance;
 import com.example.software_eng_asoee_2024.domain.Concentration;
 import com.example.software_eng_asoee_2024.domain.Doctor;
@@ -25,11 +28,11 @@ import java.util.List;
 
 public class PrescriptionExecutionPresenter {
     private PrescriptionExecutionView view;
-    private PrescriptionDAOMemory prescriptionDAO;
-    private PharmaceuticalProductDAOMemory productDAO;
-    private PrescriptionExecutionDAOMemory prescriptionExecutionDAO;
+    private PrescriptionDAO prescriptionDAO;
+    private PharmaceuticalProductDAO productDAO;
+    private PrescriptionExecutionDAO prescriptionExecutionDAO;
     private PrescriptionExecution prescriptionExecution;
-    private PharmacistDAOMemory pharmacistDAO;
+    private PharmacistDAO pharmacistDAO;
 
     public PrescriptionExecutionView getView() {
         return view;
@@ -41,16 +44,16 @@ public class PrescriptionExecutionPresenter {
     public void setView(PrescriptionExecutionView view) {
         this.view = view;
     }
-    public void setPrescriptionDAO(PrescriptionDAOMemory prescriptionDAO) {
+    public void setPrescriptionDAO(PrescriptionDAO prescriptionDAO) {
         this.prescriptionDAO = prescriptionDAO;
     }
-    public void setPharmaceuticalProdcutDAO(PharmaceuticalProductDAOMemory productDAO){
+    public void setPharmaceuticalProdcutDAO(PharmaceuticalProductDAO productDAO){
         this.productDAO = productDAO;
     }
-    public void setPharmacistDAO(PharmacistDAOMemory phDAO){
+    public void setPharmacistDAO(PharmacistDAO phDAO){
         this.pharmacistDAO = phDAO;
     }
-    public void setPrescriptionExecutionDAO(PrescriptionExecutionDAOMemory prescriptionExDAO){
+    public void setPrescriptionExecutionDAO(PrescriptionExecutionDAO prescriptionExDAO){
         this.prescriptionExecutionDAO = prescriptionExDAO;
     }
 

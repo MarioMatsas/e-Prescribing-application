@@ -1,6 +1,8 @@
 package com.example.software_eng_asoee_2024.views.PrescriptionCreation.PatientSearching;
 
 import android.content.Intent;
+
+import com.example.software_eng_asoee_2024.dao.PatientDAO;
 import com.example.software_eng_asoee_2024.domain.Doctor;
 import com.example.software_eng_asoee_2024.domain.Patient;
 import com.example.software_eng_asoee_2024.memorydao.PatientDAOMemory;
@@ -8,7 +10,7 @@ import com.example.software_eng_asoee_2024.views.PrescriptionCreation.PatientSea
 
 public class PatientSearchingPresenter {
     private PatientSearchingView view;
-    private PatientDAOMemory patientDAO;
+    private PatientDAO patientDAO;
 
     public PatientSearchingView getView() {
         return view;
@@ -18,7 +20,7 @@ public class PatientSearchingPresenter {
         this.view = view;
     }
 
-    public void setPatientDAO(PatientDAOMemory patientDAO) {
+    public void setPatientDAO(PatientDAO patientDAO) {
         this.patientDAO = patientDAO;
     }
 
