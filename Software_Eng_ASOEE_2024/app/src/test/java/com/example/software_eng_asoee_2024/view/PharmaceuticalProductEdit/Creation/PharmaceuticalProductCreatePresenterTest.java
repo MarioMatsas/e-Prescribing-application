@@ -100,19 +100,18 @@ public class PharmaceuticalProductCreatePresenterTest {
      */
     @Test
     public void testSubstAddToProd(){
-        // Used just to check the null
         presenter.addSubToProduct(null, "123", new ArrayList<ActiveSubstance>(),
                 new ArrayList<Concentration>(), Unit.mg_per_disk);
 
-        presenter.addSubToProduct(new ActiveSubstanceDAOMemory().find("Paracetamol"), "", new ArrayList<ActiveSubstance>(),
+        presenter.addSubToProduct(new ActiveSubstance("Paracetamol", 10d), "", new ArrayList<ActiveSubstance>(),
                 new ArrayList<Concentration>(), Unit.mg_per_disk);
         Assert.assertEquals("Concentration isn't filled in", view.msg);
 
-        presenter.addSubToProduct(new ActiveSubstanceDAOMemory().find("Paracetamol"), "ertet", new ArrayList<ActiveSubstance>(),
+        presenter.addSubToProduct(new ActiveSubstance("Paracetamol", 10d), "ertet", new ArrayList<ActiveSubstance>(),
                 new ArrayList<Concentration>(), Unit.mg_per_disk);
         Assert.assertEquals("Concentration should be a number", view.msg);
 
-        presenter.addSubToProduct(new ActiveSubstanceDAOMemory().find("Paracetamol"), "2", new ArrayList<ActiveSubstance>(),
+        presenter.addSubToProduct(new ActiveSubstance("Paracetamol", 10d), "2", new ArrayList<ActiveSubstance>(),
                 new ArrayList<Concentration>(), Unit.mg_per_disk);
         Assert.assertEquals("Added!", view.msg);
     }
