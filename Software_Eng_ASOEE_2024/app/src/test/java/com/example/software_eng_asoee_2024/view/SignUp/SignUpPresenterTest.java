@@ -3,6 +3,7 @@ package com.example.software_eng_asoee_2024.view.SignUp;
 import com.example.software_eng_asoee_2024.dao.Initializer;
 import com.example.software_eng_asoee_2024.memorydao.DoctorDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.MemoryInitializer;
+import com.example.software_eng_asoee_2024.memorydao.NOHCSEmployeeDAOMemory;
 import com.example.software_eng_asoee_2024.memorydao.PharmacistDAOMemory;
 import com.example.software_eng_asoee_2024.view.Login.LoginViewStub;
 import com.example.software_eng_asoee_2024.views.Login.LoginPresenter;
@@ -27,6 +28,7 @@ public class SignUpPresenterTest {
         presenter.setView(viewStub);
         presenter.setDoctorDAO(new DoctorDAOMemory());
         presenter.setPharmacistDAO(new PharmacistDAOMemory());
+        presenter.setEmpDAO(new NOHCSEmployeeDAOMemory());
     }
 
     /**
@@ -101,13 +103,14 @@ public class SignUpPresenterTest {
      * User already registered
      */
     @Test
-    // TODO EMP
     public void userRegistered(){
         boolean result = presenter.signUp("d", "ch", "ch","fgjf", "Doctor");
         Assert.assertFalse(result);
         result = presenter.signUp("m", "m", "m","fgjf", "Doctor");
         Assert.assertFalse(result);
         result = presenter.signUp("admin", "0000", "0000","fgjf", "Pharmacist");
+        Assert.assertFalse(result);
+        result = presenter.signUp("a", "a", "a","fgjf", "Pharmacist");
         Assert.assertFalse(result);
     }
 }
